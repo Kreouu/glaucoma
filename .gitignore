@@ -39,3 +39,6 @@ venv/
 /submission.csv
 /队伍名_最终提交材料.zip
 /docs/*.pdf
+
+# Local editor settings
+/.vscode/
