@@ -1,0 +1,41 @@
+# OS and Python caches
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local environments and secrets
+.venv/
+venv/
+.conda/
+.env
+.env.*
+!.env.example
+
+# Competition data (must not be published)
+/data/
+/datasets/
+
+# Model weights and exported models
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.engine
+/model/
+/models/
+/weights/
+/checkpoints/
+/pretrain_model/
+
+# Generated experiment and submission artifacts
+/runs/
+/outputs/
+/logs/
+/wandb/
+/submissions/
+/submission.csv
+/队伍名_最终提交材料.zip
+/docs/*.pdf
