@@ -33,6 +33,15 @@ def seed_worker(_):
     np.random.seed(seed)
 
 
+def print_progress(stage, epoch, step, total, seen, loss, started):
+    if step == 1 or step % 25 == 0 or step == total:
+        elapsed = time.perf_counter() - started
+        remaining = elapsed / step * (total - step)
+        print(f'{stage} epoch={epoch} batch={step}/{total} ({100 * step / total:.1f}%) '
+              f'loss={loss / seen:.4f} speed={seen / elapsed:.1f} img/s '
+              f'elapsed={elapsed / 60:.1f}m ETA={remaining / 60:.1f}m', flush=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data-root', type=Path, required=True)
@@ -42,6 +51,7 @@ def main():
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
     parser.add_argument('--workers', type=int, default=4)
+    parser.add_argument('--jpeg-draft', action='store_true', help='Reduced JPEG decode; use the same mode for inference')
     parser.add_argument('--lr', type=float, default=1e-4)
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--train-limit', type=int)
@@ -59,8 +69,8 @@ def main():
     torch.cuda.manual_seed_all(args.seed)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-    train_data = FundusDataset(args.data_root, 'train', args.size, args.train_limit, args.seed)
-    valid_data = FundusDataset(args.data_root, 'valid', args.size, args.valid_limit, args.seed)
+    train_data = FundusDataset(args.data_root, 'train', args.size, args.train_limit, args.seed, args.jpeg_draft)
+    valid_data = FundusDataset(args.data_root, 'valid', args.size, args.valid_limit, args.seed, args.jpeg_draft)
     for split, data in [('train', train_data), ('valid', valid_data)]:
         if {s[2] for s in data.samples} != {0, 1}:
             parser.error(f'{split} must contain both labels')
@@ -102,7 +112,9 @@ def main():
         torch.cuda.reset_peak_memory_stats()
         model.train()
         train_loss = 0.0
-        for images, labels, _ in train_loader:
+        train_seen = 0
+        print(f'Train epoch={epoch}/{args.epochs}: {len(train_data)} images, {len(train_loader)} batches', flush=True)
+        for step, (images, labels, _) in enumerate(train_loader, 1):
             images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
             optimizer.zero_grad(set_to_none=True)
             with torch.autocast('cuda', dtype=torch.float16):
@@ -113,11 +125,16 @@ def main():
             scaler.step(optimizer)
             scaler.update()
             train_loss += loss.item() * len(labels)
+            train_seen += len(labels)
+            print_progress('Train', epoch, step, len(train_loader), train_seen, train_loss, started)
         model.eval()
         predictions, targets, names = [], [], []
         valid_loss = 0.0
+        valid_started = time.perf_counter()
+        valid_seen = 0
+        print(f'Valid epoch={epoch}: {len(valid_data)} images, {len(valid_loader)} batches', flush=True)
         with torch.inference_mode():
-            for images, labels, batch_names in valid_loader:
+            for step, (images, labels, batch_names) in enumerate(valid_loader, 1):
                 images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
                 with torch.autocast('cuda', dtype=torch.float16):
                     logits = model(images).flatten()
@@ -126,6 +143,8 @@ def main():
                 predictions.extend(logits.float().sigmoid().cpu().tolist())
                 targets.extend(labels.cpu().tolist())
                 names.extend(batch_names)
+                valid_seen += len(labels)
+                print_progress('Valid', epoch, step, len(valid_loader), valid_seen, valid_loss, valid_started)
         if not np.isfinite(predictions).all() or not np.isfinite(valid_loss):
             raise RuntimeError('Non-finite validation output')
         torch.cuda.synchronize()

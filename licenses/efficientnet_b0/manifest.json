@@ -1,0 +1,60 @@
+{
+  "retrieved_utc": "2026-10-27T15:21:15.996486+00:00",
+  "timm_model_revision": "1b5383e5f79cc0f7fc067e372f8f26a5fa73f26a",
+  "files": [
+    {
+      "path": "licenses/efficientnet_b0/torchvision-LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/pytorch/vision/v0.25.0/LICENSE",
+      "bytes": 1517,
+      "sha256": "6502f676851cfe25f8af75531dfb32375b7325b73c37e7b43741fa422893e71d"
+    },
+    {
+      "path": "licenses/efficientnet_b0/torchvision-README.md",
+      "url": "https://raw.githubusercontent.com/pytorch/vision/v0.25.0/README.md",
+      "bytes": 4844,
+      "sha256": "1957ded1ad27eb0d373b6421a431112dfeba1e85b486807181fccf5d0133e034"
+    },
+    {
+      "path": "licenses/efficientnet_b0/torchvision-efficientnet.py.txt",
+      "url": "https://raw.githubusercontent.com/pytorch/vision/v0.25.0/torchvision/models/efficientnet.py",
+      "bytes": 43098,
+      "sha256": "82d058e1989ef84e4ef7ce43e4a49dc10f1b95dcd003303c2c052438de823b17"
+    },
+    {
+      "path": "licenses/efficientnet_b0/timm-model-card.md",
+      "url": "https://huggingface.co/timm/efficientnet_b0.ra_in1k/resolve/1b5383e5f79cc0f7fc067e372f8f26a5fa73f26a/README.md",
+      "bytes": 4719,
+      "sha256": "37ff0cceacfdf24a7393c92be3a3a34ad1753f307c8a57562c0dda1a090e31c4"
+    },
+    {
+      "path": "licenses/efficientnet_b0/timm-config.json",
+      "url": "https://huggingface.co/timm/efficientnet_b0.ra_in1k/resolve/1b5383e5f79cc0f7fc067e372f8f26a5fa73f26a/config.json",
+      "bytes": 578,
+      "sha256": "c8146deb938c28e0e895b1d2d437d204aa757cb76a5d53c76120e259fe4efe92"
+    },
+    {
+      "path": "licenses/efficientnet_b0/timm-LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/main/LICENSE",
+      "bytes": 11343,
+      "sha256": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+    },
+    {
+      "path": "licenses/efficientnet_b0/timm-README.md",
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/main/README.md",
+      "bytes": 40746,
+      "sha256": "10f0efe4f3b1a47e8b5d23ffe2db670beb7877809d8826f93271fd9aae36d6e1"
+    },
+    {
+      "path": "pretrain_model/efficientnet_b0_rwightman-7f5810bc.pth",
+      "url": "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth",
+      "bytes": 21444401,
+      "sha256": "7f5810bc96def8f7552d5b7e68d53c4786f81167d28291b21c0d90e1fca14934"
+    },
+    {
+      "path": "pretrain_model/efficientnet_b0.ra_in1k-original.bin",
+      "url": "https://huggingface.co/timm/efficientnet_b0.ra_in1k/resolve/1b5383e5f79cc0f7fc067e372f8f26a5fa73f26a/pytorch_model.bin",
+      "bytes": 21441905,
+      "sha256": "52487d0cd13681cf2ae61fdae3c913f45c1d4967e69432a2065da4695ae343fd"
+    }
+  ]
+}

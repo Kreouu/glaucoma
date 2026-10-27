@@ -22,7 +22,7 @@ class Letterbox:
 
 
 class FundusDataset(Dataset):
-    def __init__(self, root, split, size=256, limit=None, seed=42):
+    def __init__(self, root, split, size=256, limit=None, seed=42, jpeg_draft=False):
         if split not in ('train', 'valid'):
             raise ValueError('Only train and valid are supported by the training loader')
         root = Path(root)
@@ -66,6 +66,8 @@ class FundusDataset(Dataset):
             steps.append(transforms.RandomHorizontalFlip())
         steps += [transforms.ToTensor(), transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
         self.transform = transforms.Compose(steps)
+        self.size = size
+        self.jpeg_draft = jpeg_draft
 
     def __len__(self):
         return len(self.samples)
@@ -73,5 +75,7 @@ class FundusDataset(Dataset):
     def __getitem__(self, index):
         name, path, label = self.samples[index]
         with Image.open(path) as image:
+            if self.jpeg_draft and image.format == 'JPEG':
+                image.draft('RGB', (self.size, self.size))
             tensor = self.transform(image.convert('RGB'))
         return tensor, torch.tensor(float(label)), name

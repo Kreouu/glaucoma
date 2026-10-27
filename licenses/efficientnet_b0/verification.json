@@ -1,0 +1,7 @@
+{
+  "torchvision_tensor_count": 360,
+  "timm_tensor_count": 360,
+  "identical_tensor_multiset": true,
+  "shared_tensor_count": 360,
+  "torchvision_weight_load_and_cuda_forward": "PASS"
+}
