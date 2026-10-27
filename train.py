@@ -53,12 +53,15 @@ def main():
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--jpeg-draft', action='store_true', help='Reduced JPEG decode; use the same mode for inference')
     parser.add_argument('--lr', type=float, default=1e-4)
+    parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--train-limit', type=int)
     parser.add_argument('--valid-limit', type=int)
     args = parser.parse_args()
     if min(args.epochs, args.batch_size, args.size, args.lr) <= 0 or args.workers < 0:
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
+    if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
+        parser.error('pos-weight must be finite and positive')
     if not torch.cuda.is_available():
         parser.error('CUDA is required for this baseline')
     # A new directory prevents accidental overwrites of a previous experiment.
@@ -81,6 +84,7 @@ def main():
     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
     config.update(model='efficientnet_b0', loss='BCEWithLogitsLoss', optimizer='AdamW',
                   weight_decay=0.01, amp=True, age_used=False, threshold=0.5,
+                  validation_loss='unweighted BCEWithLogitsLoss',
                   preprocessing='RGB, aspect-preserving letterbox, ImageNet normalization',
                   augmentation='training horizontal flip p=0.5 only',
                   train_count=len(train_data), valid_count=len(valid_data),
@@ -104,7 +108,9 @@ def main():
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
     model = build_model(args.pretrained_path).cuda()
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
-    criterion = torch.nn.BCEWithLogitsLoss()
+    positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
+    criterion = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)
+    validation_criterion = torch.nn.BCEWithLogitsLoss()
     scaler = torch.amp.GradScaler('cuda')
     best = -float('inf')
     for epoch in range(1, args.epochs + 1):
@@ -138,7 +144,7 @@ def main():
                 images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
                 with torch.autocast('cuda', dtype=torch.float16):
                     logits = model(images).flatten()
-                    loss = criterion(logits, labels)
+                    loss = validation_criterion(logits, labels)
                 valid_loss += loss.item() * len(labels)
                 predictions.extend(logits.float().sigmoid().cpu().tolist())
                 targets.extend(labels.cpu().tolist())

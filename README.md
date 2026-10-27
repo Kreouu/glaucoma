@@ -18,6 +18,20 @@ bash scripts/run_baseline.sh 5
 
 当前已运行的进程不会因更新文件自动获得进度或新的解码模式。若要切换，在原训练终端 Ctrl+C 后重新执行脚本；旧目录保留，新运行从预训练权重重新开始，不会接续未保存的轮内进度。
 
+## 加权 BCE 对照
+
+训练参数 `--pos-weight` 默认为 1，即普通 BCE；只改变训练阶段阳性项权重。验证 loss 始终为普通 BCE，便于跨实验比较，AUROC/AP 的计算与按 AUROC 保存最佳模型的规则不变。
+
+在 WSL 顺序运行权重 3 和 10、各 5 轮的对照：
+
+```bash
+bash scripts/run_weighted_bce.sh
+```
+
+也可单独执行 `bash scripts/run_baseline.sh 5 3` 或 `bash scripts/run_baseline.sh 5 10`。输出目录为 `outputs/baseline_w权重_时间戳`，每组从同一 ImageNet 权重开始，seed=42、256 输入、batch=16、workers=4、lr=1e-4、JPEG 缩小解码等保持一致，不叠加过采样。权重写入配置与 checkpoint。加权训练 loss 的数值不能直接与普通 BCE 训练 loss 比大小。
+
+基线对照为 `outputs/baseline_20261027_234436` 的最佳验证 AUROC 0.97855559、AP 0.74104281。只根据完整验证集判断改进，不读取测试集调参。已有 96.73 分模型和核验草稿保留原样；训练脚本变更不会改变已归档的推理源码。
+
 ## 环境
 
 在 WSL 使用 `glaucoma` Conda 环境。当前已验收 Python 3.12、PyTorch 2.10.0+cu128、torchvision 0.25.0+cu128；实际依赖见 `glaucoma-environment-freeze.txt`。代码还使用 NumPy、Pillow 和 scikit-learn。
