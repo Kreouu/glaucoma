@@ -32,6 +32,11 @@ def main():
     sources = ['dataset.py', 'model.py']
     if config['model'] == 'efficientnet_b3':
         sources.append('model_b3.py')
+    if config['model'] == 'swinv2_tiny':
+        import timm
+        if timm.__version__ != config['timm_version']:
+            raise ValueError('timm version differs from training')
+        sources.append('model_swinv2.py')
     for name in sources:
         if sha256(project / name) != config['source_sha256'][name]:
             raise ValueError(f'Inference source changed: {name}')
@@ -52,7 +57,11 @@ def main():
         from model_b3 import build_model as selected_builder
     else:
         selected_builder = build_model
-    model = selected_builder()
+    if config['model'] == 'swinv2_tiny':
+        from model_swinv2 import build_model as swin_builder
+        model = swin_builder(size=config['size'])
+    else:
+        model = selected_builder()
     model.load_state_dict(checkpoint['model'])
     model = model.cuda().eval()
     loader = DataLoader(data, batch_size=config['batch_size'], num_workers=config['workers'], pin_memory=True)

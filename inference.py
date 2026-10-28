@@ -55,6 +55,11 @@ class Predictor:
         sources = ['dataset.py', 'model.py']
         if self.config['model'] == 'efficientnet_b3':
             sources.append('model_b3.py')
+        if self.config['model'] == 'swinv2_tiny':
+            import timm
+            if timm.__version__ != self.config['timm_version']:
+                raise ValueError('timm version differs from training')
+            sources.append('model_swinv2.py')
         for name in sources:
             if file_sha256(project / name) != self.config['source_sha256'][name]:
                 raise ValueError(f'Inference source changed since training: {name}')
@@ -65,7 +70,11 @@ class Predictor:
             from model_b3 import build_model as selected_builder
         else:
             selected_builder = build_model
-        self.model = selected_builder()
+        if self.config['model'] == 'swinv2_tiny':
+            from model_swinv2 import build_model as swin_builder
+            self.model = swin_builder(size=self.config['size'])
+        else:
+            self.model = selected_builder()
         self.model.load_state_dict(saved['model'])
         self.model = self.model.cuda().eval().requires_grad_(False)
         self.transform = transforms.Compose([

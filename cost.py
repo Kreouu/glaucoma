@@ -56,6 +56,11 @@ def main():
     if predictor.config['model'] == 'efficientnet_b3':
         if file_sha256(source / 'model_b3.py') != manifest['source_sha256'].get('model_b3.py'):
             parser.error('B3 inference source differs from prediction manifest')
+    if predictor.config['model'] == 'swinv2_tiny':
+        if file_sha256(source / 'model_swinv2.py') != manifest['source_sha256'].get('model_swinv2.py'):
+            parser.error('SwinV2 inference source differs from prediction manifest')
+        if manifest.get('timm_version') != predictor.config['timm_version']:
+            parser.error('SwinV2 timm version differs from prediction manifest')
     args.output_dir.mkdir(parents=True, exist_ok=False)
     for path in warmup:
         predictor.predict_one(path)

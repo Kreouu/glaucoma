@@ -57,6 +57,9 @@ def main():
                     pillow=PIL.__version__, cuda=torch.version.cuda, cudnn=torch.backends.cudnn.version())
     if predictor.config['model'] == 'efficientnet_b3':
         manifest['source_sha256']['model_b3.py'] = file_sha256(source / 'model_b3.py')
+    if predictor.config['model'] == 'swinv2_tiny':
+        manifest['source_sha256']['model_swinv2.py'] = file_sha256(source / 'model_swinv2.py')
+        manifest['timm_version'] = predictor.config['timm_version']
     args.output.with_suffix('.manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(f'PASS: {len(rows)} unique rows; order, probability range and labels checked.', flush=True)
 

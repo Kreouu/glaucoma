@@ -1,0 +1,54 @@
+{
+  "checked_date": "2026-10-28",
+  "revision": "9fc48f948b7a735e67e0a06a9fd5a57d9f5b26e2",
+  "card_data": {
+    "license": "mit",
+    "library_name": "timm",
+    "tags": [
+      "image-classification",
+      "timm",
+      "transformers"
+    ],
+    "datasets": [
+      "imagenet-1k"
+    ]
+  },
+  "files": [
+    {
+      "url": "https://huggingface.co/timm/swinv2_tiny_window8_256.ms_in1k/resolve/9fc48f948b7a735e67e0a06a9fd5a57d9f5b26e2/pytorch_model.bin",
+      "path": "pretrain_model/swinv2_tiny_window8_256_ms_in1k.bin",
+      "bytes": 114979989,
+      "sha256": "5f0b85afedff103dc52ea93b783996a97afdade6f418b5a28b4d2910766456b9"
+    },
+    {
+      "url": "https://huggingface.co/timm/swinv2_tiny_window8_256.ms_in1k/resolve/9fc48f948b7a735e67e0a06a9fd5a57d9f5b26e2/README.md",
+      "path": "licenses/swinv2_tiny/model-card.md",
+      "bytes": 4416,
+      "sha256": "1bb22bbc7fe8a3024c57192e55a37be1ffdac9c3c5bcc979879f3a0279f7c2ff"
+    },
+    {
+      "url": "https://huggingface.co/timm/swinv2_tiny_window8_256.ms_in1k/resolve/9fc48f948b7a735e67e0a06a9fd5a57d9f5b26e2/config.json",
+      "path": "licenses/swinv2_tiny/config.json",
+      "bytes": 632,
+      "sha256": "75b22a3513f40757680f3f3b204adee1aa751f07eb630ee46200ed2c8a22c767"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/Swin-Transformer/main/LICENSE",
+      "path": "licenses/swinv2_tiny/microsoft-LICENSE.txt",
+      "bytes": 1141,
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/v1.0.22/LICENSE",
+      "path": "licenses/swinv2_tiny/timm-LICENSE.txt",
+      "bytes": 11343,
+      "sha256": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/v1.0.22/timm/models/swin_transformer_v2.py",
+      "path": "licenses/swinv2_tiny/timm-swinv2.py.txt",
+      "bytes": 50566,
+      "sha256": "b653a9acdee657ede04b7ff9b84279a030d7444a298fdc855d9953b35e3f8290"
+    }
+  ]
+}
