@@ -1,0 +1,28 @@
+{
+  "images": 100,
+  "batch_size": 1,
+  "precision": "FP16 autocast, FP32 sigmoid",
+  "threshold": 0.5,
+  "size": 384,
+  "jpeg_draft": true,
+  "tta": false,
+  "checkpoint": "outputs/resolution_256_384_w3_v1/r384_seed43/best.pt",
+  "checkpoint_sha256": "f1037d84afd81c4132a3ec221b6eccc0256da2dd422102e455a738bae0c7b2e2",
+  "checkpoint_bytes": 48539754,
+  "input_csv_sha256": "2106cf9b43e0de7e5463a6c28e2c49ae987808f4e145d00efd063c7a23ea5815",
+  "submission_sha256": "713218afaf127d3f3896e5e967fb2d6853d8a9ca72e30d495b373a16e997cd28",
+  "source_sha256": {
+    "predict.py": "c6d2ea58738770d09438fe414b0f086a612cda5dbe95173c581b46082194468b",
+    "cost.py": "052bf5f89ef8dc3dcaa3d868c5ad18d8ae1c512919d3c50d1923676b5884d329",
+    "inference.py": "322d52e0da449b07bd605c76cfbed9ee14f1b37e415fd364d7d16c7d2c7178ed",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69"
+  },
+  "gpu": "NVIDIA GeForce RTX 5060 Ti",
+  "python": "3.12.13",
+  "torch": "2.10.0+cu128",
+  "torchvision": "0.25.0+cu128",
+  "pillow": "12.3.0",
+  "cuda": "12.8",
+  "cudnn": 91002
+}
