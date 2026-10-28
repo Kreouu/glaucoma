@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-10-28 18:16 CST",
+  "best_epoch": 2,
+  "checkpoint_sha256": "71c4d015f10974507dc94d935d484f5389ddbbcf1f4b4d204c74c8e2ef7c3832",
+  "checkpoint_bytes": 129149789,
+  "training_seconds": 1987.1544583660034,
+  "b0_training_seconds": 1153.9883386170022,
+  "auroc_delta": -0.0019737609167578274,
+  "ap_delta": -0.014414163989885709,
+  "scope": "artifact/config/hash/metric/timing audit; existing full validation reload PASS; single seed only"
+}
