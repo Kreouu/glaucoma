@@ -1,9 +1,14 @@
 import unittest
 
-from scripts.run_model_selection import extend_training, group_summary, rank
+from scripts.run_model_selection import extend_training, group_summary, rank, numerical_failure_reason
 
 
 class ModelSelectionTests(unittest.TestCase):
+    def test_expected_numeric_failure_is_recordable_but_other_errors_stop(self):
+        self.assertEqual(numerical_failure_reason('RuntimeError: Non-finite validation output'),
+                         'Non-finite validation output')
+        self.assertIsNone(numerical_failure_reason('RuntimeError: CUDA out of memory'))
+        self.assertIsNone(numerical_failure_reason('FileNotFoundError: missing image'))
     def test_late_peak_extension_only_for_competitive_unfinished_curve(self):
         self.assertTrue(extend_training(dict(best_epoch=5, val_auroc=.981), .983))
         self.assertFalse(extend_training(dict(best_epoch=4, val_auroc=.981), .983))

@@ -13,6 +13,7 @@ from sklearn.metrics import average_precision_score, roc_auc_score
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts.run_bce_grid import sha256, write_json
+from scripts.run_model_selection import numerical_failure_reason
 
 
 def main():
@@ -44,6 +45,13 @@ def main():
         assert config.get('lr_schedule', 'constant') == 'constant'
         assert config['csv_sha256'] == plan['csv_sha256']
         assert config['pretrained_sha256'] == plan['pretrained_sha256'][row['model']]
+        if row.get('rejected'):
+            assert sha256(path / 'config.json') == row['config_sha256']
+            log = ROOT / row['log_path']
+            assert sha256(log) == row['log_sha256']
+            assert numerical_failure_reason(log.read_text()) == row['reason']
+            assert not row['verified']
+            continue
         metrics = [json.loads(x) for x in (path / 'metrics.jsonl').read_text().splitlines()]
         assert [m['epoch'] for m in metrics] == list(range(1, row['epochs'] + 1))
         assert all(math.isfinite(m[k]) for m in metrics for k in ('train_loss', 'valid_loss', 'val_auroc', 'val_auprc'))
@@ -70,8 +78,13 @@ def main():
     reference_b0 = next(r for r in experiments if r['model'] == 'efficientnet_b0'
                         and r['seed'] == 43 and r['lr'] == .0001 and r['weight'] == 3 and r['epochs'] == 5)
     for group in groups:
+        if 'reason' in group:
+            assert not group['eligible']
+            rejected = [r for r in experiments if r['model'] == group['model'] and r.get('rejected')]
+            assert rejected
+            continue
         best_screen = max((r for r in experiments if r['model'] == group['model']
-                           and r['seed'] == 43 and r['epochs'] == 5),
+                           and r['seed'] == 43 and r['epochs'] == 5 and not r.get('rejected')),
                           key=lambda r: (r['val_auroc'], r['val_auprc']))
         expected_epochs = (10 if best_screen['best_epoch'] == 5
                            and best_screen['val_auroc'] >= reference_b0['val_auroc'] - .005 else 5)
@@ -128,8 +141,9 @@ def main():
     assert manifest['input_csv_sha256'] == sha256(ROOT / 'datasets/glaucoma_first/test.csv')
     for name, digest in manifest['source_sha256'].items():
         assert sha256(final / 'source' / name) == digest, name
-    result = dict(status='PASS', screening_configurations=16, verified_runs=len(experiments),
-                  confirmed_families=4, seeds_per_family=3, selected_model=winner['model'],
+    result = dict(status='PASS', screening_configurations=16, verified_runs=sum(not r.get('rejected') for r in experiments),
+                  rejected_runs=sum(bool(r.get('rejected')) for r in experiments),
+                  confirmed_families=sum('reason' not in g for g in groups), seeds_per_family=3, selected_model=winner['model'],
                   exported_model_tensor_equality=True, full_validation_reload=True,
                   local_timing_and_consistency=True, test_rows=5855,
                   exported_checkpoint_sha256=selection['exported_sha256'],

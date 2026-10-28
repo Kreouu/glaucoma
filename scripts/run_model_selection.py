@@ -34,6 +34,26 @@ LEGACY.update({
 })
 
 
+FAILURE_POLICY = 'Record exact non-finite train/validation RuntimeErrors as rejected; require three valid seeds per eligible family; other errors stop'
+
+
+def numerical_failure_reason(text):
+    for reason in ('Non-finite validation output', 'Non-finite training loss'):
+        if ('RuntimeError: ' + reason) in text.splitlines():
+            return reason
+    return None
+
+
+def record_rejection(path, log_path, reason):
+    c = json.loads((path / 'config.json').read_text())
+    row = dict(model=c['model'], lr=c['lr'], weight=c['pos_weight'], seed=c['seed'],
+               epochs=c['epochs'], run_dir=str(path.relative_to(ROOT)), rejected=True,
+               verified=False, reason=reason, config_sha256=sha256(path / 'config.json'),
+               log_path=str(log_path.relative_to(ROOT)), log_sha256=sha256(log_path))
+    write_json(path / 'rejected.json', row)
+    return row
+
+
 def rank(row):
     return row['val_auroc'], row['val_auprc']
 
@@ -70,7 +90,7 @@ def main():
                 checkpoint_rule='highest validation AUROC among the winning family three seeds',
                 test_use='one fixed final inference after selection; no platform upload',
                 sources=sources, pretrained_sha256=weights, csv_sha256=csv_hashes,
-                legacy_configs=legacy_configs)
+                legacy_configs=legacy_configs, failure_policy=FAILURE_POLICY)
     if (batch / 'plan.json').exists() and json.loads((batch / 'plan.json').read_text()) != plan:
         raise ValueError('Frozen selection plan differs; do not overwrite this batch')
     print('Plan: 16 seed43 screening results; 8 additional confirmation results; reuse verified histories.', flush=True)
@@ -117,18 +137,38 @@ def main():
             if hashlib.sha256(archived).hexdigest() != c['source_sha256']['train.py']:
                 raise ValueError('Historical training source not backed by recorded commit')
             allowed.add(c['source_sha256']['train.py'])
+        if (path / 'rejected.json').exists():
+            rejected = json.loads((path / 'rejected.json').read_text())
+            assert rejected['config_sha256'] == sha256(path / 'config.json')
+            log = ROOT / rejected['log_path']
+            assert rejected['log_sha256'] == sha256(log)
+            assert rejected['reason'] == numerical_failure_reason(log.read_text())
+            rows.append(rejected)
+            write_json(batch / 'experiments.json', rows)
+            return rejected
         result = inspect_run(path, expected, sources, allowed)
         if result is None:
             if legacy:
                 raise ValueError(f'Historical run incomplete: {path}')
             if path.exists():
                 path.rename(path.with_name(path.name + '.interrupted_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f')))
-            execute([sys.executable, '-u', 'train.py', '--model', model, '--precision', 'fp16',
-                     '--data-root', str(data), '--output-dir', str(path),
-                     '--pretrained-path', str(Path('pretrain_model') / MODELS[model][0]),
-                     '--epochs', str(epochs), '--batch-size', '16', '--size', '384', '--workers', '4',
-                     '--jpeg-draft', '--lr', str(lr), '--lr-schedule', 'constant',
-                     '--pos-weight', str(weight), '--seed', str(seed)], Path(str(path) + '.train.log'))
+            try:
+                execute([sys.executable, '-u', 'train.py', '--model', model, '--precision', 'fp16',
+                         '--data-root', str(data), '--output-dir', str(path),
+                         '--pretrained-path', str(Path('pretrain_model') / MODELS[model][0]),
+                         '--epochs', str(epochs), '--batch-size', '16', '--size', '384', '--workers', '4',
+                         '--jpeg-draft', '--lr', str(lr), '--lr-schedule', 'constant',
+                         '--pos-weight', str(weight), '--seed', str(seed)], Path(str(path) + '.train.log'))
+            except RuntimeError:
+                log = Path(str(path) + '.train.log')
+                reason = numerical_failure_reason(log.read_text())
+                if reason is None:
+                    raise
+                rejected = record_rejection(path, log, reason)
+                rows.append(rejected)
+                write_json(batch / 'experiments.json', rows)
+                print('REJECTED ' + json.dumps(rejected), flush=True)
+                return rejected
             result = inspect_run(path, expected, sources, allowed)
         if not result:
             raise RuntimeError(f'Incomplete experiment: {path}')
@@ -179,13 +219,27 @@ def main():
             # ConvNeXt first supplies the missing architecture evidence promptly.
             for model in MODELS:
                 screen = [run(model, lr, weight, 43) for lr in plan['learning_rates'] for weight in (1, 3)]
-                selected[model] = max(screen, key=rank)
+                valid = [r for r in screen if not r.get('rejected')]
+                selected[model] = max(valid, key=rank) if valid else None
             original_b0 = next(r for r in rows if r['model'] == 'efficientnet_b0' and r['lr'] == .0001 and r['weight'] == 3)
             groups = []
             for model, choice in selected.items():
+                if choice is None:
+                    groups.append(dict(model=model, eligible=False, reason='No numerically valid screening configuration'))
+                    write_json(batch / 'groups.json', groups)
+                    continue
                 if extend_training(choice, original_b0['val_auroc']):
                     choice = run(model, choice['lr'], choice['weight'], 43, epochs=10)
+                if choice.get('rejected'):
+                    groups.append(dict(model=model, eligible=False, reason='Selected extension failed numerically'))
+                    write_json(batch / 'groups.json', groups)
+                    continue
                 confirmation = [choice] + [run(model, choice['lr'], choice['weight'], seed, choice['epochs']) for seed in (42, 44)]
+                if any(r.get('rejected') for r in confirmation):
+                    groups.append(dict(model=model, eligible=False, seeds=confirmation,
+                                       reason='Selected configuration failed numerical stability across three seeds'))
+                    write_json(batch / 'groups.json', groups)
+                    continue
                 t = timing(choice, model)
                 group = dict(model=model, lr=choice['lr'], weight=choice['weight'], epochs=choice['epochs'],
                              **group_summary(confirmation), seeds=confirmation, mean_ms=t['mean_ms'],
