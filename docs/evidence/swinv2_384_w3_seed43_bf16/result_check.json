@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "completed_at": "2026-10-29T00:57:42.217732+08:00",
+  "best_epoch": 4,
+  "val_auroc": 0.9784172528727336,
+  "val_ap": 0.7513997586746882,
+  "delta_vs_fp16_auroc": 1.6193537760611498e-05,
+  "delta_vs_fp16_ap": -0.011453713141234778,
+  "checkpoint_sha256": "55cb319c1c858aa279427cb96fc6d9aa32831f2cfda4fadf63564cb402b960ce",
+  "checkpoint_bytes": 331177641,
+  "training_seconds": 4193.849128939,
+  "recorded_batches": 16065,
+  "finite_gradient_batches": 16065,
+  "max_gradient_norm": 113.27296447753906,
+  "best_checkpoint_optimizer_steps": 12852,
+  "grad_scaler_enabled": false,
+  "mean_ms": 28.01205645000057,
+  "scope": "BF16 training and validation; single seed; no evidence of meaningful improvement; local BF16 timing is not official T4 acceptance"
+}
