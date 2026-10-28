@@ -54,6 +54,9 @@ def main():
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--jpeg-draft', action='store_true', help='Reduced JPEG decode; use the same mode for inference')
     parser.add_argument('--lr', type=float, default=1e-4)
+    parser.add_argument('--lr-schedule', choices=['constant', 'warmup_cosine'], default='constant')
+    parser.add_argument('--warmup-epochs', type=float, default=1.0)
+    parser.add_argument('--min-lr', type=float, default=3e-7)
     parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--train-limit', type=int)
@@ -63,6 +66,11 @@ def main():
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
         parser.error('pos-weight must be finite and positive')
+    if args.lr_schedule == 'warmup_cosine':
+        if not np.isfinite([args.lr, args.min_lr, args.warmup_epochs]).all():
+            parser.error('Schedule parameters must be finite')
+        if not 0 < args.warmup_epochs < args.epochs or not 0 < args.min_lr <= args.lr:
+            parser.error('Expected 0 < warmup-epochs < epochs and 0 < min-lr <= lr')
     if not torch.cuda.is_available():
         parser.error('CUDA is required for this baseline')
     # A new directory prevents accidental overwrites of a previous experiment.
@@ -96,6 +104,15 @@ def main():
                   csv_sha256={split: sha256(args.data_root / f'{split}.csv') for split in ('train', 'valid')})
     project = Path(__file__).resolve().parent
     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
+    if args.lr_schedule == 'warmup_cosine':
+        batches = (len(train_data) + args.batch_size - 1) // args.batch_size
+        total_steps = args.epochs * batches
+        warmup_steps = round(args.warmup_epochs * batches)
+        if not 1 < warmup_steps < total_steps - 1:
+            parser.error('Schedule needs at least two warmup and two cosine batches')
+        config.update(lr_total_steps=total_steps, lr_warmup_steps=warmup_steps,
+                      lr_step_basis='planned training batches; AMP-skipped batches still advance schedule')
+        config['source_sha256']['lr_schedule.py'] = sha256(project / 'lr_schedule.py')
     if args.model == 'efficientnet_b3':
         config['source_sha256']['model_b3.py'] = sha256(project / 'model_b3.py')
     if args.model == 'swinv2_tiny':
@@ -130,6 +147,12 @@ def main():
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)
     validation_criterion = torch.nn.BCEWithLogitsLoss()
     scaler = torch.amp.GradScaler('cuda')
+    lr_stream = None
+    if args.lr_schedule == 'warmup_cosine':
+        from lr_schedule import warmup_cosine_lr
+        lr_stream = (args.output_dir / 'learning_rate.csv').open('w', newline='')
+        lr_writer = csv.writer(lr_stream)
+        lr_writer.writerow(['step', 'epoch', 'batch', 'lr', 'amp_scale_before', 'amp_scale_after', 'amp_skipped'])
     best = -float('inf')
     for epoch in range(1, args.epochs + 1):
         started = time.perf_counter()
@@ -137,8 +160,15 @@ def main():
         model.train()
         train_loss = 0.0
         train_seen = 0
+        skipped_updates = 0
         print(f'Train epoch={epoch}/{args.epochs}: {len(train_data)} images, {len(train_loader)} batches', flush=True)
         for step, (images, labels, _) in enumerate(train_loader, 1):
+            if lr_stream is not None:
+                planned_step = (epoch - 1) * len(train_loader) + step - 1
+                current_lr = warmup_cosine_lr(planned_step, total_steps, warmup_steps, args.lr, args.min_lr)
+                for group in optimizer.param_groups:
+                    group['lr'] = current_lr
+                scale_before = scaler.get_scale()
             images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
             optimizer.zero_grad(set_to_none=True)
             with torch.autocast('cuda', dtype=torch.float16):
@@ -148,6 +178,15 @@ def main():
             scaler.scale(loss).backward()
             scaler.step(optimizer)
             scaler.update()
+            if lr_stream is not None:
+                scale_after = scaler.get_scale()
+                skipped = scale_after < scale_before
+                skipped_updates += int(skipped)
+                lr_writer.writerow([planned_step, epoch, step, current_lr, scale_before, scale_after, int(skipped)])
+                if step == 1 or step % 25 == 0 or step == len(train_loader):
+                    lr_stream.flush()
+                    print(f'LR epoch={epoch} batch={step} lr={current_lr:.9g} '
+                          f'amp_scale={scale_after:g} skipped_updates={skipped_updates}', flush=True)
             train_loss += loss.item() * len(labels)
             train_seen += len(labels)
             print_progress('Train', epoch, step, len(train_loader), train_seen, train_loss, started)
@@ -178,6 +217,8 @@ def main():
                        val_auprc=float(average_precision_score(targets, predictions)),
                        epoch_seconds=time.perf_counter() - started,
                        peak_vram_mib=torch.cuda.max_memory_allocated() / 1024**2)
+        if lr_stream is not None:
+            metrics.update(lr_last=current_lr, amp_skipped_updates=skipped_updates)
         with (args.output_dir / 'metrics.jsonl').open('a') as stream:
             stream.write(json.dumps(metrics) + '\n')
         print(json.dumps(metrics), flush=True)
@@ -189,6 +230,8 @@ def main():
                 writer = csv.writer(stream)
                 writer.writerow(['Image_name', 'True_Label', 'Probability'])
                 writer.writerows(zip(names, (int(t) for t in targets), predictions))
+    if lr_stream is not None:
+        lr_stream.close()
     (args.output_dir / 'best.sha256').write_text(sha256(args.output_dir / 'best.pt') + '  best.pt\n')
     print(f'Completed. Best validation AUROC: {best:.6f}', flush=True)
 
