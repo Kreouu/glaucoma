@@ -55,6 +55,8 @@ def main():
                     gpu=torch.cuda.get_device_name(0), python=platform.python_version(),
                     torch=str(torch.__version__), torchvision=str(torchvision.__version__),
                     pillow=PIL.__version__, cuda=torch.version.cuda, cudnn=torch.backends.cudnn.version())
+    if predictor.config['model'] == 'efficientnet_b3':
+        manifest['source_sha256']['model_b3.py'] = file_sha256(source / 'model_b3.py')
     args.output.with_suffix('.manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(f'PASS: {len(rows)} unique rows; order, probability range and labels checked.', flush=True)
 

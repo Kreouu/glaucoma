@@ -1,0 +1,48 @@
+{
+  "checked_date": "2026-10-28",
+  "timm_revision": "0366a75518620e0f2077789202073759f2d61393",
+  "files": [
+    {
+      "url": "https://download.pytorch.org/models/efficientnet_b3_rwightman-b3899882.pth",
+      "path": "pretrain_model/efficientnet_b3_rwightman-b3899882.pth",
+      "bytes": 49475909,
+      "sha256": "b3899882250c22946d0229d266049fcd133c169233530b36b9ffa7983988362f"
+    },
+    {
+      "url": "https://huggingface.co/timm/efficientnet_b3.ra2_in1k/resolve/0366a75518620e0f2077789202073759f2d61393/pytorch_model.bin",
+      "path": "pretrain_model/efficientnet_b3_ra2_original.bin",
+      "bytes": 49471941,
+      "sha256": "4862731817e56b83f538e76767de09caf38ce8345dcf90132c4c59fa6a0048ec"
+    },
+    {
+      "url": "https://huggingface.co/timm/efficientnet_b3.ra2_in1k/resolve/0366a75518620e0f2077789202073759f2d61393/README.md",
+      "path": "licenses/efficientnet_b3/timm-model-card.md",
+      "bytes": 4752,
+      "sha256": "9b3503bbbb5a6ac3b34e69133b1cb098c9e8ca6e966266b250079b2344a70ab9"
+    },
+    {
+      "url": "https://huggingface.co/timm/efficientnet_b3.ra2_in1k/resolve/0366a75518620e0f2077789202073759f2d61393/config.json",
+      "path": "licenses/efficientnet_b3/timm-config.json",
+      "bytes": 639,
+      "sha256": "d3413ca359c4c5283bbabbba46ef66a265a14031b0b86132de9aa59f84b8d363"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/pytorch/vision/v0.25.0/torchvision/models/efficientnet.py",
+      "path": "licenses/efficientnet_b3/torchvision-efficientnet.py.txt",
+      "bytes": 43098,
+      "sha256": "82d058e1989ef84e4ef7ce43e4a49dc10f1b95dcd003303c2c052438de823b17"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/pytorch/vision/v0.25.0/LICENSE",
+      "path": "licenses/efficientnet_b3/torchvision-LICENSE.txt",
+      "bytes": 1517,
+      "sha256": "6502f676851cfe25f8af75531dfb32375b7325b73c37e7b43741fa422893e71d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/v1.0.22/LICENSE",
+      "path": "licenses/efficientnet_b3/timm-LICENSE.txt",
+      "bytes": 11343,
+      "sha256": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+    }
+  ]
+}

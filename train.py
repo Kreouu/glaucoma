@@ -47,6 +47,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -82,7 +83,7 @@ def main():
             writer.writerow(['Image_name', 'actual_filename', 'True_Label'])
             writer.writerows((name, path.name, label) for name, path, label in data.samples)
     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
-    config.update(model='efficientnet_b0', loss='BCEWithLogitsLoss', optimizer='AdamW',
+    config.update(loss='BCEWithLogitsLoss', optimizer='AdamW',
                   weight_decay=0.01, amp=True, age_used=False, threshold=0.5,
                   validation_loss='unweighted BCEWithLogitsLoss',
                   preprocessing='RGB, aspect-preserving letterbox, ImageNet normalization',
@@ -95,6 +96,8 @@ def main():
                   csv_sha256={split: sha256(args.data_root / f'{split}.csv') for split in ('train', 'valid')})
     project = Path(__file__).resolve().parent
     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
+    if args.model == 'efficientnet_b3':
+        config['source_sha256']['model_b3.py'] = sha256(project / 'model_b3.py')
     revision = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=project, capture_output=True, text=True)
     config['git_revision'] = revision.stdout.strip() if revision.returncode == 0 else None
     state = subprocess.run(['git', 'status', '--porcelain'], cwd=project, capture_output=True, text=True)
@@ -106,7 +109,11 @@ def main():
                    worker_init_fn=seed_worker)
     train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
-    model = build_model(args.pretrained_path).cuda()
+    if args.model == 'efficientnet_b3':
+        from model_b3 import build_model as selected_builder
+    else:
+        selected_builder = build_model
+    model = selected_builder(args.pretrained_path).cuda()
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
     positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)

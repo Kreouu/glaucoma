@@ -52,13 +52,20 @@ class Predictor:
         saved = torch.load(checkpoint, map_location='cpu', weights_only=True)
         self.config = saved['config']
         project = Path(__file__).resolve().parent
-        for name in ('dataset.py', 'model.py'):
+        sources = ['dataset.py', 'model.py']
+        if self.config['model'] == 'efficientnet_b3':
+            sources.append('model_b3.py')
+        for name in sources:
             if file_sha256(project / name) != self.config['source_sha256'][name]:
                 raise ValueError(f'Inference source changed since training: {name}')
         if not self.config['amp']:
             raise ValueError('This inference implementation requires the AMP baseline')
         self.threshold = self.config['threshold']
-        self.model = build_model()
+        if self.config['model'] == 'efficientnet_b3':
+            from model_b3 import build_model as selected_builder
+        else:
+            selected_builder = build_model
+        self.model = selected_builder()
         self.model.load_state_dict(saved['model'])
         self.model = self.model.cuda().eval().requires_grad_(False)
         self.transform = transforms.Compose([

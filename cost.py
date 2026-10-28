@@ -53,6 +53,9 @@ def main():
     for name in ('predict.py', 'cost.py', 'inference.py', 'dataset.py', 'model.py'):
         if file_sha256(source / name) != manifest['source_sha256'][name]:
             parser.error(f'Inference source differs from prediction manifest: {name}')
+    if predictor.config['model'] == 'efficientnet_b3':
+        if file_sha256(source / 'model_b3.py') != manifest['source_sha256'].get('model_b3.py'):
+            parser.error('B3 inference source differs from prediction manifest')
     args.output_dir.mkdir(parents=True, exist_ok=False)
     for path in warmup:
         predictor.predict_one(path)

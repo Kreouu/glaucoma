@@ -29,7 +29,10 @@ def main():
     if config != json.loads((run / 'config.json').read_text()):
         raise ValueError('Checkpoint config differs from config.json')
     project = Path(__file__).resolve().parent
-    for name in ('dataset.py', 'model.py'):
+    sources = ['dataset.py', 'model.py']
+    if config['model'] == 'efficientnet_b3':
+        sources.append('model_b3.py')
+    for name in sources:
         if sha256(project / name) != config['source_sha256'][name]:
             raise ValueError(f'Inference source changed: {name}')
     root = Path(config['data_root'])
@@ -45,7 +48,11 @@ def main():
         raise ValueError('Validation sample manifest changed')
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-    model = build_model()
+    if config['model'] == 'efficientnet_b3':
+        from model_b3 import build_model as selected_builder
+    else:
+        selected_builder = build_model
+    model = selected_builder()
     model.load_state_dict(checkpoint['model'])
     model = model.cuda().eval()
     loader = DataLoader(data, batch_size=config['batch_size'], num_workers=config['workers'], pin_memory=True)
