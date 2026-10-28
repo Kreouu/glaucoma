@@ -1,0 +1,38 @@
+{
+  "validation_images": 5849,
+  "positives": 191,
+  "threshold": 0.5,
+  "B0": {
+    "TP": 134,
+    "FN": 57,
+    "FP": 65,
+    "TN": 5593,
+    "misordered_positive_negative_pairs": 18563.0
+  },
+  "SwinV2_lr3e5": {
+    "TP": 153,
+    "FN": 38,
+    "FP": 119,
+    "TN": 5539,
+    "misordered_positive_negative_pairs": 23341.5
+  },
+  "total_positive_negative_pairs": 1080678,
+  "extra_pair_errors": 4778.5,
+  "per_positive_worse_better_tied": [
+    85,
+    81,
+    25
+  ],
+  "paired_bootstrap": {
+    "repetitions": 1000,
+    "seed": 20261028,
+    "stratified_by_label": true,
+    "delta": "Swin minus B0 AUROC",
+    "percentile_95_interval": [
+      -0.011378019169447298,
+      0.001710569660898014
+    ],
+    "scope": "Exploratory image-level resampling of fixed selected models; not patient clustered, not seed uncertainty, no correction for checkpoint/configuration selection"
+  },
+  "causal_status": "No unique cause established"
+}
