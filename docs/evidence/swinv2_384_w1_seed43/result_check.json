@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "completed_at": "2026-10-28T23:35:25.691043+08:00",
+  "best_epoch": 2,
+  "val_auroc": 0.9783885671772721,
+  "val_ap": 0.7400212105241626,
+  "delta_vs_weight3_auroc": -1.2492157700938478e-05,
+  "delta_vs_weight3_ap": -0.022832261291760414,
+  "checkpoint_sha256": "64f5f9276736578299164bf2f1243e1c834bd2cf1c1aff162e82f1a0b8ffdb45",
+  "checkpoint_bytes": 331177513,
+  "training_seconds": 4070.567790586996,
+  "mean_ms": 24.740803106712214,
+  "scope": "single seed, best-by-AUROC checkpoints; no evidence of stable architecture or class-weight ranking"
+}
