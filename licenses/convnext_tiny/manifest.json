@@ -1,0 +1,54 @@
+{
+  "checked_date": "2026-10-29",
+  "revision": "b43a6303c9fcf176d2d707478a128c2c91e93528",
+  "card_data": {
+    "license": "apache-2.0",
+    "library_name": "timm",
+    "tags": [
+      "image-classification",
+      "timm",
+      "transformers"
+    ],
+    "datasets": [
+      "imagenet-1k"
+    ]
+  },
+  "files": [
+    {
+      "url": "https://huggingface.co/timm/convnext_tiny.fb_in1k/resolve/b43a6303c9fcf176d2d707478a128c2c91e93528/pytorch_model.bin",
+      "path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+      "bytes": 114420885,
+      "sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105"
+    },
+    {
+      "url": "https://huggingface.co/timm/convnext_tiny.fb_in1k/resolve/b43a6303c9fcf176d2d707478a128c2c91e93528/README.md",
+      "path": "licenses/convnext_tiny/model-card.md",
+      "bytes": 15631,
+      "sha256": "8ee3fecbd9a3fd466045e27b31c326b92350e3bb2104313fd3bc13b65f13be39"
+    },
+    {
+      "url": "https://huggingface.co/timm/convnext_tiny.fb_in1k/resolve/b43a6303c9fcf176d2d707478a128c2c91e93528/config.json",
+      "path": "licenses/convnext_tiny/config.json",
+      "bytes": 657,
+      "sha256": "507c10b6f2482bb35e23fb131468aba967f9e0722d827ed1e333788f9364c8f8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/facebookresearch/ConvNeXt/main/LICENSE",
+      "path": "licenses/convnext_tiny/upstream-LICENSE.txt",
+      "bytes": 1088,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/v1.0.22/LICENSE",
+      "path": "licenses/convnext_tiny/timm-LICENSE.txt",
+      "bytes": 11343,
+      "sha256": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/v1.0.22/timm/models/convnext.py",
+      "path": "licenses/convnext_tiny/timm-convnext.py.txt",
+      "bytes": 60697,
+      "sha256": "2ecd7672b00003d2174bc80858c85fc692fb51e86b200c2ea2447e0e7fcef39a"
+    }
+  ]
+}

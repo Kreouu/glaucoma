@@ -65,6 +65,11 @@ def main():
             parser.error('SwinV2 inference source differs from prediction manifest')
         if manifest.get('timm_version') != predictor.config['timm_version']:
             parser.error('SwinV2 timm version differs from prediction manifest')
+    if predictor.config['model'] == 'convnext_tiny':
+        if file_sha256(source / 'model_convnext.py') != manifest['source_sha256'].get('model_convnext.py'):
+            parser.error('ConvNeXt source differs from prediction manifest')
+        if manifest.get('timm_version') != predictor.config['timm_version']:
+            parser.error('ConvNeXt timm version differs from prediction manifest')
     args.output_dir.mkdir(parents=True, exist_ok=False)
     for path in warmup:
         predictor.predict_one(path)

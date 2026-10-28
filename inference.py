@@ -62,6 +62,11 @@ class Predictor:
             sources.append('amp_precision.py')
         if self.config['model'] == 'efficientnet_b3':
             sources.append('model_b3.py')
+        if self.config['model'] == 'convnext_tiny':
+            import timm
+            if timm.__version__ != self.config['timm_version']:
+                raise ValueError('timm version differs from training')
+            sources.append('model_convnext.py')
         if self.config['model'] == 'swinv2_tiny':
             import timm
             if timm.__version__ != self.config['timm_version']:
@@ -80,6 +85,9 @@ class Predictor:
         if self.config['model'] == 'swinv2_tiny':
             from model_swinv2 import build_model as swin_builder
             self.model = swin_builder(size=self.config['size'])
+        elif self.config['model'] == 'convnext_tiny':
+            from model_convnext import build_model as convnext_builder
+            self.model = convnext_builder()
         else:
             self.model = selected_builder()
         self.model.load_state_dict(saved['model'])

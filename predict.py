@@ -61,6 +61,9 @@ def main():
     if predictor.config['model'] == 'swinv2_tiny':
         manifest['source_sha256']['model_swinv2.py'] = file_sha256(source / 'model_swinv2.py')
         manifest['timm_version'] = predictor.config['timm_version']
+    if predictor.config['model'] == 'convnext_tiny':
+        manifest['source_sha256']['model_convnext.py'] = file_sha256(source / 'model_convnext.py')
+        manifest['timm_version'] = predictor.config['timm_version']
     args.output.with_suffix('.manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(f'PASS: {len(rows)} unique rows; order, probability range and labels checked.', flush=True)
 

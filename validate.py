@@ -38,6 +38,11 @@ def main():
         raise ValueError('This checkpoint requires BF16 support')
     if config['model'] == 'efficientnet_b3':
         sources.append('model_b3.py')
+    if config['model'] == 'convnext_tiny':
+        import timm
+        if timm.__version__ != config['timm_version']:
+            raise ValueError('timm version differs from training')
+        sources.append('model_convnext.py')
     if config['model'] == 'swinv2_tiny':
         import timm
         if timm.__version__ != config['timm_version']:
@@ -66,6 +71,9 @@ def main():
     if config['model'] == 'swinv2_tiny':
         from model_swinv2 import build_model as swin_builder
         model = swin_builder(size=config['size'])
+    elif config['model'] == 'convnext_tiny':
+        from model_convnext import build_model as convnext_builder
+        model = convnext_builder()
     else:
         model = selected_builder()
     model.load_state_dict(checkpoint['model'])

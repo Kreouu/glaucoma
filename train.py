@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -122,6 +122,10 @@ def main():
         config['source_sha256']['lr_schedule.py'] = sha256(project / 'lr_schedule.py')
     if args.model == 'efficientnet_b3':
         config['source_sha256']['model_b3.py'] = sha256(project / 'model_b3.py')
+    if args.model == 'convnext_tiny':
+        import timm
+        config['timm_version'] = timm.__version__
+        config['source_sha256']['model_convnext.py'] = sha256(project / 'model_convnext.py')
     if args.model == 'swinv2_tiny':
         import timm
         config['timm_version'] = timm.__version__
@@ -147,6 +151,9 @@ def main():
     if args.model == 'swinv2_tiny':
         from model_swinv2 import build_model as swin_builder
         model = swin_builder(args.pretrained_path, size=args.size).cuda()
+    elif args.model == 'convnext_tiny':
+        from model_convnext import build_model as convnext_builder
+        model = convnext_builder(args.pretrained_path).cuda()
     else:
         model = selected_builder(args.pretrained_path).cuda()
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
