@@ -1,4 +1,4 @@
-"""Frozen single-image FP16 inference shared by prediction and timing."""
+"""Frozen single-image AMP inference shared by prediction and timing."""
 
 import csv
 import hashlib
@@ -11,6 +11,7 @@ from torchvision import transforms
 
 from dataset import Letterbox
 from model import build_model
+from amp_precision import amp_dtype, precision_description
 
 
 def file_sha256(path):
@@ -51,8 +52,14 @@ class Predictor:
         torch.backends.cudnn.deterministic = True
         saved = torch.load(checkpoint, map_location='cpu', weights_only=True)
         self.config = saved['config']
+        self.autocast_dtype = amp_dtype(self.config)
+        self.precision_description = precision_description(self.config)
+        if self.autocast_dtype == torch.bfloat16 and not torch.cuda.is_bf16_supported():
+            raise ValueError('This checkpoint requires BF16 support')
         project = Path(__file__).resolve().parent
         sources = ['dataset.py', 'model.py']
+        if 'amp_precision.py' in self.config['source_sha256']:
+            sources.append('amp_precision.py')
         if self.config['model'] == 'efficientnet_b3':
             sources.append('model_b3.py')
         if self.config['model'] == 'swinv2_tiny':
@@ -91,7 +98,7 @@ class Predictor:
     @torch.inference_mode()
     def predict_one(self, path):
         image = self.preprocess(path).unsqueeze(0).cuda()
-        with torch.autocast('cuda', dtype=torch.float16):
+        with torch.autocast('cuda', dtype=self.autocast_dtype):
             logit = self.model(image).flatten()[0]
         probability = logit.float().sigmoid().item()
         if not math.isfinite(probability) or not 0 <= probability <= 1:

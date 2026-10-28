@@ -50,6 +50,10 @@ def main():
     if manifest['checkpoint_sha256'] != file_sha256(args.checkpoint) or manifest['submission_sha256'] != file_sha256(args.submission):
         parser.error('Submission/checkpoint hash differs from its prediction manifest')
     source = Path(__file__).resolve().parent
+    if manifest['precision'] != predictor.precision_description:
+        parser.error('Precision differs from prediction manifest')
+    if file_sha256(source / 'amp_precision.py') != manifest['source_sha256'].get('amp_precision.py'):
+        parser.error('AMP precision source differs from prediction manifest')
     for name in ('predict.py', 'cost.py', 'inference.py', 'dataset.py', 'model.py'):
         if file_sha256(source / name) != manifest['source_sha256'][name]:
             parser.error(f'Inference source differs from prediction manifest: {name}')
@@ -89,7 +93,7 @@ def main():
     means = np.mean(timings, axis=0)
     average = float(means.mean())
     result = dict(images=100, warmup_images=5, rounds=3, batch_size=1,
-                  precision='FP16 autocast, FP32 sigmoid', threshold=predictor.threshold,
+                  precision=predictor.precision_description, threshold=predictor.threshold,
                   mean_ms=average, inconsistent_images=int(mismatches.sum()), max_probability_difference=max_error,
                   consistency_pass=not bool(mismatches.any()), within_100ms_on_this_machine=average <= 100,
                   gpu=torch.cuda.get_device_name(0), torch=str(torch.__version__),

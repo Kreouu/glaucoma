@@ -45,7 +45,7 @@ def main():
     if any(int(r['Pred_Label']) != int(float(r['Probability']) >= predictor.threshold) for r in rows):
         raise ValueError('Output labels do not match the declared threshold')
     source = Path(__file__).resolve().parent
-    manifest = dict(images=len(rows), batch_size=1, precision='FP16 autocast, FP32 sigmoid',
+    manifest = dict(images=len(rows), batch_size=1, precision=predictor.precision_description,
                     threshold=predictor.threshold, size=predictor.config['size'],
                     jpeg_draft=predictor.config['jpeg_draft'], tta=False,
                     checkpoint=str(args.checkpoint), checkpoint_sha256=file_sha256(args.checkpoint),
@@ -57,6 +57,7 @@ def main():
                     pillow=PIL.__version__, cuda=torch.version.cuda, cudnn=torch.backends.cudnn.version())
     if predictor.config['model'] == 'efficientnet_b3':
         manifest['source_sha256']['model_b3.py'] = file_sha256(source / 'model_b3.py')
+    manifest['source_sha256']['amp_precision.py'] = file_sha256(source / 'amp_precision.py')
     if predictor.config['model'] == 'swinv2_tiny':
         manifest['source_sha256']['model_swinv2.py'] = file_sha256(source / 'model_swinv2.py')
         manifest['timm_version'] = predictor.config['timm_version']

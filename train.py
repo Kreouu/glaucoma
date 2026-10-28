@@ -17,6 +17,7 @@ from torch.utils.data import DataLoader
 
 from dataset import FundusDataset
 from model import build_model
+from amp_precision import amp_dtype
 
 
 def sha256(path):
@@ -54,6 +55,7 @@ def main():
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--jpeg-draft', action='store_true', help='Reduced JPEG decode; use the same mode for inference')
     parser.add_argument('--lr', type=float, default=1e-4)
+    parser.add_argument('--precision', choices=['fp16', 'bf16'], default='fp16')
     parser.add_argument('--lr-schedule', choices=['constant', 'warmup_cosine'], default='constant')
     parser.add_argument('--warmup-epochs', type=float, default=1.0)
     parser.add_argument('--min-lr', type=float, default=3e-7)
@@ -73,6 +75,9 @@ def main():
             parser.error('Expected 0 < warmup-epochs < epochs and 0 < min-lr <= lr')
     if not torch.cuda.is_available():
         parser.error('CUDA is required for this baseline')
+    if args.precision == 'bf16' and not torch.cuda.is_bf16_supported():
+        parser.error('This GPU does not support BF16')
+    autocast_dtype = amp_dtype(vars(args))
     # A new directory prevents accidental overwrites of a previous experiment.
     args.output_dir.mkdir(parents=True, exist_ok=False)
     random.seed(args.seed)
@@ -104,6 +109,8 @@ def main():
                   csv_sha256={split: sha256(args.data_root / f'{split}.csv') for split in ('train', 'valid')})
     project = Path(__file__).resolve().parent
     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
+    config['source_sha256']['amp_precision.py'] = sha256(project / 'amp_precision.py')
+    config['grad_scaler_enabled'] = args.precision == 'fp16'
     if args.lr_schedule == 'warmup_cosine':
         batches = (len(train_data) + args.batch_size - 1) // args.batch_size
         total_steps = args.epochs * batches
@@ -146,13 +153,14 @@ def main():
     positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)
     validation_criterion = torch.nn.BCEWithLogitsLoss()
-    scaler = torch.amp.GradScaler('cuda')
+    scaler = torch.amp.GradScaler('cuda', enabled=args.precision == 'fp16')
     lr_stream = None
     if args.lr_schedule == 'warmup_cosine':
         from lr_schedule import warmup_cosine_lr
+    if args.lr_schedule == 'warmup_cosine' or args.precision == 'bf16':
         lr_stream = (args.output_dir / 'learning_rate.csv').open('w', newline='')
         lr_writer = csv.writer(lr_stream)
-        lr_writer.writerow(['step', 'epoch', 'batch', 'lr', 'amp_scale_before', 'amp_scale_after', 'amp_skipped'])
+        lr_writer.writerow(['step', 'epoch', 'batch', 'lr', 'amp_scale_before', 'amp_scale_after', 'amp_skipped', 'grad_norm'])
     best = -float('inf')
     for epoch in range(1, args.epochs + 1):
         started = time.perf_counter()
@@ -161,28 +169,37 @@ def main():
         train_loss = 0.0
         train_seen = 0
         skipped_updates = 0
+        grad_norm_max = 0.0
         print(f'Train epoch={epoch}/{args.epochs}: {len(train_data)} images, {len(train_loader)} batches', flush=True)
         for step, (images, labels, _) in enumerate(train_loader, 1):
             if lr_stream is not None:
                 planned_step = (epoch - 1) * len(train_loader) + step - 1
-                current_lr = warmup_cosine_lr(planned_step, total_steps, warmup_steps, args.lr, args.min_lr)
+                current_lr = (warmup_cosine_lr(planned_step, total_steps, warmup_steps, args.lr, args.min_lr)
+                              if args.lr_schedule == 'warmup_cosine' else args.lr)
                 for group in optimizer.param_groups:
                     group['lr'] = current_lr
                 scale_before = scaler.get_scale()
             images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
             optimizer.zero_grad(set_to_none=True)
-            with torch.autocast('cuda', dtype=torch.float16):
+            with torch.autocast('cuda', dtype=autocast_dtype):
                 loss = criterion(model(images).flatten(), labels)
             if not torch.isfinite(loss).item():
                 raise RuntimeError('Non-finite training loss')
             scaler.scale(loss).backward()
+            grad_norm = ''
+            if args.precision == 'bf16':
+                # BF16 uses no loss scaling. Check gradients without clipping or modifying them.
+                grad_norm = torch.nn.utils.get_total_norm(
+                    [p.grad for p in model.parameters() if p.grad is not None],
+                    error_if_nonfinite=True).item()
+                grad_norm_max = max(grad_norm_max, grad_norm)
             scaler.step(optimizer)
             scaler.update()
             if lr_stream is not None:
                 scale_after = scaler.get_scale()
                 skipped = scale_after < scale_before
                 skipped_updates += int(skipped)
-                lr_writer.writerow([planned_step, epoch, step, current_lr, scale_before, scale_after, int(skipped)])
+                lr_writer.writerow([planned_step, epoch, step, current_lr, scale_before, scale_after, int(skipped), grad_norm])
                 if step == 1 or step % 25 == 0 or step == len(train_loader):
                     lr_stream.flush()
                     print(f'LR epoch={epoch} batch={step} lr={current_lr:.9g} '
@@ -199,7 +216,7 @@ def main():
         with torch.inference_mode():
             for step, (images, labels, batch_names) in enumerate(valid_loader, 1):
                 images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
-                with torch.autocast('cuda', dtype=torch.float16):
+                with torch.autocast('cuda', dtype=autocast_dtype):
                     logits = model(images).flatten()
                     loss = validation_criterion(logits, labels)
                 valid_loss += loss.item() * len(labels)
@@ -219,6 +236,8 @@ def main():
                        peak_vram_mib=torch.cuda.max_memory_allocated() / 1024**2)
         if lr_stream is not None:
             metrics.update(lr_last=current_lr, amp_skipped_updates=skipped_updates)
+        if args.precision == 'bf16':
+            metrics['grad_norm_max'] = grad_norm_max
         with (args.output_dir / 'metrics.jsonl').open('a') as stream:
             stream.write(json.dumps(metrics) + '\n')
         print(json.dumps(metrics), flush=True)

@@ -14,6 +14,7 @@ from torch.utils.data import DataLoader
 from dataset import FundusDataset
 from model import build_model
 from train import print_progress, sha256
+from amp_precision import amp_dtype
 
 
 def main():
@@ -30,6 +31,11 @@ def main():
         raise ValueError('Checkpoint config differs from config.json')
     project = Path(__file__).resolve().parent
     sources = ['dataset.py', 'model.py']
+    if 'amp_precision.py' in config['source_sha256']:
+        sources.append('amp_precision.py')
+    autocast_dtype = amp_dtype(config)
+    if autocast_dtype == torch.bfloat16 and not torch.cuda.is_bf16_supported():
+        raise ValueError('This checkpoint requires BF16 support')
     if config['model'] == 'efficientnet_b3':
         sources.append('model_b3.py')
     if config['model'] == 'swinv2_tiny':
@@ -72,7 +78,7 @@ def main():
     with torch.inference_mode():
         for step, (images, target, batch_names) in enumerate(loader, 1):
             images, target = images.cuda(non_blocking=True), target.cuda(non_blocking=True)
-            with torch.autocast('cuda', dtype=torch.float16):
+            with torch.autocast('cuda', dtype=autocast_dtype):
                 logits = model(images).flatten()
                 loss = criterion(logits, target)
             loss_total += loss.item() * len(target)
