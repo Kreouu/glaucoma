@@ -32,6 +32,28 @@ bash scripts/run_weighted_bce.sh
 
 基线对照为 `outputs/baseline_20261027_234436` 的最佳验证 AUROC 0.97855559、AP 0.74104281。只根据完整验证集判断改进，不读取测试集调参。已有 96.73 分模型和核验草稿保留原样；训练脚本变更不会改变已归档的推理源码。
 
+## 多种子长批次
+
+固定矩阵为阳性权重 1、3、5 × 种子 42、43、44，每组 5 轮。匹配配置后复用原普通 BCE 和权重 3 的 seed=42 结果，首次实际新增 7 次训练，预计 1.5—2 小时。脚本顺序运行，每次训练后自动执行完整验证重载。
+
+先只检查计划（不启动训练）：
+
+```bash
+bash scripts/run_bce_grid.sh --dry-run
+```
+
+前台运行：`bash scripts/run_bce_grid.sh`。需要断开终端时可在项目根目录后台启动：
+
+```bash
+nohup bash scripts/run_bce_grid.sh >> outputs/bce_grid_launcher.log 2>&1 < /dev/null &
+```
+
+查看进度：`tail -f outputs/bce_grid_launcher.log`；离开日志查看可按 Ctrl+C，后台任务继续运行。保持机器供电和唤醒，不同时启动其他 GPU 训练。
+
+批次目录固定为 `outputs/bce_grid_1_3_5_v1/`，含 `plan.json`、每组训练/验证日志、模型产物、`experiments.csv`、`group_summary.csv`、`progress.json` 和 `status.json`。汇总每组最佳 AUROC 及对应 AP，按权重统计三个种子的均值与样本标准差；仅一份结果时标准差留空。完整结束状态为 `COMPLETE`、完成数为 9。
+
+再次执行同一命令时，配置、源代码、数据 CSV、原始权重、checkpoint 哈希及已有验证报告必须匹配；已验收结果自动跳过。未完成实验目录会改名为 `.interrupted_时间戳` 保留，再从预训练权重重新训练，不支持轮内断点续训。出现训练、数据、复现错误时停止并写入 `status.json`，不自动重试；同一批次不允许同时启动两次。计划冻结后若修改代码或数据，应保留原版本或明确建立新批次，避免混用不同实验条件。批次不运行测试集推理或平台提交。
+
 ## 环境
 
 在 WSL 使用 `glaucoma` Conda 环境。当前已验收 Python 3.12、PyTorch 2.10.0+cu128、torchvision 0.25.0+cu128；实际依赖见 `glaucoma-environment-freeze.txt`。代码还使用 NumPy、Pillow 和 scikit-learn。
