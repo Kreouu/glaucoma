@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "completed_at": "2026-10-28T22:24:26.099634+08:00",
+  "best_epoch": 5,
+  "val_auroc": 0.9776672607381662,
+  "val_ap": 0.7441571761510851,
+  "delta_vs_fixed_swin_auroc": -0.0007337985968067784,
+  "delta_vs_fixed_swin_ap": -0.01869629566483788,
+  "checkpoint_sha256": "d5fc0bab73bace76a698f4247f1a8fdc2076acac491775a56f28829e9f6e7aa2",
+  "checkpoint_bytes": 331177833,
+  "training_seconds": 4157.63369671299,
+  "planned_batches": 16065,
+  "amp_skipped_updates": 10,
+  "successful_updates": 16055,
+  "amp_skip_fraction": 0.0006224712107065049,
+  "amp_skip_steps": [
+    61,
+    111,
+    304,
+    2443,
+    4176,
+    6588,
+    10653,
+    10683,
+    13680,
+    15945
+  ],
+  "lr_trace_verified": true,
+  "mean_ms": 25.274683133053863,
+  "scope": "single-seed five-epoch warmup plus cosine comparison; AMP skip counts unavailable in previous fixed-rate run"
+}

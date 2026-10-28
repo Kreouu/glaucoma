@@ -1,0 +1,21 @@
+{
+  "images": 100,
+  "warmup_images": 5,
+  "rounds": 3,
+  "batch_size": 1,
+  "precision": "FP16 autocast, FP32 sigmoid",
+  "threshold": 0.5,
+  "mean_ms": 25.274683133053863,
+  "inconsistent_images": 0,
+  "max_probability_difference": 0.0,
+  "consistency_pass": true,
+  "within_100ms_on_this_machine": true,
+  "gpu": "NVIDIA GeForce RTX 5060 Ti",
+  "torch": "2.10.0+cu128",
+  "cuda": "12.8",
+  "cudnn": 91002,
+  "checkpoint_sha256": "d5fc0bab73bace76a698f4247f1a8fdc2076acac491775a56f28829e9f6e7aa2",
+  "submission_sha256": "656ac436d6d1d3015cbac3a5cbb13223221bf9f09d8716ae6bc3a8641811b32a",
+  "sample_scope": "User-supplied timing images; official sample provenance must be documented separately",
+  "note": "This report does not certify official T4 compliance."
+}
