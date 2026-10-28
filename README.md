@@ -54,6 +54,18 @@ nohup bash scripts/run_bce_grid.sh >> outputs/bce_grid_launcher.log 2>&1 < /dev/
 
 再次执行同一命令时，配置、源代码、数据 CSV、原始权重、checkpoint 哈希及已有验证报告必须匹配；已验收结果自动跳过。未完成实验目录会改名为 `.interrupted_时间戳` 保留，再从预训练权重重新训练，不支持轮内断点续训。出现训练、数据、复现错误时停止并写入 `status.json`，不自动重试；同一批次不允许同时启动两次。计划冻结后若修改代码或数据，应保留原版本或明确建立新批次，避免混用不同实验条件。批次不运行测试集推理或平台提交。
 
+## 256/384 分辨率对照
+
+固定阳性权重 3、种子 42/43/44、每组 5 轮、batch 16、workers 4，其余配置沿用已验收的 256 基线。自动复用三组 256 结果，仅新增三组 384 训练。前台运行即可，可放在 tmux 中：
+
+```bash
+bash scripts/run_resolution_grid.sh
+```
+
+仅预检用 `bash scripts/run_resolution_grid.sh --dry-run`。批次目录为 `outputs/resolution_256_384_w3_v1/`，包含逐组日志、模型、验证报告、`experiments.csv`、`group_summary.csv`、`paired_deltas.csv`、`progress.json`、`status.json`。配对差值始终按相同种子计算，三组完成后比较均值与标准差，不选择单次最高值作为分辨率结论。
+
+中断保留、重复运行跳过、配置/哈希核对和出错停止规则与 BCE 批次相同。训练后自动执行完整验证重载。当前 384 小样本训练/重载已通过；batch 16 峰值张量显存约 2.1GiB，另做 20 批预热和 100 批速度短测约 235.7 图/秒。三组完整训练加验证粗估约 1 小时，实际以日志为准。短跑指标不用于判断分辨率优劣，批次不生成测试 CSV。
+
 ## 环境
 
 在 WSL 使用 `glaucoma` Conda 环境。当前已验收 Python 3.12、PyTorch 2.10.0+cu128、torchvision 0.25.0+cu128；实际依赖见 `glaucoma-environment-freeze.txt`。代码还使用 NumPy、Pillow 和 scikit-learn。
