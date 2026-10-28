@@ -33,6 +33,8 @@ def main():
                        for w in plan['positive_weights']}
     screen = {(r['model'], r['lr'], r['weight']) for r in experiments if r['seed'] == 43 and r['epochs'] == 5}
     assert screen == expected_screen and len(screen) == 16
+    keys = [(r['model'], r['lr'], r['weight'], r['epochs'], r['seed']) for r in experiments]
+    assert len(keys) == len(set(keys)), 'Duplicate experiment attempts'
     checked = {}
     for row in experiments:
         path = ROOT / row['run_dir']
@@ -78,16 +80,30 @@ def main():
     reference_b0 = next(r for r in experiments if r['model'] == 'efficientnet_b0'
                         and r['seed'] == 43 and r['lr'] == .0001 and r['weight'] == 3 and r['epochs'] == 5)
     for group in groups:
-        if 'reason' in group:
-            assert not group['eligible']
-            rejected = [r for r in experiments if r['model'] == group['model'] and r.get('rejected')]
-            assert rejected
+        candidates = [r for r in experiments if r['model'] == group['model']
+                      and r['seed'] == 43 and r['epochs'] == 5 and not r.get('rejected')]
+        if not candidates:
+            assert not group['eligible'] and group['reason'] == 'No numerically valid screening configuration'
             continue
-        best_screen = max((r for r in experiments if r['model'] == group['model']
-                           and r['seed'] == 43 and r['epochs'] == 5 and not r.get('rejected')),
-                          key=lambda r: (r['val_auroc'], r['val_auprc']))
+        best_screen = max(candidates, key=lambda r: (r['val_auroc'], r['val_auprc']))
         expected_epochs = (10 if best_screen['best_epoch'] == 5
                            and best_screen['val_auroc'] >= reference_b0['val_auroc'] - .005 else 5)
+        selected_attempts = [r for r in experiments if r['model'] == group['model']
+                             and r['lr'] == best_screen['lr'] and r['weight'] == best_screen['weight']
+                             and r['epochs'] == expected_epochs]
+        chosen43 = [r for r in selected_attempts if r['seed'] == 43]
+        assert len(chosen43) == 1
+        if chosen43[0].get('rejected'):
+            assert expected_epochs == 10 and not group['eligible']
+            assert group['reason'] == 'Selected extension failed numerically'
+            continue
+        assert sorted(r['seed'] for r in selected_attempts) == [42, 43, 44]
+        if any(r.get('rejected') for r in selected_attempts):
+            assert not group['eligible']
+            assert group['reason'] == 'Selected configuration failed numerical stability across three seeds'
+            assert sorted(group['seeds'], key=lambda r: r['seed']) == sorted(selected_attempts, key=lambda r: r['seed'])
+            continue
+        assert 'reason' not in group
         assert group['lr'] == best_screen['lr'] and group['weight'] == best_screen['weight']
         assert group['epochs'] == expected_epochs
         runs = group['seeds']
