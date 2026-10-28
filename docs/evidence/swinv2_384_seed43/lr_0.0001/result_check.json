@@ -1,0 +1,16 @@
+{
+  "lr": 0.0001,
+  "artifact_audit": "PASS",
+  "training_quality": "degenerate_after_epoch_1",
+  "best_epoch": 1,
+  "val_auroc": 0.6054018865934164,
+  "val_ap": 0.04729177891208845,
+  "training_seconds": 4119.688502407989,
+  "mean_ms": 26.752992463346644,
+  "checkpoint_sha256": "9d06d2454cfcc2ef86e6498d265a021bec2b63cc5a0bab32161e90278f28781f",
+  "checkpoint_bytes": 331177449,
+  "best_probability_min": 0.07198162376880646,
+  "best_probability_max": 0.07436569780111313,
+  "best_probability_std": 0.00042619360134784376,
+  "git_revision": "d6633d30f6f348f9c0bf3627a06610b84891b82d"
+}

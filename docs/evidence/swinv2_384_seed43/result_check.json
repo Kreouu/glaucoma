@@ -1,0 +1,53 @@
+{
+  "artifact_audit": "PASS",
+  "completed_at": "2026-10-28T20:57:55.469342+08:00",
+  "results": [
+    {
+      "lr": 0.0001,
+      "artifact_audit": "PASS",
+      "training_quality": "degenerate_after_epoch_1",
+      "best_epoch": 1,
+      "val_auroc": 0.6054018865934164,
+      "val_ap": 0.04729177891208845,
+      "training_seconds": 4119.688502407989,
+      "mean_ms": 26.752992463346644,
+      "checkpoint_sha256": "9d06d2454cfcc2ef86e6498d265a021bec2b63cc5a0bab32161e90278f28781f",
+      "checkpoint_bytes": 331177449,
+      "best_probability_min": 0.07198162376880646,
+      "best_probability_max": 0.07436569780111313,
+      "best_probability_std": 0.00042619360134784376,
+      "git_revision": "d6633d30f6f348f9c0bf3627a06610b84891b82d"
+    },
+    {
+      "lr": 3e-05,
+      "artifact_audit": "PASS",
+      "training_quality": "learned_but_below_B0",
+      "best_epoch": 3,
+      "val_auroc": 0.978401059334973,
+      "val_ap": 0.762853471815923,
+      "training_seconds": 4154.6294710229995,
+      "mean_ms": 30.462346176379164,
+      "checkpoint_sha256": "8696252cad925689c3f969a2d6d6ddffd59b8b750f5836c0e717160d7c5b6ad4",
+      "checkpoint_bytes": 331177449,
+      "best_probability_min": 9.645892760090646e-07,
+      "best_probability_max": 0.9995197057723999,
+      "best_probability_std": 0.1879905075661663,
+      "git_revision": "39a8df5f42fbe3b28f3603c0ceaacb79dfc428cc"
+    }
+  ],
+  "config_differences": {
+    "git_revision": [
+      "d6633d30f6f348f9c0bf3627a06610b84891b82d",
+      "39a8df5f42fbe3b28f3603c0ceaacb79dfc428cc"
+    ],
+    "output_dir": [
+      "outputs/swinv2_384_w3_seed43_v1/lr_0.0001",
+      "outputs/swinv2_384_w3_seed43_v1/lr_0.00003"
+    ],
+    "lr": [
+      0.0001,
+      3e-05
+    ]
+  },
+  "note": "Single seed screening; lr1e-4 training degeneration is not a successful quality outcome; no root cause proved by artifact audit."
+}

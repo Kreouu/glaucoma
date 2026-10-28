@@ -1,0 +1,5 @@
+{"epoch": 1, "train_loss": 0.3291344995029762, "valid_loss": 0.15857034578351287, "val_auroc": 0.6054018865934164, "val_auprc": 0.04729177891208845, "epoch_seconds": 844.5837126329934, "peak_vram_mib": 5776.982421875}
+{"epoch": 2, "train_loss": 0.32655867408644745, "valid_loss": 0.1739257495206408, "val_auroc": 0.4996798306248485, "val_auprc": 0.032634939785020495, "epoch_seconds": 828.6990913289992, "peak_vram_mib": 5776.98291015625}
+{"epoch": 3, "train_loss": 0.3263269221261277, "valid_loss": 0.18135334589803784, "val_auroc": 0.5, "val_auprc": 0.03265515472730381, "epoch_seconds": 802.5302564390004, "peak_vram_mib": 5776.98291015625}
+{"epoch": 4, "train_loss": 0.3260948312464405, "valid_loss": 0.1806381878271574, "val_auroc": 0.5007749764499693, "val_auprc": 0.032704193460520115, "epoch_seconds": 803.6351537419978, "peak_vram_mib": 5776.98291015625}
+{"epoch": 5, "train_loss": 0.3257057310189799, "valid_loss": 0.16402630452152642, "val_auroc": 0.5, "val_auprc": 0.03265515472730381, "epoch_seconds": 840.2402882649985, "peak_vram_mib": 5776.98291015625}
