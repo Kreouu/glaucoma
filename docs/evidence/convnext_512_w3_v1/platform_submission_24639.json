@@ -1,0 +1,14 @@
+{
+  "id": 24639,
+  "time": "2026-10-29 17:45:30",
+  "status": "已正确评分",
+  "score": 98.08,
+  "previous_id": 24294,
+  "previous_score": 97.13,
+  "improvement_points": 0.95,
+  "source": "用户提供的平台截图 platform_submission_24639.png",
+  "local_csv": "outputs/convnext_512_w3_v1/final_seed43/submission.csv",
+  "local_csv_sha256": "a59d55c50871cc33e675d2a9bed3f5c77f9465e3689b1b9932a002fa541e564a",
+  "binding": "按本轮对话关联至512 seed43第2轮；平台截图不包含上传文件哈希",
+  "official_T4": "deferred; not verified"
+}
