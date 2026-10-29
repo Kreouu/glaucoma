@@ -67,6 +67,12 @@ class Predictor:
             if timm.__version__ != self.config['timm_version']:
                 raise ValueError('timm version differs from training')
             sources.append('model_convnext.py')
+        if self.config['model'] == 'fastervit_1':
+            import timm
+            if timm.__version__ != self.config['timm_version']:
+                raise ValueError('timm version differs from training')
+            sources.extend(['model_fastervit.py', 'vendor/fastervit/__init__.py',
+                            'vendor/fastervit/faster_vit_any_res.py', 'vendor/fastervit/registry.py'])
         if self.config['model'] == 'inception_next_tiny':
             import timm
             if timm.__version__ != self.config['timm_version']:
@@ -90,6 +96,9 @@ class Predictor:
         if self.config['model'] == 'swinv2_tiny':
             from model_swinv2 import build_model as swin_builder
             self.model = swin_builder(size=self.config['size'])
+        elif self.config['model'] == 'fastervit_1':
+            from model_fastervit import build_model as fastervit_builder
+            self.model = fastervit_builder(size=self.config['size'])
         elif self.config['model'] == 'inception_next_tiny':
             from model_inceptionnext import build_model as inception_builder
             self.model = inception_builder()

@@ -1,0 +1,42 @@
+{
+  "model": "fastervit_1",
+  "size": 512,
+  "epochs": 5,
+  "batch_size": 16,
+  "workers": 4,
+  "lr": 3e-05,
+  "pos_weight": 3,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "precision": "fp16",
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "pretrained_sha256": "9230a997bc2ffaeec403cb6b93790d12e44dbb390346ca6a81569dcdece84c04",
+  "baseline": "outputs/convnext_512_w3_v1",
+  "selection": "Compare paired AUROC mean and all seeds, AP, training/runtime cost; mean gain below 0.0005 is uncertain engineering signal, not significance test.",
+  "sources": {
+    "train.py": "4609b2def5f2356e4a29549c737681c34501c8fd30608b10483259d96dd0771c",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_fastervit.py": "da929f591123a9ab915637d22fadc31fed6a535fe352693ace77cf5215f78202",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "lr_schedule.py": "20bcba3125a57717209394217ec4f3218efd41a77e2b30f9c0eed9536a733d83",
+    "validate.py": "841aad5eb14f1ce99ccc800d6876bdd860220b6820c97d2979f104f8d93baef5",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "vendor/fastervit/__init__.py": "46a3cc3d043eefb4a0d5f0f57cf32bc7727c5f2e2ba7b72617af79aa8f3ebcc9",
+    "vendor/fastervit/faster_vit_any_res.py": "4f07baaae2abd30b8639ecdfee7dc6dc64efbc54c02c6e0f06b1d4209d01a87d",
+    "vendor/fastervit/registry.py": "581cb8647a860e6a2570ac84ddcc95236471dbd3c86de333368cd569af12d1b0"
+  },
+  "window_size": [
+    7,
+    7,
+    16,
+    16
+  ],
+  "drop_path": 0.0
+}

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "device": "cpu",
+  "input_shape": [
+    1,
+    3,
+    512,
+    512
+  ],
+  "output_shape": [
+    1,
+    1
+  ],
+  "pretrained_sha256": "9230a997bc2ffaeec403cb6b93790d12e44dbb390346ca6a81569dcdece84c04",
+  "pretrained_parameters_exact": 431,
+  "rebuilt_geometry_cache_buffers": 84,
+  "task_parameters": 52726337,
+  "all_trainable": true,
+  "reload_difference": 0.0,
+  "window_size": [
+    7,
+    7,
+    16,
+    16
+  ],
+  "drop_path": 0.0
+}

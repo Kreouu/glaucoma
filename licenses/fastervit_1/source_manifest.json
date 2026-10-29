@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/NVlabs/FasterViT",
+  "revision": "22154cc15ad42fc7d9311e84859b691cdaca1ff5",
+  "files": {
+    "vendor/fastervit/faster_vit_any_res.py": "4f07baaae2abd30b8639ecdfee7dc6dc64efbc54c02c6e0f06b1d4209d01a87d",
+    "vendor/fastervit/registry.py": "581cb8647a860e6a2570ac84ddcc95236471dbd3c86de333368cd569af12d1b0",
+    "licenses/fastervit_1/SOURCE_LICENSE": "b4b83c9613db4ad017ce7f9274faf52aa6c40d3eaae46476cbff688af87f88f8"
+  }
+}

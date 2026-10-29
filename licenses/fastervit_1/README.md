@@ -1,0 +1,7 @@
+# FasterViT-1 研究对照许可与来源
+
+官方NVIDIA FasterViT-1 ImageNet-1k自然图像预训练。原始文件、固定下载版本和SHA256见manifest.json；官方any-resolution源码及registry原文固定版本见source_manifest.json。源码以vendor/fastervit保存，未修改官方算法文件，不依赖训练期间联网下载，也不安装/降级timm。
+
+MODEL_LICENSE和SOURCE_LICENSE为NVIDIA Source Code License-NC原文，仅允许非商业研究或评估；再分发须随附完整许可并保留署名/通知，派生作品也须遵守相应限制。本项目本轮仅非商业研究对照，不将其误称Apache-2.0或无条件可商用。比赛正式材料涉及的许可兼容性与权利承诺在决定采用后单独核对，本次不自动提交或发布模型权重。registry引用timm代码，相关Apache许可沿用licenses/inception_next_tiny/TIMM_LICENSE。
+
+适配：采用官方FasterViT any-resolution类；512下stage3/4 window16，使stage3保持预训练2×2窗口的carrier-token布局。仅重建输入几何相关坐标/索引/缓存buffer；所有可学习参数（包括原1000类头）必须严格逐张量一致后才换单logit头。drop_path明确设0，与现有ConvNeXt默认无随机深度保持一致；该配方比较不能代表模型上限。

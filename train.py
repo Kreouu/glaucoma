@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -126,6 +126,14 @@ def main():
         import timm
         config['timm_version'] = timm.__version__
         config['source_sha256']['model_convnext.py'] = sha256(project / 'model_convnext.py')
+    if args.model == 'fastervit_1':
+        import timm
+        config['timm_version'] = timm.__version__
+        for name in ('model_fastervit.py', 'vendor/fastervit/__init__.py',
+                     'vendor/fastervit/faster_vit_any_res.py', 'vendor/fastervit/registry.py'):
+            config['source_sha256'][name] = sha256(project / name)
+        config['fastervit_window_size'] = [7, 7, 16, 16]
+        config['fastervit_drop_path'] = 0.0
     if args.model == 'inception_next_tiny':
         import timm
         config['timm_version'] = timm.__version__
@@ -155,6 +163,9 @@ def main():
     if args.model == 'swinv2_tiny':
         from model_swinv2 import build_model as swin_builder
         model = swin_builder(args.pretrained_path, size=args.size).cuda()
+    elif args.model == 'fastervit_1':
+        from model_fastervit import build_model as fastervit_builder
+        model = fastervit_builder(args.pretrained_path, size=args.size).cuda()
     elif args.model == 'inception_next_tiny':
         from model_inceptionnext import build_model as inception_builder
         model = inception_builder(args.pretrained_path).cuda()
@@ -171,7 +182,7 @@ def main():
     lr_stream = None
     if args.lr_schedule == 'warmup_cosine':
         from lr_schedule import warmup_cosine_lr
-    if args.lr_schedule == 'warmup_cosine' or args.precision == 'bf16':
+    if args.lr_schedule == 'warmup_cosine' or args.precision == 'bf16' or args.model == 'fastervit_1':
         lr_stream = (args.output_dir / 'learning_rate.csv').open('w', newline='')
         lr_writer = csv.writer(lr_stream)
         lr_writer.writerow(['step', 'epoch', 'batch', 'lr', 'amp_scale_before', 'amp_scale_after', 'amp_skipped', 'grad_norm'])

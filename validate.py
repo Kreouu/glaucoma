@@ -43,6 +43,12 @@ def main():
         if timm.__version__ != config['timm_version']:
             raise ValueError('timm version differs from training')
         sources.append('model_convnext.py')
+    if config['model'] == 'fastervit_1':
+        import timm
+        if timm.__version__ != config['timm_version']:
+            raise ValueError('timm version differs from training')
+        sources.extend(['model_fastervit.py', 'vendor/fastervit/__init__.py',
+                        'vendor/fastervit/faster_vit_any_res.py', 'vendor/fastervit/registry.py'])
     if config['model'] == 'inception_next_tiny':
         import timm
         if timm.__version__ != config['timm_version']:
@@ -76,6 +82,9 @@ def main():
     if config['model'] == 'swinv2_tiny':
         from model_swinv2 import build_model as swin_builder
         model = swin_builder(size=config['size'])
+    elif config['model'] == 'fastervit_1':
+        from model_fastervit import build_model as fastervit_builder
+        model = fastervit_builder(size=config['size'])
     elif config['model'] == 'inception_next_tiny':
         from model_inceptionnext import build_model as inception_builder
         model = inception_builder()

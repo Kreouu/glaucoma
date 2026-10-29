@@ -1,0 +1,24 @@
+{
+  "repo": "nvidia/FasterViT",
+  "revision": "0dc90b5e617235ac61fc5450af2bf27f793fcacb",
+  "files": [
+    {
+      "path": "licenses/fastervit_1/MODEL_CARD.md",
+      "url": "https://huggingface.co/nvidia/FasterViT/resolve/0dc90b5e617235ac61fc5450af2bf27f793fcacb/README.md",
+      "bytes": 8698,
+      "sha256": "05376027ecac49eadb85661b04656b924c8765b13de67d8656a1d44e772597f0"
+    },
+    {
+      "path": "licenses/fastervit_1/MODEL_LICENSE",
+      "url": "https://huggingface.co/nvidia/FasterViT/resolve/0dc90b5e617235ac61fc5450af2bf27f793fcacb/LICENSE",
+      "bytes": 4139,
+      "sha256": "48f90b1deb599d82f2f8db02ebddf46a2be2c837a04f78d8e0092f7b5493c540"
+    },
+    {
+      "path": "pretrain_model/fastervit_1_224_1k.pth.tar",
+      "url": "https://huggingface.co/nvidia/FasterViT/resolve/0dc90b5e617235ac61fc5450af2bf27f793fcacb/fastervit_1_224_1k.pth.tar",
+      "bytes": 215403193,
+      "sha256": "9230a997bc2ffaeec403cb6b93790d12e44dbb390346ca6a81569dcdece84c04"
+    }
+  ]
+}
