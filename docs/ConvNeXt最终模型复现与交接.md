@@ -10,13 +10,13 @@ seed43参与超参数选择，三种子均值仍有选择偏差。独立于初�
 
 导出权重111,341,599 bytes（约111 MB），只保留model/config/metrics，去掉优化器和scaler。原训练checkpoint保持不变；独立审计已逐项验证导出参数与原参数完全相同。导出文件哈希因序列化和内容精简而不同于原训练文件。
 
-本机RTX5060Ti、100张验证图/5张预热/3轮、batch1端到端均时16.4048ms；概率、标签、排序一致，最大概率差0。**尚未在官方T4与指定图片上核验，也尚未上传平台。** 旧平台96.73分仍对应最早256普通BCE模型。
+本机RTX5060Ti、100张验证图/5张预热/3轮、batch1端到端均时16.4048ms；概率、标签、排序一致，最大概率差0。**尚未在官方T4与指定图片上核验。** 用户已于2026-10-29 11:43:39提交本轮CSV，ID24294，平台“已正确评分”97.13分；较最早256普通BCE提交96.73提高0.40分。平台评分与正式模型核验分开记录。
 
 ## Mac与WSL文件位置
 
 两端项目根目录下的 `outputs/model_selection_20261029_v1/`：
 
-- `final/submission.csv`：已生成的5855行新预测，平台CSV入口使用此文件；本次没有自动上传。
+- `final/submission.csv`：已生成的5855行新预测，用户已通过平台CSV入口提交此文件并反馈97.13分；助手没有自动上传。
 - `final/best.pt`：选定的推理权重。
 - `final/config.json`、`best.sha256`、`reload_check.json`、`submission.manifest.json`：配置、哈希、完整验证和预测来源证据。
 - `final/source/`、`final/licenses/`、`final/environment-freeze.txt`：冻结源码、许可来源和本次实际环境快照。这个快照在实验产物内部，不是第三个conda环境。
