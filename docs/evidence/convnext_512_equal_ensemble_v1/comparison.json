@@ -1,0 +1,37 @@
+{
+  "status": "VALIDATION_PREDICTIONS_ONLY",
+  "method": "equal probability mean, seeds42/43/44, no weight search",
+  "images": 5849,
+  "positives": 191,
+  "sources": [
+    {
+      "seed": 42,
+      "predictions_sha256": "f6da20db2e800c9b9cbb52bc2277102baa80d6cc8ca1c70877ed4845fa2ec6c9",
+      "checkpoint_sha256": "02b112cee1699521a70160b7d416b8063f41270167d518d763d426553af30e6f"
+    },
+    {
+      "seed": 43,
+      "predictions_sha256": "8920d58a651e501a72ff99a07cb6ac5fb29e390d1beecd444f018333aa6a486e",
+      "checkpoint_sha256": "8ca3e0382517db867aeb44010adb4b05c562393505b774c147a4413f7188f418"
+    },
+    {
+      "seed": 44,
+      "predictions_sha256": "03e4dc68bd027c781cf30a6ad0bdda344ce2ce4f28e01d3551401ce60a237e4a",
+      "checkpoint_sha256": "8f501dea51f2bf1db7e851deab144802501f7db08edd2eea8075a750df677f9d"
+    }
+  ],
+  "baseline_seed": 43,
+  "baseline_auroc": 0.986104093911415,
+  "baseline_ap": 0.8142397297126056,
+  "ensemble_auroc": 0.9872431936247431,
+  "ensemble_ap": 0.8259292440019308,
+  "delta_auroc": 0.001139099713328151,
+  "delta_ap": 0.011689514289325187,
+  "paired_stratified_bootstrap_95ci": [
+    -0.0009532673007129372,
+    0.0038832797558568774
+  ],
+  "bootstrap_repeats": 2000,
+  "bootstrap_seed": 20261030,
+  "limitations": "Bootstrap over fixed validation images is not training-seed uncertainty; shared validation model selection can be optimistic. Deployment output, model size and runtime still need verification. No test data used."
+}
