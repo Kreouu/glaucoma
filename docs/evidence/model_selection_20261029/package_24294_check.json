@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "package_path": "/Users/Ng/workspace/glaucoma/outputs/核验材料草稿_提交24294_ConvNeXt_V1",
+  "zip_path": "/Users/Ng/workspace/glaucoma/outputs/提交24294_ConvNeXt_核验材料草稿_V1.zip",
+  "zip_bytes": 211050315,
+  "zip_sha256": "cd804443c74ae042f994183df74c12803aa89c39ece7d679f4da1bab95a3fc4a",
+  "files": 61,
+  "inference_files_conservative_bytes": 111344945,
+  "zip_crc": true,
+  "all_archived_files_sha256_match": true,
+  "manifest_verified": true,
+  "no_raw_competition_images": true,
+  "model_sha256": "cc3a5d9bb169a0da8cca8404aab4119e7ae7adaa9d4cc5ef32d3320115296e5e",
+  "csv_sha256": "4460a754be6300103ba85a235ff1890aa54de123daa5a1e6287e6dce77b548c8",
+  "standalone_validation_images": 100,
+  "standalone_max_probability_difference": 0.0,
+  "official_T4": "not performed; deferred by user",
+  "new_training": "not started"
+}

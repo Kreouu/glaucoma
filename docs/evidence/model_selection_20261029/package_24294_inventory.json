@@ -1,0 +1,249 @@
+{
+  "version": "24294_ConvNeXt_V1",
+  "status": "DRAFT",
+  "score": 97.13,
+  "inference_files_conservative_bytes": 111344945,
+  "original_pretrain_bytes": 114420885,
+  "T4_status": "暂缓，未完成",
+  "identity_fields": "待填写",
+  "official_upload_status": "未上传",
+  "standalone_package_test": "PASS on existing 5060Ti WSL environment, not clean dependency installation",
+  "files": {
+    "README.md": {
+      "bytes": 4997,
+      "sha256": "c92652f2500491b7bd4d501d5f039c986bdb1dd6ef298704797c6b898b16c900"
+    },
+    "code/amp_precision.py": {
+      "bytes": 481,
+      "sha256": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+    },
+    "code/cost.py": {
+      "bytes": 6976,
+      "sha256": "21d9ccbd0682cd449f5e9dcdde10f101d436291dbad2db6cfacee2ceab88f4d5"
+    },
+    "code/dataset.py": {
+      "bytes": 3519,
+      "sha256": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7"
+    },
+    "code/environment-freeze.txt": {
+      "bytes": 1166,
+      "sha256": "d14838def9cfd233a071c9845a1f05a2538519b0af3d22343ce743b6a15bbc60"
+    },
+    "code/inference.py": {
+      "bytes": 5679,
+      "sha256": "65352f4ac2e2c036757e161012cc2d0f519e2b0b7d94b4c75baa865c03c1f281"
+    },
+    "code/lr_schedule.py": {
+      "bytes": 713,
+      "sha256": "20bcba3125a57717209394217ec4f3218efd41a77e2b30f9c0eed9536a733d83"
+    },
+    "code/model.py": {
+      "bytes": 519,
+      "sha256": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69"
+    },
+    "code/model_b3.py": {
+      "bytes": 447,
+      "sha256": "28227a1418c08168e500d56148d0e791c37f62b44202ba62a3ba43c2d5cc6788"
+    },
+    "code/model_convnext.py": {
+      "bytes": 504,
+      "sha256": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4"
+    },
+    "code/model_swinv2.py": {
+      "bytes": 789,
+      "sha256": "b309e81c223e882f6b9e7b6a39d4704ef8e1c0be30ce57b8d4edfcc994d69567"
+    },
+    "code/predict.py": {
+      "bytes": 4013,
+      "sha256": "71c68434fc71f3d93eeb60ed6156696816ab60343368277f6524aaa2467a028b"
+    },
+    "code/requirements.txt": {
+      "bytes": 1166,
+      "sha256": "d14838def9cfd233a071c9845a1f05a2538519b0af3d22343ce743b6a15bbc60"
+    },
+    "code/scripts/run_bce_grid.py": {
+      "bytes": 11391,
+      "sha256": "95feb0eb0b5307f99368e190f2812ad22bc051a02ab24425a3acdd7dacb1ff26"
+    },
+    "code/scripts/run_model_selection.py": {
+      "bytes": 17366,
+      "sha256": "0370b16cc3d930ee2612d7d2cad5ff43f505a1ca87b817bfb518285031a89259"
+    },
+    "code/train.py": {
+      "bytes": 15135,
+      "sha256": "c30708c1a462a2ec8e6c0baec8bfaa81ae96e12bc80b8029b2a17e3d205b5271"
+    },
+    "code/validate.py": {
+      "bytes": 5863,
+      "sha256": "8d91dab5c1420956feb5bebbe15357cfed738cff9061fdaeb9973f0c5b2f4b44"
+    },
+    "cost.py": {
+      "bytes": 181,
+      "sha256": "9e2ee968b2ed80004978aa56c78f9c40eceb9d42602dc9415a52465508ff1045"
+    },
+    "docs/参赛规则.pdf": {
+      "bytes": 544529,
+      "sha256": "ff6aa3adbfd3d000194253055a93dbce8a140031c8432f892046a49de8136fb6"
+    },
+    "docs/补充规则.pdf": {
+      "bytes": 220706,
+      "sha256": "836c4f5d3202f2dc65830fd919ca195797c12b7507d750121786a21672dc7a44"
+    },
+    "evidence/experiments.json": {
+      "bytes": 10913,
+      "sha256": "c3dd088d761927295e9c1f64c0436ab690db1ec91f08917620dc77f22cfc5424"
+    },
+    "evidence/groups.json": {
+      "bytes": 7225,
+      "sha256": "5e7d10a6eef5c56fe577f1bc86b2deac301d1cd0a280590ffd525ab3ca997f79"
+    },
+    "evidence/independent_audit.json": {
+      "bytes": 611,
+      "sha256": "3c7eb00f7bcbca8b6808f20b3f77d10b40818736181a616fbc30c5db14ff4431"
+    },
+    "evidence/local_validation_cost/predictions_round_1.csv": {
+      "bytes": 4192,
+      "sha256": "95e674e268f324583f3a4cc5ad73418ca711cc72882aa359132edf8e151bd811"
+    },
+    "evidence/local_validation_cost/predictions_round_2.csv": {
+      "bytes": 4192,
+      "sha256": "95e674e268f324583f3a4cc5ad73418ca711cc72882aa359132edf8e151bd811"
+    },
+    "evidence/local_validation_cost/predictions_round_3.csv": {
+      "bytes": 4192,
+      "sha256": "95e674e268f324583f3a4cc5ad73418ca711cc72882aa359132edf8e151bd811"
+    },
+    "evidence/local_validation_cost/report.json": {
+      "bytes": 764,
+      "sha256": "8df0e07279b870be50b86d5d39e237bb760f6abe6a27bcf0b74b644204fccfc8"
+    },
+    "evidence/local_validation_cost/sample_scope.txt": {
+      "bytes": 104,
+      "sha256": "328c2e6411c83dcbd7859de4140b48ade965aa034573fd5b58d0c6aa7cd78baa"
+    },
+    "evidence/local_validation_cost/timings.csv": {
+      "bytes": 9240,
+      "sha256": "cc500edac8bf3fe15d49df899616dbdd6bd2f0028a6a6fb91f32a7606828c0c3"
+    },
+    "evidence/package_smoke_report.json": {
+      "bytes": 1701,
+      "sha256": "77ce9f5a7a4dd6d30701638593c6c871518f371d0c99d9a7f1aa45e9ff884ce4"
+    },
+    "evidence/plan.initial.json": {
+      "bytes": 3341,
+      "sha256": "f811b573ed42be49ae92847192850c3b5e3b93fc8c55c94ff4ac3847aebe88dd"
+    },
+    "evidence/plan.json": {
+      "bytes": 3497,
+      "sha256": "e6119e46f39cbfdd9175819af022901fa1a21a49112add164d031c1dbc95cfe9"
+    },
+    "evidence/plan_amendments.json": {
+      "bytes": 382,
+      "sha256": "d38e2a47d388880f0891c266c95c11324343de6d929641571c68d43fbcb6632e"
+    },
+    "evidence/selection.json": {
+      "bytes": 11377,
+      "sha256": "62fc7a3263bbd03f012b8f3fcb4bf74590c3579659401682a6f26237074885e6"
+    },
+    "evidence/submission_receipt.png": {
+      "bytes": 55880,
+      "sha256": "4b55a8463f4f17cbd65f7ff90ee348ec7ef7b4a8ca99c5761a9ebdd966909b73"
+    },
+    "evidence/submission_record.json": {
+      "bytes": 338,
+      "sha256": "45aa291b5946d0ceca573ab59a9f96de9a2a0427c4d6f2e6231da1388e04ffba"
+    },
+    "evidence/training/best.sha256": {
+      "bytes": 74,
+      "sha256": "79255236480b6d5d9d68919a12f7e0acf7dc321e8270006eb560bb7d241e1e53"
+    },
+    "evidence/training/best_valid_predictions.csv": {
+      "bytes": 241081,
+      "sha256": "d47ac70abac4ba10aad4a819ccc5c46445968625d3b1c708522ea62a039a4f46"
+    },
+    "evidence/training/config.json": {
+      "bytes": 1940,
+      "sha256": "42cd1edb4837e4cf4204256cd0a0ce9fe3a64b9987bf281b5af74ecacd8fff4f"
+    },
+    "evidence/training/metrics.jsonl": {
+      "bytes": 1100,
+      "sha256": "d24731a6ece006770898f0f023eadca3d16a44cb9a50f18b4c530949cbb9112b"
+    },
+    "evidence/training/reload_check.json": {
+      "bytes": 284,
+      "sha256": "d2f45372a8d740340d3b315cb3b8c0453ba68e3fd2608209338bec87734f0597"
+    },
+    "evidence/training/train_manifest.csv": {
+      "bytes": 1798899,
+      "sha256": "677fed6d05b148e0ec9e6c075a7a5bb7e7958669539d4ac0fea84688dfe4074d"
+    },
+    "evidence/training/valid_manifest.csv": {
+      "bytes": 204754,
+      "sha256": "e9045a4463757266a909d7416536b18f50d43da9c304dc992844a62f7ff2e052"
+    },
+    "licenses/convnext_tiny/config.json": {
+      "bytes": 657,
+      "sha256": "507c10b6f2482bb35e23fb131468aba967f9e0722d827ed1e333788f9364c8f8"
+    },
+    "licenses/convnext_tiny/manifest.json": {
+      "bytes": 2059,
+      "sha256": "51c387061617ca37d4c59a26fe29d88f50824dff1a606ca1dcd26825ea39a11f"
+    },
+    "licenses/convnext_tiny/model-card.md": {
+      "bytes": 15631,
+      "sha256": "8ee3fecbd9a3fd466045e27b31c326b92350e3bb2104313fd3bc13b65f13be39"
+    },
+    "licenses/convnext_tiny/timm-LICENSE.txt": {
+      "bytes": 11343,
+      "sha256": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+    },
+    "licenses/convnext_tiny/timm-convnext.py.txt": {
+      "bytes": 60697,
+      "sha256": "2ecd7672b00003d2174bc80858c85fc692fb51e86b200c2ea2447e0e7fcef39a"
+    },
+    "licenses/convnext_tiny/upstream-LICENSE.txt": {
+      "bytes": 1088,
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+    },
+    "licenses/convnext_tiny/核对说明.md": {
+      "bytes": 1464,
+      "sha256": "0af8c14dbec5101d5ce39d4229a2e08275caaf1a35c124d85ed25a5dacf13c79"
+    },
+    "model/best.pt": {
+      "bytes": 111341599,
+      "sha256": "cc3a5d9bb169a0da8cca8404aab4119e7ae7adaa9d4cc5ef32d3320115296e5e"
+    },
+    "model/best.sha256": {
+      "bytes": 74,
+      "sha256": "79255236480b6d5d9d68919a12f7e0acf7dc321e8270006eb560bb7d241e1e53"
+    },
+    "model/config.json": {
+      "bytes": 1940,
+      "sha256": "42cd1edb4837e4cf4204256cd0a0ce9fe3a64b9987bf281b5af74ecacd8fff4f"
+    },
+    "predict.py": {
+      "bytes": 184,
+      "sha256": "a12981b34cf34fc1aab2f63b09d00f1f8abc7ddb10262d67a6ed30035c69b7ab"
+    },
+    "pretrain_model/convnext_tiny_fb_in1k.bin": {
+      "bytes": 114420885,
+      "sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105"
+    },
+    "submission.csv": {
+      "bytes": 237693,
+      "sha256": "4460a754be6300103ba85a235ff1890aa54de123daa5a1e6287e6dce77b548c8"
+    },
+    "submission.manifest.json": {
+      "bytes": 1406,
+      "sha256": "ee5c8761c81bb3ed66f9e77fd967946ab8aed036f102e18c2ec05b719448deed"
+    },
+    "提交前待补事项.md": {
+      "bytes": 1111,
+      "sha256": "cf322b2c1cf96ee22959f29c9a0bc526fbc5554fff04c1465a5eedd9dce6540b"
+    },
+    "模型核验材料与数据声明清单.xlsx": {
+      "bytes": 16899,
+      "sha256": "f7d591ea16c13781d0868e088124ec3f5cc022e48b54923cf1abbbb8b28f688e"
+    }
+  }
+}

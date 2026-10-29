@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "scope": "Standalone package, same WSL environment; 100 validation images, not official T4 test",
+  "independent_working_directory": "/tmp/glaucoma_24294_portable_check",
+  "images": 100,
+  "prediction_max_difference": 0.0,
+  "cost": {
+    "images": 100,
+    "warmup_images": 5,
+    "rounds": 3,
+    "batch_size": 1,
+    "precision": "FP16 autocast, FP32 sigmoid",
+    "threshold": 0.5,
+    "mean_ms": 16.19343100702584,
+    "inconsistent_images": 0,
+    "max_probability_difference": 0.0,
+    "consistency_pass": true,
+    "within_100ms_on_this_machine": true,
+    "gpu": "NVIDIA GeForce RTX 5060 Ti",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "checkpoint_sha256": "cc3a5d9bb169a0da8cca8404aab4119e7ae7adaa9d4cc5ef32d3320115296e5e",
+    "submission_sha256": "95e674e268f324583f3a4cc5ad73418ca711cc72882aa359132edf8e151bd811",
+    "sample_scope": "User-supplied timing images; official sample provenance must be documented separately",
+    "note": "This report does not certify official T4 compliance."
+  },
+  "source_sha256": {
+    "predict.py": "71c68434fc71f3d93eeb60ed6156696816ab60343368277f6524aaa2467a028b",
+    "cost.py": "21d9ccbd0682cd449f5e9dcdde10f101d436291dbad2db6cfacee2ceab88f4d5",
+    "inference.py": "65352f4ac2e2c036757e161012cc2d0f519e2b0b7d94b4c75baa865c03c1f281",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4"
+  }
+}
