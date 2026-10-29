@@ -1,0 +1,32 @@
+{
+  "model": "inception_next_tiny.sail_in1k",
+  "size": 512,
+  "epochs": 5,
+  "batch_size": 16,
+  "workers": 4,
+  "lr": 3e-05,
+  "pos_weight": 3,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "precision": "fp16",
+  "sources": {
+    "train.py": "646a1bb18095fa3f6b18a37ca21a0911c4b45937c2d4446666d16b342fe0b508",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_inceptionnext.py": "6876abeda672f8625ebf03ae135c804263714e9bddab9141fe6859e8b65d0d46",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "lr_schedule.py": "20bcba3125a57717209394217ec4f3218efd41a77e2b30f9c0eed9536a733d83",
+    "validate.py": "02181556601c8d17d29c5fdc5d6b2608abee256fa391069a92f207c821851f5e",
+    "inference.py": "08991aeeb4a6f1d900b08033457ab732bca09aa994e4d391d61a23b3a232b9ad"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "pretrained_sha256": "83499bcf6bd55e02be0b5f345b4719f06f9e1f94f2b09e5cc69f1bab9fba9637",
+  "baseline": "outputs/convnext_512_w3_v1",
+  "selection": "Compare paired AUROC mean and all seeds, AP, training/runtime cost; mean gain below 0.0005 is uncertain engineering signal, not significance test."
+}

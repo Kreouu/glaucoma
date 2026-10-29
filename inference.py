@@ -67,6 +67,11 @@ class Predictor:
             if timm.__version__ != self.config['timm_version']:
                 raise ValueError('timm version differs from training')
             sources.append('model_convnext.py')
+        if self.config['model'] == 'inception_next_tiny':
+            import timm
+            if timm.__version__ != self.config['timm_version']:
+                raise ValueError('timm version differs from training')
+            sources.append('model_inceptionnext.py')
         if self.config['model'] == 'swinv2_tiny':
             import timm
             if timm.__version__ != self.config['timm_version']:
@@ -85,6 +90,9 @@ class Predictor:
         if self.config['model'] == 'swinv2_tiny':
             from model_swinv2 import build_model as swin_builder
             self.model = swin_builder(size=self.config['size'])
+        elif self.config['model'] == 'inception_next_tiny':
+            from model_inceptionnext import build_model as inception_builder
+            self.model = inception_builder()
         elif self.config['model'] == 'convnext_tiny':
             from model_convnext import build_model as convnext_builder
             self.model = convnext_builder()

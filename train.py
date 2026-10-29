@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -126,6 +126,10 @@ def main():
         import timm
         config['timm_version'] = timm.__version__
         config['source_sha256']['model_convnext.py'] = sha256(project / 'model_convnext.py')
+    if args.model == 'inception_next_tiny':
+        import timm
+        config['timm_version'] = timm.__version__
+        config['source_sha256']['model_inceptionnext.py'] = sha256(project / 'model_inceptionnext.py')
     if args.model == 'swinv2_tiny':
         import timm
         config['timm_version'] = timm.__version__
@@ -151,6 +155,9 @@ def main():
     if args.model == 'swinv2_tiny':
         from model_swinv2 import build_model as swin_builder
         model = swin_builder(args.pretrained_path, size=args.size).cuda()
+    elif args.model == 'inception_next_tiny':
+        from model_inceptionnext import build_model as inception_builder
+        model = inception_builder(args.pretrained_path).cuda()
     elif args.model == 'convnext_tiny':
         from model_convnext import build_model as convnext_builder
         model = convnext_builder(args.pretrained_path).cuda()

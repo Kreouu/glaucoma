@@ -1,0 +1,31 @@
+{
+  "repo": "timm/inception_next_tiny.sail_in1k",
+  "revision": "496ad26c3181b7dc13e043fa34593b1acf1f6dc1",
+  "license": "apache-2.0",
+  "files": [
+    {
+      "path": "licenses/inception_next_tiny/MODEL_CARD.md",
+      "url": "https://huggingface.co/timm/inception_next_tiny.sail_in1k/resolve/496ad26c3181b7dc13e043fa34593b1acf1f6dc1/README.md",
+      "bytes": 3451,
+      "sha256": "6bf7d482ffefb79f49537b7c593e98f28e353517af61f15bf01a3e1ba14b1edb"
+    },
+    {
+      "path": "pretrain_model/inception_next_tiny_sail_in1k.bin",
+      "url": "https://huggingface.co/timm/inception_next_tiny.sail_in1k/resolve/496ad26c3181b7dc13e043fa34593b1acf1f6dc1/pytorch_model.bin",
+      "bytes": 112395733,
+      "sha256": "83499bcf6bd55e02be0b5f345b4719f06f9e1f94f2b09e5cc69f1bab9fba9637"
+    },
+    {
+      "path": "licenses/inception_next_tiny/TIMM_LICENSE",
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/v1.0.22/LICENSE",
+      "bytes": 11343,
+      "sha256": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+    },
+    {
+      "path": "licenses/inception_next_tiny/ORIGINAL_LICENSE",
+      "url": "https://raw.githubusercontent.com/sail-sg/inceptionnext/3f9769c6b3fcf903d1dc2f436eddc6963cacb535/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  ]
+}
