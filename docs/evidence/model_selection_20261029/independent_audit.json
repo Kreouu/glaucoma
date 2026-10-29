@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "screening_configurations": 16,
+  "verified_runs": 21,
+  "rejected_runs": 3,
+  "confirmed_families": 3,
+  "seeds_per_family": 3,
+  "selected_model": "convnext_tiny",
+  "exported_model_tensor_equality": true,
+  "full_validation_reload": true,
+  "local_timing_and_consistency": true,
+  "test_rows": 5855,
+  "exported_checkpoint_sha256": "cc3a5d9bb169a0da8cca8404aab4119e7ae7adaa9d4cc5ef32d3320115296e5e",
+  "submission_sha256": "4460a754be6300103ba85a235ff1890aa54de123daa5a1e6287e6dce77b548c8",
+  "official_T4_check": "not performed; local selection does not certify official hardware"
+}

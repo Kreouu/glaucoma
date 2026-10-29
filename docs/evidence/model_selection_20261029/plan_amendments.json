@@ -1,0 +1,7 @@
+{
+  "timestamp": "2026-10-29T06:18:39.123800",
+  "reason": "Reproduced FP16 non-finite validation output; preserve failed attempts and continue unchanged grid",
+  "old_runner_sha256": "0040c8c3caec56944f920c20923c23edb4755cd79284c5b75170f87776603fdb",
+  "new_runner_sha256": "0370b16cc3d930ee2612d7d2cad5ff43f505a1ca87b817bfb518285031a89259",
+  "training_sources_unchanged": true
+}
