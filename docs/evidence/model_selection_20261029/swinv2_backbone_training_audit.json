@@ -1,0 +1,72 @@
+{
+  "run_dir": "outputs/swinv2_384_w3_seed43_v1/lr_0.00003",
+  "model": "swinv2_tiny",
+  "pretrained": "pretrain_model/swinv2_tiny_window8_256_ms_in1k.bin",
+  "seed": 43,
+  "best_epoch": 3,
+  "total_parameters": 27578923,
+  "trainable_parameters": 27578923,
+  "parameter_tensors": 221,
+  "frozen_parameter_tensors": [],
+  "head_parameters": 769,
+  "backbone_parameters": 27578154,
+  "backbone_tensors": 219,
+  "changed_backbone_tensors": 219,
+  "groups": {
+    "patch_embed": {
+      "tensors": 4,
+      "changed": 4,
+      "parameters": 4896,
+      "max_abs_difference": 0.022139549255371094
+    },
+    "layers.0": {
+      "tensors": 34,
+      "changed": 34,
+      "parameters": 229638,
+      "max_abs_difference": 0.016353294253349304
+    },
+    "layers.1": {
+      "tensors": 37,
+      "changed": 37,
+      "parameters": 972684,
+      "max_abs_difference": 0.019103527069091797
+    },
+    "layers.2": {
+      "tensors": 105,
+      "changed": 105,
+      "parameters": 10986312,
+      "max_abs_difference": 0.031909942626953125
+    },
+    "layers.3": {
+      "tensors": 37,
+      "changed": 37,
+      "parameters": 15383088,
+      "max_abs_difference": 0.07553863525390625
+    },
+    "norm": {
+      "tensors": 2,
+      "changed": 2,
+      "parameters": 1536,
+      "max_abs_difference": 0.019620418548583984
+    }
+  },
+  "optimizer_param_count": 221,
+  "optimizer_state_count": 221,
+  "optimizer_step_min": 9631.0,
+  "optimizer_step_max": 9631.0,
+  "config": {
+    "size": 384,
+    "epochs": 5,
+    "batch_size": 16,
+    "lr": 3e-05,
+    "pos_weight": 3.0,
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "augmentation": "training horizontal flip p=0.5 only",
+    "preprocessing": "RGB, aspect-preserving letterbox, ImageNet normalization"
+  },
+  "historical_source_verified": true,
+  "scope": "CPU-only inspection; did not run GPU training or modify checkpoint",
+  "model_source_sha256_verified": true,
+  "model_source_sha256": "b309e81c223e882f6b9e7b6a39d4704ef8e1c0be30ce57b8d4edfcc994d69567"
+}
