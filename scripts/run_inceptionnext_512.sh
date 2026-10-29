@@ -5,7 +5,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 python_bin="$HOME/miniconda3/envs/glaucoma/bin/python"
 batch="outputs/inceptionnext_512_w3_v1"
 if [[ $# -gt 1 || ( $# -eq 1 && "$1" != "--dry-run" ) ]]; then
-  echo "Usage: bash scripts/run_convnext_640.sh [--dry-run]" >&2
+  echo "Usage: bash scripts/run_inceptionnext_512.sh [--dry-run]" >&2
   exit 2
 fi
 dry_run=false

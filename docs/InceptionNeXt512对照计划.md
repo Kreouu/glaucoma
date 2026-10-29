@@ -12,4 +12,4 @@
 总日志：outputs/inceptionnext_512_w3_v1.supervisor.log
 退出标记：outputs/inceptionnext_512_w3_v1.exit_code
 
-状态：代码准备完成，等待运行检查后记录实际启动状态。
+状态：2026-10-29 22:24:59在tmux glaucoma-inceptionnext-512启动；64训练/64验证及重载PASS、概率差0，seed42全量训练已输出batch75进度，43/44随后顺序执行。
