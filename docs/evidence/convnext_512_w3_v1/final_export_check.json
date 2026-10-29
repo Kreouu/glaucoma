@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "parent_run": "outputs/convnext_512_w3_v1/seed43",
+  "parent_sha256": "8ca3e0382517db867aeb44010adb4b05c562393505b774c147a4413f7188f418",
+  "exported_sha256": "4f61d0cd67c39fc83c1451d3bd4f3f2360b5b01810c55bdaec61170a4944ef13",
+  "model_tensor_equality": true,
+  "seed": 43,
+  "epoch": 2,
+  "size": 512,
+  "model_bytes": 111341535,
+  "official_T4": "not performed; deferred"
+}

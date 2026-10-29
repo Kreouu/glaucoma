@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "files": 47,
+  "archive_sha256": "f9337349410f15afd891fc835f7d3ca439a97a4801fe971f4c7d181b54f45758",
+  "exported_model_sha256": "4f61d0cd67c39fc83c1451d3bd4f3f2360b5b01810c55bdaec61170a4944ef13",
+  "submission_sha256": "a59d55c50871cc33e675d2a9bed3f5c77f9465e3689b1b9932a002fa541e564a",
+  "submission_rows": 5855,
+  "old384_scored_csv_preserved": true,
+  "mac_path": "/Users/Ng/workspace/glaucoma/outputs/convnext_512_w3_v1/final_seed43"
+}
