@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "files": 50,
+  "archive_bytes": 335278080,
+  "archive_sha256": "435fa7738bae06f6a549d80b4ffe9b239e7bced792a798ba8f2df05b1447f223",
+  "all_member_hashes": "PASS",
+  "candidate_model_bytes": 334041477,
+  "original_9808_model_and_csv": "UNCHANGED",
+  "complete_three_architecture_comparison": "9/9 checkpoints and full validation audited; six new model backups on Mac",
+  "improved_validation_candidates": "ensemble and ensemble_tta exceed original batch-one AUROC and AP; full reload PASS",
+  "limitations": "Confidence intervals cross zero; no new official score, T4 remains deferred; not a global optimum claim"
+}
