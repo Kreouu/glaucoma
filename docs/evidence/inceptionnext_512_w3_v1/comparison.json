@@ -1,0 +1,484 @@
+{
+  "status": "PASS",
+  "scope": "Fixed recipe, three paired seeds; not model ceiling",
+  "groups": {
+    "convnext": {
+      "seeds": [
+        {
+          "seed": 42,
+          "run_dir": "outputs/convnext_512_w3_v1/seed42",
+          "best_epoch": 2,
+          "val_auroc": 0.9841016472991955,
+          "val_auprc": 0.8149240103973049,
+          "checkpoint_sha256": "02b112cee1699521a70160b7d416b8063f41270167d518d763d426553af30e6f",
+          "training_seconds": 3040.1616663000023,
+          "peak_vram_mib": 5418.41259765625,
+          "model_tensor_bytes": 111283588,
+          "source_verification": {
+            "train.py": "c902ca24049eb77bae075b915af6b2cca03a82a5",
+            "dataset.py": "current_file",
+            "model.py": "current_file",
+            "amp_precision.py": "current_file",
+            "model_convnext.py": "current_file"
+          },
+          "reload": {
+            "status": "PASS",
+            "images": 5849,
+            "positives": 191,
+            "checkpoint_epoch": 2,
+            "checkpoint_sha256": "02b112cee1699521a70160b7d416b8063f41270167d518d763d426553af30e6f",
+            "max_probability_difference": 0.0,
+            "val_auroc": 0.9841016472991955,
+            "val_auprc": 0.8149240103973049
+          },
+          "metrics": [
+            {
+              "epoch": 1,
+              "train_loss": 0.15422320350046678,
+              "valid_loss": 0.118401789677419,
+              "val_auroc": 0.9775539059738424,
+              "val_auprc": 0.7243684604637856,
+              "epoch_seconds": 606.9949026959948,
+              "peak_vram_mib": 5418.412109375
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.08966068020578265,
+              "valid_loss": 0.051873794760969656,
+              "val_auroc": 0.9841016472991955,
+              "val_auprc": 0.8149240103973049,
+              "epoch_seconds": 607.5656694529898,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.06272570860472641,
+              "valid_loss": 0.049132528295031924,
+              "val_auroc": 0.9807116458371503,
+              "val_auprc": 0.7995169123019276,
+              "epoch_seconds": 607.7004104930093,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.040138480353651654,
+              "valid_loss": 0.05255545115766795,
+              "val_auroc": 0.9834455776836393,
+              "val_auprc": 0.7905787652902614,
+              "epoch_seconds": 608.5750266340037,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.027952660280175443,
+              "valid_loss": 0.06845670409056125,
+              "val_auroc": 0.9813339403596631,
+              "val_auprc": 0.763090805308035,
+              "epoch_seconds": 609.3256570240046,
+              "peak_vram_mib": 5418.41259765625
+            }
+          ]
+        },
+        {
+          "seed": 43,
+          "run_dir": "outputs/convnext_512_w3_v1/seed43",
+          "best_epoch": 2,
+          "val_auroc": 0.986104093911415,
+          "val_auprc": 0.8142397297126056,
+          "checkpoint_sha256": "8ca3e0382517db867aeb44010adb4b05c562393505b774c147a4413f7188f418",
+          "training_seconds": 3063.4877378169767,
+          "peak_vram_mib": 5418.41259765625,
+          "model_tensor_bytes": 111283588,
+          "source_verification": {
+            "train.py": "4501eeda054d829ee65bc6f0e463675e5469d62b",
+            "dataset.py": "current_file",
+            "model.py": "current_file",
+            "amp_precision.py": "current_file",
+            "model_convnext.py": "current_file"
+          },
+          "reload": {
+            "status": "PASS",
+            "images": 5849,
+            "positives": 191,
+            "checkpoint_epoch": 2,
+            "checkpoint_sha256": "8ca3e0382517db867aeb44010adb4b05c562393505b774c147a4413f7188f418",
+            "max_probability_difference": 0.0,
+            "val_auroc": 0.986104093911415,
+            "val_auprc": 0.8142397297126056
+          },
+          "metrics": [
+            {
+              "epoch": 1,
+              "train_loss": 0.15879591870135357,
+              "valid_loss": 0.04968540566776105,
+              "val_auroc": 0.9832295096226628,
+              "val_auprc": 0.7842801126236582,
+              "epoch_seconds": 626.1099605189956,
+              "peak_vram_mib": 5418.412109375
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.08914927535748571,
+              "valid_loss": 0.05813049274195157,
+              "val_auroc": 0.986104093911415,
+              "val_auprc": 0.8142397297126056,
+              "epoch_seconds": 612.8799528090021,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.0601067829740002,
+              "valid_loss": 0.07414653822992325,
+              "val_auroc": 0.9860892883911767,
+              "val_auprc": 0.7979919554377481,
+              "epoch_seconds": 611.4119597659883,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.03986882580012876,
+              "valid_loss": 0.05472479195054752,
+              "val_auroc": 0.9853392962566094,
+              "val_auprc": 0.7899879499911294,
+              "epoch_seconds": 610.8529469249916,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.028823969796336467,
+              "valid_loss": 0.06150664821708229,
+              "val_auroc": 0.9814801448720155,
+              "val_auprc": 0.7720346190742167,
+              "epoch_seconds": 602.2329177979991,
+              "peak_vram_mib": 5418.41259765625
+            }
+          ]
+        },
+        {
+          "seed": 44,
+          "run_dir": "outputs/convnext_512_w3_v1/seed44",
+          "best_epoch": 2,
+          "val_auroc": 0.984764194329856,
+          "val_auprc": 0.8014018048360029,
+          "checkpoint_sha256": "8f501dea51f2bf1db7e851deab144802501f7db08edd2eea8075a750df677f9d",
+          "training_seconds": 3013.356830924007,
+          "peak_vram_mib": 5418.41259765625,
+          "model_tensor_bytes": 111283588,
+          "source_verification": {
+            "train.py": "4501eeda054d829ee65bc6f0e463675e5469d62b",
+            "dataset.py": "current_file",
+            "model.py": "current_file",
+            "amp_precision.py": "current_file",
+            "model_convnext.py": "current_file"
+          },
+          "reload": {
+            "status": "PASS",
+            "images": 5849,
+            "positives": 191,
+            "checkpoint_epoch": 2,
+            "checkpoint_sha256": "8f501dea51f2bf1db7e851deab144802501f7db08edd2eea8075a750df677f9d",
+            "max_probability_difference": 0.0,
+            "val_auroc": 0.984764194329856,
+            "val_auprc": 0.8014018048360029
+          },
+          "metrics": [
+            {
+              "epoch": 1,
+              "train_loss": 0.1592530304825077,
+              "valid_loss": 0.051237854304642075,
+              "val_auroc": 0.9780346227090772,
+              "val_auprc": 0.774280741211881,
+              "epoch_seconds": 617.8205022210022,
+              "peak_vram_mib": 5418.412109375
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.09173157250892676,
+              "valid_loss": 0.05161509252694154,
+              "val_auroc": 0.984764194329856,
+              "val_auprc": 0.8014018048360029,
+              "epoch_seconds": 607.9853078000015,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.06222045800199748,
+              "valid_loss": 0.05032120233702477,
+              "val_auroc": 0.9836361987567064,
+              "val_auprc": 0.7948441747747834,
+              "epoch_seconds": 597.9386211009987,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.042523591566219994,
+              "valid_loss": 0.061728263849928314,
+              "val_auroc": 0.9830129788891789,
+              "val_auprc": 0.7688410341061365,
+              "epoch_seconds": 595.1110564830014,
+              "peak_vram_mib": 5418.41259765625
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.028305102769227528,
+              "valid_loss": 0.05853619046762632,
+              "val_auroc": 0.9843436250205889,
+              "val_auprc": 0.7844359775068679,
+              "epoch_seconds": 594.5013433190034,
+              "peak_vram_mib": 5418.41259765625
+            }
+          ]
+        }
+      ],
+      "auroc_mean": 0.9849899785134888,
+      "auroc_std": 0.001020138217047762,
+      "ap_mean": 0.8101885149819711,
+      "training_seconds_mean": 3039.0020783469954,
+      "paired_auroc_deltas_vs_convnext": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_auroc_mean_delta_vs_convnext": 0.0
+    },
+    "inceptionnext": {
+      "seeds": [
+        {
+          "seed": 42,
+          "run_dir": "outputs/inceptionnext_512_w3_v1/seed42",
+          "best_epoch": 5,
+          "val_auroc": 0.9786185154134719,
+          "val_auprc": 0.7667556499803055,
+          "checkpoint_sha256": "58a394b32c715159593471977f97dd881c2dbfcbbddc2c9564051e7bde252637",
+          "training_seconds": 3350.634254902019,
+          "peak_vram_mib": 5031.78564453125,
+          "model_tensor_bytes": 103071252,
+          "source_verification": {
+            "train.py": "39181c86670f75acd6da301ee8909534cdb53c2a",
+            "dataset.py": "current_file",
+            "model.py": "current_file",
+            "amp_precision.py": "current_file",
+            "model_inceptionnext.py": "current_file"
+          },
+          "reload": {
+            "status": "PASS",
+            "images": 5849,
+            "positives": 191,
+            "checkpoint_epoch": 5,
+            "checkpoint_sha256": "58a394b32c715159593471977f97dd881c2dbfcbbddc2c9564051e7bde252637",
+            "max_probability_difference": 0.0,
+            "val_auroc": 0.9786185154134719,
+            "val_auprc": 0.7667556499803055
+          },
+          "metrics": [
+            {
+              "epoch": 1,
+              "train_loss": 0.1758865474018246,
+              "valid_loss": 0.11922421431046945,
+              "val_auroc": 0.9675944175785942,
+              "val_auprc": 0.6637547058239166,
+              "epoch_seconds": 681.6746661200013,
+              "peak_vram_mib": 5031.78515625
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.10645617901900833,
+              "valid_loss": 0.05672774179762168,
+              "val_auroc": 0.9741995302948704,
+              "val_auprc": 0.7696287783964858,
+              "epoch_seconds": 670.2657695210073,
+              "peak_vram_mib": 5031.78564453125
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.0750436085771431,
+              "valid_loss": 0.052773680824548856,
+              "val_auroc": 0.9780619203870163,
+              "val_auprc": 0.7635115341676173,
+              "epoch_seconds": 666.836001853022,
+              "peak_vram_mib": 5031.78564453125
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.05387842446839321,
+              "valid_loss": 0.06106728048941637,
+              "val_auroc": 0.9772624222941525,
+              "val_auprc": 0.7496537585943095,
+              "epoch_seconds": 665.8904932519945,
+              "peak_vram_mib": 5031.78564453125
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.0387645705072639,
+              "valid_loss": 0.061936232460707744,
+              "val_auroc": 0.9786185154134719,
+              "val_auprc": 0.7667556499803055,
+              "epoch_seconds": 665.967324155994,
+              "peak_vram_mib": 5031.78564453125
+            }
+          ]
+        },
+        {
+          "seed": 43,
+          "run_dir": "outputs/inceptionnext_512_w3_v1/seed43",
+          "best_epoch": 2,
+          "val_auroc": 0.9785653080751159,
+          "val_auprc": 0.7548511006941839,
+          "checkpoint_sha256": "fd6a3a1b99eba86097fe5d08ef8e4f67ce8b60f0cc05dd5937c88fddc58fa8ce",
+          "training_seconds": 3339.2500649919966,
+          "peak_vram_mib": 5032.66064453125,
+          "model_tensor_bytes": 103071252,
+          "source_verification": {
+            "train.py": "6a34c9c52cb81415161349265981083269442816",
+            "dataset.py": "current_file",
+            "model.py": "current_file",
+            "amp_precision.py": "current_file",
+            "model_inceptionnext.py": "current_file"
+          },
+          "reload": {
+            "status": "PASS",
+            "images": 5849,
+            "positives": 191,
+            "checkpoint_epoch": 2,
+            "checkpoint_sha256": "fd6a3a1b99eba86097fe5d08ef8e4f67ce8b60f0cc05dd5937c88fddc58fa8ce",
+            "max_probability_difference": 0.0,
+            "val_auroc": 0.9785653080751159,
+            "val_auprc": 0.7548511006941839
+          },
+          "metrics": [
+            {
+              "epoch": 1,
+              "train_loss": 0.176502349142022,
+              "valid_loss": 0.06008855598830776,
+              "val_auroc": 0.9744192997359066,
+              "val_auprc": 0.706398681980716,
+              "epoch_seconds": 673.1343321210006,
+              "peak_vram_mib": 5032.66015625
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.10649498571538166,
+              "valid_loss": 0.06267100327498867,
+              "val_auroc": 0.9785653080751159,
+              "val_auprc": 0.7548511006941839,
+              "epoch_seconds": 666.8660837009957,
+              "peak_vram_mib": 5032.66064453125
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.07502935204794968,
+              "valid_loss": 0.07940115261362214,
+              "val_auroc": 0.9778393749109355,
+              "val_auprc": 0.7538262358097533,
+              "epoch_seconds": 666.1865799200023,
+              "peak_vram_mib": 5032.66064453125
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.05936391862328634,
+              "valid_loss": 0.05566317113588493,
+              "val_auroc": 0.9753196604353934,
+              "val_auprc": 0.7529716813628868,
+              "epoch_seconds": 667.869708645012,
+              "peak_vram_mib": 5032.66064453125
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.045198867233908306,
+              "valid_loss": 0.071422087624766,
+              "val_auroc": 0.9729095993441155,
+              "val_auprc": 0.7517610815830351,
+              "epoch_seconds": 665.1933606049861,
+              "peak_vram_mib": 5032.66064453125
+            }
+          ]
+        },
+        {
+          "seed": 44,
+          "run_dir": "outputs/inceptionnext_512_w3_v1/seed44",
+          "best_epoch": 3,
+          "val_auroc": 0.9756268749803364,
+          "val_auprc": 0.7364674282871649,
+          "checkpoint_sha256": "da0f578af5d76c8daf854b978730eaaffc04d8f8d7cdd7f5f2d0de44f5327a4f",
+          "training_seconds": 3343.707882932009,
+          "peak_vram_mib": 5032.66064453125,
+          "model_tensor_bytes": 103071252,
+          "source_verification": {
+            "train.py": "6a34c9c52cb81415161349265981083269442816",
+            "dataset.py": "current_file",
+            "model.py": "current_file",
+            "amp_precision.py": "current_file",
+            "model_inceptionnext.py": "current_file"
+          },
+          "reload": {
+            "status": "PASS",
+            "images": 5849,
+            "positives": 191,
+            "checkpoint_epoch": 3,
+            "checkpoint_sha256": "da0f578af5d76c8daf854b978730eaaffc04d8f8d7cdd7f5f2d0de44f5327a4f",
+            "max_probability_difference": 0.0,
+            "val_auroc": 0.9756268749803364,
+            "val_auprc": 0.7364674282871649
+          },
+          "metrics": [
+            {
+              "epoch": 1,
+              "train_loss": 0.17724773530965093,
+              "valid_loss": 0.06505561451215706,
+              "val_auroc": 0.9657113404732955,
+              "val_auprc": 0.6822832308456167,
+              "epoch_seconds": 674.0886602200044,
+              "peak_vram_mib": 5032.66015625
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.10551443391278269,
+              "valid_loss": 0.064644846771913,
+              "val_auroc": 0.974439657326234,
+              "val_auprc": 0.7541764979954624,
+              "epoch_seconds": 667.7564463810122,
+              "peak_vram_mib": 5032.66064453125
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.07665309651400866,
+              "valid_loss": 0.059143861034765786,
+              "val_auroc": 0.9756268749803364,
+              "val_auprc": 0.7364674282871649,
+              "epoch_seconds": 667.9608038220031,
+              "peak_vram_mib": 5032.66064453125
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.05380374633889978,
+              "valid_loss": 0.06607567108655658,
+              "val_auroc": 0.9724658964094763,
+              "val_auprc": 0.7353912572130761,
+              "epoch_seconds": 666.4881597679923,
+              "peak_vram_mib": 5032.66064453125
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.03838410344208511,
+              "valid_loss": 0.06530605594055415,
+              "val_auroc": 0.971819080244069,
+              "val_auprc": 0.7388784764685257,
+              "epoch_seconds": 667.413812740997,
+              "peak_vram_mib": 5032.66064453125
+            }
+          ]
+        }
+      ],
+      "auroc_mean": 0.9776035661563081,
+      "auroc_std": 0.0017120714818858733,
+      "ap_mean": 0.7526913929872181,
+      "training_seconds_mean": 3344.5307342753417,
+      "paired_auroc_deltas_vs_convnext": [
+        -0.00548313188572358,
+        -0.007538785836299078,
+        -0.009137319349519557
+      ],
+      "paired_auroc_mean_delta_vs_convnext": -0.007386412357180738
+    }
+  }
+}
