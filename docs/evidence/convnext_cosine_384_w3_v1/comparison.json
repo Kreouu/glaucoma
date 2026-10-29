@@ -1,0 +1,231 @@
+{
+  "status": "COMPLETE_VERIFIED",
+  "seeds": [
+    {
+      "seed": 42,
+      "run_dir": "outputs/convnext_cosine_384_w3_v1/seed42",
+      "best_epoch": 4,
+      "val_auroc": 0.9808513729343986,
+      "val_auprc": 0.7983823340019554,
+      "baseline_auroc": 0.9836181545289162,
+      "baseline_auprc": 0.7956260407935645,
+      "delta_auroc": -0.0027667815945175978,
+      "delta_auprc": 0.002756293208390881,
+      "checkpoint_sha256": "12109287573d80982c952972e15d8f0b4f48ecb0160a2984fdda7efc777b94fe",
+      "reload": "PASS",
+      "learning_rate_steps": 16065,
+      "amp_skipped_updates": 9,
+      "metrics": [
+        {
+          "epoch": 1,
+          "train_loss": 0.20178890036222896,
+          "valid_loss": 0.13470531820328668,
+          "val_auroc": 0.9746219502941673,
+          "val_auprc": 0.6844850692011971,
+          "epoch_seconds": 355.59682866999356,
+          "peak_vram_mib": 3255.94921875,
+          "lr_last": 2.910492585163269e-05,
+          "amp_skipped_updates": 3
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.09925249025899142,
+          "valid_loss": 0.05670023194887922,
+          "val_auroc": 0.9803831483568648,
+          "val_auprc": 0.7963871917692544,
+          "epoch_seconds": 340.7548720959894,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 2.2575931468991477e-05,
+          "amp_skipped_updates": 2
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.06358934542756675,
+          "valid_loss": 0.0536328655113232,
+          "val_auroc": 0.9799644297376278,
+          "val_auprc": 0.7838142666209792,
+          "epoch_seconds": 342.73727733000123,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 1.257203073105452e-05,
+          "amp_skipped_updates": 2
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.036502188109661646,
+          "valid_loss": 0.05809557305118277,
+          "val_auroc": 0.9808513729343986,
+          "val_auprc": 0.7983823340019554,
+          "epoch_seconds": 347.3007721689937,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 3.7744704816909675e-06,
+          "amp_skipped_updates": 1
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.02302767415827069,
+          "valid_loss": 0.05755053662418054,
+          "val_auroc": 0.9807431075676567,
+          "val_auprc": 0.7978526698995477,
+          "epoch_seconds": 346.8017971619993,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 3e-07,
+          "amp_skipped_updates": 1
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "run_dir": "outputs/convnext_cosine_384_w3_v1/seed43",
+      "best_epoch": 5,
+      "val_auroc": 0.9860592146781927,
+      "val_auprc": 0.7898627176347457,
+      "baseline_auroc": 0.9868499219934151,
+      "baseline_auprc": 0.7880009291469723,
+      "delta_auroc": -0.0007907073152224608,
+      "delta_auprc": 0.001861788487773408,
+      "checkpoint_sha256": "fb88aececf3aa74c558ad7dff2145aef1acc4633f07cd01c6f831e8d23f12701",
+      "reload": "PASS",
+      "learning_rate_steps": 16065,
+      "amp_skipped_updates": 10,
+      "metrics": [
+        {
+          "epoch": 1,
+          "train_loss": 0.19843400411666742,
+          "valid_loss": 0.05590144542562903,
+          "val_auroc": 0.9745812351135121,
+          "val_auprc": 0.7302740685999275,
+          "epoch_seconds": 355.7825684349955,
+          "peak_vram_mib": 3255.94921875,
+          "lr_last": 2.910492585163269e-05,
+          "amp_skipped_updates": 4
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.09870941928271905,
+          "valid_loss": 0.07037108099093806,
+          "val_auroc": 0.9804220128474902,
+          "val_auprc": 0.7827459217759727,
+          "epoch_seconds": 343.67175851299544,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 2.2575931468991477e-05,
+          "amp_skipped_updates": 1
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.0629895113858172,
+          "valid_loss": 0.06726171942916186,
+          "val_auroc": 0.9841122887668667,
+          "val_auprc": 0.7956634935554521,
+          "epoch_seconds": 342.44122089499433,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 1.257203073105452e-05,
+          "amp_skipped_updates": 2
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.0381469941668732,
+          "valid_loss": 0.05563653584640031,
+          "val_auroc": 0.9859518746564656,
+          "val_auprc": 0.7896147602101402,
+          "epoch_seconds": 341.96275373600656,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 3.7744704816909675e-06,
+          "amp_skipped_updates": 2
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.025023390675583027,
+          "valid_loss": 0.056156263796747846,
+          "val_auroc": 0.9860592146781927,
+          "val_auprc": 0.7898627176347457,
+          "epoch_seconds": 341.7498656990065,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 3e-07,
+          "amp_skipped_updates": 1
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "run_dir": "outputs/convnext_cosine_384_w3_v1/seed44",
+      "best_epoch": 4,
+      "val_auroc": 0.9800652923442504,
+      "val_auprc": 0.7908883723150633,
+      "baseline_auroc": 0.9822551213219849,
+      "baseline_auprc": 0.785859672478533,
+      "delta_auroc": -0.0021898289777344537,
+      "delta_auprc": 0.005028699836530315,
+      "checkpoint_sha256": "cd299efe0d48aad12798d8c2210a41d18d4cae34a30dbaf3b2e08e02ff2485b3",
+      "reload": "PASS",
+      "learning_rate_steps": 16065,
+      "amp_skipped_updates": 10,
+      "metrics": [
+        {
+          "epoch": 1,
+          "train_loss": 0.20367861185354783,
+          "valid_loss": 0.06040436916754215,
+          "val_auroc": 0.971564147692467,
+          "val_auprc": 0.7059964989307924,
+          "epoch_seconds": 353.51759218701045,
+          "peak_vram_mib": 3255.94921875,
+          "lr_last": 2.910492585163269e-05,
+          "amp_skipped_updates": 3
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.09971116909014895,
+          "valid_loss": 0.0641142906037569,
+          "val_auroc": 0.978364508206885,
+          "val_auprc": 0.752563670930149,
+          "epoch_seconds": 344.21418124200136,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 2.2575931468991477e-05,
+          "amp_skipped_updates": 2
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.06373151686040082,
+          "valid_loss": 0.05177228640084592,
+          "val_auroc": 0.9789507142738171,
+          "val_auprc": 0.7895362801407718,
+          "epoch_seconds": 341.97603445001005,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 1.257203073105452e-05,
+          "amp_skipped_updates": 2
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.035127365374710784,
+          "valid_loss": 0.05884298415507994,
+          "val_auroc": 0.9800652923442504,
+          "val_auprc": 0.7908883723150633,
+          "epoch_seconds": 342.40873514598934,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 3.7744704816909675e-06,
+          "amp_skipped_updates": 2
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.020688624578810134,
+          "valid_loss": 0.0587511217469575,
+          "val_auroc": 0.9787267807802139,
+          "val_auprc": 0.7926817370833569,
+          "epoch_seconds": 342.7516001939948,
+          "peak_vram_mib": 3255.94970703125,
+          "lr_last": 3e-07,
+          "amp_skipped_updates": 1
+        }
+      ]
+    }
+  ],
+  "baseline_auroc_mean": 0.9842410659481055,
+  "baseline_auroc_std": 0.0023598860734495666,
+  "cosine_auroc_mean": 0.9823252933189472,
+  "cosine_auroc_std": 0.0032574694490238756,
+  "baseline_ap_mean": 0.7898288808063566,
+  "cosine_ap_mean": 0.7930444746505881,
+  "mean_paired_auroc_delta": -0.0019157726291581707,
+  "decision": "Keep constant LR model and submission24294; all three AUROC paired deltas negative",
+  "scope": "This fixed five-epoch schedule only; not a claim all warmup/cosine settings are inferior",
+  "test_inference_performed": false
+}
