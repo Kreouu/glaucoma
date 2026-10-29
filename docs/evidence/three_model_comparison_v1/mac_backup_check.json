@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "archive_bytes": 1030410240,
+  "archive_sha256": "4837b9c4b7161f679713534ec9e6fc65316c6c5ee8771acbf13b3ce67b2507ea",
+  "models": [
+    {
+      "family": "inceptionnext",
+      "seed": 42,
+      "original": "outputs/inceptionnext_512_w3_v1/seed42/best.pt",
+      "original_sha256": "58a394b32c715159593471977f97dd881c2dbfcbbddc2c9564051e7bde252637",
+      "backup": "inceptionnext_seed42.pt",
+      "backup_sha256": "581fd01ffa667b285491cfc4bf50d117c3554ed2180710100955e010e362c5ee",
+      "bytes": 103190627,
+      "tensor_equality": "PASS",
+      "note": "Exact model/config/metrics backup; omits optimizer/scaler, not a resume checkpoint"
+    },
+    {
+      "family": "inceptionnext",
+      "seed": 43,
+      "original": "outputs/inceptionnext_512_w3_v1/seed43/best.pt",
+      "original_sha256": "fd6a3a1b99eba86097fe5d08ef8e4f67ce8b60f0cc05dd5937c88fddc58fa8ce",
+      "backup": "inceptionnext_seed43.pt",
+      "backup_sha256": "75c2a119bceb8929190de60b669837f13f3b6068c33e754c1e0637e4a853f175",
+      "bytes": 103190627,
+      "tensor_equality": "PASS",
+      "note": "Exact model/config/metrics backup; omits optimizer/scaler, not a resume checkpoint"
+    },
+    {
+      "family": "inceptionnext",
+      "seed": 44,
+      "original": "outputs/inceptionnext_512_w3_v1/seed44/best.pt",
+      "original_sha256": "da0f578af5d76c8daf854b978730eaaffc04d8f8d7cdd7f5f2d0de44f5327a4f",
+      "backup": "inceptionnext_seed44.pt",
+      "backup_sha256": "9fb5857f098771c42951c8112d0a1c724480cc2cfb50336af33198395efaff43",
+      "bytes": 103190627,
+      "tensor_equality": "PASS",
+      "note": "Exact model/config/metrics backup; omits optimizer/scaler, not a resume checkpoint"
+    },
+    {
+      "family": "fastervit",
+      "seed": 42,
+      "original": "outputs/fastervit_512_w3_v1/seed42/best.pt",
+      "original_sha256": "e5399291eb63216d5f7ac9660e2cd72a38ab3324afbcde06c09cbe6149d7db6f",
+      "backup": "fastervit_seed42.pt",
+      "backup_sha256": "b527e3b489c004ed4c0d912452d06b7c1376bcc1f976b552311860a51bec8ea1",
+      "bytes": 240271985,
+      "tensor_equality": "PASS",
+      "note": "Exact model/config/metrics backup; omits optimizer/scaler, not a resume checkpoint"
+    },
+    {
+      "family": "fastervit",
+      "seed": 43,
+      "original": "outputs/fastervit_512_w3_v1/seed43/best.pt",
+      "original_sha256": "926f96a43674da2975d0fde1a500b3bb320f354d6e09c743b46100d4ca7d308d",
+      "backup": "fastervit_seed43.pt",
+      "backup_sha256": "58c1c9b0cd11cbbc5b4aa4226eff00375b6a11a6210c65229c0f0f77ecd2d217",
+      "bytes": 240271985,
+      "tensor_equality": "PASS",
+      "note": "Exact model/config/metrics backup; omits optimizer/scaler, not a resume checkpoint"
+    },
+    {
+      "family": "fastervit",
+      "seed": 44,
+      "original": "outputs/fastervit_512_w3_v1/seed44/best.pt",
+      "original_sha256": "66652c08b5b9a7f0491396d3b415284a2e08ba8b7584e6361ec110dd328ec83e",
+      "backup": "fastervit_seed44.pt",
+      "backup_sha256": "ee7677d539116d7c22bb89ee720b1faabc2258731692ab558f605f6fab44be04",
+      "bytes": 240271985,
+      "tensor_equality": "PASS",
+      "note": "Exact model/config/metrics backup; omits optimizer/scaler, not a resume checkpoint"
+    }
+  ]
+}
