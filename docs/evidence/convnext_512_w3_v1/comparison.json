@@ -1,0 +1,224 @@
+{
+  "status": "COMPLETE_VERIFIED",
+  "seeds": [
+    {
+      "seed": 42,
+      "run_dir": "outputs/convnext_512_w3_v1/seed42",
+      "best_epoch": 2,
+      "val_auroc": 0.9841016472991955,
+      "val_auprc": 0.8149240103973049,
+      "baseline_auroc": 0.9836181545289162,
+      "baseline_auprc": 0.7956260407935645,
+      "delta_auroc": 0.0004834927702792591,
+      "delta_auprc": 0.019297969603740417,
+      "training_seconds": 3040.1616663000023,
+      "peak_vram_mib": 5418.41259765625,
+      "checkpoint_sha256": "02b112cee1699521a70160b7d416b8063f41270167d518d763d426553af30e6f",
+      "reload": "PASS",
+      "metrics": [
+        {
+          "epoch": 1,
+          "train_loss": 0.15422320350046678,
+          "valid_loss": 0.118401789677419,
+          "val_auroc": 0.9775539059738424,
+          "val_auprc": 0.7243684604637856,
+          "epoch_seconds": 606.9949026959948,
+          "peak_vram_mib": 5418.412109375
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.08966068020578265,
+          "valid_loss": 0.051873794760969656,
+          "val_auroc": 0.9841016472991955,
+          "val_auprc": 0.8149240103973049,
+          "epoch_seconds": 607.5656694529898,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.06272570860472641,
+          "valid_loss": 0.049132528295031924,
+          "val_auroc": 0.9807116458371503,
+          "val_auprc": 0.7995169123019276,
+          "epoch_seconds": 607.7004104930093,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.040138480353651654,
+          "valid_loss": 0.05255545115766795,
+          "val_auroc": 0.9834455776836393,
+          "val_auprc": 0.7905787652902614,
+          "epoch_seconds": 608.5750266340037,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.027952660280175443,
+          "valid_loss": 0.06845670409056125,
+          "val_auroc": 0.9813339403596631,
+          "val_auprc": 0.763090805308035,
+          "epoch_seconds": 609.3256570240046,
+          "peak_vram_mib": 5418.41259765625
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "run_dir": "outputs/convnext_512_w3_v1/seed43",
+      "best_epoch": 2,
+      "val_auroc": 0.986104093911415,
+      "val_auprc": 0.8142397297126056,
+      "baseline_auroc": 0.9868499219934151,
+      "baseline_auprc": 0.7880009291469723,
+      "delta_auroc": -0.0007458280820001884,
+      "delta_auprc": 0.026238800565633325,
+      "training_seconds": 3063.4877378169767,
+      "peak_vram_mib": 5418.41259765625,
+      "checkpoint_sha256": "8ca3e0382517db867aeb44010adb4b05c562393505b774c147a4413f7188f418",
+      "reload": "PASS",
+      "metrics": [
+        {
+          "epoch": 1,
+          "train_loss": 0.15879591870135357,
+          "valid_loss": 0.04968540566776105,
+          "val_auroc": 0.9832295096226628,
+          "val_auprc": 0.7842801126236582,
+          "epoch_seconds": 626.1099605189956,
+          "peak_vram_mib": 5418.412109375
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.08914927535748571,
+          "valid_loss": 0.05813049274195157,
+          "val_auroc": 0.986104093911415,
+          "val_auprc": 0.8142397297126056,
+          "epoch_seconds": 612.8799528090021,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.0601067829740002,
+          "valid_loss": 0.07414653822992325,
+          "val_auroc": 0.9860892883911767,
+          "val_auprc": 0.7979919554377481,
+          "epoch_seconds": 611.4119597659883,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.03986882580012876,
+          "valid_loss": 0.05472479195054752,
+          "val_auroc": 0.9853392962566094,
+          "val_auprc": 0.7899879499911294,
+          "epoch_seconds": 610.8529469249916,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.028823969796336467,
+          "valid_loss": 0.06150664821708229,
+          "val_auroc": 0.9814801448720155,
+          "val_auprc": 0.7720346190742167,
+          "epoch_seconds": 602.2329177979991,
+          "peak_vram_mib": 5418.41259765625
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "run_dir": "outputs/convnext_512_w3_v1/seed44",
+      "best_epoch": 2,
+      "val_auroc": 0.984764194329856,
+      "val_auprc": 0.8014018048360029,
+      "baseline_auroc": 0.9822551213219849,
+      "baseline_auprc": 0.785859672478533,
+      "delta_auroc": 0.0025090730078710655,
+      "delta_auprc": 0.015542132357469929,
+      "training_seconds": 3013.356830924007,
+      "peak_vram_mib": 5418.41259765625,
+      "checkpoint_sha256": "8f501dea51f2bf1db7e851deab144802501f7db08edd2eea8075a750df677f9d",
+      "reload": "PASS",
+      "metrics": [
+        {
+          "epoch": 1,
+          "train_loss": 0.1592530304825077,
+          "valid_loss": 0.051237854304642075,
+          "val_auroc": 0.9780346227090772,
+          "val_auprc": 0.774280741211881,
+          "epoch_seconds": 617.8205022210022,
+          "peak_vram_mib": 5418.412109375
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.09173157250892676,
+          "valid_loss": 0.05161509252694154,
+          "val_auroc": 0.984764194329856,
+          "val_auprc": 0.8014018048360029,
+          "epoch_seconds": 607.9853078000015,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.06222045800199748,
+          "valid_loss": 0.05032120233702477,
+          "val_auroc": 0.9836361987567064,
+          "val_auprc": 0.7948441747747834,
+          "epoch_seconds": 597.9386211009987,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.042523591566219994,
+          "valid_loss": 0.061728263849928314,
+          "val_auroc": 0.9830129788891789,
+          "val_auprc": 0.7688410341061365,
+          "epoch_seconds": 595.1110564830014,
+          "peak_vram_mib": 5418.41259765625
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.028305102769227528,
+          "valid_loss": 0.05853619046762632,
+          "val_auroc": 0.9843436250205889,
+          "val_auprc": 0.7844359775068679,
+          "epoch_seconds": 594.5013433190034,
+          "peak_vram_mib": 5418.41259765625
+        }
+      ]
+    }
+  ],
+  "baseline_auroc_mean": 0.9842410659481055,
+  "baseline_auroc_std": 0.0023598860734495666,
+  "r512_auroc_mean": 0.9849899785134888,
+  "r512_auroc_std": 0.001020138217047762,
+  "mean_paired_auroc_delta": 0.0007489125653833787,
+  "baseline_ap_mean": 0.7898288808063566,
+  "r512_ap_mean": 0.8101885149819711,
+  "positive_auroc_pairs": 2,
+  "baseline_train_seconds_mean": 1776.292550835009,
+  "r512_train_seconds_mean": 3039.0020783469954,
+  "test_inference_performed": false,
+  "decision": "512 is a promising candidate: mean AUROC and AP improve with lower three-seed std, 2/3 AUROC paired gains; local timing passes. Keep scored384 artifacts frozen; no test CSV generated.",
+  "local_timing": {
+    "images": 100,
+    "warmup_images": 5,
+    "rounds": 3,
+    "batch_size": 1,
+    "precision": "FP16 autocast, FP32 sigmoid",
+    "threshold": 0.5,
+    "mean_ms": 18.876956267001027,
+    "inconsistent_images": 0,
+    "max_probability_difference": 0.0,
+    "consistency_pass": true,
+    "within_100ms_on_this_machine": true,
+    "gpu": "NVIDIA GeForce RTX 5060 Ti",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "checkpoint_sha256": "8ca3e0382517db867aeb44010adb4b05c562393505b774c147a4413f7188f418",
+    "submission_sha256": "447eb2d413ad5116ede941024e8e2d9aac137f832fb2c610ca8c03ae5db20a9a",
+    "sample_scope": "User-supplied timing images; official sample provenance must be documented separately",
+    "note": "This report does not certify official T4 compliance."
+  }
+}
