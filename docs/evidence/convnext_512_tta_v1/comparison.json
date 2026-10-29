@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "method": "equal original/horizontal-flip probabilities; no transform/weight search",
+  "images": 5849,
+  "positives": 191,
+  "seeds": [
+    {
+      "seed": 42,
+      "checkpoint_sha256": "02b112cee1699521a70160b7d416b8063f41270167d518d763d426553af30e6f",
+      "baseline": {
+        "auroc": 0.9841016472991955,
+        "ap": 0.8149240103973049
+      },
+      "tta": {
+        "auroc": 0.9849168762573126,
+        "ap": 0.8191492429853914
+      },
+      "delta_auroc": 0.0008152289581171424,
+      "delta_ap": 0.004225232588086492,
+      "base_reload_max_difference": 0.0
+    },
+    {
+      "seed": 43,
+      "checkpoint_sha256": "8ca3e0382517db867aeb44010adb4b05c562393505b774c147a4413f7188f418",
+      "baseline": {
+        "auroc": 0.986104093911415,
+        "ap": 0.8142397297126056
+      },
+      "tta": {
+        "auroc": 0.9862465970437078,
+        "ap": 0.8178494117738448
+      },
+      "delta_auroc": 0.00014250313229280387,
+      "delta_ap": 0.003609682061239239,
+      "base_reload_max_difference": 0.0
+    },
+    {
+      "seed": 44,
+      "checkpoint_sha256": "8f501dea51f2bf1db7e851deab144802501f7db08edd2eea8075a750df677f9d",
+      "baseline": {
+        "auroc": 0.984764194329856,
+        "ap": 0.8014018048360029
+      },
+      "tta": {
+        "auroc": 0.9850195895539652,
+        "ap": 0.81139097003826
+      },
+      "delta_auroc": 0.0002553952241092228,
+      "delta_ap": 0.009989165202257122,
+      "base_reload_max_difference": 0.0
+    }
+  ],
+  "mean_auroc_delta": 0.00040437577150638965,
+  "mean_ap_delta": 0.005941359950527618,
+  "equal_ensemble": {
+    "auroc": 0.9872431936247431,
+    "ap": 0.8259292440019308
+  },
+  "equal_ensemble_tta": {
+    "auroc": 0.9874652764283163,
+    "ap": 0.82948983533212
+  },
+  "limitations": "Fixed validation set; runtime and batch-one deployment output still need verification; no test data used"
+}

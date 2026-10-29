@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "scope": "Validation only; local GPU timing is not official T4 verification",
+  "candidates": {
+    "baseline": {
+      "auroc": 0.9861027058938926,
+      "ap": 0.814203676036266,
+      "manifest_sha256": "bdce89cbdcb76dc8c79d8767989402ef7a7228014c86b9941400cef482069439",
+      "model_bytes": 111347159,
+      "mean_ms": 20.865462602911673,
+      "round_mean_ms": [
+        23.32602792972466,
+        20.095731579640415,
+        19.174628299369942
+      ],
+      "reload_max_difference": 0.0,
+      "reload_label_changes": 0,
+      "max_difference_vs_batch16": 0.0007652789354324341,
+      "delta_auroc_vs_baseline": 0.0,
+      "delta_ap_vs_baseline": 0.0
+    },
+    "single_tta": {
+      "auroc": 0.9862465970437078,
+      "ap": 0.8178643110288724,
+      "manifest_sha256": "34a27ee5d51d25dc31ea2b35cf023e18719c14906372d79d7e1215b909352dd5",
+      "model_bytes": 111347159,
+      "mean_ms": 25.93375006671219,
+      "round_mean_ms": [
+        28.051002688880544,
+        24.552906630560756,
+        25.197340880695265
+      ],
+      "reload_max_difference": 0.0,
+      "reload_label_changes": 0,
+      "delta_auroc_vs_baseline": 0.00014389114981516737,
+      "delta_ap_vs_baseline": 0.003660634992606382
+    },
+    "ensemble": {
+      "auroc": 0.9872450443147727,
+      "ap": 0.8260003565275162,
+      "manifest_sha256": "cdd5901a73c7106b90b2d07aa30b741ea60d2dc3c2c4ea950c4998048cdb5e99",
+      "model_bytes": 334041477,
+      "mean_ms": 33.83780361977794,
+      "round_mean_ms": [
+        36.41285062942188,
+        33.62481080024736,
+        31.475749429664575
+      ],
+      "reload_max_difference": 0.0,
+      "reload_label_changes": 0,
+      "max_difference_vs_batch16": 0.0003875891367594031,
+      "delta_auroc_vs_baseline": 0.0011423384208800735,
+      "delta_ap_vs_baseline": 0.011796680491250267
+    },
+    "ensemble_tta": {
+      "auroc": 0.9874634257382865,
+      "ap": 0.8294436791168763,
+      "manifest_sha256": "9669c4b789a4306e53d60f4901ad16a2bf03e632d2b1e20e5a2900ed6935e58d",
+      "model_bytes": 334041477,
+      "mean_ms": 54.31017393246293,
+      "round_mean_ms": [
+        49.682675157964695,
+        58.35785777220735,
+        54.88998886721674
+      ],
+      "reload_max_difference": 0.0,
+      "reload_label_changes": 0,
+      "delta_auroc_vs_baseline": 0.0013607198443938984,
+      "delta_ap_vs_baseline": 0.015240003080610354
+    }
+  }
+}

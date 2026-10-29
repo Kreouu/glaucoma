@@ -1,0 +1,20 @@
+{
+  "repeats": 2000,
+  "seed": 20261030,
+  "method": "paired stratified bootstrap over fixed validation images",
+  "intervals": {
+    "single_tta": [
+      -0.0010443675174288763,
+      0.0013603497063880805
+    ],
+    "ensemble": [
+      -0.000951335642994458,
+      0.003889919106338856
+    ],
+    "ensemble_tta": [
+      -0.001100188955451925,
+      0.0041848959634599725
+    ]
+  },
+  "limitations": "Not a posterior probability or training-seed uncertainty. Shared validation selection can be optimistic; not proof of test-score gain."
+}
