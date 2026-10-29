@@ -1,0 +1,66 @@
+{
+  "scope": "Seed42 random1000 official training images, header dimensions only; not validation/test",
+  "images": 1000,
+  "median_short_side": 1944.0,
+  "median_long_side": 2736.0,
+  "long_side_at_least640": 1000,
+  "short_side_at_least640": 1000,
+  "common_sizes": [
+    [
+      [
+        2592,
+        1944
+      ],
+      197
+    ],
+    [
+      [
+        2560,
+        1920
+      ],
+      170
+    ],
+    [
+      [
+        4928,
+        3264
+      ],
+      119
+    ],
+    [
+      [
+        3888,
+        2592
+      ],
+      95
+    ],
+    [
+      [
+        3456,
+        2304
+      ],
+      67
+    ],
+    [
+      [
+        1956,
+        1934
+      ],
+      57
+    ],
+    [
+      [
+        3696,
+        2448
+      ],
+      48
+    ],
+    [
+      [
+        4096,
+        3072
+      ],
+      33
+    ]
+  ]
+}
