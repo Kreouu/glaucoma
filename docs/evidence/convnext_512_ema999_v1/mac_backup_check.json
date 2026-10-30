@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "files": 82,
+  "archive_bytes": 350269440,
+  "archive_sha256": "259a3694eaae702785ba4a1fe29bfdd3ff4e6b688ba95a68841887b4ea9ba772",
+  "models": [
+    {
+      "path": "outputs/convnext_512_ema999_v1/seed42/ema/best.pt",
+      "bytes": 111344415,
+      "sha256": "abe95b8448d0ad7fd98636853cb1f9fe2141d675db6b5e2c0795b610704eb6a5"
+    },
+    {
+      "path": "outputs/convnext_512_ema999_v1/seed43/ema/best.pt",
+      "bytes": 111344415,
+      "sha256": "7d3171f9d5796f53e21797365fe2d2a612b883b37cd74ab8db552fdbdb2a0e19"
+    },
+    {
+      "path": "outputs/convnext_512_ema999_v1/seed44/ema/best.pt",
+      "bytes": 111344415,
+      "sha256": "3bae82a33d7ce5da021f5235054598e96e34b4485c1e72e9d966974cab190f53"
+    }
+  ],
+  "note": "EMA best models and small records preserved. Online checkpoints/optimizers remain WSL; model parameters are exactly equal to retained original baseline. Smoke model weights omitted."
+}

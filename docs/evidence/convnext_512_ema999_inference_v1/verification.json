@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "baseline": {
+    "auroc": 0.9872450443147727,
+    "ap": 0.8260003565275162
+  },
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "scope": "Native logits, fixed equal weights; validation exploration, not official score gain or T4 verification",
+  "candidates": {
+    "probability": {
+      "auroc": 0.9874634257382866,
+      "ap": 0.822894482887363,
+      "delta_auroc": 0.00021838142351393586,
+      "delta_ap": -0.003105873640153245,
+      "mean_ms": 32.60766714355365,
+      "model_bytes": 334033245,
+      "reload_difference": 0.0,
+      "reload_label_changes": 0,
+      "promising": false
+    },
+    "probability_tta": {
+      "auroc": 0.9873301760561426,
+      "ap": 0.8283335307413556,
+      "delta_auroc": 8.513174136992596e-05,
+      "delta_ap": 0.002333174213839384,
+      "mean_ms": 47.98055248499926,
+      "model_bytes": 334033245,
+      "reload_difference": 0.0,
+      "reload_label_changes": 0,
+      "promising": false
+    },
+    "logit": {
+      "auroc": 0.9879025019478513,
+      "ap": 0.8254227483660176,
+      "delta_auroc": 0.000657457633078673,
+      "delta_ap": -0.000577608161498655,
+      "mean_ms": 32.78358984631874,
+      "model_bytes": 334033245,
+      "reload_difference": 0.0,
+      "reload_label_changes": 0,
+      "promising": false
+    },
+    "logit_tta": {
+      "auroc": 0.9878132061539144,
+      "ap": 0.82982829268635,
+      "delta_auroc": 0.0005681618391417675,
+      "delta_ap": 0.0038279361588338112,
+      "mean_ms": 49.307501747001275,
+      "model_bytes": 334033245,
+      "reload_difference": 0.0,
+      "reload_label_changes": 0,
+      "promising": true
+    }
+  }
+}
