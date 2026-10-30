@@ -1,0 +1,33 @@
+{
+  "output_dir": "outputs/convnext_512_ema8_v1",
+  "source_sha256": {
+    "train.py": "d255f0ba4dabc018a883b75c88de7fb202ac7e49d91330aff9f929031e670e78",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "validate.py": "841aad5eb14f1ce99ccc800d6876bdd860220b6820c97d2979f104f8d93baef5",
+    "scripts/run_convnext_ema8.py": "5689a2ad6291da3a9b5fdeb8d71caf962a89e9893f0ea519b82cb0426dd3c8e1"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "epochs": 8,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "lr": 6e-05,
+  "ema_decay": 0.999,
+  "prefix_control": "outputs/convnext_512_ema_lr_v1/lr6e-05_seed{seed}",
+  "frozen_inference_baseline": "outputs/convnext_512_ema_lr_inference_v1/logit.json",
+  "baseline_auroc": 0.9899576932259192,
+  "baseline_ap": 0.837681567470512,
+  "baseline_recipe_sha256": "04262f06ba6394db392576190dc0df4859ed09a4bf6223f66e1e9e63c07a08d7",
+  "inference_selection": "Fixed equal-logit mean, no TTA; full5849 batch1, >=0.0003 AUROC gain to advance as meaningful candidate; AP reported; runtime <100ms locally; full independent reload",
+  "scope": "Validation metrics only, no test-driven selection; keep goal active and try next single factor if no improvement"
+}
