@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "rows": 5855,
+  "sha256": "8cd5e63de3d02272fea6457b2a9509987cab96be15d7fe5683c1ddebdfc6e8f6",
+  "bytes": 237276,
+  "schema_order_names_range_threshold": "PASS",
+  "platform_uploaded": false,
+  "scope": "Candidate selected on validation only; no online score known"
+}

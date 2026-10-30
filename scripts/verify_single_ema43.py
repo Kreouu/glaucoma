@@ -1,4 +1,4 @@
-"""Native-logit, full batch-one validation and same-image runtime for four fixed EMA recipes."""
+"""Full batch-one validation and fixed-sample timing for the existing single EMA seed43."""
 import csv
 import gc
 import json
@@ -50,7 +50,7 @@ def main():
             for name in recipes:
                 value=predictor.aggregate(both if name.endswith('_tta') else original,name.split('_')[0]).item()
                 assert 0<=value<=1;values[name].append(value)
-            if step%1000==0:print(f'EMA native variants {step}/5849',flush=True)
+            if step%1000==0:print(f'Single EMA43 validation {step}/5849',flush=True)
     del predictor;gc.collect();torch.cuda.empty_cache()
     with (ROOT/'outputs/convnext_512_inference_candidates_v1/ensemble_valid_predictions.csv').open() as stream:base=list(csv.DictReader(stream))
     assert [(r['Image_name'],int(r['True_Label'])) for r in base]==list(zip(names,labels))

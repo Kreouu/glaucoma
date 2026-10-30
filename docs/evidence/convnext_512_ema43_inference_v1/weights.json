@@ -1,0 +1,25 @@
+{
+  "method": "equal_probability_mean",
+  "horizontal_flip": false,
+  "members": [
+    {
+      "seed": 43,
+      "file": "seed43.pt",
+      "sha256": "7d3171f9d5796f53e21797365fe2d2a612b883b37cd74ab8db552fdbdb2a0e19",
+      "bytes": 111344415,
+      "original_sha256": "7d3171f9d5796f53e21797365fe2d2a612b883b37cd74ab8db552fdbdb2a0e19",
+      "tensor_equality": "PASS",
+      "weight_type": "ema"
+    }
+  ],
+  "source_sha256": {
+    "ensemble_inference.py": "f4da0c69f7c8c55e3932c93469e4ceaf32fd13fa09cf6845ee73fdeb4ce1a56e",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+  },
+  "precision": "FP16 autocast, FP32 sigmoid and mean",
+  "test_inference": false
+}

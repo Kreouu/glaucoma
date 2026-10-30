@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "baseline": {
+    "auroc": 0.9872450443147727,
+    "ap": 0.8260003565275162
+  },
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "scope": "Native logits, fixed equal weights; validation exploration, not official score gain or T4 verification",
+  "candidates": {
+    "logit": {
+      "auroc": 0.9884364260214421,
+      "ap": 0.8151757674698922,
+      "delta_auroc": 0.0011913817066694365,
+      "delta_ap": -0.010824589057624068,
+      "mean_ms": 18.98433490258564,
+      "model_bytes": 111344415,
+      "reload_difference": 0.0,
+      "reload_label_changes": 0,
+      "promising": true
+    }
+  }
+}

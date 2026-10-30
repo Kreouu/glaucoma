@@ -1,9 +1,9 @@
 {
   "status": "PASS",
   "files": 75,
-  "raw_bytes_before_inventory": 456972940,
-  "archive_bytes": 420176086,
-  "archive_sha256": "30ffa6c8b400671ac9358d8e734ef457c1151315b087b12a1bf3d243d6d3a87f",
+  "raw_bytes_before_inventory": 456973090,
+  "archive_bytes": 420176149,
+  "archive_sha256": "829469d487bb33e34bf7131915fd6bcf1d65cdc8e1499c7ec0918d8a2ed5b27e",
   "model_bytes": 334033245,
   "conservative_inference_bytes": 334091787,
   "formula_errors": 0,

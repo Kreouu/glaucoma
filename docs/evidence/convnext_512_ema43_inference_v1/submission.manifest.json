@@ -1,0 +1,10 @@
+{
+  "rows": 5855,
+  "recipe_sha256": "4894623acb11d33c6e3a753e7126ff4090abf9127bf58bd5284652751fdd7d71",
+  "weights_manifest_sha256": "4cd0a9e98ab996835adaa12f0726b1dcfcb0b05bdaa549eba60552c55fbe0eac",
+  "names_csv_sha256": "3eba62c4e23201f85ce2a25e2290d195221159cf78b7fe8c49ecfb0f30a17c54",
+  "output_sha256": "8cd5e63de3d02272fea6457b2a9509987cab96be15d7fe5683c1ddebdfc6e8f6",
+  "script_sha256": "9090bd1ae0fd44e1e0ff46ea0765c11d0b39440c0de2783c07327a30c7f4ff82",
+  "aggregation": "logit",
+  "horizontal_flip": false
+}

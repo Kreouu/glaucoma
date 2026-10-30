@@ -1,0 +1,19 @@
+{
+  "bootstrap_repeats": 2000,
+  "seed": 20261030,
+  "images": 5849,
+  "positives": 191,
+  "auroc_delta": 0.000623219867527669,
+  "ap_delta": -0.014652525216457879,
+  "paired_stratified_95_percentile_intervals": [
+    [
+      -0.0013082759156750334,
+      0.0030290937726130678
+    ],
+    [
+      -0.026267745219145107,
+      -0.0034613247115956765
+    ]
+  ],
+  "scope": "Post-selection on repeatedly reused validation set; intervals do not adjust selection bias, not proof of online improvement"
+}
