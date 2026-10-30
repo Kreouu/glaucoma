@@ -1,0 +1,14 @@
+{
+  "training_wrapper_pid": 799,
+  "source_sha256": {
+    "scripts/verify_ema_variants.py": "f10bdcb899e5ecedf80a391ddb06b6c571d8cbb17051721569fe3c3828bdfafd",
+    "scripts/finish_convnext_ema8.py": "5742018d41ca09887df187347b6a180ac65584e92479a393c3c53f805f4576d8",
+    "scripts/reload_ema_variant.py": "9970fde29271e6c15e367ee6d3e36877538df3fd013cf1d9653152ddba72f48f",
+    "scripts/predict_ema_variant.py": "9090bd1ae0fd44e1e0ff46ea0765c11d0b39440c0de2783c07327a30c7f4ff82",
+    "ema_variant_inference.py": "4c075af76dc2aaf8e7516c41771455f873a968998c3a92f8d90b08e54a41a088",
+    "ensemble_inference.py": "f4da0c69f7c8c55e3932c93469e4ceaf32fd13fa09cf6845ee73fdeb4ce1a56e",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb"
+  },
+  "selection": "Fixed no-TTA equal-logit mean; compare to frozen five-epoch LR6e-5 candidate, threshold +0.0003 AUROC; AP reported; no test-based selection",
+  "monitoring": "Kernel pidfd completion event; no periodic training-metric queries; assistant checks hourly"
+}
