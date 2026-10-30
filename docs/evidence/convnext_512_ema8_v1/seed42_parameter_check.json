@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "seed": 42,
+  "best_ema_parameters_exactly_equal_to_five_epoch_control": true,
+  "scope": "Direct tensor comparison of the selected best EMA checkpoints, not complete RNG or optimizer snapshots"
+}
