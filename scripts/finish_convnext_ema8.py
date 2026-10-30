@@ -1,13 +1,21 @@
 """Wait for the existing training job, then run fixed validation and conditional release."""
 import hashlib
 import json
-import os
-import select
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+
+
+def wait_for_pid(pid):
+    # The conda build lacks os.pidfd_open; Ubuntu's system Python exposes it.
+    helper="""import os,select,sys
+try: fd=os.pidfd_open(int(sys.argv[1]))
+except ProcessLookupError: sys.exit(0)
+poll=select.poll();poll.register(fd,select.POLLIN);poll.poll();os.close(fd)
+"""
+    subprocess.run(['/usr/bin/python3','-c',helper,str(pid)],check=True)
 
 
 def main():
@@ -16,10 +24,7 @@ def main():
     pid=plan['training_wrapper_pid'];proc=Path(f'/proc/{pid}/cmdline')
     if proc.exists():
         assert 'run_convnext_ema8.py' in proc.read_text()
-        try:fd=os.pidfd_open(pid)
-        except ProcessLookupError:pass
-        else:
-            poll=select.poll();poll.register(fd,select.POLLIN);poll.poll();os.close(fd)
+        wait_for_pid(pid)
     assert (ROOT/'outputs/convnext_512_ema8_v1.exit').read_text().strip()=='0'
     def run(*args):subprocess.run([sys.executable,'-u',*args],cwd=ROOT,check=True)
     run('scripts/verify_ema_variants.py','--epochs-study')
