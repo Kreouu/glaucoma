@@ -30,7 +30,7 @@
   --manifest outputs/convnext_512_inference_candidates_v1/ensemble.json
 ```
 
-准备正式预测时，可按官方CSV顺序生成一个新文件（本轮未执行测试预测）：
+2026-10-30已按用户授权生成纯集成版本：outputs/convnext_ensemble_submission/submission.csv，5855行、Mac/WSL核对通过，尚未上传。以下命令供复用，重新运行前需选择新的输出目录：
 
 ```bash
 ~/miniconda3/envs/glaucoma/bin/python scripts/predict_convnext_ensemble.py \

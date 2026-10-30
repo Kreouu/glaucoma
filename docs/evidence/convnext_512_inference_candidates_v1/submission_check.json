@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "rows": 5855,
+  "header": [
+    "Image_name",
+    "Probability",
+    "Pred_Label"
+  ],
+  "order_matches_test_csv": true,
+  "unique_images": 5855,
+  "finite_probabilities": true,
+  "probability_range": [
+    0.00047796088620088995,
+    0.9909415245056152
+  ],
+  "threshold": 0.5,
+  "model": "ConvNeXt-Tiny 512 seeds42/43/44 equal probability mean, no TTA",
+  "inference_manifest_sha256": "cdd5901a73c7106b90b2d07aa30b741ea60d2dc3c2c4ea950c4998048cdb5e99",
+  "submission_sha256": "35a061478c49014184506193ad92178d06e8f2b9966c0c723dfec6273bfd9cc5",
+  "bytes": 232998,
+  "independent_samples": 10,
+  "independent_mean_max_difference": 5.820766091346741e-10,
+  "old_9808_csv_sha256": "a59d55c50871cc33e675d2a9bed3f5c77f9465e3689b1b9932a002fa541e564a",
+  "platform_uploaded": false
+}
