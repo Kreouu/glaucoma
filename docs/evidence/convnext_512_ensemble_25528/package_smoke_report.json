@@ -1,0 +1,23 @@
+{
+  "images": 100,
+  "warmup_images": 5,
+  "rounds": 3,
+  "batch_size": 1,
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "mean_ms": 36.618641605503704,
+  "round_mean_ms": [
+    39.19974248041399,
+    38.459937827137765,
+    32.19624450895935
+  ],
+  "inconsistent_images": 0,
+  "max_probability_difference": 0.0,
+  "local_gate_pass": true,
+  "official_T4_verified": false,
+  "inference_manifest_sha256": "cdd5901a73c7106b90b2d07aa30b741ea60d2dc3c2c4ea950c4998048cdb5e99",
+  "submission_sha256": "d3875a17681ff9974116a291918ea954dc9b9bb976521ad098ba170df87359df",
+  "status": "PASS",
+  "prediction_images": 105,
+  "scope": "Standalone package code using existing conda env, validation images; not clean-install nor official T4",
+  "full_reference_difference": 0.0
+}

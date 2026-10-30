@@ -1,0 +1,36 @@
+{
+  "model": "convnext_tiny",
+  "size": 512,
+  "epochs": 5,
+  "batch_size": 16,
+  "workers": 4,
+  "precision": "fp16",
+  "lr": 3e-05,
+  "pos_weight": 3,
+  "ema_decay": 0.999,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "sources": {
+    "train.py": "d255f0ba4dabc018a883b75c88de7fb202ac7e49d91330aff9f929031e670e78",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "validate.py": "841aad5eb14f1ce99ccc800d6876bdd860220b6820c97d2979f104f8d93baef5",
+    "scripts/audit_convnext_ema.py": "8fe2326a125739030e102d940f8faac1ebf5716d786e456a738e70a9cef5d0d2",
+    "scripts/run_convnext_ema_512.sh": "78a4bc2efe4954548f381db5d79f060bfa3ba46d8e5265fa13d74b79ae0e5ade"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "baseline_score": 98.15,
+  "baseline_submission_sha256": "35a061478c49014184506193ad92178d06e8f2b9966c0c723dfec6273bfd9cc5",
+  "baseline_ensemble_auroc_batch16": 0.9872431936247431,
+  "baseline_ensemble_ap_batch16": 0.8259292440019308,
+  "acceptance": "First require exact online-control reproducibility. Compare all paired seeds and fixed equal ensemble; seek ensemble AUROC gain >=0.0005 without AP loss, then verify actual batch-one deployment/runtime/size. Not a statistical significance threshold or promise of official score gain."
+}

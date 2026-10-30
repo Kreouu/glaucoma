@@ -1,0 +1,8 @@
+{
+  "rule_file": "docs/参赛规则.pdf",
+  "rule_sha256": "ff6aa3adbfd3d000194253055a93dbce8a140031c8432f892046a49de8136fb6",
+  "page": 1,
+  "clause": "NC（非商业）类许可证权重不予接受",
+  "fastervit_1": "The tested NVIDIA Source Code License-NC weights are research-only and ineligible for competition submission; do not optimize as a competition candidate.",
+  "convnext": "Current ImageNet-1k weights retain Apache-2.0/model-card and MIT upstream notices; no NC model included in the new package."
+}

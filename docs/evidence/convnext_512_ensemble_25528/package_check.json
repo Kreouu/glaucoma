@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "files": 68,
+  "raw_bytes_before_inventory": 456949986,
+  "archive_bytes": 420195394,
+  "archive_sha256": "d03745f9fdfedf57609a87bdf11fffb1752bdcf18d20c28b3de7ff34ef115881",
+  "model_bytes": 334041477,
+  "conservative_inference_bytes": 334091382,
+  "formula_errors": 0,
+  "preview_pages_inspected": 7,
+  "standalone_smoke": "105 validation images / 100 timed / 3 rounds; max diff 0, 36.6186ms on RTX5060Ti",
+  "pending": [
+    "team identity",
+    "official T4 and designated images",
+    "formal upload"
+  ],
+  "old_packages_preserved": true
+}

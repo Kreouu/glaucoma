@@ -1,0 +1,12 @@
+{
+  "id": 25528,
+  "time": "2026-10-30 09:44:10",
+  "score": 98.15,
+  "status": "已正确评分",
+  "previous_score": 98.08,
+  "gain": 0.07,
+  "source": "用户提供的平台截图",
+  "local_submission": "outputs/convnext_ensemble_submission/submission.csv",
+  "submission_sha256": "35a061478c49014184506193ad92178d06e8f2b9966c0c723dfec6273bfd9cc5",
+  "binding": "按本轮对话对应用户最近提交的纯集成CSV；平台截图不显示文件哈希"
+}

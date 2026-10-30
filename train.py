@@ -60,6 +60,7 @@ def main():
     parser.add_argument('--warmup-epochs', type=float, default=1.0)
     parser.add_argument('--min-lr', type=float, default=3e-7)
     parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
+    parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--train-limit', type=int)
     parser.add_argument('--valid-limit', type=int)
@@ -68,6 +69,10 @@ def main():
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
         parser.error('pos-weight must be finite and positive')
+    if not np.isfinite(args.ema_decay) or not 0 <= args.ema_decay < 1:
+        parser.error('ema-decay must be in [0, 1)')
+    if args.ema_decay and args.model != 'convnext_tiny':
+        parser.error('This EMA comparison supports ConvNeXt-Tiny only')
     if args.lr_schedule == 'warmup_cosine':
         if not np.isfinite([args.lr, args.min_lr, args.warmup_epochs]).all():
             parser.error('Schedule parameters must be finite')
@@ -149,7 +154,18 @@ def main():
     config['git_revision'] = revision.stdout.strip() if revision.returncode == 0 else None
     state = subprocess.run(['git', 'status', '--porcelain'], cwd=project, capture_output=True, text=True)
     config['git_dirty'] = bool(state.stdout.strip())
+    if args.ema_decay:
+        config.update(weight_type='online', ema_update_policy='successful optimizer updates only')
     (args.output_dir / 'config.json').write_text(json.dumps(config, indent=2) + '\n')
+    if args.ema_decay:
+        ema_dir = args.output_dir / 'ema'
+        ema_dir.mkdir()
+        ema_config = dict(config, output_dir=str(ema_dir), weight_type='ema',
+                          ema_initialization='first successful update copies online parameters',
+                          training_loss_source='online model')
+        (ema_dir / 'config.json').write_text(json.dumps(ema_config, indent=2) + '\n')
+        for split in ('train', 'valid'):
+            (ema_dir / f'{split}_manifest.csv').write_bytes((args.output_dir / f'{split}_manifest.csv').read_bytes())
     print(json.dumps(config, indent=2), flush=True)
     generator = torch.Generator().manual_seed(args.seed)
     options = dict(batch_size=args.batch_size, num_workers=args.workers, pin_memory=True,
@@ -179,10 +195,18 @@ def main():
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)
     validation_criterion = torch.nn.BCEWithLogitsLoss()
     scaler = torch.amp.GradScaler('cuda', enabled=args.precision == 'fp16')
+    ema_model = None
+    if args.ema_decay:
+        from torch.optim.swa_utils import AveragedModel, get_ema_multi_avg_fn
+        if list(model.buffers()):
+            raise ValueError('This EMA comparison expects the buffer-free ConvNeXt implementation')
+        ema_model = AveragedModel(model, multi_avg_fn=get_ema_multi_avg_fn(args.ema_decay))
+        ema_model.eval().requires_grad_(False)
+        ema_best = -float('inf')
     lr_stream = None
     if args.lr_schedule == 'warmup_cosine':
         from lr_schedule import warmup_cosine_lr
-    if args.lr_schedule == 'warmup_cosine' or args.precision == 'bf16' or args.model == 'fastervit_1':
+    if args.lr_schedule == 'warmup_cosine' or args.precision == 'bf16' or args.model == 'fastervit_1' or args.ema_decay:
         lr_stream = (args.output_dir / 'learning_rate.csv').open('w', newline='')
         lr_writer = csv.writer(lr_stream)
         lr_writer.writerow(['step', 'epoch', 'batch', 'lr', 'amp_scale_before', 'amp_scale_after', 'amp_skipped', 'grad_norm'])
@@ -224,6 +248,8 @@ def main():
                 scale_after = scaler.get_scale()
                 skipped = scale_after < scale_before
                 skipped_updates += int(skipped)
+                if ema_model is not None and not skipped:
+                    ema_model.update_parameters(model)
                 lr_writer.writerow([planned_step, epoch, step, current_lr, scale_before, scale_after, int(skipped), grad_norm])
                 if step == 1 or step % 25 == 0 or step == len(train_loader):
                     lr_stream.flush()
@@ -234,6 +260,7 @@ def main():
             print_progress('Train', epoch, step, len(train_loader), train_seen, train_loss, started)
         model.eval()
         predictions, targets, names = [], [], []
+        ema_predictions, ema_valid_loss = [], 0.0
         valid_loss = 0.0
         valid_started = time.perf_counter()
         valid_seen = 0
@@ -244,6 +271,12 @@ def main():
                 with torch.autocast('cuda', dtype=autocast_dtype):
                     logits = model(images).flatten()
                     loss = validation_criterion(logits, labels)
+                    if ema_model is not None:
+                        ema_logits = ema_model(images).flatten()
+                        ema_loss = validation_criterion(ema_logits, labels)
+                if ema_model is not None:
+                    ema_predictions.extend(ema_logits.float().sigmoid().cpu().tolist())
+                    ema_valid_loss += ema_loss.item() * len(labels)
                 valid_loss += loss.item() * len(labels)
                 predictions.extend(logits.float().sigmoid().cpu().tolist())
                 targets.extend(labels.cpu().tolist())
@@ -274,9 +307,28 @@ def main():
                 writer = csv.writer(stream)
                 writer.writerow(['Image_name', 'True_Label', 'Probability'])
                 writer.writerows(zip(names, (int(t) for t in targets), predictions))
+        if ema_model is not None:
+            if not np.isfinite(ema_predictions).all() or not np.isfinite(ema_valid_loss):
+                raise RuntimeError('Non-finite EMA validation output')
+            ema_metrics = dict(metrics, valid_loss=ema_valid_loss / len(valid_data),
+                               val_auroc=float(roc_auc_score(targets, ema_predictions)),
+                               val_auprc=float(average_precision_score(targets, ema_predictions)),
+                               ema_updates=int(ema_model.n_averaged.item()))
+            with (ema_dir / 'metrics.jsonl').open('a') as stream:
+                stream.write(json.dumps(ema_metrics) + '\n')
+            print('EMA ' + json.dumps(ema_metrics), flush=True)
+            if ema_metrics['val_auroc'] > ema_best:
+                ema_best = ema_metrics['val_auroc']
+                torch.save(dict(model=ema_model.module.state_dict(), config=ema_config, metrics=ema_metrics), ema_dir / 'best.pt')
+                with (ema_dir / 'best_valid_predictions.csv').open('w', newline='') as stream:
+                    writer = csv.writer(stream)
+                    writer.writerow(['Image_name', 'True_Label', 'Probability'])
+                    writer.writerows(zip(names, (int(t) for t in targets), ema_predictions))
     if lr_stream is not None:
         lr_stream.close()
     (args.output_dir / 'best.sha256').write_text(sha256(args.output_dir / 'best.pt') + '  best.pt\n')
+    if ema_model is not None:
+        (ema_dir / 'best.sha256').write_text(sha256(ema_dir / 'best.pt') + '  best.pt\n')
     print(f'Completed. Best validation AUROC: {best:.6f}', flush=True)
 
 
