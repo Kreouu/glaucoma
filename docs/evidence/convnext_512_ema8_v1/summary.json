@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "seeds": [
+    {
+      "seed": 42,
+      "online": {
+        "best_epoch": 4,
+        "auroc": 0.9863432955977636,
+        "ap": 0.803370275237694,
+        "delta_auroc": 0.0,
+        "checkpoint_sha256": "955dc133ac0582d54e8d044d8ec8a4f8c8cfdf41b21e6396f5a0609187250d62"
+      },
+      "ema": {
+        "best_epoch": 5,
+        "auroc": 0.9885312738854682,
+        "ap": 0.8114667452935314,
+        "delta_auroc": 0.0,
+        "checkpoint_sha256": "c22224fc23cb8807ee67b62c99c26aba538d91f3ef9a1cb00d28e2ada2757f7a"
+      }
+    },
+    {
+      "seed": 43,
+      "online": {
+        "best_epoch": 3,
+        "auroc": 0.9858852498153937,
+        "ap": 0.8002373148892772,
+        "delta_auroc": 0.0,
+        "checkpoint_sha256": "c8b9e6d005f47a6f16724578e23a5305acd5897d53fd43b155fa4089865daa3f"
+      },
+      "ema": {
+        "best_epoch": 3,
+        "auroc": 0.9884868573247535,
+        "ap": 0.8340899219532728,
+        "delta_auroc": 0.0,
+        "checkpoint_sha256": "7b3dd1645c9a023b0a5eff42d33c35c27740fa4d056d9f046b6999a121065140"
+      }
+    },
+    {
+      "seed": 44,
+      "online": {
+        "best_epoch": 4,
+        "auroc": 0.9846929427637094,
+        "ap": 0.7840596610555177,
+        "delta_auroc": 0.0,
+        "checkpoint_sha256": "59734d159c2047f795f486cdf3b1d8d2a3d549381ce80a6e35607cefc04c2d54"
+      },
+      "ema": {
+        "best_epoch": 5,
+        "auroc": 0.9886312111470762,
+        "ap": 0.8232269481237283,
+        "delta_auroc": 0.0,
+        "checkpoint_sha256": "de6b87d9949f1d57d52ba5ac1c016292ebd81c13cee63b119118f23cae6bca6b"
+      }
+    }
+  ],
+  "mean_paired_ema_auroc_delta": 0.0,
+  "positive_seeds": 0,
+  "next": "Always evaluate fixed no-TTA equal-logit ensemble at batch1 against the frozen current candidate",
+  "scope": "Eight-epoch best-of-more-epochs selection on reused validation data; no test fitting or upload"
+}

@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "weight_type": "online",
+      "first_five_metrics_exact": true,
+      "compared_keys": [
+        "epoch",
+        "train_loss",
+        "valid_loss",
+        "val_auroc",
+        "val_auprc",
+        "lr_last",
+        "amp_skipped_updates"
+      ]
+    },
+    {
+      "weight_type": "ema",
+      "first_five_metrics_exact": true,
+      "compared_keys": [
+        "epoch",
+        "train_loss",
+        "valid_loss",
+        "val_auroc",
+        "val_auprc",
+        "lr_last",
+        "amp_skipped_updates",
+        "ema_updates"
+      ]
+    }
+  ],
+  "first_five_lr_amp_trace_exact": true,
+  "scope": "Exact numerical metrics and AMP/LR trace; no claim of saved epoch-five parameter/RNG snapshots"
+}

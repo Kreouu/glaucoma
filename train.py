@@ -56,8 +56,9 @@ def main():
     parser.add_argument('--jpeg-draft', action='store_true', help='Reduced JPEG decode; use the same mode for inference')
     parser.add_argument('--lr', type=float, default=1e-4)
     parser.add_argument('--precision', choices=['fp16', 'bf16'], default='fp16')
-    parser.add_argument('--lr-schedule', choices=['constant', 'warmup_cosine'], default='constant')
+    parser.add_argument('--lr-schedule', choices=['constant', 'warmup_cosine', 'late_cosine'], default='constant')
     parser.add_argument('--warmup-epochs', type=float, default=1.0)
+    parser.add_argument('--decay-start-epoch', type=int, default=5, help='Completed constant-LR epochs before late cosine decay')
     parser.add_argument('--min-lr', type=float, default=3e-7)
     parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
@@ -78,6 +79,11 @@ def main():
             parser.error('Schedule parameters must be finite')
         if not 0 < args.warmup_epochs < args.epochs or not 0 < args.min_lr <= args.lr:
             parser.error('Expected 0 < warmup-epochs < epochs and 0 < min-lr <= lr')
+    if args.lr_schedule == 'late_cosine':
+        if not np.isfinite([args.lr, args.min_lr]).all() or not 0 < args.min_lr <= args.lr:
+            parser.error('Expected finite 0 < min-lr <= lr')
+        if not 0 <= args.decay_start_epoch < args.epochs:
+            parser.error('Expected 0 <= decay-start-epoch < epochs')
     if not torch.cuda.is_available():
         parser.error('CUDA is required for this baseline')
     if args.precision == 'bf16' and not torch.cuda.is_bf16_supported():
@@ -123,6 +129,15 @@ def main():
         if not 1 < warmup_steps < total_steps - 1:
             parser.error('Schedule needs at least two warmup and two cosine batches')
         config.update(lr_total_steps=total_steps, lr_warmup_steps=warmup_steps,
+                      lr_step_basis='planned training batches; AMP-skipped batches still advance schedule')
+        config['source_sha256']['lr_schedule.py'] = sha256(project / 'lr_schedule.py')
+    if args.lr_schedule == 'late_cosine':
+        batches = (len(train_data) + args.batch_size - 1) // args.batch_size
+        total_steps = args.epochs * batches
+        constant_steps = args.decay_start_epoch * batches
+        if not constant_steps < total_steps - 1:
+            parser.error('Schedule needs at least two cosine batches')
+        config.update(lr_total_steps=total_steps, lr_constant_steps=constant_steps,
                       lr_step_basis='planned training batches; AMP-skipped batches still advance schedule')
         config['source_sha256']['lr_schedule.py'] = sha256(project / 'lr_schedule.py')
     if args.model == 'efficientnet_b3':
@@ -206,7 +221,9 @@ def main():
     lr_stream = None
     if args.lr_schedule == 'warmup_cosine':
         from lr_schedule import warmup_cosine_lr
-    if args.lr_schedule == 'warmup_cosine' or args.precision == 'bf16' or args.model == 'fastervit_1' or args.ema_decay:
+    if args.lr_schedule == 'late_cosine':
+        from lr_schedule import late_cosine_lr
+    if args.lr_schedule != 'constant' or args.precision == 'bf16' or args.model == 'fastervit_1' or args.ema_decay:
         lr_stream = (args.output_dir / 'learning_rate.csv').open('w', newline='')
         lr_writer = csv.writer(lr_stream)
         lr_writer.writerow(['step', 'epoch', 'batch', 'lr', 'amp_scale_before', 'amp_scale_after', 'amp_skipped', 'grad_norm'])
@@ -223,8 +240,12 @@ def main():
         for step, (images, labels, _) in enumerate(train_loader, 1):
             if lr_stream is not None:
                 planned_step = (epoch - 1) * len(train_loader) + step - 1
-                current_lr = (warmup_cosine_lr(planned_step, total_steps, warmup_steps, args.lr, args.min_lr)
-                              if args.lr_schedule == 'warmup_cosine' else args.lr)
+                if args.lr_schedule == 'warmup_cosine':
+                    current_lr = warmup_cosine_lr(planned_step, total_steps, warmup_steps, args.lr, args.min_lr)
+                elif args.lr_schedule == 'late_cosine':
+                    current_lr = late_cosine_lr(planned_step, total_steps, constant_steps, args.lr, args.min_lr)
+                else:
+                    current_lr = args.lr
                 for group in optimizer.param_groups:
                     group['lr'] = current_lr
                 scale_before = scaler.get_scale()

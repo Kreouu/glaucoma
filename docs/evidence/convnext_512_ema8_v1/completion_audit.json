@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "seeds": [
+    {
+      "seed": 42,
+      "best_ema_parameters_exact_to_five_epoch_control": true,
+      "prefix": "PASS",
+      "online_and_ema_full_reload": "PASS"
+    },
+    {
+      "seed": 43,
+      "best_ema_parameters_exact_to_five_epoch_control": true,
+      "prefix": "PASS",
+      "online_and_ema_full_reload": "PASS"
+    },
+    {
+      "seed": 44,
+      "best_ema_parameters_exact_to_five_epoch_control": true,
+      "prefix": "PASS",
+      "online_and_ema_full_reload": "PASS"
+    }
+  ],
+  "reloads": 6,
+  "images_per_reload": 5849,
+  "batch_one_ensemble_probability_max_difference": 0.0,
+  "result": "NO_GAIN",
+  "historical_sources_frozen": true
+}
