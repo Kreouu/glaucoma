@@ -1,4 +1,5 @@
 """Native-logit, full batch-one validation and same-image runtime for four fixed EMA recipes."""
+import argparse
 import csv
 import gc
 import json
@@ -18,18 +19,20 @@ from inference import file_sha256,write_prediction
 
 
 def main():
-    experiment=ROOT/'outputs/convnext_512_ema999_v1'
-    audit=json.loads((experiment/'comparison.json').read_text());assert audit['status']=='PASS'
-    output=ROOT/'outputs/convnext_512_ema999_inference_v1';output.mkdir(parents=True,exist_ok=False)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--lr-study',action='store_true');args=parser.parse_args()
+    experiment=ROOT/('outputs/convnext_512_ema_lr_v1' if args.lr_study else 'outputs/convnext_512_ema999_v1')
+    audit=json.loads((experiment/('summary.json' if args.lr_study else 'comparison.json')).read_text());assert audit['status']=='PASS'
+    if args.lr_study:assert audit['decision']['proceed_to_batch_one']
+    output=ROOT/('outputs/convnext_512_ema_lr_inference_v1' if args.lr_study else 'outputs/convnext_512_ema999_inference_v1');output.mkdir(parents=True,exist_ok=False)
     weights=json.loads((ROOT/'outputs/convnext_512_inference_candidates_v1/ensemble.json').read_text())
     for entry in weights['members']:
-        original=experiment/f"seed{entry['seed']}/ema/best.pt"
+        original=experiment/(f"lr6e-05_seed{entry['seed']}/ema/best.pt" if args.lr_study else f"seed{entry['seed']}/ema/best.pt")
         path=output/entry['file'];shutil.copy(original,path)
         assert file_sha256(path)==(original.parent/'best.sha256').read_text().split()[0]
         entry.update(sha256=file_sha256(path),original_sha256=file_sha256(original),bytes=path.stat().st_size,weight_type='ema')
     (output/'weights.json').write_text(json.dumps(weights,indent=2)+'\n')
     recipes={}
-    for aggregation in ('probability','logit'):
+    for aggregation in (('logit',) if args.lr_study else ('probability','logit')):
         for flip in (False,True):
             name=aggregation+('_tta' if flip else '')
             path=output/f'{name}.json';recipe=dict(aggregation=aggregation,horizontal_flip=flip,
@@ -39,7 +42,7 @@ def main():
     with (ROOT/'outputs/convnext_512_w3_v1/seed43/valid_manifest.csv').open() as stream:manifest=list(csv.DictReader(stream))
     names=[r['Image_name'] for r in manifest];labels=[int(r['True_Label']) for r in manifest]
     assert len(names)==5849 and sum(labels)==191
-    predictor=EMAVariantPredictor(recipes['probability'])
+    predictor=EMAVariantPredictor(next(iter(recipes.values())))
     image_root=ROOT/predictor.loader.predictors[0].config['data_root']/'valid'
     values={name:[] for name in recipes}
     with torch.inference_mode():
@@ -51,12 +54,13 @@ def main():
                 assert 0<=value<=1;values[name].append(value)
             if step%1000==0:print(f'EMA native variants {step}/5849',flush=True)
     del predictor;gc.collect();torch.cuda.empty_cache()
-    with (ROOT/'outputs/convnext_512_inference_candidates_v1/ensemble_valid_predictions.csv').open() as stream:base=list(csv.DictReader(stream))
+    baseline_path=ROOT/('outputs/convnext_512_ema999_inference_v1/logit_tta_valid_predictions.csv' if args.lr_study else 'outputs/convnext_512_inference_candidates_v1/ensemble_valid_predictions.csv')
+    with baseline_path.open() as stream:base=list(csv.DictReader(stream))
     assert [(r['Image_name'],int(r['True_Label'])) for r in base]==list(zip(names,labels))
     base_values=[float(r['Probability']) for r in base]
     baseline=dict(auroc=float(roc_auc_score(labels,base_values)),ap=float(average_precision_score(labels,base_values)))
     sample=json.loads((ROOT/'outputs/three_model_comparison_v1/runtime/sample.json').read_text())
-    result=dict(status='PASS',images=5849,positives=191,batch_size=1,baseline=baseline,device=torch.cuda.get_device_name(),
+    result=dict(status='PASS',baseline_predictions=str(baseline_path.relative_to(ROOT)),study='learning_rate' if args.lr_study else 'ema',images=5849,positives=191,batch_size=1,baseline=baseline,device=torch.cuda.get_device_name(),
         scope='Native logits, fixed equal weights; validation exploration, not official score gain or T4 verification',candidates={})
     for name,path in recipes.items():
         with (output/f'{name}_valid_predictions.csv').open('w',newline='') as stream:
@@ -79,7 +83,7 @@ def main():
         auc=float(roc_auc_score(labels,values[name]));ap=float(average_precision_score(labels,values[name]));latency=statistics.mean(v for r in timings for v in r)
         entry=dict(auroc=auc,ap=ap,delta_auroc=auc-baseline['auroc'],delta_ap=ap-baseline['ap'],mean_ms=latency,
             model_bytes=sum(r['bytes'] for r in weights['members']),reload_difference=difference,reload_label_changes=label_changes,
-            promising=auc-baseline['auroc']>=.0005 and ap>=baseline['ap'] and latency<100)
+            promising=auc-baseline['auroc']>=.0005 and (args.lr_study or ap>=baseline['ap']) and latency<100)
         result['candidates'][name]=entry;print(name,json.dumps(entry),flush=True)
         del predictor;gc.collect();torch.cuda.empty_cache()
     (output/'verification.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2),flush=True)

@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 1e-05,
+      "seed": 42,
+      "best_epoch": 5,
+      "auroc": 0.979579486211434,
+      "ap": 0.7793276536911365,
+      "delta_auroc": -0.005645992608343975,
+      "checkpoint_sha256": "2f0e1a5dee5dc7831469ea504a9507649adb46eb515d933b0d03266fcc7c02c6",
+      "reload": "PASS"
+    },
+    {
+      "lr": 6e-05,
+      "seed": 42,
+      "best_epoch": 5,
+      "auroc": 0.9885312738854682,
+      "ap": 0.8114667452935314,
+      "delta_auroc": 0.003305795065690287,
+      "checkpoint_sha256": "75ac1551ff97d7dea0517a091dab226c1c9dcf538cc45a126a39595e5f5e493f",
+      "reload": "PASS"
+    },
+    {
+      "lr": 6e-05,
+      "seed": 43,
+      "best_epoch": 3,
+      "auroc": 0.9884868573247535,
+      "ap": 0.8340899219532728,
+      "delta_auroc": 4.8117940774194956e-05,
+      "checkpoint_sha256": "e10e7a9aea1d0d24ae9eb1158afbc3e28ab4cb2876c6d896e7b7f257ce01b544",
+      "reload": "PASS"
+    },
+    {
+      "lr": 6e-05,
+      "seed": 44,
+      "best_epoch": 5,
+      "auroc": 0.9886312111470762,
+      "ap": 0.8232269481237283,
+      "delta_auroc": 0.0031665306409495164,
+      "checkpoint_sha256": "ea5b5324d789fbb5425324ac6fd2e8efd9b7a6198af4f8565b960cb969a250e9",
+      "reload": "PASS"
+    }
+  ],
+  "decision": {
+    "selected_lr": 6e-05,
+    "paired_mean_delta_auroc": 0.002173481215804666,
+    "positive_seeds": 3,
+    "proceed_to_batch_one": true
+  },
+  "scope": "Validation-only exploratory selection, no test fitting or automatic upload; AP recorded, not hard gate"
+}

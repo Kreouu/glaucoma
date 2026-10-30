@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "recipe_sha256": "236eaee9c3a88d6fbfd823991439f0fd7fc50aa5f5016e11474a25fd98e106c1",
+  "script_sha256": "b9c973f4c34e8552cccf86531d3155f2186a7353e77bfab14a3b8de517f707e6",
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "images": 100,
+  "warmup": 5,
+  "rounds": 3,
+  "batch_size": 1,
+  "max_probability_difference": 0.0,
+  "mean_ms": {
+    "decode_preprocess_ms": 11.043613916554023,
+    "transfer_ms": 0.43783312692539766,
+    "model_aggregate_ms": 38.574639136204496,
+    "write_ms": 0.056388389881855495,
+    "total_ms": 50.11247456956577
+  },
+  "official_T4_verified": false,
+  "scope": "Extra synchronization at stage boundaries; diagnostic attribution on validation images, not official timing or independent baseline speed comparison"
+}
