@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "files": 52,
+  "archive_bytes": 335308800,
+  "archive_sha256": "5bbf99e4a91c2c141d455c7a30c8e10a254c2feef3d46d759dd28911dce3832d",
+  "model_bytes": 334033245,
+  "all_hashes_verified": true,
+  "old_9815_csv": "UNCHANGED",
+  "new_csv_sha256": "855831fe645e121907c6ab65d575ffcf9cc033355bc10c77952dd45e8cc0d051"
+}

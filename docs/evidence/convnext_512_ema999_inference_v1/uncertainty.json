@@ -1,0 +1,14 @@
+{
+  "method": "paired stratified bootstrap over fixed validation images",
+  "repeats": 2000,
+  "seed": 20261030,
+  "delta_auroc_95ci": [
+    -0.001783683483887044,
+    0.002581273052657568
+  ],
+  "delta_ap_95ci": [
+    -0.008647300099681796,
+    0.01775588373726069
+  ],
+  "limitations": "Post-selection validation intervals; not independent confirmation, not posterior probabilities, not proof of official test gain."
+}

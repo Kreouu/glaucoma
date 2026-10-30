@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "rows": 5855,
+  "unique_names": 5855,
+  "exact_test_csv_order": true,
+  "finite_probabilities": true,
+  "threshold": 0.5,
+  "model": "ConvNeXt512 EMA0.999 seeds42/43/44; native logit equal mean; horizontal-flip TTA",
+  "recipe_sha256": "236eaee9c3a88d6fbfd823991439f0fd7fc50aa5f5016e11474a25fd98e106c1",
+  "weights_manifest_sha256": "3f53fea0cc1bfa9357fcd14ce8f568a4f7fbfc36cb9209b5f3eb3297fa8d7e97",
+  "submission_sha256": "855831fe645e121907c6ab65d575ffcf9cc033355bc10c77952dd45e8cc0d051",
+  "bytes": 236822,
+  "independent_samples": 10,
+  "native_six_logit_mean_max_difference": 4.656612873077393e-10,
+  "old_9815_csv_sha256": "35a061478c49014184506193ad92178d06e8f2b9966c0c723dfec6273bfd9cc5",
+  "platform_uploaded": false
+}
