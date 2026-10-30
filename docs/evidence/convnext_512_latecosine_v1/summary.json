@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "seed": 42,
+      "best_epoch": 5,
+      "auroc": 0.9885312738854682,
+      "ap": 0.8114667452935314,
+      "delta_auroc": 0.0,
+      "checkpoint_sha256": "d7448c8e2740755f89a741f70a71a20da24c192a2e465e27b932b91c4cdeddf0"
+    }
+  ],
+  "confirmed": false,
+  "mean_paired_auroc_delta": 0.0,
+  "next": "Fixed no-TTA batch1 ensemble if confirmed; otherwise continue the active optimization goal",
+  "scope": "Late cosine only; same eight-epoch budget and exact five-epoch numerical prefix; no test fitting"
+}

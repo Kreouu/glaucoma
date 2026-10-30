@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "prefix_epochs": 5,
+  "online_and_ema_metrics_exact": true,
+  "lr_amp_trace_prefix_exact": true,
+  "cosine_steps": 9639,
+  "first_tail_lr": 6e-05,
+  "last_lr": 6e-06,
+  "tail_monotone": true
+}

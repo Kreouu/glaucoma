@@ -1,0 +1,27 @@
+{
+  "output_dir": "outputs/convnext_512_ema9995_v1",
+  "source_sha256": {
+    "train.py": "390e0f9cf00905f0c75878dd9ac2c13213ceb7f310bc3e965bd58f1f27706ca1",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "validate.py": "841aad5eb14f1ce99ccc800d6876bdd860220b6820c97d2979f104f8d93baef5",
+    "scripts/run_convnext_ema9995.py": "2cbee9a1d74d7e0295dfb82743e8fdfc762b5253278a06ee95b73739b6a3efbd"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "epochs": 8,
+  "lr": 6e-05,
+  "ema_decay": 0.9995,
+  "control": "outputs/convnext_512_ema8_v1/seed{seed}",
+  "screen_min_delta_auroc": 0.0003,
+  "baseline_inference_auroc": 0.9899576932259192,
+  "baseline_inference_ap": 0.837681567470512,
+  "selection": "Screen42 +0.0003 AUROC, then confirm43/44; no per-seed mixed-decay selection; final fixed no-TTA ensemble must beat frozen .9899576932 by >=0.0003; AP reported; full reload and latency<100ms locally",
+  "online_control": "All eight epochs ordinary-model metrics, LR/AMP trace and best validation predictions exactly match old EMA .999 runs; only shadow EMA changes"
+}
