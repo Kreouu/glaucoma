@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "rows": 5855,
+  "bytes": 237536,
+  "sha256": "065e6774aa0cf2721fd11e84bb457fdcdd0443369db0158557cfba13fc2ca546",
+  "names_order_schema_uniqueness_range_threshold": "PASS",
+  "frozen_standalone_cli": "PASS",
+  "independent_raw_three_logit_check": 1.5381710716331348e-10,
+  "recipe_sha256": "04262f06ba6394db392576190dc0df4859ed09a4bf6223f66e1e9e63c07a08d7",
+  "platform_uploaded": false
+}

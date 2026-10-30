@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "full_runs": 4,
+  "reloads": 8,
+  "checks": [
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr1e-05_seed42",
+      "best_epoch": 5,
+      "auroc": 0.9798154491902307,
+      "ap": 0.7692317519661128,
+      "checkpoint_sha256": "9968791f332523f4043acfc117446b47558f40814ae27cd60f0f6f7ffe656aac",
+      "images": 5849,
+      "positives": 191
+    },
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr1e-05_seed42/ema",
+      "best_epoch": 5,
+      "auroc": 0.979579486211434,
+      "ap": 0.7793276536911365,
+      "checkpoint_sha256": "2f0e1a5dee5dc7831469ea504a9507649adb46eb515d933b0d03266fcc7c02c6",
+      "images": 5849,
+      "positives": 191
+    },
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr6e-05_seed42",
+      "best_epoch": 4,
+      "auroc": 0.9863432955977636,
+      "ap": 0.803370275237694,
+      "checkpoint_sha256": "d10a455e893d3278454860730ac9fdcd44b3800e0540d060ade18e9e89512224",
+      "images": 5849,
+      "positives": 191
+    },
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr6e-05_seed42/ema",
+      "best_epoch": 5,
+      "auroc": 0.9885312738854682,
+      "ap": 0.8114667452935314,
+      "checkpoint_sha256": "75ac1551ff97d7dea0517a091dab226c1c9dcf538cc45a126a39595e5f5e493f",
+      "images": 5849,
+      "positives": 191
+    },
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr6e-05_seed43",
+      "best_epoch": 3,
+      "auroc": 0.9858852498153937,
+      "ap": 0.8002373148892772,
+      "checkpoint_sha256": "779b5f5bef22a11c6d9578e2de39c0659bf84263365554a882a8d3b5b458eb99",
+      "images": 5849,
+      "positives": 191
+    },
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr6e-05_seed43/ema",
+      "best_epoch": 3,
+      "auroc": 0.9884868573247535,
+      "ap": 0.8340899219532728,
+      "checkpoint_sha256": "e10e7a9aea1d0d24ae9eb1158afbc3e28ab4cb2876c6d896e7b7f257ce01b544",
+      "images": 5849,
+      "positives": 191
+    },
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr6e-05_seed44",
+      "best_epoch": 4,
+      "auroc": 0.9846929427637094,
+      "ap": 0.7840596610555177,
+      "checkpoint_sha256": "68ead7e22513e533f851384f3d86bfea1ff3e0d1621041ad51fbb1ea32426ef3",
+      "images": 5849,
+      "positives": 191
+    },
+    {
+      "run": "outputs/convnext_512_ema_lr_v1/lr6e-05_seed44/ema",
+      "best_epoch": 5,
+      "auroc": 0.9886312111470762,
+      "ap": 0.8232269481237283,
+      "checkpoint_sha256": "ea5b5324d789fbb5425324ac6fd2e8efd9b7a6198af4f8565b960cb969a250e9",
+      "images": 5849,
+      "positives": 191
+    }
+  ],
+  "independently_recomputed_paired_mean_delta_auroc": 0.002173481215804666,
+  "source_plan_guards": "PASS",
+  "csv_order_labels_metrics_and_checkpoint_hashes": "PASS",
+  "scope": "Audits original full-validation records and checkpoint bytes; no new training or test fitting"
+}

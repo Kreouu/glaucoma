@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "baseline_predictions": "outputs/convnext_512_ema999_inference_v1/logit_tta_valid_predictions.csv",
+  "study": "learning_rate",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "baseline": {
+    "auroc": 0.9878132061539144,
+    "ap": 0.82982829268635
+  },
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "scope": "Native logits, fixed equal weights; validation exploration, not official score gain or T4 verification",
+  "candidates": {
+    "logit": {
+      "auroc": 0.9899576932259192,
+      "ap": 0.837681567470512,
+      "delta_auroc": 0.0021444870720047637,
+      "delta_ap": 0.007853274784161979,
+      "mean_ms": 31.72020545694977,
+      "model_bytes": 334033437,
+      "reload_difference": 0.0,
+      "reload_label_changes": 0,
+      "promising": true
+    },
+    "logit_tta": {
+      "auroc": 0.9899868415938883,
+      "ap": 0.8397449985145051,
+      "delta_auroc": 0.0021736354399738422,
+      "delta_ap": 0.00991670582815507,
+      "mean_ms": 56.24746288580354,
+      "model_bytes": 334033437,
+      "reload_difference": 0.0,
+      "reload_label_changes": 0,
+      "promising": true
+    }
+  }
+}

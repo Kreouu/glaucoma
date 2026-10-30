@@ -1,0 +1,20 @@
+{
+  "selected": "logit.json",
+  "recipe_sha256": "04262f06ba6394db392576190dc0df4859ed09a4bf6223f66e1e9e63c07a08d7",
+  "weights_manifest_sha256": "71d23cbc06e9ae288ff43d43d14922a187c89ea7b3e56322ac2aa3867fd782d0",
+  "rule": "Prefer no-TTA when TTA AUROC gain <0.0002; require >=0.0005 AUROC gain vs frozen 98.16 baseline and local latency <100ms",
+  "tta_auroc_increment": 2.9148367969078492e-05,
+  "metrics": {
+    "auroc": 0.9899576932259192,
+    "ap": 0.837681567470512,
+    "delta_auroc": 0.0021444870720047637,
+    "delta_ap": 0.007853274784161979,
+    "mean_ms": 31.72020545694977,
+    "model_bytes": 334033437,
+    "reload_difference": 0.0,
+    "reload_label_changes": 0,
+    "promising": true
+  },
+  "test_used_for_selection": false,
+  "platform_uploaded": false
+}

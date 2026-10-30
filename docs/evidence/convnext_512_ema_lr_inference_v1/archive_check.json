@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "archive_bytes": 341585920,
+  "archive_sha256": "25aa422694cf1d620bd031bf58a4a09eada0278a39115507bf58c1b83ef091da",
+  "files": 67,
+  "raw_bytes_before_inventory": 341447365,
+  "model_bytes": 334033437,
+  "all_files_individually_verified": true,
+  "old_9816_csv_and_package_unchanged": true,
+  "old_9815_csv_unchanged": true
+}

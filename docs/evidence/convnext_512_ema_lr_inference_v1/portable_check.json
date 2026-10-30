@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "images": 10,
+  "seed": 20261030,
+  "standalone_cli_max_probability_difference": 0.0,
+  "independent_three_logit_cpu_sigmoid_max_difference": 1.5381710716331348e-10,
+  "labels": "PASS",
+  "scope": "Frozen standalone prediction CLI and independent equal-logit aggregation; existing conda environment, no T4 timing; random test subset only verifies fixed CSV generation"
+}
