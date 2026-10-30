@@ -1,0 +1,9 @@
+{
+  "method": "online42 + EMA43 + online44, equal probability mean; no combination/weight search",
+  "auroc": 0.9861975537579187,
+  "ap": 0.8252134776763547,
+  "baseline_auroc": 0.9872431936247431,
+  "baseline_ap": 0.8259292440019308,
+  "delta_auroc": -0.0010456398668243772,
+  "delta_ap": -0.0007157663255761282
+}

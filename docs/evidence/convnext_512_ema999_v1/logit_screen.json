@@ -1,0 +1,18 @@
+{
+  "status": "APPROXIMATE_SCREEN_ONLY",
+  "method": "equal logit average recovered from saved sigmoid probabilities; native model logits must be rechecked",
+  "baseline": {
+    "auroc": 0.9872431936247431,
+    "ap": 0.8259292440019308
+  },
+  "groups": {
+    "online": {
+      "auroc": 0.9870386923764525,
+      "ap": 0.8261071762059058
+    },
+    "ema": {
+      "auroc": 0.9879038899653736,
+      "ap": 0.8254743964923363
+    }
+  }
+}
