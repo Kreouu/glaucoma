@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "online_parameters": "exactly equal to EMA-disabled control",
+  "online_predictions": "exactly equal",
+  "metrics": "exactly equal except runtime/memory/logging",
+  "ema_updates": 8,
+  "steps": 8
+}
