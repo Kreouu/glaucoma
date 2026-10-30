@@ -4,7 +4,7 @@
 
 推理：三种子EMA0.999最佳权重，各对原图与水平翻转图输出原始logit，将六个logit等权平均后再sigmoid，阈值0.5。没有温度拟合、混合权重搜索或测试集拟合。EMA是训练过程中成功优化步的参数平均，不是冻结训练骨干。
 
-最终组合涉及EMA、聚合和TTA三项，不能把组合增益全归因于EMA。三EMA直接概率平均、单成员替换及其他固定聚合结果均保留；只有logit+TTA满足预设AUROC至少+0.0005且AP不下降的筛选条件。bootstrap两个指标区间均跨0，反复使用验证集选型可能乐观，不能承诺线上提高。官方最高仍98.15。
+最终组合涉及EMA、聚合和TTA三项，不能把组合增益全归因于EMA。三EMA直接概率平均、单成员替换及其他固定聚合结果均保留；只有logit+TTA满足预设AUROC至少+0.0005且AP不下降的筛选条件。bootstrap两个指标区间均跨0，反复使用验证集选型可能乐观，不能承诺线上提高。用户后续截图确认ID25760/98.16，当前最高98.16。
 
 ## 文件
 
@@ -13,7 +13,7 @@
 - logit_tta.json是选定推理配方；weights.json为兼容旧冻结加载器的权重清单，实际聚合方式以配方和ema_variant_inference.py为准。
 - seed42.pt/seed43.pt/seed44.pt三份EMA模型，均与已审计原EMA checkpoint字节相同；不含优化器，不用于恢复训练。
 - 其他配方及验证预测保留为实验记录，不表示均采用。
-- 新提交CSV在outputs/convnext_ema999_logit_tta_submission/submission.csv，5855行，SHA256 855831fe645e121907c6ab65d575ffcf9cc033355bc10c77952dd45e8cc0d051。已核验并同步Mac，尚未上传。
+- 新提交CSV在outputs/convnext_ema999_logit_tta_submission/submission.csv，5855行，SHA256 855831fe645e121907c6ab65d575ffcf9cc033355bc10c77952dd45e8cc0d051。已核验并同步Mac；用户截图确认已正确评分98.16，ID25760。
 
 在WSL仓库及原glaucoma环境运行；没有安装新依赖，没有新增conda环境。完整重载：
 

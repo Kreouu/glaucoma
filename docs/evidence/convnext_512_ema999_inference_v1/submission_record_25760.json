@@ -1,0 +1,11 @@
+{
+  "id": 25760,
+  "time": "2026-10-30 13:37:51",
+  "status": "已正确评分",
+  "score": 98.16,
+  "previous_score": 98.15,
+  "gain": 0.01,
+  "local_submission": "outputs/convnext_ema999_logit_tta_submission/submission.csv",
+  "submission_sha256": "855831fe645e121907c6ab65d575ffcf9cc033355bc10c77952dd45e8cc0d051",
+  "binding": "用户本轮截图与最近交付CSV按对话关联；平台截图不显示文件SHA"
+}
