@@ -2,7 +2,7 @@
   "source_sha256": {
     "knn_inference.py": "5d6829c48a9348d7a9923351b8aa6962b835e4e32d1abcb6aff1b24b093980c3",
     "scripts/verify_train_knn.py": "c376575ad363d09a646cc80d6ed9840262393e665b9286e494420f1f2cafc3c4",
-    "scripts/run_knn_then_regularization.py": "35d310cbe3c10c238df6025bf483da35f3c0b4c94395c00322f3011a39a60586",
+    "scripts/run_knn_then_regularization.py": "c329604de02ca202e48f6fdcdd991ad43e4f1aec84ba1c7540c79c2c6fc1719d",
     "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
     "six_model_inference.py": "14a594954706b5e286bce105f48b56c065ba8669c68214a487b1e8b734c18888",
     "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
@@ -31,5 +31,5 @@
   "rules_interpretation": "Rules2/6/8: only official training data, fixed deterministic parameters; bank counted as necessary model file. No explicit special approval claimed. Never include valid/test feature vectors in index.",
   "method_reference": "https://github.com/facebookresearch/dinov2/blob/main/dinov2/eval/knn.py",
   "test_access": "None in this study script; only after candidate selection will a separate frozen prediction script be used",
-  "wait_for": "six-model full original/packed proof; no GPU concurrency"
+  "wait_for": "Existing regularization already started; wait for it to finish, then require prior six-model full proof; never interrupt live training"
 }
