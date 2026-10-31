@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "CPU strict official feature loading and small dynamic-size forward only; not GPU training or target-resolution performance",
+  "timm": "1.0.22",
+  "torch": "2.14.0+cu126",
+  "official_weight_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+  "official_tensors_identical_except_unused_mask_token": 174,
+  "removed_tensor": "mask_token (used for masked pretraining, absent from classification encoder)",
+  "all_parameters_trainable": true,
+  "parameters": 22056577,
+  "positional_embedding_shape": [
+    1,
+    1370,
+    384
+  ],
+  "dynamic_forward_size": 56,
+  "output_shape": [
+    1,
+    1
+  ],
+  "builder_sha256": "2a8402285d9141811f515649381385a465e3471bfb9c9aef897da3d4ccf746d2"
+}
