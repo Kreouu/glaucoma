@@ -13,10 +13,10 @@ def main():
     results=[]
     for seed in (43,44):
         run=ROOT/f'outputs/convnext_4060_pair_v1/constant_seed{seed}'
-        assert not run.exists()
         cmd=[sys.executable,'-u','train.py','--model','convnext_tiny','--precision','fp16','--data-root','datasets/glaucoma_first','--pretrained-path','pretrain_model/convnext_tiny_fb_in1k.bin','--batch-size','16','--size','512','--jpeg-draft','--workers','4','--lr','0.0001','--lr-schedule','constant','--pos-weight','3','--ema-decay','.999','--epochs','5','--seed',str(seed),'--output-dir',str(run)]
-        print('START',seed,flush=True)
-        with run.with_suffix('.log').open('x') as f:subprocess.run(cmd,cwd=ROOT,stdout=f,stderr=subprocess.STDOUT,check=True)
+        if not run.exists():
+            print('START',seed,flush=True)
+            with run.with_suffix('.log').open('x') as f:subprocess.run(cmd,cwd=ROOT,stdout=f,stderr=subprocess.STDOUT,check=True)
         for kind in ('','ema'):
             subprocess.run([sys.executable,'validate.py','--run-dir',str(run/kind)],cwd=ROOT,check=True)
             report=json.loads((run/kind/'reload_check.json').read_text());assert report['status']=='PASS' and report['images']==5849 and report['max_probability_difference']<=1e-6
