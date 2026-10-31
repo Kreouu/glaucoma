@@ -61,6 +61,7 @@ def main():
     parser.add_argument('--decay-start-epoch', type=int, default=5, help='Completed constant-LR epochs before late cosine decay')
     parser.add_argument('--min-lr', type=float, default=3e-7)
     parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
+    parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--train-limit', type=int)
@@ -70,6 +71,8 @@ def main():
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
         parser.error('pos-weight must be finite and positive')
+    if not np.isfinite(args.color_jitter) or not 0 <= args.color_jitter <= 1:
+        parser.error('color-jitter must be in [0, 1]')
     if not np.isfinite(args.ema_decay) or not 0 <= args.ema_decay < 1:
         parser.error('ema-decay must be in [0, 1)')
     if args.ema_decay and args.model != 'convnext_tiny':
@@ -98,6 +101,8 @@ def main():
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     train_data = FundusDataset(args.data_root, 'train', args.size, args.train_limit, args.seed, args.jpeg_draft)
+    if args.color_jitter:
+        train_data.transform.transforms.insert(0, torchvision.transforms.ColorJitter(brightness=args.color_jitter, contrast=args.color_jitter))
     valid_data = FundusDataset(args.data_root, 'valid', args.size, args.valid_limit, args.seed, args.jpeg_draft)
     for split, data in [('train', train_data), ('valid', valid_data)]:
         if {s[2] for s in data.samples} != {0, 1}:
@@ -111,7 +116,7 @@ def main():
                   weight_decay=0.01, amp=True, age_used=False, threshold=0.5,
                   validation_loss='unweighted BCEWithLogitsLoss',
                   preprocessing='RGB, aspect-preserving letterbox, ImageNet normalization',
-                  augmentation='training horizontal flip p=0.5 only',
+                  augmentation=(f'training brightness/contrast ColorJitter amplitude={args.color_jitter}, before letterbox; horizontal flip p=0.5' if args.color_jitter else 'training horizontal flip p=0.5 only'),
                   train_count=len(train_data), valid_count=len(valid_data),
                   smoke_run=args.train_limit is not None or args.valid_limit is not None,
                   torch_version=str(torch.__version__), torchvision_version=str(torchvision.__version__),
