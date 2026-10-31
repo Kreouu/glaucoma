@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "archive": "outputs/提交27347_ConvNeXt512_LR1e4_核验材料草稿_V1.zip",
+  "files": 76,
+  "archive_bytes": 417811760,
+  "raw_bytes": 450099276,
+  "archive_sha256": "a9ed3c42a1e74209fd36f5c3690545e06deacca895d1be0c1ebb08c74e65f5d2",
+  "all_file_hashes_verified": true,
+  "model_bytes": 334033437,
+  "raw_total_bytes_before_inventory": 450088149,
+  "limit_bytes_conservative": 500000000,
+  "pdf_visually_checked_pages": [
+    1,
+    2,
+    3
+  ],
+  "workbook_formula_cached": true,
+  "workbook_errors": 0,
+  "official_T4_verified": false,
+  "standalone_package_gpu_runtime": "NOT_RUN",
+  "platform_submission_id": 27347,
+  "platform_score": 98.38
+}
