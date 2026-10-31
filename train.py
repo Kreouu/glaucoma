@@ -61,6 +61,7 @@ def main():
     parser.add_argument('--decay-start-epoch', type=int, default=5, help='Completed constant-LR epochs before late cosine decay')
     parser.add_argument('--min-lr', type=float, default=3e-7)
     parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
+    parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
     parser.add_argument('--seed', type=int, default=42)
@@ -104,6 +105,9 @@ def main():
     if args.color_jitter:
         train_data.transform.transforms.insert(0, torchvision.transforms.ColorJitter(brightness=args.color_jitter, contrast=args.color_jitter))
     valid_data = FundusDataset(args.data_root, 'valid', args.size, args.valid_limit, args.seed, args.jpeg_draft)
+    if args.trim_black:
+        from fundus_crop import TrimBlackBorder
+        for data in (train_data, valid_data):data.transform.transforms.insert(0, TrimBlackBorder())
     for split, data in [('train', train_data), ('valid', valid_data)]:
         if {s[2] for s in data.samples} != {0, 1}:
             parser.error(f'{split} must contain both labels')
@@ -126,6 +130,9 @@ def main():
     project = Path(__file__).resolve().parent
     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
     config['source_sha256']['amp_precision.py'] = sha256(project / 'amp_precision.py')
+    if args.trim_black:
+        config['preprocessing'] = 'Conservative near-black border trim, RGB, aspect-preserving letterbox, ImageNet normalization'
+        config['source_sha256']['fundus_crop.py'] = sha256(project / 'fundus_crop.py')
     config['grad_scaler_enabled'] = args.precision == 'fp16'
     if args.lr_schedule == 'warmup_cosine':
         batches = (len(train_data) + args.batch_size - 1) // args.batch_size

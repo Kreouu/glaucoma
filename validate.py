@@ -59,6 +59,7 @@ def main():
         if timm.__version__ != config['timm_version']:
             raise ValueError('timm version differs from training')
         sources.append('model_swinv2.py')
+    if config.get('trim_black', False):sources.append('fundus_crop.py')
     for name in sources:
         if sha256(project / name) != config['source_sha256'][name]:
             raise ValueError(f'Inference source changed: {name}')
@@ -67,6 +68,9 @@ def main():
         if sha256(root / f'{split}.csv') != config['csv_sha256'][split]:
             raise ValueError(f'CSV changed: {split}')
     data = FundusDataset(root, 'valid', config['size'], config['valid_limit'], config['seed'], config['jpeg_draft'])
+    if config.get('trim_black', False):
+        from fundus_crop import TrimBlackBorder
+        data.transform.transforms.insert(0, TrimBlackBorder())
     with (run / 'valid_manifest.csv').open(newline='') as stream:
         manifest = list(csv.DictReader(stream))
     observed = [(name, path.name, str(label)) for name, path, label in data.samples]

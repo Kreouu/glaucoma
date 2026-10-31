@@ -1,0 +1,12 @@
+{
+  "train_sample": 128,
+  "seed": 20261101,
+  "min_area_ratio": 0.6235283933518005,
+  "mean_area_ratio": 0.8338048436166513,
+  "changed_count": 122,
+  "threshold": 7,
+  "axis_active_fraction": 0.01,
+  "padding_fraction": 0.02,
+  "min_retained_area": 0.25,
+  "visual_samples": 18
+}
