@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "auroc": 0.9906119121514456,
+  "ap": 0.85866924642203,
+  "baseline_same_pass_auroc": 0.9900900175630484,
+  "baseline_same_pass_ap": 0.8560947042823371,
+  "delta_auroc": 0.0005218945883972426,
+  "delta_ap": 0.0025745421396928814,
+  "mean_ms": 37.77113760678427,
+  "model_bytes": 445377916,
+  "same_image_difference": 0.0,
+  "frozen_baseline_probability_difference": 0.0,
+  "official_T4_verified": false,
+  "goal995_met": false
+}
