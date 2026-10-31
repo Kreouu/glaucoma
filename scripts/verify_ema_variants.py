@@ -19,19 +19,26 @@ from inference import file_sha256,write_prediction
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);group=parser.add_mutually_exclusive_group();group.add_argument('--lr-study',action='store_true');group.add_argument('--epochs-study',action='store_true');group.add_argument('--ema9995-study',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);group=parser.add_mutually_exclusive_group();group.add_argument('--lr-study',action='store_true');group.add_argument('--epochs-study',action='store_true');group.add_argument('--ema9995-study',action='store_true');group.add_argument('--lr1e4-study',action='store_true');args=parser.parse_args()
     if args.ema9995_study:
         global EMAVariantPredictor
         from ema9995_inference import EMA9995Predictor
         EMAVariantPredictor=EMA9995Predictor
         args.epochs_study=True
-    experiment=ROOT/('outputs/convnext_512_ema9995_v1' if args.ema9995_study else 'outputs/convnext_512_ema8_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_v1' if args.lr_study else 'outputs/convnext_512_ema999_v1')
+    if args.lr1e4_study:args.epochs_study=True
+    experiment=ROOT/('outputs/convnext_512_lr1e4_v1' if args.lr1e4_study else 'outputs/convnext_512_ema9995_v1' if args.ema9995_study else 'outputs/convnext_512_ema8_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_v1' if args.lr_study else 'outputs/convnext_512_ema999_v1')
     audit=json.loads((experiment/('summary.json' if args.lr_study or args.epochs_study else 'comparison.json')).read_text());assert audit['status']=='PASS'
     if args.lr_study:assert audit['decision']['proceed_to_batch_one']
     if args.epochs_study:
-        assert len(audit['results' if args.ema9995_study else 'seeds'])==3
-        for seed in (42,43,44):assert json.loads((experiment/f"seed{seed}/{'control_check.json' if args.ema9995_study else 'prefix_check.json'}").read_text())['status']=='PASS'
-    output=ROOT/('outputs/convnext_512_ema9995_inference_v1' if args.ema9995_study else 'outputs/convnext_512_ema8_inference_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_inference_v1' if args.lr_study else 'outputs/convnext_512_ema999_inference_v1');output.mkdir(parents=True,exist_ok=False)
+        assert len(audit['results' if args.ema9995_study or args.lr1e4_study else 'seeds'])==3
+        if args.lr1e4_study:
+            for seed in (42,43,44):
+                for kind in ('','ema'):
+                    check=json.loads((experiment/f'seed{seed}'/kind/'reload_check.json').read_text())
+                    assert check['status']=='PASS' and check['images']==5849 and check['max_probability_difference']<=1e-6
+        else:
+            for seed in (42,43,44):assert json.loads((experiment/f"seed{seed}/{'control_check.json' if args.ema9995_study else 'prefix_check.json'}").read_text())['status']=='PASS'
+    output=ROOT/('outputs/convnext_512_lr1e4_inference_v1' if args.lr1e4_study else 'outputs/convnext_512_ema9995_inference_v1' if args.ema9995_study else 'outputs/convnext_512_ema8_inference_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_inference_v1' if args.lr_study else 'outputs/convnext_512_ema999_inference_v1');output.mkdir(parents=True,exist_ok=False)
     weights=json.loads((ROOT/'outputs/convnext_512_inference_candidates_v1/ensemble.json').read_text())
     if args.ema9995_study:weights['source_sha256']['ema_variant_inference.py']=file_sha256(ROOT/'ema_variant_inference.py')
     for entry in weights['members']:
@@ -69,7 +76,7 @@ def main():
     base_values=[float(r['Probability']) for r in base]
     baseline=dict(auroc=float(roc_auc_score(labels,base_values)),ap=float(average_precision_score(labels,base_values)))
     sample=json.loads((ROOT/'outputs/three_model_comparison_v1/runtime/sample.json').read_text())
-    result=dict(status='PASS',baseline_predictions=str(baseline_path.relative_to(ROOT)),study='epochs' if args.epochs_study else 'learning_rate' if args.lr_study else 'ema',images=5849,positives=191,batch_size=1,baseline=baseline,device=torch.cuda.get_device_name(),
+    result=dict(status='PASS',baseline_predictions=str(baseline_path.relative_to(ROOT)),study='learning_rate_1e4' if args.lr1e4_study else 'epochs' if args.epochs_study else 'learning_rate' if args.lr_study else 'ema',images=5849,positives=191,batch_size=1,baseline=baseline,device=torch.cuda.get_device_name(),
         scope='Native logits, fixed equal weights; validation exploration, not official score gain or T4 verification',candidates={})
     for name,path in recipes.items():
         with (output/f'{name}_valid_predictions.csv').open('w',newline='') as stream:

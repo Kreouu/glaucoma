@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "recipe_sha256": "db22276a21ce4a8eb322b7de604d11bfbf59a499dff76eb7bd96170b6467463c",
+  "max_probability_difference": 0.0,
+  "label_changes": 0,
+  "auroc": 0.9900900175630484,
+  "ap": 0.8560947042823371
+}

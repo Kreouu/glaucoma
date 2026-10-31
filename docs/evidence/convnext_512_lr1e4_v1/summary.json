@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "seed": 42,
+      "best_epoch": 4,
+      "auroc": 0.9896504786809763,
+      "ap": 0.8363519261586202,
+      "delta_auroc": 0.0011192047955080886,
+      "checkpoint_sha256": "3efb5cb40f7a165c70ae35d32c9ed8d34cdc3af5312ad3fbfcabe9faa2e083b0"
+    },
+    {
+      "seed": 43,
+      "best_epoch": 3,
+      "auroc": 0.9885076775875885,
+      "ap": 0.8501329602883941,
+      "delta_auroc": 2.0820262835008485e-05,
+      "checkpoint_sha256": "1d3ac8760cbae26d0e6df300e1eb1fecd85f8ab558627597bf04b86842083081"
+    },
+    {
+      "seed": 44,
+      "best_epoch": 3,
+      "auroc": 0.9886941346080886,
+      "ap": 0.8385342298343605,
+      "delta_auroc": 6.292346101244295e-05,
+      "checkpoint_sha256": "0f9ad798941c23cb64af952c7abf494a99f213b5accfb11d79238148a922c426"
+    }
+  ],
+  "confirmed": true,
+  "next": "Fixed three-model equal-logit no-TTA batch1 verification if all seeds completed; otherwise another single factor",
+  "test_used": false
+}
