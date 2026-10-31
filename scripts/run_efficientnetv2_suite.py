@@ -4,6 +4,10 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 
+def experiment_log_path(path):
+    return path.with_name(path.name+'.log')
+
+
 def main():
     pid=int(sys.argv[1]);proc=Path(f'/proc/{pid}/cmdline')
     if proc.exists():
@@ -21,7 +25,7 @@ def main():
         cmd=[sys.executable,'-u','train.py','--model','efficientnet_v2_s','--precision','fp16','--data-root','datasets/glaucoma_first','--pretrained-path',plan['pretrained_path'],'--batch-size','16','--size','384','--jpeg-draft','--workers','4','--lr',str(lr),'--lr-schedule','warmup_cosine','--warmup-epochs','1','--min-lr',str(lr/10),'--pos-weight','3','--epochs','8' if not smoke else '2','--seed',str(seed),'--output-dir',str(path)]
         if smoke:cmd+=['--train-limit','64','--valid-limit','64']
         print('START',name,flush=True)
-        with path.with_suffix('.log').open('x') as f:subprocess.run(cmd,cwd=ROOT,stdout=f,stderr=subprocess.STDOUT,check=True)
+        with experiment_log_path(path).open('x') as f:subprocess.run(cmd,cwd=ROOT,stdout=f,stderr=subprocess.STDOUT,check=True)
         subprocess.run([sys.executable,'validate.py','--run-dir',str(path)],cwd=ROOT,check=True)
         check=json.loads((path/'reload_check.json').read_text());assert check['status']=='PASS' and check['max_probability_difference']<=1e-6
         if not smoke:assert check['images']==5849 and check['positives']==191

@@ -1,0 +1,11 @@
+{
+  "original_plan_sha256": "9d71debab2256f2c99641a8e48a2a74a8ecce3dc86cfc348b0d8b1136a3693d6",
+  "scope": "Orchestration-only resume; original first run and raw log preserved",
+  "source_sha256": {
+    "scripts/resume_efficientnetv2_suite.py": "0662698e7e7525cc5ca0305af4958d0ff122d407a095a4a6bdf210557c7577ae",
+    "scripts/run_efficientnetv2_suite.py": "859ec01745ac0fcdf80d5db98a5b286bd285a2fcd642ff97835021a540f26daa",
+    "train.py": "e585b533aef0aa60cbbba7f4fd4f51326d1c038776a00ec7ed42f8cf032f1e56",
+    "validate.py": "f75ed3ed1212ae2c921baf51e0e9fa17473b70f48c6326af78d367daff04fd90",
+    "model_efficientnetv2.py": "3d12077aca349197ba4a7801651be2ec3c6f21ce8436359c6dc1798bde30647a"
+  }
+}
