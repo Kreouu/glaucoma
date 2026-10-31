@@ -19,15 +19,21 @@ from inference import file_sha256,write_prediction
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);group=parser.add_mutually_exclusive_group();group.add_argument('--lr-study',action='store_true');group.add_argument('--epochs-study',action='store_true');args=parser.parse_args()
-    experiment=ROOT/('outputs/convnext_512_ema8_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_v1' if args.lr_study else 'outputs/convnext_512_ema999_v1')
+    parser=argparse.ArgumentParser(description=__doc__);group=parser.add_mutually_exclusive_group();group.add_argument('--lr-study',action='store_true');group.add_argument('--epochs-study',action='store_true');group.add_argument('--ema9995-study',action='store_true');args=parser.parse_args()
+    if args.ema9995_study:
+        global EMAVariantPredictor
+        from ema9995_inference import EMA9995Predictor
+        EMAVariantPredictor=EMA9995Predictor
+        args.epochs_study=True
+    experiment=ROOT/('outputs/convnext_512_ema9995_v1' if args.ema9995_study else 'outputs/convnext_512_ema8_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_v1' if args.lr_study else 'outputs/convnext_512_ema999_v1')
     audit=json.loads((experiment/('summary.json' if args.lr_study or args.epochs_study else 'comparison.json')).read_text());assert audit['status']=='PASS'
     if args.lr_study:assert audit['decision']['proceed_to_batch_one']
     if args.epochs_study:
-        assert len(audit['seeds'])==3
-        for seed in (42,43,44):assert json.loads((experiment/f'seed{seed}/prefix_check.json').read_text())['status']=='PASS'
-    output=ROOT/('outputs/convnext_512_ema8_inference_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_inference_v1' if args.lr_study else 'outputs/convnext_512_ema999_inference_v1');output.mkdir(parents=True,exist_ok=False)
+        assert len(audit['results' if args.ema9995_study else 'seeds'])==3
+        for seed in (42,43,44):assert json.loads((experiment/f"seed{seed}/{'control_check.json' if args.ema9995_study else 'prefix_check.json'}").read_text())['status']=='PASS'
+    output=ROOT/('outputs/convnext_512_ema9995_inference_v1' if args.ema9995_study else 'outputs/convnext_512_ema8_inference_v1' if args.epochs_study else 'outputs/convnext_512_ema_lr_inference_v1' if args.lr_study else 'outputs/convnext_512_ema999_inference_v1');output.mkdir(parents=True,exist_ok=False)
     weights=json.loads((ROOT/'outputs/convnext_512_inference_candidates_v1/ensemble.json').read_text())
+    if args.ema9995_study:weights['source_sha256']['ema_variant_inference.py']=file_sha256(ROOT/'ema_variant_inference.py')
     for entry in weights['members']:
         original=experiment/(f"lr6e-05_seed{entry['seed']}/ema/best.pt" if args.lr_study else f"seed{entry['seed']}/ema/best.pt")
         path=output/entry['file'];shutil.copy(original,path)
@@ -40,7 +46,7 @@ def main():
             name=aggregation+('_tta' if flip else '')
             path=output/f'{name}.json';recipe=dict(aggregation=aggregation,horizontal_flip=flip,
                 weights_manifest='weights.json',weights_manifest_sha256=file_sha256(output/'weights.json'),
-                source_sha256=file_sha256(ROOT/'ema_variant_inference.py'))
+                source_sha256=file_sha256(ROOT/('ema9995_inference.py' if args.ema9995_study else 'ema_variant_inference.py')))
             path.write_text(json.dumps(recipe,indent=2)+'\n');recipes[name]=path
     with (ROOT/'outputs/convnext_512_w3_v1/seed43/valid_manifest.csv').open() as stream:manifest=list(csv.DictReader(stream))
     names=[r['Image_name'] for r in manifest];labels=[int(r['True_Label']) for r in manifest]

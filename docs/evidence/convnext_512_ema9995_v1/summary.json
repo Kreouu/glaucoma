@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "seed": 42,
+      "best_epoch": 5,
+      "auroc": 0.9889486044871831,
+      "ap": 0.8208572291651469,
+      "delta_auroc": 0.00041733060171489367,
+      "checkpoint_sha256": "2d903498287f95bb8097350e2635470e047ef62b6d34105cc91bfeb1fc2c8c0b"
+    },
+    {
+      "seed": 43,
+      "best_epoch": 4,
+      "auroc": 0.9884845439622163,
+      "ap": 0.8385863187471894,
+      "delta_auroc": -2.3133625371984934e-06,
+      "checkpoint_sha256": "f7a6cd71cd74e8f65f51c9ff0e5a1360c04b2f3c758d05bc1f54ddd340000d51"
+    },
+    {
+      "seed": 44,
+      "best_epoch": 5,
+      "auroc": 0.988553944838333,
+      "ap": 0.8225617750006546,
+      "delta_auroc": -7.726630874316243e-05,
+      "checkpoint_sha256": "8fb941851e34c009752fc0add2131d76751ba832dc2747f0193a191e61b0e462"
+    }
+  ],
+  "confirmed": true,
+  "mean_paired_auroc_delta": 0.00011258364347817758,
+  "next": "Fixed no-TTA three-model equal-logit batch1 verification if confirmed; otherwise continue optimization",
+  "scope": "EMA decay only, exact full online-trajectory control, no test fitting"
+}

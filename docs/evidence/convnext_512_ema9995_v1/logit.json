@@ -1,0 +1,7 @@
+{
+  "aggregation": "logit",
+  "horizontal_flip": false,
+  "weights_manifest": "weights.json",
+  "weights_manifest_sha256": "8bdb657d939f0b8228a918403391615670602cee66b6947a51e09942bf167fef",
+  "source_sha256": "d52398084a52894b73739a5ec0b219f063ad4a0663ab6a31bb436d677caaffc4"
+}

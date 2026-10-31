@@ -8,7 +8,11 @@ from inference import file_sha256
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--recipe',type=Path,required=True);args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--recipe',type=Path,required=True);parser.add_argument('--ema9995',action='store_true');args=parser.parse_args()
+    if args.ema9995:
+        global EMAVariantPredictor
+        from ema9995_inference import EMA9995Predictor
+        EMAVariantPredictor=EMA9995Predictor
     path=args.recipe
     with path.with_name(path.stem+'_valid_predictions.csv').open() as stream:rows=list(csv.DictReader(stream))
     with (ROOT/'outputs/convnext_512_w3_v1/seed43/valid_manifest.csv').open() as stream:samples=list(csv.DictReader(stream))

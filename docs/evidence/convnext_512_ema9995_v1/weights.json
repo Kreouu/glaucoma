@@ -1,0 +1,44 @@
+{
+  "method": "equal_probability_mean",
+  "horizontal_flip": false,
+  "members": [
+    {
+      "seed": 42,
+      "file": "seed42.pt",
+      "sha256": "2d903498287f95bb8097350e2635470e047ef62b6d34105cc91bfeb1fc2c8c0b",
+      "bytes": 111344479,
+      "original_sha256": "2d903498287f95bb8097350e2635470e047ef62b6d34105cc91bfeb1fc2c8c0b",
+      "tensor_equality": "PASS",
+      "weight_type": "ema"
+    },
+    {
+      "seed": 43,
+      "file": "seed43.pt",
+      "sha256": "f7a6cd71cd74e8f65f51c9ff0e5a1360c04b2f3c758d05bc1f54ddd340000d51",
+      "bytes": 111344479,
+      "original_sha256": "f7a6cd71cd74e8f65f51c9ff0e5a1360c04b2f3c758d05bc1f54ddd340000d51",
+      "tensor_equality": "PASS",
+      "weight_type": "ema"
+    },
+    {
+      "seed": 44,
+      "file": "seed44.pt",
+      "sha256": "8fb941851e34c009752fc0add2131d76751ba832dc2747f0193a191e61b0e462",
+      "bytes": 111344479,
+      "original_sha256": "8fb941851e34c009752fc0add2131d76751ba832dc2747f0193a191e61b0e462",
+      "tensor_equality": "PASS",
+      "weight_type": "ema"
+    }
+  ],
+  "source_sha256": {
+    "ensemble_inference.py": "f4da0c69f7c8c55e3932c93469e4ceaf32fd13fa09cf6845ee73fdeb4ce1a56e",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "ema_variant_inference.py": "4c075af76dc2aaf8e7516c41771455f873a968998c3a92f8d90b08e54a41a088"
+  },
+  "precision": "FP16 autocast, FP32 sigmoid and mean",
+  "test_inference": false
+}
