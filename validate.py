@@ -39,6 +39,10 @@ def main():
     if config['model'] == 'efficientnet_v2_s':sources.append('model_efficientnetv2.py')
     if config['model'] == 'efficientnet_b3':
         sources.append('model_b3.py')
+    if config['model'] == 'convnext_small':
+        import timm
+        if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
+        sources.append('model_convnext_small.py')
     if config['model'] == 'convnext_tiny':
         import timm
         if timm.__version__ != config['timm_version']:
@@ -82,6 +86,8 @@ def main():
     torch.backends.cudnn.deterministic = True
     if config['model'] == 'efficientnet_v2_s':
         from model_efficientnetv2 import build_model as selected_builder
+    elif config['model'] == 'convnext_small':
+        from model_convnext_small import build_model as selected_builder
     elif config['model'] == 'efficientnet_b3':
         from model_b3 import build_model as selected_builder
     else:

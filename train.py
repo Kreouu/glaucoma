@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -61,6 +61,7 @@ def main():
     parser.add_argument('--decay-start-epoch', type=int, default=5, help='Completed constant-LR epochs before late cosine decay')
     parser.add_argument('--min-lr', type=float, default=3e-7)
     parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
+    parser.add_argument('--drop-path', type=float, default=0.0, help='Training-only linear ConvNeXt stochastic depth maximum')
     parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
@@ -72,12 +73,16 @@ def main():
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
         parser.error('pos-weight must be finite and positive')
+    if not np.isfinite(args.drop_path) or not 0 <= args.drop_path < 1:
+        parser.error('drop-path must be in [0, 1)')
+    if args.drop_path and args.model not in ('convnext_tiny', 'convnext_small'):
+        parser.error('drop-path supports ConvNeXt variants only')
     if not np.isfinite(args.color_jitter) or not 0 <= args.color_jitter <= 1:
         parser.error('color-jitter must be in [0, 1]')
     if not np.isfinite(args.ema_decay) or not 0 <= args.ema_decay < 1:
         parser.error('ema-decay must be in [0, 1)')
-    if args.ema_decay and args.model != 'convnext_tiny':
-        parser.error('This EMA comparison supports ConvNeXt-Tiny only')
+    if args.ema_decay and args.model not in ('convnext_tiny', 'convnext_small'):
+        parser.error('This EMA comparison supports buffer-free ConvNeXt variants')
     if args.lr_schedule == 'warmup_cosine':
         if not np.isfinite([args.lr, args.min_lr, args.warmup_epochs]).all():
             parser.error('Schedule parameters must be finite')
@@ -133,6 +138,9 @@ def main():
     if args.trim_black:
         config['preprocessing'] = 'Conservative near-black border trim, RGB, aspect-preserving letterbox, ImageNet normalization'
         config['source_sha256']['fundus_crop.py'] = sha256(project / 'fundus_crop.py')
+    if args.drop_path:
+        config['source_sha256']['training_regularization.py'] = sha256(project / 'training_regularization.py')
+        config['drop_path_policy'] = 'linear depth schedule; training only; no change at inference'
     config['grad_scaler_enabled'] = args.precision == 'fp16'
     if args.lr_schedule == 'warmup_cosine':
         batches = (len(train_data) + args.batch_size - 1) // args.batch_size
@@ -156,6 +164,10 @@ def main():
         config['source_sha256']['model_efficientnetv2.py'] = sha256(project / 'model_efficientnetv2.py')
     if args.model == 'efficientnet_b3':
         config['source_sha256']['model_b3.py'] = sha256(project / 'model_b3.py')
+    if args.model == 'convnext_small':
+        import timm
+        config['timm_version'] = timm.__version__
+        config['source_sha256']['model_convnext_small.py'] = sha256(project / 'model_convnext_small.py')
     if args.model == 'convnext_tiny':
         import timm
         config['timm_version'] = timm.__version__
@@ -203,6 +215,8 @@ def main():
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
     if args.model == 'efficientnet_v2_s':
         from model_efficientnetv2 import build_model as selected_builder
+    elif args.model == 'convnext_small':
+        from model_convnext_small import build_model as selected_builder
     elif args.model == 'efficientnet_b3':
         from model_b3 import build_model as selected_builder
     else:
@@ -221,6 +235,9 @@ def main():
         model = convnext_builder(args.pretrained_path).cuda()
     else:
         model = selected_builder(args.pretrained_path).cuda()
+    if args.drop_path:
+        from training_regularization import configure_drop_path
+        configure_drop_path(model, args.drop_path)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
     positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)

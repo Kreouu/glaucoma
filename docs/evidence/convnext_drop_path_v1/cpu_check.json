@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "state_dict_unchanged": true,
+  "eval_outputs_exact": true,
+  "training_stochastic": true,
+  "blocks": 18,
+  "source_sha256": "2fff9819022ed789bdf9faaf589965ad25f7d2dcf22231ce50424a6905870a41"
+}

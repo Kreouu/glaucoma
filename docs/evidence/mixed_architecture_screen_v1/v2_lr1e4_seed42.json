@@ -1,0 +1,35 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "positives": 191,
+  "baseline": {
+    "auroc": 0.9906119121514456,
+    "ap": 0.8586692464220298
+  },
+  "v2_single": {
+    "auroc": 0.9832091520323353,
+    "ap": 0.7903631128110111
+  },
+  "endpoints_clipped": 0,
+  "presets": {
+    "equal_five_members": {
+      "auroc": 0.9903930680554245,
+      "ap": 0.8601446462692433,
+      "delta_auroc": -0.0002188440960211313,
+      "delta_ap": 0.0014753998472134544,
+      "promising": false
+    },
+    "equal_two_families": {
+      "auroc": 0.9889920957028828,
+      "ap": 0.8506927050913358,
+      "delta_auroc": -0.0016198164485627942,
+      "delta_ap": -0.007976541330694031,
+      "promising": false
+    }
+  },
+  "source_sha256": {
+    "valid_predictions.csv": "d55de75700cca1d51a2160067ddb1706580a30e74992f4623d3d178f265c4f63",
+    "v2_lr1e4_seed42_valid_predictions.csv": "da99bbce5cf7229d4ba7e0a9bd8f9fd8ed0cefda1dad1937b21d9bbf9777bd11"
+  },
+  "scope": "Inverse saved sigmoid logits, V2 batch16 vs frozen ConvNeXt batch1; not native mixed inference or official score"
+}

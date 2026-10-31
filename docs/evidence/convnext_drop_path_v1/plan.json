@@ -1,0 +1,38 @@
+{
+  "source_sha256": {
+    "train.py": "98d0a35019f46490b8a7aa083f5d669bb429f981cfeb11472b60d2201f512831",
+    "validate.py": "fc1b25ef729a3f3475ab00b4984885b3c8b4a338947f6bfde47ad5723abac8e8",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "model_convnext_small.py": "75c76b16174b42d39380faa948acf1db3ff4ea48cb495d0cad1af8f90d67abd2",
+    "training_regularization.py": "2fff9819022ed789bdf9faaf589965ad25f7d2dcf22231ce50424a6905870a41",
+    "scripts/run_next_convnext_study.py": "3b63a923c155614277a8822662551e602134fa4e2c7c78ec51025e3e242e82ff"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "output_dir": "outputs/convnext_drop_path_v1",
+  "model": "convnext_tiny",
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "cpu_proof": "docs/evidence/convnext_drop_path_v1/cpu_check.json",
+  "control_template": "/home/kreouu/Model_train/glaucoma_codex_20261031/outputs/convnext_4060_pair_v1/constant_seed{seed}/ema",
+  "selection": "Each case screen42 >=+.0003 vs same-host Tiny fixed control permits43/44; no test fitting; ultimate native full validation target>=.995",
+  "wait_pid": 105323,
+  "wait_command": "run_goal995_ubuntu_postcontrols.py",
+  "terminal_proof": "/home/kreouu/Model_train/glaucoma_ensemble_20261101/outputs/six_model_native_v1/full_reload.json",
+  "cases": [
+    {
+      "id": "dp0p1",
+      "drop_path": 0.1
+    },
+    {
+      "id": "dp0p2",
+      "drop_path": 0.2
+    }
+  ],
+  "smoke_default_control": "/home/kreouu/Model_train/glaucoma_codex_20261031/outputs/convnext_4060_pair_v1/smoke"
+}

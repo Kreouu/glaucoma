@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "strict_pretrained_features": true,
+  "buffer_free": true,
+  "cpu_input": [
+    1,
+    3,
+    64,
+    64
+  ],
+  "output_shape": [
+    1,
+    1
+  ],
+  "trainable_parameters": 49455457
+}

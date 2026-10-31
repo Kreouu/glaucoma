@@ -1,0 +1,16 @@
+{
+  "model": "timm convnext_small.fb_in1k",
+  "revision": "7941c0c00f3ca64f5048de06464b90ad12da0ccb",
+  "weights_url": "https://huggingface.co/timm/convnext_small.fb_in1k/resolve/7941c0c00f3ca64f5048de06464b90ad12da0ccb/pytorch_model.bin",
+  "weights_sha256": "26c3515a53b53fbc2b9e2db28e8b30ec67b1566b538cdfcf22e14231cde2a9e7",
+  "weights_bytes": 201017809,
+  "license": "Model card Apache-2.0; timm Apache-2.0 and original Meta MIT notices preserved",
+  "dataset": "ImageNet-1k only, general natural images",
+  "files": {
+    "timm-convnext.py.txt": "2ecd7672b00003d2174bc80858c85fc692fb51e86b200c2ea2447e0e7fcef39a",
+    "model-card.md": "19666b3330344d8367d8dccdf93a250c42eb601896781327619da00d3462dce2",
+    "config.json": "141a7d2be8fab0ae83cba085c33565238bce1642fb51847bc636af9d72104738",
+    "upstream-LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "timm-LICENSE.txt": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+  }
+}

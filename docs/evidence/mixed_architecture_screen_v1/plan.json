@@ -1,0 +1,10 @@
+{
+  "baseline": "four_model_native_v1 frozen full batch1",
+  "new_family": "EfficientNetV2-S384 official ImageNet-1k, seed42, same official split",
+  "fixed_presets": {
+    "equal_five_members": "(4*convnext_four_mean_logit+v2_single_logit)/5",
+    "equal_two_families": "(convnext_four_mean_logit+v2_single_logit)/2"
+  },
+  "purpose": "Exploratory saved-probability inverse-logit screen only; native full validation and runtime required before any promotion; no continuous weight fitting, no test use",
+  "native_gate": "deltaAUROC>=.0003 vs frozen four; goal remains native full AUROC>=.995"
+}
