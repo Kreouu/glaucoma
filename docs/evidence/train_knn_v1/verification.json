@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "baseline_same_host_auroc": 0.990612374823953,
+  "frozen_four_auroc": 0.9906119121514456,
+  "anchor_logit_difference": 0.0,
+  "index_bytes": 78997781,
+  "index_train_rows": 51396,
+  "source_scope": "Official train only, no valid/test vectors in bank",
+  "candidates": {
+    "knn": {
+      "auroc": 0.9647290867399909,
+      "ap": 0.8327181693987522,
+      "delta_auroc": -0.02588328808396212,
+      "mean_ms": 32.688978969235905,
+      "necessary_bytes_conservative": 301968373,
+      "reload_sample_difference": 0.0,
+      "promising": false
+    },
+    "mixed": {
+      "auroc": 0.9904744984167347,
+      "ap": 0.8582204122432026,
+      "delta_auroc": -0.00013787640721829586,
+      "mean_ms": 32.47566483701424,
+      "necessary_bytes_conservative": 301968373,
+      "reload_sample_difference": 0.0,
+      "promising": false
+    }
+  },
+  "goal995_met": false
+}
