@@ -7,6 +7,14 @@ from four_model_inference import FourModelPredictor
 from inference import file_sha256
 
 
+@torch.inference_mode()
+def weighted_knn_logit(similarity,labels,k,temperature,prior,prior_smoothing,pos_weight):
+    scores,indices=similarity.topk(k,largest=True,sorted=True)
+    weights=(scores/temperature).softmax(0);posterior=(weights*labels[indices]).sum()
+    posterior=posterior*(1-prior_smoothing)+prior_smoothing*prior
+    return torch.logit(posterior)+math.log(pos_weight)
+
+
 class KNNPredictor:
     def __init__(self,recipe):
         path=Path(recipe);self.recipe=json.loads(path.read_text());root=Path(__file__).resolve().parent
@@ -35,10 +43,8 @@ class KNNPredictor:
                 else:value=p.model(image).flatten()
                 values.append(value)
         logits=torch.stack(values).float();query=F.normalize(feature.float(),dim=1)
-        similarity=(query@self.vectors.T).flatten();scores,indices=similarity.topk(self.recipe['k'],largest=True,sorted=True)
-        weights=(scores/self.recipe['temperature']).softmax(0);posterior=(weights*self.labels[indices]).sum()
-        eps=self.recipe['prior_smoothing'];posterior=posterior*(1-eps)+eps*self.prior
-        knn_logit=torch.logit(posterior)+math.log(self.recipe['loss_pos_weight']);base=logits.mean()
+        similarity=(query@self.vectors.T).flatten()
+        knn_logit=weighted_knn_logit(similarity,self.labels,self.recipe['k'],self.recipe['temperature'],self.prior,self.recipe['prior_smoothing'],self.recipe['loss_pos_weight']);base=logits.mean()
         return dict(baseline=base.sigmoid().item(),knn=knn_logit.sigmoid().item(),mixed=((4*base+knn_logit)/5).sigmoid().item(),anchor_logit_difference=anchor_diff)
 
     @torch.inference_mode()

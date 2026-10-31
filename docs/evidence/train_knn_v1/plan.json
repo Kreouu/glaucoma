@@ -1,6 +1,6 @@
 {
   "source_sha256": {
-    "knn_inference.py": "e9888544e953ba5eb4ab87f37e49c10d2596e80bbc10b5c7425901971c19d613",
+    "knn_inference.py": "5d6829c48a9348d7a9923351b8aa6962b835e4e32d1abcb6aff1b24b093980c3",
     "scripts/verify_train_knn.py": "c376575ad363d09a646cc80d6ed9840262393e665b9286e494420f1f2cafc3c4",
     "scripts/run_knn_then_regularization.py": "35d310cbe3c10c238df6025bf483da35f3c0b4c94395c00322f3011a39a60586",
     "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
@@ -9,7 +9,8 @@
     "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
     "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
     "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
-    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "tests/test_knn_vote.py": "660a94f9a96ee8597f1a7525864c85467c8647e2a983b4aeecebd7e2354c69e5"
   },
   "csv_sha256": {
     "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",

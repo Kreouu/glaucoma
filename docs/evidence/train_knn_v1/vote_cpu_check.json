@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "cases": [
+    "closed-form top-k weighted posterior including BCE cost3",
+    "finite probabilities for all-zero/all-one neighborhoods"
+  ],
+  "source_sha256": "5d6829c48a9348d7a9923351b8aa6962b835e4e32d1abcb6aff1b24b093980c3"
+}
