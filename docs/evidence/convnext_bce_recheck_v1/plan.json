@@ -1,0 +1,31 @@
+{
+  "output_dir": "outputs/convnext_bce_recheck_v1",
+  "source_sha256": {
+    "train.py": "97774e6594ad5d6897d25a34d4754200b144d44c47a97990ba0c033ff6b6588c",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "validate.py": "841aad5eb14f1ce99ccc800d6876bdd860220b6820c97d2979f104f8d93baef5",
+    "scripts/run_convnext_bce_recheck.py": "ab2198a3591e7032dda08050150d5fddaa7f8288fdc546a8c8cdef233b71501c"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "epochs": 5,
+  "lr": 0.0001,
+  "ema_decay": 0.999,
+  "control": "outputs/convnext_512_lr1e4_v1/seed{seed}/ema",
+  "screen_min_delta_auroc": 0.0003,
+  "baseline_inference_auroc": 0.9900900175630484,
+  "baseline_inference_ap": 0.8560947042823371,
+  "selection": "Screen weights1/5 on42, each >=+0.0003 AUROC vs same-host weight3 permits43/44; fixed per-experiment weight; no test fitting; compare native batch1 equal-logit final to official98.38 candidate",
+  "host": "wsl",
+  "weights": [
+    1,
+    5
+  ]
+}
