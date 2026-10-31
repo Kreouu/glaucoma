@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small', 'dinov2_small'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -71,6 +71,8 @@ def main():
     args = parser.parse_args()
     if min(args.epochs, args.batch_size, args.size, args.lr) <= 0 or args.workers < 0:
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
+    if args.model == 'dinov2_small' and args.size % 14:
+        parser.error('DINOv2 input size must be divisible by patch size 14')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
         parser.error('pos-weight must be finite and positive')
     if not np.isfinite(args.drop_path) or not 0 <= args.drop_path < 1:
@@ -160,6 +162,10 @@ def main():
         config.update(lr_total_steps=total_steps, lr_constant_steps=constant_steps,
                       lr_step_basis='planned training batches; AMP-skipped batches still advance schedule')
         config['source_sha256']['lr_schedule.py'] = sha256(project / 'lr_schedule.py')
+    if args.model == 'dinov2_small':
+        import timm
+        config['timm_version'] = timm.__version__
+        config['source_sha256']['model_dinov2.py'] = sha256(project / 'model_dinov2.py')
     if args.model == 'efficientnet_v2_s':
         config['source_sha256']['model_efficientnetv2.py'] = sha256(project / 'model_efficientnetv2.py')
     if args.model == 'efficientnet_b3':
@@ -213,7 +219,9 @@ def main():
                    worker_init_fn=seed_worker)
     train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
-    if args.model == 'efficientnet_v2_s':
+    if args.model == 'dinov2_small':
+        from model_dinov2 import build_model as selected_builder
+    elif args.model == 'efficientnet_v2_s':
         from model_efficientnetv2 import build_model as selected_builder
     elif args.model == 'convnext_small':
         from model_convnext_small import build_model as selected_builder
