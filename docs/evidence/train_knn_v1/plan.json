@@ -1,0 +1,34 @@
+{
+  "source_sha256": {
+    "knn_inference.py": "e9888544e953ba5eb4ab87f37e49c10d2596e80bbc10b5c7425901971c19d613",
+    "scripts/verify_train_knn.py": "c376575ad363d09a646cc80d6ed9840262393e665b9286e494420f1f2cafc3c4",
+    "scripts/run_knn_then_regularization.py": "35d310cbe3c10c238df6025bf483da35f3c0b4c94395c00322f3011a39a60586",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "six_model_inference.py": "14a594954706b5e286bce105f48b56c065ba8669c68214a487b1e8b734c18888",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "index_split": "train only",
+  "index_rows": 51396,
+  "feature_encoder": "Frozen ubuntu42 EMA, packed equivalent from six-member proof",
+  "k": 200,
+  "temperature": 0.07,
+  "prior_smoothing": 0.001,
+  "loss_pos_weight": 3,
+  "fixed_candidates": [
+    "weighted kNN alone",
+    "(4*four-member mean raw logit + kNN logit)/5"
+  ],
+  "native_gate": ">=+.0003 AUROC vs max(same-host four, frozen four .9906119122), full reload, necessary bytes<500000000, local latency<100ms; target remains .995",
+  "rules_interpretation": "Rules2/6/8: only official training data, fixed deterministic parameters; bank counted as necessary model file. No explicit special approval claimed. Never include valid/test feature vectors in index.",
+  "method_reference": "https://github.com/facebookresearch/dinov2/blob/main/dinov2/eval/knn.py",
+  "test_access": "None in this study script; only after candidate selection will a separate frozen prediction script be used",
+  "wait_for": "six-model full original/packed proof; no GPU concurrency"
+}

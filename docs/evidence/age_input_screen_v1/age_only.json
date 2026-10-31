@@ -1,0 +1,27 @@
+{
+  "status": "TRAIN_ONLY_FIT",
+  "train_count": 51396,
+  "valid_count": 5849,
+  "train_age_mean": 56.734266142529094,
+  "train_age_std": 10.198840852292875,
+  "train_missing": 10,
+  "valid_missing": 0,
+  "train_range": [
+    0.0,
+    96.0
+  ],
+  "coefficients": [
+    -2.479865883759026,
+    0.6156486918563078,
+    1.674799774443808
+  ],
+  "train": {
+    "auroc": 0.6687871643509595,
+    "ap": 0.06479570866453595
+  },
+  "valid": {
+    "auroc": 0.6954444339572009,
+    "ap": 0.06868656261981572
+  },
+  "scope": "Age and missingness only, train-fit normalization/logistic coefficients; no test rows read or fitted"
+}

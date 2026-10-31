@@ -1,5 +1,5 @@
 {
-  "scope": "Technical ranking-error audit only; no relabeling, per-image prediction edits or test use",
+  "scope": "Aggregate technical ranking-error audit; detailed filenames remain in ignored outputs; no relabeling or score edits",
   "images": 5849,
   "positives": 191,
   "negative_positive_pairs": 1080678,
@@ -7,48 +7,6 @@
   "auroc_recomputed": 0.9906119121514456,
   "wrong_pairs_at_goal": 5403.39,
   "additional_pair_corrections_for_goal": 4742.11,
-  "top8": [
-    {
-      "name": "valid_02001.jpg",
-      "probability": 0.0011890647001564503,
-      "wrong_negative_pairs": 1275.5
-    },
-    {
-      "name": "valid_00703.jpg",
-      "probability": 0.00126195780467242,
-      "wrong_negative_pairs": 1229.0
-    },
-    {
-      "name": "valid_04319.jpg",
-      "probability": 0.003873156849294901,
-      "wrong_negative_pairs": 706.0
-    },
-    {
-      "name": "valid_01516.jpg",
-      "probability": 0.013928859494626522,
-      "wrong_negative_pairs": 440.0
-    },
-    {
-      "name": "valid_02645.jpg",
-      "probability": 0.016673043370246887,
-      "wrong_negative_pairs": 415.0
-    },
-    {
-      "name": "valid_02077.jpg",
-      "probability": 0.024798160418868065,
-      "wrong_negative_pairs": 350.0
-    },
-    {
-      "name": "valid_00481.jpg",
-      "probability": 0.030632272362709045,
-      "wrong_negative_pairs": 329.0
-    },
-    {
-      "name": "valid_05041.jpg",
-      "probability": 0.05102359503507614,
-      "wrong_negative_pairs": 264.0
-    }
-  ],
   "top8_error_fraction": 0.4936671430683554,
   "source_sha256": "d55de75700cca1d51a2160067ddb1706580a30e74992f4623d3d178f265c4f63"
 }
