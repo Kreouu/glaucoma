@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": {
+        "id": "dp0p1",
+        "drop_path": 0.1
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "2d5bf6d2a4a1ec5346abb4f2681b1b7a66d921a1b5ca24fffb1fbf32420e974f",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9890707500291485,
+        "val_auprc": 0.8374551977424676
+      },
+      "control": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905249297200461,
+        "val_auprc": 0.8526860413268649
+      },
+      "delta_auroc": -0.0014541796908976723
+    },
+    {
+      "case": {
+        "id": "dp0p2",
+        "drop_path": 0.2
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "540e5db23931facd632ee18d9ee7be68dcffc61a18c7e8df9dfe20d5363c1dac",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9880260355073389,
+        "val_auprc": 0.8342621326511223
+      },
+      "control": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905249297200461,
+        "val_auprc": 0.8526860413268649
+      },
+      "delta_auroc": -0.0024988942127072145
+    }
+  ],
+  "test_used": false
+}
