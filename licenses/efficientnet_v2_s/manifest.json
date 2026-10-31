@@ -1,0 +1,16 @@
+{
+  "model": "torchvision efficientnet_v2_s IMAGENET1K_V1",
+  "dataset": "ImageNet-1k general natural images",
+  "weights_url": "https://download.pytorch.org/models/efficientnet_v2_s-dd5fe13b.pth",
+  "weights_sha256": "dd5fe13b1d60ec15317ccc8ca158186e134d3366c3dde9cb9a4e301f2dc66c74",
+  "weights_bytes": 86721253,
+  "source_revision": "torchvision v0.25.0",
+  "source_url": "https://github.com/pytorch/vision/blob/v0.25.0/torchvision/models/efficientnet.py",
+  "license_url": "https://github.com/pytorch/vision/blob/v0.25.0/LICENSE",
+  "source_license": "BSD-3-Clause; copyright and disclaimer retained in full",
+  "scope": "No medical initialization or external task data. Source license retained; no claim that ImageNet data itself is redistributed.",
+  "files": {
+    "torchvision-LICENSE.txt": "6502f676851cfe25f8af75531dfb32375b7325b73c37e7b43741fa422893e71d",
+    "torchvision-efficientnet.py.txt": "82d058e1989ef84e4ef7ce43e4a49dc10f1b95dcd003303c2c052438de823b17"
+  }
+}

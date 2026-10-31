@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -152,6 +152,8 @@ def main():
         config.update(lr_total_steps=total_steps, lr_constant_steps=constant_steps,
                       lr_step_basis='planned training batches; AMP-skipped batches still advance schedule')
         config['source_sha256']['lr_schedule.py'] = sha256(project / 'lr_schedule.py')
+    if args.model == 'efficientnet_v2_s':
+        config['source_sha256']['model_efficientnetv2.py'] = sha256(project / 'model_efficientnetv2.py')
     if args.model == 'efficientnet_b3':
         config['source_sha256']['model_b3.py'] = sha256(project / 'model_b3.py')
     if args.model == 'convnext_tiny':
@@ -199,7 +201,9 @@ def main():
                    worker_init_fn=seed_worker)
     train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
-    if args.model == 'efficientnet_b3':
+    if args.model == 'efficientnet_v2_s':
+        from model_efficientnetv2 import build_model as selected_builder
+    elif args.model == 'efficientnet_b3':
         from model_b3 import build_model as selected_builder
     else:
         selected_builder = build_model
