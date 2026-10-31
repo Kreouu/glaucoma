@@ -1,0 +1,27 @@
+{
+  "output": "outputs/four_model_native_v1",
+  "fixed_members": [
+    "wsl42",
+    "wsl43",
+    "wsl44",
+    "ubuntu42"
+  ],
+  "aggregation": "equal raw FP32 logit mean then sigmoid",
+  "tta": false,
+  "baseline": "frozen WSL LR1e-4 three member noTTA",
+  "baseline_auroc": 0.9900900175630484,
+  "goal": 0.995,
+  "checks": [
+    "full5849 native batch1",
+    "frozen three-member probabilities within1e-6",
+    "independent5849 reload",
+    "same100/5warmup/3round latency",
+    "models<500000000bytes"
+  ],
+  "test_csv_rule": "Generate separate candidate only if native deltaAUROC>=.0003 and local latency<100ms; never upload automatically",
+  "source_sha256": {
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "scripts/verify_four_model.py": "79bfdfaf4304ab22ed6fdb0550c917e30666f4a005842c7bd9573e07ad3a1686",
+    "scripts/run_goal995_wsl_postcrop.py": "15cb2a3f83d074e3eaa1b6825417943a52aa6e5f099e8afd2053614c54045fc0"
+  }
+}
