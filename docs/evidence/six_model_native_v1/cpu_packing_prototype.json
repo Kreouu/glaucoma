@@ -1,0 +1,52 @@
+{
+  "status": "CPU_POLICY_PASS",
+  "members": [
+    {
+      "original_bytes": 111344479,
+      "packed_bytes": 55739611,
+      "original_sha256": "3efb5cb40f7a165c70ae35d32c9ed8d34cdc3af5312ad3fbfcabe9faa2e083b0",
+      "packed_sha256": "a149d2e556d4564ec1ea1fdf7ff2993f54c6f7655e39c85a9b31dc2e8c044fc2",
+      "converted_tensors": 118,
+      "preserved_tensors": 64,
+      "cpu_tensor_policy_exact": true,
+      "gpu_equivalence": "NOT_YET_VERIFIED",
+      "id": "wsl42"
+    },
+    {
+      "original_bytes": 111344479,
+      "packed_bytes": 55739611,
+      "original_sha256": "1d3ac8760cbae26d0e6df300e1eb1fecd85f8ab558627597bf04b86842083081",
+      "packed_sha256": "d358e64b4a23766f4595ce3afed8b30d48f9153f040c6dd448c4269e7dfb8c64",
+      "converted_tensors": 118,
+      "preserved_tensors": 64,
+      "cpu_tensor_policy_exact": true,
+      "gpu_equivalence": "NOT_YET_VERIFIED",
+      "id": "wsl43"
+    },
+    {
+      "original_bytes": 111344479,
+      "packed_bytes": 55739611,
+      "original_sha256": "0f9ad798941c23cb64af952c7abf494a99f213b5accfb11d79238148a922c426",
+      "packed_sha256": "3da0861d6ccfe4ac79a4b6177db8d741060e649c72f89847e3874a50a59dd7a4",
+      "converted_tensors": 118,
+      "preserved_tensors": 64,
+      "cpu_tensor_policy_exact": true,
+      "gpu_equivalence": "NOT_YET_VERIFIED",
+      "id": "wsl44"
+    },
+    {
+      "original_bytes": 111344479,
+      "packed_bytes": 55751759,
+      "original_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+      "packed_sha256": "447f92c3f784495b6d8f5bd3cb6b523b9ffffd7b776542728e79d64ed2026995",
+      "converted_tensors": 118,
+      "preserved_tensors": 64,
+      "cpu_tensor_policy_exact": true,
+      "gpu_equivalence": "NOT_YET_VERIFIED",
+      "id": "ubuntu42"
+    }
+  ],
+  "total_original_bytes": 445377916,
+  "total_packed_bytes": 222970592,
+  "gpu_verified": false
+}
