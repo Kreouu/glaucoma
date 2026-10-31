@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "verified_original_inventory_files": 36,
+  "all_bytes_and_sha256_match": true,
+  "packed_weight_bytes": 334474238,
+  "added_training_records": [
+    "wsl42",
+    "wsl43",
+    "wsl44"
+  ],
+  "scope": "Mac backup verification only; no Mac GPU execution or T4 verification"
+}

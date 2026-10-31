@@ -1,0 +1,64 @@
+{
+  "aggregation": "equal_raw_fp32_logit_mean",
+  "horizontal_flip": false,
+  "source_sha256": {
+    "six_model_inference.py": "14a594954706b5e286bce105f48b56c065ba8669c68214a487b1e8b734c18888",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+  },
+  "members": [
+    {
+      "id": "wsl42",
+      "seed": 42,
+      "file": "wsl42.pt",
+      "sha256": "e85fe0a15179dc763ec952f44135315c31807bfb5f045af033d8f5f9dc211544",
+      "bytes": 55739611,
+      "original_sha256": "3efb5cb40f7a165c70ae35d32c9ed8d34cdc3af5312ad3fbfcabe9faa2e083b0"
+    },
+    {
+      "id": "wsl43",
+      "seed": 43,
+      "file": "wsl43.pt",
+      "sha256": "3c451666da5660d075120a862176a1e3ea266d207099cab56c5c1a0a6aab28f1",
+      "bytes": 55739611,
+      "original_sha256": "1d3ac8760cbae26d0e6df300e1eb1fecd85f8ab558627597bf04b86842083081"
+    },
+    {
+      "id": "wsl44",
+      "seed": 44,
+      "file": "wsl44.pt",
+      "sha256": "8334c97cf17424f05838562553c691e36995efc6cb4b2df1b8759e6ff41ea292",
+      "bytes": 55739611,
+      "original_sha256": "0f9ad798941c23cb64af952c7abf494a99f213b5accfb11d79238148a922c426"
+    },
+    {
+      "id": "ubuntu42",
+      "seed": 42,
+      "file": "ubuntu42.pt",
+      "sha256": "786aba7f1e942aa486f1af3c05ff89a48ad5e80cf6ba328ac21f290ddd48a678",
+      "bytes": 55751759,
+      "original_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915"
+    },
+    {
+      "id": "ubuntu43",
+      "seed": 43,
+      "file": "ubuntu43.pt",
+      "sha256": "5213994f6ec550392c7f23c56067389c54e5a78bbe27f00364df39ce7d1bffb2",
+      "bytes": 55751823,
+      "original_sha256": "3a2e3c47f594d0c80e504283b807adc2d97b4d3961f01eac649e087543d584de"
+    },
+    {
+      "id": "ubuntu44",
+      "seed": 44,
+      "file": "ubuntu44.pt",
+      "sha256": "c143e80de5ec3cac7ade8c43cc031144704af88a097cb9d2852a8d38cb4007f0",
+      "bytes": 55751823,
+      "original_sha256": "2380bf13ec8b2c0282f118f7cd2ee811dfd836d268e777c34219c038f3639ad0"
+    }
+  ],
+  "storage_policy": "Selective FP16 Conv/Linear storage; other tensors preserved; restore into FP32 model, existing FP16 autocast"
+}

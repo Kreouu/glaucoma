@@ -1,0 +1,68 @@
+[
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55739611,
+    "original_sha256": "3efb5cb40f7a165c70ae35d32c9ed8d34cdc3af5312ad3fbfcabe9faa2e083b0",
+    "packed_sha256": "e85fe0a15179dc763ec952f44135315c31807bfb5f045af033d8f5f9dc211544",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "wsl42"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55739611,
+    "original_sha256": "1d3ac8760cbae26d0e6df300e1eb1fecd85f8ab558627597bf04b86842083081",
+    "packed_sha256": "3c451666da5660d075120a862176a1e3ea266d207099cab56c5c1a0a6aab28f1",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "wsl43"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55739611,
+    "original_sha256": "0f9ad798941c23cb64af952c7abf494a99f213b5accfb11d79238148a922c426",
+    "packed_sha256": "8334c97cf17424f05838562553c691e36995efc6cb4b2df1b8759e6ff41ea292",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "wsl44"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55751759,
+    "original_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+    "packed_sha256": "786aba7f1e942aa486f1af3c05ff89a48ad5e80cf6ba328ac21f290ddd48a678",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "ubuntu42"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55751823,
+    "original_sha256": "3a2e3c47f594d0c80e504283b807adc2d97b4d3961f01eac649e087543d584de",
+    "packed_sha256": "5213994f6ec550392c7f23c56067389c54e5a78bbe27f00364df39ce7d1bffb2",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "ubuntu43"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55751823,
+    "original_sha256": "2380bf13ec8b2c0282f118f7cd2ee811dfd836d268e777c34219c038f3639ad0",
+    "packed_sha256": "c143e80de5ec3cac7ade8c43cc031144704af88a097cb9d2852a8d38cb4007f0",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "ubuntu44"
+  }
+]

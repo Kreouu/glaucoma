@@ -1,0 +1,13 @@
+{
+  "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+  "platform": "Linux-6.8.0-31-generic-x86_64-with-glibc2.39",
+  "packages": {
+    "torch": "2.14.0+cu126",
+    "torchvision": "0.29.0+cu126",
+    "timm": "1.0.22",
+    "numpy": "2.4.6",
+    "Pillow": "12.3.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 4060 Ti, 535.171.04, 8188 MiB",
+  "scope": "Recorded on the same Ubuntu host after completed six-model native verification; no training environment changes"
+}
