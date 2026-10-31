@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "strict_pretrained_load": true,
+  "all_feature_tensors_equal": true,
+  "output_shape": [
+    1,
+    1
+  ],
+  "trainable_parameters": 20178769
+}

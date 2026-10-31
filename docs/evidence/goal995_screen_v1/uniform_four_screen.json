@@ -1,0 +1,22 @@
+{
+  "status": "SCREEN_ONLY",
+  "baseline_three": {
+    "auroc": 0.9900960323056451,
+    "ap": 0.856252657615735
+  },
+  "uniform_four": {
+    "auroc": 0.9906114494789382,
+    "ap": 0.8586615249612816
+  },
+  "delta_auroc": 0.0005154171732930646,
+  "clipped_probabilities": 0,
+  "images": 5849,
+  "positives": 191,
+  "source_sha256": {
+    "wsl42_valid_predictions.csv": "2f72e3716e17f60400463bd25b8f1fa8c608cfd212b08c0f1a3b42b96e0a42f8",
+    "wsl43_valid_predictions.csv": "27d73cebef2b9203204250ebf452258ea50f6b00d63c0e9b513a9cd61bfc3398",
+    "wsl44_valid_predictions.csv": "1b35d509c99043c5c253886433953ad74b27da97cbd9eafac42d44e56b42040a",
+    "ubuntu42_valid_predictions.csv": "4ffc79f6e88f2a48d7a82d67b2b1d00252ce406fb89595baec4da7718e5e1c88"
+  },
+  "scope": "Fixed uniform four members, no blend fitting; inverse sigmoid from batch16 saved probabilities, not native-logit batch1 or official result"
+}
