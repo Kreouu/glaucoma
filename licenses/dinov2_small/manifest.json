@@ -1,0 +1,21 @@
+{
+  "model": "vit_small_patch14_dinov2.lvd142m",
+  "revision": "4610ca143709d58a633b6397a74412c2c3842454",
+  "upstream_revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+  "weight_url": "https://huggingface.co/timm/vit_small_patch14_dinov2.lvd142m/resolve/4610ca143709d58a633b6397a74412c2c3842454/pytorch_model.bin",
+  "weight_sha256": "120606d7ac0927e8fe3661d1f0f6705f80e5202203547e79d7d88d9bfa80e648",
+  "weight_bytes": 88287813,
+  "sources": {
+    "model_card.md": "https://huggingface.co/timm/vit_small_patch14_dinov2.lvd142m/resolve/4610ca143709d58a633b6397a74412c2c3842454/README.md",
+    "config.json": "https://huggingface.co/timm/vit_small_patch14_dinov2.lvd142m/resolve/4610ca143709d58a633b6397a74412c2c3842454/config.json",
+    "UPSTREAM_LICENSE": "https://raw.githubusercontent.com/facebookresearch/dinov2/7764ea0f912e53c92e82eb78a2a1631e92725fc8/LICENSE",
+    "UPSTREAM_README.md": "https://raw.githubusercontent.com/facebookresearch/dinov2/7764ea0f912e53c92e82eb78a2a1631e92725fc8/README.md"
+  },
+  "status": "Official artifact downloaded; CPU compatibility pending; not queued",
+  "mirror_status": "Not selected: pinned config says CC-BY-NC while model card says Apache; use official upstream artifact",
+  "official_weight": {
+    "url": "https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_pretrain.pth",
+    "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+    "bytes": 88283115
+  }
+}
