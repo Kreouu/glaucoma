@@ -64,6 +64,7 @@ def main():
     parser.add_argument('--drop-path', type=float, default=0.0, help='Training-only linear ConvNeXt stochastic depth maximum')
     parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
+    parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--train-limit', type=int)
@@ -81,6 +82,8 @@ def main():
         parser.error('drop-path supports ConvNeXt variants only')
     if not np.isfinite(args.color_jitter) or not 0 <= args.color_jitter <= 1:
         parser.error('color-jitter must be in [0, 1]')
+    if not np.isfinite(args.mixup_alpha) or args.mixup_alpha < 0:
+        parser.error('mixup-alpha must be finite and nonnegative')
     if not np.isfinite(args.ema_decay) or not 0 <= args.ema_decay < 1:
         parser.error('ema-decay must be in [0, 1)')
     if args.ema_decay and args.model not in ('convnext_tiny', 'convnext_small'):
@@ -143,6 +146,10 @@ def main():
     if args.drop_path:
         config['source_sha256']['training_regularization.py'] = sha256(project / 'training_regularization.py')
         config['drop_path_policy'] = 'linear depth schedule; training only; no change at inference'
+    if args.mixup_alpha:
+        from training_mixup import mix_batch
+        config['source_sha256']['training_mixup.py'] = sha256(project / 'training_mixup.py')
+        config['augmentation'] += f'; training batch Mixup alpha={args.mixup_alpha}, soft BCE targets'
     config['grad_scaler_enabled'] = args.precision == 'fp16'
     if args.lr_schedule == 'warmup_cosine':
         batches = (len(train_data) + args.batch_size - 1) // args.batch_size
@@ -291,6 +298,8 @@ def main():
                     group['lr'] = current_lr
                 scale_before = scaler.get_scale()
             images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
+            if args.mixup_alpha:
+                images, labels = mix_batch(images, labels, args.mixup_alpha)
             optimizer.zero_grad(set_to_none=True)
             with torch.autocast('cuda', dtype=autocast_dtype):
                 loss = criterion(model(images).flatten(), labels)

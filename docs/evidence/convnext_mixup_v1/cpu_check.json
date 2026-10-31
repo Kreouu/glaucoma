@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "runtime": "Ubuntu torch 2.14.0+cu126 CPU",
+  "checks": [
+    "disabled preserves exact input references and Torch/NumPy RNG states",
+    "soft-target pos-weight-3 BCE equals mixed hard-target losses; finite gradients"
+  ],
+  "source_sha256": {
+    "training_mixup.py": "1414d1132324daaa9b05ef437baecbdce0edd9238f42e502ce765a588c0907bf",
+    "tests/test_training_mixup.py": "759f9d4121c5e94c4c3b6237b9bde49b8ad6cf38b1755d2e0f8689ef4ad6d6ce"
+  },
+  "scope": "CPU mathematics and disabled-path checks only; GPU integration pending"
+}

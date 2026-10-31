@@ -1,0 +1,17 @@
+{
+  "model": "convnext_tiny",
+  "size": 512,
+  "batch_size": 16,
+  "epochs": 5,
+  "lr": 0.0001,
+  "lr_schedule": "constant",
+  "pos_weight": 3,
+  "ema_decay": 0.999,
+  "mixup_alpha": 0.2,
+  "drop_path": 0,
+  "color_jitter": 0,
+  "selection": "seed42 vs same-host baseline .9905249297200461; delta >=.0003 permits seeds43/44",
+  "data_boundary": "official train batches only; validation images and hard labels unchanged; no test access",
+  "before_full_run": "GPU smoke plus ordinary/EMA reload; alpha0 smoke must reproduce old control exactly",
+  "status": "prepared; not queued; evaluate current kNN first"
+}
