@@ -1,0 +1,32 @@
+{
+  "members": [
+    "wsl42",
+    "wsl43",
+    "wsl44",
+    "ubuntu42",
+    "pretrain22k42"
+  ],
+  "aggregation": "equal_raw_fp32_logit_mean",
+  "horizontal_flip": false,
+  "priority": "Verify equal members only; the second fixed group-weight screen has negligible difference and is not selected for extra weight fitting",
+  "checks": [
+    "all5849 original-vs-packed five logits exact0",
+    "same-pass frozen four max probability difference<=1e-6",
+    "independent5849 reload <=1e-6 and label changes0",
+    "same100 measured/5 warmup/3 rounds",
+    "necessary model bytes<500000000 and local average<100ms"
+  ],
+  "csv_gate": "native delta>=.0003 vs frozen/same-pass four; explicit comparison also reported vs earlier six .9907937424468712; no upload",
+  "goal995_requires": "native >=.995 plus complete independent reload and local deployment gates; T4 deferred",
+  "source_sha256": {
+    "five_model_inference.py": "3f1a1c3d94a2c26d6c65828ca40460b5eb89ec983f8ae844878c5346a25a62f9",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "scripts/pack_convnext_fp16.py": "953215d87281a0824e1b14860ac04f73da0bb57ae7f8b556ca146f88fd967035",
+    "scripts/verify_five_model_22k.py": "4fa96b82d26d78d47252e3f68fd0b4050f79fce930c226af78cf1d7e972fd73d"
+  }
+}
