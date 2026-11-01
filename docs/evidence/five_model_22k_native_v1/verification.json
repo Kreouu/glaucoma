@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "auroc": 0.9910496003434881,
+  "ap": 0.8633748047347599,
+  "baseline_same_pass_auroc": 0.9906119121514456,
+  "baseline_same_pass_ap": 0.85866924642203,
+  "delta_auroc": 0.00043768819204248466,
+  "delta_ap": 0.004705558312729896,
+  "mean_ms": 42.74777152992707,
+  "model_bytes": 278723483,
+  "same_image_difference": 0.0,
+  "frozen_baseline_probability_difference": 0.0,
+  "frozen_four_auroc": 0.9906119121514456,
+  "packing_max_logit_difference": 0.0,
+  "official_T4_verified": false,
+  "prior_six_native_auroc": 0.9907937424468712,
+  "delta_vs_prior_six": 0.0002558578966168623,
+  "goal995_met": false,
+  "full_reload_verified": true
+}

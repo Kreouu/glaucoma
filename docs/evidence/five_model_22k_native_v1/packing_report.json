@@ -1,0 +1,57 @@
+[
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55739611,
+    "original_sha256": "3efb5cb40f7a165c70ae35d32c9ed8d34cdc3af5312ad3fbfcabe9faa2e083b0",
+    "packed_sha256": "e85fe0a15179dc763ec952f44135315c31807bfb5f045af033d8f5f9dc211544",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "wsl42"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55739611,
+    "original_sha256": "1d3ac8760cbae26d0e6df300e1eb1fecd85f8ab558627597bf04b86842083081",
+    "packed_sha256": "3c451666da5660d075120a862176a1e3ea266d207099cab56c5c1a0a6aab28f1",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "wsl43"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55739611,
+    "original_sha256": "0f9ad798941c23cb64af952c7abf494a99f213b5accfb11d79238148a922c426",
+    "packed_sha256": "8334c97cf17424f05838562553c691e36995efc6cb4b2df1b8759e6ff41ea292",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "wsl44"
+  },
+  {
+    "original_bytes": 111344479,
+    "packed_bytes": 55751759,
+    "original_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+    "packed_sha256": "786aba7f1e942aa486f1af3c05ff89a48ad5e80cf6ba328ac21f290ddd48a678",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "ubuntu42"
+  },
+  {
+    "original_bytes": 111344607,
+    "packed_bytes": 55752891,
+    "original_sha256": "ff39f3e557f1b7df64d2f810e1fe7849114203bd36620ca8295ddcb6f8301b5d",
+    "packed_sha256": "709cfa9638c92639659323481f592f02fbd42ee4e4786379b444192a1380e456",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED",
+    "id": "pretrain22k42"
+  }
+]

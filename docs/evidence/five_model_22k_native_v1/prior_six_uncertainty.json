@@ -1,0 +1,12 @@
+{
+  "status": "EXPLORATORY",
+  "paired_class_stratified_bootstrap_repeats": 2000,
+  "seed": 42,
+  "delta_auroc": 0.0002558578966167513,
+  "delta_auroc_percentile95": [
+    -0.0005510429563662129,
+    0.0010253516773729011
+  ],
+  "resamples_with_positive_delta": 0.7565,
+  "scope": "Image-level resampling; patient identifiers unavailable; not a posterior probability or independent confirmation; does not change predeclared engineering gate"
+}

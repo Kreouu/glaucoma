@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "original_inventory_files_verified": 30,
+  "all_bytes_and_sha256_match": true,
+  "csv_rows": 5855,
+  "schema_order_finite_range_threshold_pass": true,
+  "csv_sha256": "9ac1c18f304ddfaceeefd6a5035e7d8e7a616ac8c645836e16b4c7cef32ce26b",
+  "recipe_sha256": "5100b25ea78928c99c8edc7fcf1da76056f9dea376006f997ee42e765e187d9b",
+  "runtime_sample_sha256": "9e87b20eec17b1889fb56e5320609e3c46c89252ae47e90904e3c11c8204ae99",
+  "platform_uploaded": false,
+  "scope": "Mac file backup and CSV audit; GPU proof was performed on WSL, not Mac or T4",
+  "new_original_training_checkpoint_sha256": "ff39f3e557f1b7df64d2f810e1fe7849114203bd36620ca8295ddcb6f8301b5d"
+}

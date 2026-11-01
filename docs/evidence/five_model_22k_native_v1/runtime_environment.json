@@ -1,0 +1,12 @@
+{
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:20:58) [GCC 14.3.0]",
+  "packages": {
+    "torch": "2.10.0+cu128",
+    "torchvision": "0.25.0+cu128",
+    "timm": "1.0.22",
+    "numpy": "2.5.2",
+    "Pillow": "12.3.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5060 Ti, 621.01, 16311 MiB",
+  "scope": "Same WSL environment recorded after native proof; no package changes"
+}
