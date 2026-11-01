@@ -30,6 +30,9 @@ def main():
         (OUT/'full_reload.json').write_text(json.dumps(report,indent=2)+'\n');print('FULL RELOAD',json.dumps(report),flush=True);return
     plan=json.loads((ROOT/'docs/evidence/five_model_22k_native_v1/plan.json').read_text())
     for name,digest in plan['source_sha256'].items():assert file_sha256(ROOT/name)==digest,name
+    assert file_sha256(FROZEN/'manifest.json')==plan['frozen_four_manifest_sha256']
+    assert file_sha256(NEW/'ema/best.pt')==plan['new_checkpoint_sha256']
+    assert file_sha256(ROOT/'inputs/runtime_sample.json')==plan['runtime_sample_sha256']
     OUT.mkdir(exist_ok=False)
     (OUT/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
     source_names=['five_model_inference.py','four_model_inference.py','inference.py','dataset.py','model.py','model_convnext.py','amp_precision.py']
@@ -69,6 +72,7 @@ def main():
     del predictor,original;gc.collect();torch.cuda.empty_cache()
     predictor=FiveModelPredictor(OUT/'manifest.json')
     sample=json.loads((ROOT/'inputs/runtime_sample.json').read_text())
+    assert len(sample['warmup'])==5 and len(sample['measured'])==100
     actual_names={r['Image_name']:r['actual_filename'] for r in samples}
     for row in sample['warmup']+sample['measured']:row['actual_filename']=actual_names[row['Image_name']]
     for row in sample['warmup']:predictor.predict_one(images/row['actual_filename'])

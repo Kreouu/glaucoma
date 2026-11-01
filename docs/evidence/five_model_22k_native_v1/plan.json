@@ -27,6 +27,9 @@
     "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
     "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
     "scripts/pack_convnext_fp16.py": "953215d87281a0824e1b14860ac04f73da0bb57ae7f8b556ca146f88fd967035",
-    "scripts/verify_five_model_22k.py": "4fa96b82d26d78d47252e3f68fd0b4050f79fce930c226af78cf1d7e972fd73d"
-  }
+    "scripts/verify_five_model_22k.py": "32e659f6cdb65e2ae5f250b751edd18cd6c3184562f49b16cc8a5c303b1f2a9a"
+  },
+  "frozen_four_manifest_sha256": "5fa5ef203bb9be34d3d3cc2523be755302122f9bb256d662dae6ff219e54b207",
+  "new_checkpoint_sha256": "ff39f3e557f1b7df64d2f810e1fe7849114203bd36620ca8295ddcb6f8301b5d",
+  "runtime_sample_sha256": "9e87b20eec17b1889fb56e5320609e3c46c89252ae47e90904e3c11c8204ae99"
 }
