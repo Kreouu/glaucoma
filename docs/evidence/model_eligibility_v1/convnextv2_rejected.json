@@ -1,0 +1,12 @@
+{
+  "status": "NOT_USED",
+  "model": "convnextv2_tiny.fcmae_ft_in1k",
+  "hf_revision": "508caf1bc24fd02c69d15778b994e808670dbc28",
+  "license": "CC-BY-NC-4.0",
+  "reason": "Competition excludes noncommercial-limited pretrained weights",
+  "primary_sources": [
+    "https://huggingface.co/timm/convnextv2_tiny.fcmae_ft_in1k",
+    "https://github.com/facebookresearch/ConvNeXt-V2/blob/main/README.md"
+  ],
+  "weight_downloaded": false
+}

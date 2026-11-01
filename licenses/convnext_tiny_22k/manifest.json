@@ -1,0 +1,24 @@
+{
+  "model": "convnext_tiny.fb_in22k_ft_in1k",
+  "revision": "bc48a87f119bae1b06418f5340bfa97ef75d4609",
+  "url": "https://huggingface.co/timm/convnext_tiny.fb_in22k_ft_in1k/resolve/bc48a87f119bae1b06418f5340bfa97ef75d4609/pytorch_model.bin",
+  "sha256": "8cb65dc650a7fb25eaadbff3eb69559d02f83cdc5afdfb3785d1889cdc3e3518",
+  "bytes": 114420885,
+  "sources": {
+    "model_card.md": "https://huggingface.co/timm/convnext_tiny.fb_in22k_ft_in1k/resolve/bc48a87f119bae1b06418f5340bfa97ef75d4609/README.md",
+    "config.json": "https://huggingface.co/timm/convnext_tiny.fb_in22k_ft_in1k/resolve/bc48a87f119bae1b06418f5340bfa97ef75d4609/config.json",
+    "upstream-LICENSE.txt": "https://raw.githubusercontent.com/facebookresearch/ConvNeXt/048efcea897d999aed302f2639b6270aedf8d4c8/LICENSE",
+    "upstream-README.md": "https://raw.githubusercontent.com/facebookresearch/ConvNeXt/048efcea897d999aed302f2639b6270aedf8d4c8/README.md",
+    "timm-LICENSE.txt": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/v1.0.22/LICENSE"
+  },
+  "pretraining": "Generic ImageNet22k then ImageNet1k; no medical-specific weights",
+  "status": "downloaded; strict CPU compatibility pending",
+  "upstream_revision": "048efcea897d999aed302f2639b6270aedf8d4c8",
+  "source_file_sha256": {
+    "upstream-README.md": "224fe1444bc31eda1c157a769bf36cb52d5ea0118d27460822f93a4b4385b404",
+    "model_card.md": "5829109fcf28ec11af3f28fe4477a8319a4aaf39aa67a3ab7b4499e8d1720d4d",
+    "config.json": "05b31a3e4e2f16a1ad61f64ea4b34ba2e17fb10e72c48490de088b92b97a6151",
+    "upstream-LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "timm-LICENSE.txt": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49"
+  }
+}

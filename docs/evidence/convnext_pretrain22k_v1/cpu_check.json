@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "CPU strict checkpoint compatibility only; GPU pending",
+  "weight_sha256": "8cb65dc650a7fb25eaadbff3eb69559d02f83cdc5afdfb3785d1889cdc3e3518",
+  "public_feature_tensors_exact": 180,
+  "official_22k_architecture_features_exact": true,
+  "all_parameters_trainable": true,
+  "buffer_free": true,
+  "output_shape": [
+    1,
+    1
+  ],
+  "builder": "unchanged model_convnext.py; generic tag architecture identical after strict 22k loading",
+  "timm": "1.0.22"
+}
