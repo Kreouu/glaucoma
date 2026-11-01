@@ -1,0 +1,39 @@
+{
+  "members": [
+    "wsl42",
+    "wsl43",
+    "wsl44",
+    "ubuntu42",
+    "pretrain22k42",
+    "traincrop42"
+  ],
+  "aggregation": "equal_raw_fp32_logit_mean",
+  "horizontal_flip": false,
+  "priority": "Verify equal six members only; no subset or continuous weight fitting",
+  "checks": [
+    "all5849 original-vs-packed six logits exact0",
+    "recompute old five on same Ubuntu host and explicitly report cross-host probability differences",
+    "independent5849 reload <=1e-6 and label changes0",
+    "same100 measured/5 warmup/3 rounds",
+    "necessary model bytes<500000000 and local average<100ms"
+  ],
+  "csv_gate": "native delta>=.0003 vs max(frozen WSL five, same-pass Ubuntu five); all deployment checks and independent reload pass; no upload",
+  "goal995_requires": "native >=.995 plus complete independent reload and local deployment gates; T4 deferred",
+  "source_sha256": {
+    "six_crop_model_inference.py": "0c35c88e4e7db7e53b0838a5d931e4e4a2d27979530c5a5ca386de1d15dba0b9",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "scripts/pack_convnext_fp16.py": "953215d87281a0824e1b14860ac04f73da0bb57ae7f8b556ca146f88fd967035",
+    "scripts/verify_six_crop.py": "f588d11049a5d9db31efb9c750ec5527cd3d5a984d6ae9b89475888dff6998e4"
+  },
+  "runtime_sample_sha256": "9e87b20eec17b1889fb56e5320609e3c46c89252ae47e90904e3c11c8204ae99",
+  "frozen_five_manifest_sha256": "5100b25ea78928c99c8edc7fcf1da76056f9dea376006f997ee42e765e187d9b",
+  "frozen_five_predictions_sha256": "3b876ac62713242fcebf23e01ec4d1e0c20fae4ec03dfd524fb31da905c593a9",
+  "old_six_original_manifest_sha256": "1f36fdcb431edf16c036f88198bf465008c7a6730c7f4fe60138f871dce95f80",
+  "crop_checkpoint_sha256": "9a607d845a334fed07655eac1f484d29c5160a8218f898cf498849c44585b32a",
+  "pretrain22k_checkpoint_sha256": "ff39f3e557f1b7df64d2f810e1fe7849114203bd36620ca8295ddcb6f8301b5d"
+}

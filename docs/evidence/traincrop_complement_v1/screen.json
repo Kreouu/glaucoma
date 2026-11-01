@@ -1,0 +1,35 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "positives": 191,
+  "baseline": {
+    "auroc": 0.9910496003434881,
+    "ap": 0.8633748047347599
+  },
+  "traincrop_single": {
+    "auroc": 0.9895047368411313,
+    "ap": 0.8572898892485915
+  },
+  "endpoints_clipped": 0,
+  "presets": {
+    "equal_six_members": {
+      "auroc": 0.9913850379113851,
+      "ap": 0.866591520755208,
+      "delta_auroc": 0.0003354375678970012,
+      "delta_ap": 0.0032167160204480405,
+      "promising": true
+    },
+    "equal_two_groups": {
+      "auroc": 0.9914498120624274,
+      "ap": 0.8678850626285527,
+      "delta_auroc": 0.00040021171893933616,
+      "delta_ap": 0.0045102578937927795,
+      "promising": true
+    }
+  },
+  "source_sha256": {
+    "outputs/five_model_22k_native_v1/valid_predictions.csv": "3b876ac62713242fcebf23e01ec4d1e0c20fae4ec03dfd524fb31da905c593a9",
+    "outputs/goal995_screen_v1/traincrop_seed42_valid_predictions.csv": "83ee6e040e7b3e9daab1e3981c287ae2c09d8b3280beac43d542b7693fb4dcc9"
+  },
+  "scope": "Inverse saved sigmoid logits; no native mixed inference, test data or submission"
+}

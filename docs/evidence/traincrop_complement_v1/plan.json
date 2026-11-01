@@ -1,0 +1,9 @@
+{
+  "baseline": "frozen native five .9910496003434881",
+  "fixed_presets": {
+    "equal_six_members": "(5*frozen_five_mean_logit+crop_single_logit)/6",
+    "equal_two_groups": "(frozen_five_mean_logit+crop_single_logit)/2"
+  },
+  "gate": "delta>=.0003 vs frozen five for native investigation; full proof required before promotion",
+  "test_used": false
+}
