@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "rows": 5855,
+  "submission_sha256": "efccf02e349722d0cf3416fee7305a46d74a1d978729865b6bb529c2ea65a930",
+  "recipe_sha256": "41a6e65bc301b4e755d29b598abaa8089d7203dac0d35084b090459cbf50f37d",
+  "weight_hashes_verified": true,
+  "official_test_order_verified": true,
+  "platform_uploaded": false
+}

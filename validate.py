@@ -55,6 +55,10 @@ def main():
         import timm
         if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
         sources.append('model_convnext_base.py')
+    if config['model'] == 'caformer_s18':
+        import timm
+        if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
+        sources.append('model_caformer.py')
     if config['model'] == 'convnext_tiny':
         import timm
         if timm.__version__ != config['timm_version']:
@@ -106,6 +110,8 @@ def main():
         from model_convnext_small import build_model as selected_builder
     elif config['model'] == 'convnext_base':
         from model_convnext_base import build_model as selected_builder
+    elif config['model'] == 'caformer_s18':
+        from model_caformer import build_model as selected_builder
     elif config['model'] == 'efficientnet_b3':
         from model_b3 import build_model as selected_builder
     else:

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "retained_tensors": 204,
+  "backbone_max_difference": 0.0,
+  "all_trainable": true,
+  "buffers": 0,
+  "parameters": 24294705,
+  "pretrained_sha256": "e165b6b027b2a171ba7af40894b509a87478535ac0e129bdf4e038cedeb5fccc",
+  "head_policy": "Preserve original MLP fc1 and norm; replace only final fc2"
+}

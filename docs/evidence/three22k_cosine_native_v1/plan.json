@@ -1,0 +1,25 @@
+{
+  "source_sha256": {
+    "scripts/verify_three22k_cosine.py": "9c0d036c5840283f93a57430999887d4753f8b7a52ee05c3dcf6a9e8d982ab3c",
+    "three_22k_cosine_inference.py": "fc5ce815476a0398ed639f8a6fb7b0742be721c48ede8fd479002c9e7f11cec8",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "inference.py": "0e4f17ba1edd72f5ec66fea4fd1906f45cb77e115780d014f62ffdef3f76afd4",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "scripts/pack_convnext_fp16.py": "953215d87281a0824e1b14860ac04f73da0bb57ae7f8b556ca146f88fd967035"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a",
+    "test": "3eba62c4e23201f85ce2a25e2290d195221159cf78b7fe8c49ecfb0f30a17c54"
+  },
+  "checkpoints": {
+    "42": "422f29e71c3038cee427a414a757e6964910f0446c62262987cda7ebefd68162",
+    "43": "c49760d7ce633b5c4d3a5d0ea3f7a0d8250682186596e71e0065641a9e24c20d",
+    "44": "e64527208e1f0d34c8d28f1660845b8ace50c40a2cee09f863abac959da54e03"
+  },
+  "runtime_sample_sha256": "9e87b20eec17b1889fb56e5320609e3c46c89252ae47e90904e3c11c8204ae99",
+  "scope": "User has one platform opportunity today; compare complete new recipe versus platform best; not claimed local-best ensemble"
+}

@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small', 'convnext_base', 'dinov2_small', 'convnext_attention'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small', 'convnext_base', 'caformer_s18', 'dinov2_small', 'convnext_attention'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -107,8 +107,8 @@ def main():
         parser.error('mixup-alpha must be finite and nonnegative')
     if not np.isfinite(args.ema_decay) or not 0 <= args.ema_decay < 1:
         parser.error('ema-decay must be in [0, 1)')
-    if args.ema_decay and args.model not in ('convnext_tiny', 'convnext_small', 'convnext_base', 'convnext_attention'):
-        parser.error('This EMA comparison supports buffer-free ConvNeXt variants')
+    if args.ema_decay and args.model not in ('convnext_tiny', 'convnext_small', 'convnext_base', 'convnext_attention', 'caformer_s18'):
+        parser.error('This EMA comparison supports buffer-free selected models')
     if args.lr_schedule == 'warmup_cosine':
         if not np.isfinite([args.lr, args.min_lr, args.warmup_epochs]).all():
             parser.error('Schedule parameters must be finite')
@@ -235,6 +235,10 @@ def main():
         import timm
         config['timm_version'] = timm.__version__
         config['source_sha256']['model_convnext_base.py'] = sha256(project / 'model_convnext_base.py')
+    if args.model == 'caformer_s18':
+        import timm
+        config['timm_version'] = timm.__version__
+        config['source_sha256']['model_caformer.py'] = sha256(project / 'model_caformer.py')
     if args.model == 'convnext_tiny':
         import timm
         config['timm_version'] = timm.__version__
@@ -293,6 +297,8 @@ def main():
         from model_convnext_small import build_model as selected_builder
     elif args.model == 'convnext_base':
         from model_convnext_base import build_model as selected_builder
+    elif args.model == 'caformer_s18':
+        from model_caformer import build_model as selected_builder
     elif args.model == 'efficientnet_b3':
         from model_b3 import build_model as selected_builder
     else:

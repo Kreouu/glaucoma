@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "auroc": 0.991200431580915,
+  "ap": 0.855656503877194,
+  "baseline_same_pass_auroc": 0.9900900175630484,
+  "delta_vs_platform_recipe": 0.001110414017866601,
+  "delta_vs_local_best_six": -0.00018645702050001933,
+  "packing_max_logit_difference": 0.0,
+  "same_image_difference": 0.0,
+  "mean_ms": 33.482827107266836,
+  "model_bytes": 167236293,
+  "official_T4_verified": false,
+  "full_reload_verified": true,
+  "scope": "Alternative complete recipe for user-requested platform comparison, not new local best; Base training suspended during audit"
+}

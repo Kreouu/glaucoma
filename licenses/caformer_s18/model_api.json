@@ -1,0 +1,71 @@
+{
+  "_id": "645498e96b61332c0e505151",
+  "id": "timm/caformer_s18.sail_in22k_ft_in1k",
+  "private": false,
+  "pipeline_tag": "image-classification",
+  "library_name": "timm",
+  "tags": [
+    "timm",
+    "pytorch",
+    "safetensors",
+    "image-classification",
+    "transformers",
+    "dataset:imagenet-1k",
+    "dataset:imagenet-22k",
+    "arxiv:2210.13452",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 17164,
+  "likes": 0,
+  "modelId": "timm/caformer_s18.sail_in22k_ft_in1k",
+  "author": "timm",
+  "sha": "cc6467f00ce5f7c89ad66e02900bc17e6df2c135",
+  "lastModified": "2025-01-21T19:12:06.000Z",
+  "gated": false,
+  "disabled": false,
+  "model-index": null,
+  "config": {},
+  "cardData": {
+    "tags": [
+      "image-classification",
+      "timm",
+      "transformers"
+    ],
+    "library_name": "timm",
+    "license": "apache-2.0",
+    "datasets": [
+      "imagenet-1k",
+      "imagenet-22k"
+    ]
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModel"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "pytorch_model.bin"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2023-05-05T05:49:29.000Z",
+  "safetensors": {
+    "parameters": {
+      "F32": 26341656
+    },
+    "total": 26341656
+  },
+  "usedStorage": 210841795
+}

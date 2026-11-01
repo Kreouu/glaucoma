@@ -1,0 +1,36 @@
+{
+  "aggregation": "equal_raw_fp32_logit_mean",
+  "horizontal_flip": false,
+  "source_sha256": {
+    "three_22k_cosine_inference.py": "fc5ce815476a0398ed639f8a6fb7b0742be721c48ede8fd479002c9e7f11cec8",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "inference.py": "0e4f17ba1edd72f5ec66fea4fd1906f45cb77e115780d014f62ffdef3f76afd4",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+  },
+  "members": [
+    {
+      "seed": 42,
+      "file": "seed42.pt",
+      "sha256": "ed8727effc0fb6c432228e7b3e516357b0801364b293f35270de55a00abddf98",
+      "bytes": 55745431,
+      "original_sha256": "422f29e71c3038cee427a414a757e6964910f0446c62262987cda7ebefd68162"
+    },
+    {
+      "seed": 43,
+      "file": "seed43.pt",
+      "sha256": "ce554626a88845bcdade98f3155babe5660bc9057521ebccf60330ce3de4e23b",
+      "bytes": 55745431,
+      "original_sha256": "c49760d7ce633b5c4d3a5d0ea3f7a0d8250682186596e71e0065641a9e24c20d"
+    },
+    {
+      "seed": 44,
+      "file": "seed44.pt",
+      "sha256": "9c1d4fdcdf24af246efcb79d49c5744f7f0ca45fcd341881bb8ce7de77f0f24d",
+      "bytes": 55745431,
+      "original_sha256": "e64527208e1f0d34c8d28f1660845b8ace50c40a2cee09f863abac959da54e03"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "revision": "cc6467f00ce5f7c89ad66e02900bc17e6df2c135",
+  "url": "https://huggingface.co/timm/caformer_s18.sail_in22k_ft_in1k/resolve/cc6467f00ce5f7c89ad66e02900bc17e6df2c135/pytorch_model.bin",
+  "sha256": "e165b6b027b2a171ba7af40894b509a87478535ac0e129bdf4e038cedeb5fccc",
+  "bytes": 105453957,
+  "license": "apache-2.0",
+  "scope": "Generic ImageNet22k-to1k; no medical pretraining; preserve upstream/timm license and modelcard"
+}
