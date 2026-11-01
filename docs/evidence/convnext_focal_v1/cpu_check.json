@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "runtime": "Ubuntu torch2.14/torchvision0.29 CPU",
+  "checks": [
+    "gamma0 weighted BCE value and gradient equivalence",
+    "gamma2 matches 4*torchvision sigmoid_focal_loss alpha=.75; extreme logits finite gradients"
+  ],
+  "method_reference": "https://docs.pytorch.org/vision/stable/generated/torchvision.ops.sigmoid_focal_loss.html",
+  "source_sha256": {
+    "training_focal.py": "357ad920755f675eba6eb870fe65805c5f537e10b15a113a563fb09209a293e7",
+    "tests/test_training_focal.py": "e0b97816894b59993c29fc2f4d79917b8fccf274d35356a9b7ff58f423b2808e"
+  }
+}

@@ -64,6 +64,7 @@ def main():
     parser.add_argument('--drop-path', type=float, default=0.0, help='Training-only linear ConvNeXt stochastic depth maximum')
     parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
+    parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
     parser.add_argument('--seed', type=int, default=42)
@@ -82,6 +83,10 @@ def main():
         parser.error('drop-path supports ConvNeXt variants only')
     if not np.isfinite(args.color_jitter) or not 0 <= args.color_jitter <= 1:
         parser.error('color-jitter must be in [0, 1]')
+    if not np.isfinite(args.focal_gamma) or args.focal_gamma < 0:
+        parser.error('focal-gamma must be finite and nonnegative')
+    if args.focal_gamma and args.mixup_alpha:
+        parser.error('This focal comparison uses hard labels without Mixup')
     if not np.isfinite(args.mixup_alpha) or args.mixup_alpha < 0:
         parser.error('mixup-alpha must be finite and nonnegative')
     if not np.isfinite(args.ema_decay) or not 0 <= args.ema_decay < 1:
@@ -146,6 +151,10 @@ def main():
     if args.drop_path:
         config['source_sha256']['training_regularization.py'] = sha256(project / 'training_regularization.py')
         config['drop_path_policy'] = 'linear depth schedule; training only; no change at inference'
+    if args.focal_gamma:
+        from training_focal import BinaryFocalLoss
+        config['source_sha256']['training_focal.py'] = sha256(project / 'training_focal.py')
+        config['loss'] = 'BinaryFocalLoss with existing pos_weight; mean over batch'
     if args.mixup_alpha:
         from training_mixup import mix_batch
         config['source_sha256']['training_mixup.py'] = sha256(project / 'training_mixup.py')
@@ -262,7 +271,8 @@ def main():
         configure_drop_path(model, args.drop_path)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
     positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
-    criterion = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)
+    criterion = (BinaryFocalLoss(args.focal_gamma, args.pos_weight) if args.focal_gamma
+                 else torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight))
     validation_criterion = torch.nn.BCEWithLogitsLoss()
     scaler = torch.amp.GradScaler('cuda', enabled=args.precision == 'fp16')
     ema_model = None
