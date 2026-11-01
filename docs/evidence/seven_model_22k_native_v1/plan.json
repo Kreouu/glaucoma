@@ -1,0 +1,39 @@
+{
+  "members": [
+    "wsl42",
+    "wsl43",
+    "wsl44",
+    "ubuntu42",
+    "pretrain22k42",
+    "pretrain22k43",
+    "pretrain22k44"
+  ],
+  "aggregation": "equal_raw_fp32_logit_mean",
+  "horizontal_flip": false,
+  "priority": "Primary fixed seven equal logits. Fixed new22k42/43/44 secondary diagnostic only until independently verified.",
+  "checks": [
+    "all5849 original-vs-packed seven logits exact0",
+    "same-pass frozen five max probability difference<=1e-6",
+    "independent5849 reload <=1e-6 and label changes0",
+    "same100 measured/5 warmup/3 rounds",
+    "necessary model bytes<500000000 and local average<100ms"
+  ],
+  "csv_gate": "Native delta>=.0003 vs frozen/same-pass five0.9910496003434881; full reload, local<100ms, weights<500MB; no upload",
+  "goal995_requires": "native >=.995 plus complete independent reload and local deployment gates; T4 deferred",
+  "source_sha256": {
+    "seven_model_22k_inference.py": "00280012d06f1a8c901f8f23c71baa9c413bb59138f448e53018627baa9ba7f1",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "inference.py": "f17bb66c31058d369ada547b79342dfffb919eaf80be6ca79098e3e07c1a2afb",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "scripts/pack_convnext_fp16.py": "953215d87281a0824e1b14860ac04f73da0bb57ae7f8b556ca146f88fd967035",
+    "scripts/verify_seven_model_22k.py": "3e96947ddde7c102e6a340b14301d1c14c9a686ba18a8bcc6264d7197d12b4cb",
+    "scripts/run_seven_after_confirmation.py": "59630b01efb68457d49b34d8241d333d463a5df8ccb04eb97ae35763c4ba657f"
+  },
+  "runtime_sample_sha256": "9e87b20eec17b1889fb56e5320609e3c46c89252ae47e90904e3c11c8204ae99",
+  "frozen_five_manifest_sha256": "5100b25ea78928c99c8edc7fcf1da76056f9dea376006f997ee42e765e187d9b",
+  "frozen_five_original_manifest_sha256": "6578f312bacc6bdf36faa89e8e47cd0efa88490ea42bce714484443eff4e82bf",
+  "wait_pid": 10569
+}
