@@ -1,0 +1,35 @@
+{
+  "source_sha256": {
+    "train.py": "19e48f515043159b067e62db550429a4818839cd490d1123c29cabd3bdbfebef",
+    "validate.py": "55c968deef8f44ae2f8488b98aa6c99869348cd205dfbfabec2dc86e55c7ab98",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "training_crop.py": "2f79728cb6214970f3c6d734af0eb99fff7d20de5ae3ed4a7935c1209034c121",
+    "scripts/run_next_convnext_study.py": "fb19eb2be94a7886829a250577b854111914d95349550e2965d34b7275760ebe"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "output_dir": "outputs/convnext_train_crop_v1",
+  "model": "convnext_tiny",
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "cpu_proof": "docs/evidence/convnext_train_crop_v1/cpu_check.json",
+  "control_template": "/home/kreouu/Model_train/glaucoma_codex_20261031/outputs/convnext_4060_pair_v1/constant_seed{seed}/ema",
+  "selection": "Each case screen42 >=+.0003 vs same-host Tiny fixed control permits43/44; no test fitting; ultimate native full validation target>=.995",
+  "wait_pid": 114598,
+  "wait_command": "run_next_convnext_study.py",
+  "terminal_proof": "/home/kreouu/Model_train/glaucoma_ranking_20261101/outputs/convnext_ranking_v1/summary.json",
+  "cases": [
+    {
+      "id": "area0p8",
+      "train_crop_min_area": 0.8
+    }
+  ],
+  "smoke_default_control": "/home/kreouu/Model_train/glaucoma_codex_20261031/outputs/convnext_4060_pair_v1/smoke",
+  "status": "GPU smoke and zero-default reproduction required before full study",
+  "hypothesis": "Training-only aspect-preserving mild crop area80-100%, then existing letterbox512; validation/inference unchanged, no Mixup/focal/ranking/drop path"
+}

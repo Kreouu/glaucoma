@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": {
+        "id": "rank0p1",
+        "rank_weight": 0.1
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "39bc375241641bb6e69be7eef765d543964e9b1b2ead4a9aaf512c3ef8b32c1d",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9880866456058142,
+        "val_auprc": 0.8303897942747358
+      },
+      "control": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905249297200461,
+        "val_auprc": 0.8526860413268649
+      },
+      "delta_auroc": -0.00243828411423197
+    }
+  ],
+  "test_used": false
+}

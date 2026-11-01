@@ -64,6 +64,7 @@ def main():
     parser.add_argument('--drop-path', type=float, default=0.0, help='Training-only linear ConvNeXt stochastic depth maximum')
     parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
+    parser.add_argument('--train-crop-min-area', type=float, default=1.0, help='Training-only relative crop area; one disables')
     parser.add_argument('--rank-weight', type=float, default=0.0, help='Training-only pairwise logistic ranking weight; zero disables')
     parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
@@ -84,6 +85,8 @@ def main():
         parser.error('drop-path supports ConvNeXt variants only')
     if not np.isfinite(args.color_jitter) or not 0 <= args.color_jitter <= 1:
         parser.error('color-jitter must be in [0, 1]')
+    if not np.isfinite(args.train_crop_min_area) or not 0 < args.train_crop_min_area <= 1:
+        parser.error('train-crop-min-area must be in (0, 1]')
     if not np.isfinite(args.rank_weight) or args.rank_weight < 0:
         parser.error('rank-weight must be finite and nonnegative')
     if args.rank_weight and (args.focal_gamma or args.mixup_alpha):
@@ -124,6 +127,9 @@ def main():
     train_data = FundusDataset(args.data_root, 'train', args.size, args.train_limit, args.seed, args.jpeg_draft)
     if args.color_jitter:
         train_data.transform.transforms.insert(0, torchvision.transforms.ColorJitter(brightness=args.color_jitter, contrast=args.color_jitter))
+    if args.train_crop_min_area < 1:
+        from training_crop import RandomRelativeCrop
+        train_data.transform.transforms.insert(0, RandomRelativeCrop(args.train_crop_min_area))
     valid_data = FundusDataset(args.data_root, 'valid', args.size, args.valid_limit, args.seed, args.jpeg_draft)
     if args.trim_black:
         from fundus_crop import TrimBlackBorder
@@ -156,6 +162,9 @@ def main():
     if args.drop_path:
         config['source_sha256']['training_regularization.py'] = sha256(project / 'training_regularization.py')
         config['drop_path_policy'] = 'linear depth schedule; training only; no change at inference'
+    if args.train_crop_min_area < 1:
+        config['source_sha256']['training_crop.py'] = sha256(project / 'training_crop.py')
+        config['augmentation'] += f'; training relative crop min_area={args.train_crop_min_area} before letterbox'
     if args.rank_weight:
         from training_ranking import pairwise_logistic_loss
         config['source_sha256']['training_ranking.py'] = sha256(project / 'training_ranking.py')

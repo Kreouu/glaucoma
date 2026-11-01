@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "runtime": "Ubuntu Pillow CPU",
+  "checks": [
+    "disabled preserves object and Python RNG state",
+    "wide-image crop retains original aspect at exact .81 area and correct pixel offsets",
+    "200 sampled tiny/wide/tall crop geometries stay in bounds with area>=.8"
+  ],
+  "scope": "Geometry only; no claim that every clinical feature is retained",
+  "source_sha256": {
+    "training_crop.py": "2f79728cb6214970f3c6d734af0eb99fff7d20de5ae3ed4a7935c1209034c121",
+    "tests/test_training_crop.py": "46da929b45368b0b137054ef883dcdf36076b9ff24865dd9f1a92dbf9f74f804"
+  }
+}
