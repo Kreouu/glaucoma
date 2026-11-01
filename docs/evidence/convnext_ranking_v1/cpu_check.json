@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "runtime": "Ubuntu torch2.14 CPU",
+  "checks": [
+    "explicit all-pair mean, score-shift invariance, correct ordering lower loss, positive/negative gradients in correct directions",
+    "single-class positive or negative batch returns differentiable zero"
+  ],
+  "scope": "CPU math only; GPU pending",
+  "source_sha256": {
+    "training_ranking.py": "1ab4d6edab235954dd995060ceff4e6d73184f672d3a01e258e7e9ec81eba8e4",
+    "tests/test_training_ranking.py": "33ec11964280d83f4802a03d9773bb3ff19fa4b0ded36403dbbfb8443fab8e87"
+  }
+}

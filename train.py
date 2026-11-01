@@ -64,6 +64,7 @@ def main():
     parser.add_argument('--drop-path', type=float, default=0.0, help='Training-only linear ConvNeXt stochastic depth maximum')
     parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
+    parser.add_argument('--rank-weight', type=float, default=0.0, help='Training-only pairwise logistic ranking weight; zero disables')
     parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
@@ -83,6 +84,10 @@ def main():
         parser.error('drop-path supports ConvNeXt variants only')
     if not np.isfinite(args.color_jitter) or not 0 <= args.color_jitter <= 1:
         parser.error('color-jitter must be in [0, 1]')
+    if not np.isfinite(args.rank_weight) or args.rank_weight < 0:
+        parser.error('rank-weight must be finite and nonnegative')
+    if args.rank_weight and (args.focal_gamma or args.mixup_alpha):
+        parser.error('This ranking comparison uses weighted BCE and hard labels')
     if not np.isfinite(args.focal_gamma) or args.focal_gamma < 0:
         parser.error('focal-gamma must be finite and nonnegative')
     if args.focal_gamma and args.mixup_alpha:
@@ -151,6 +156,10 @@ def main():
     if args.drop_path:
         config['source_sha256']['training_regularization.py'] = sha256(project / 'training_regularization.py')
         config['drop_path_policy'] = 'linear depth schedule; training only; no change at inference'
+    if args.rank_weight:
+        from training_ranking import pairwise_logistic_loss
+        config['source_sha256']['training_ranking.py'] = sha256(project / 'training_ranking.py')
+        config['loss'] = 'weighted BCE + rank_weight * batch pairwise logistic mean; single-class rank zero'
     if args.focal_gamma:
         from training_focal import BinaryFocalLoss
         config['source_sha256']['training_focal.py'] = sha256(project / 'training_focal.py')
@@ -319,7 +328,10 @@ def main():
                 images, labels = mix_batch(images, labels, args.mixup_alpha)
             optimizer.zero_grad(set_to_none=True)
             with torch.autocast('cuda', dtype=autocast_dtype):
-                loss = criterion(model(images).flatten(), labels)
+                logits = model(images).flatten()
+                loss = criterion(logits, labels)
+                if args.rank_weight:
+                    loss = loss + args.rank_weight * pairwise_logistic_loss(logits, labels)
             if not torch.isfinite(loss).item():
                 raise RuntimeError('Non-finite training loss')
             scaler.scale(loss).backward()
