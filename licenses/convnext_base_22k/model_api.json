@@ -1,0 +1,71 @@
+{
+  "_id": "639824abbc0a809fcae15af5",
+  "id": "timm/convnext_base.fb_in22k_ft_in1k",
+  "private": false,
+  "pipeline_tag": "image-classification",
+  "library_name": "timm",
+  "tags": [
+    "timm",
+    "pytorch",
+    "safetensors",
+    "image-classification",
+    "transformers",
+    "dataset:imagenet-1k",
+    "dataset:imagenet-22k",
+    "arxiv:2201.03545",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 255132,
+  "likes": 4,
+  "modelId": "timm/convnext_base.fb_in22k_ft_in1k",
+  "author": "timm",
+  "sha": "67758fcbcf9f007ec7630bf8636b74a8f24e52a0",
+  "lastModified": "2025-01-21T21:14:07.000Z",
+  "gated": false,
+  "disabled": false,
+  "model-index": null,
+  "config": {},
+  "cardData": {
+    "license": "apache-2.0",
+    "library_name": "timm",
+    "tags": [
+      "image-classification",
+      "timm",
+      "transformers"
+    ],
+    "datasets": [
+      "imagenet-1k",
+      "imagenet-22k"
+    ]
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModel"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "pytorch_model.bin"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2022-12-13T07:07:23.000Z",
+  "safetensors": {
+    "parameters": {
+      "F32": 88591464
+    },
+    "total": 88591464
+  },
+  "usedStorage": 708889297
+}

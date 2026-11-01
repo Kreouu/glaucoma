@@ -1,0 +1,21 @@
+{
+  "wait_pid": 119729,
+  "script_sha256": "c279ed1ff5be9ed567ab2a0ed5ce975ed3ca18c5071846acd30e50c45436fcc4",
+  "baseline_sha256": {
+    "manifest.json": "7c57fb95ddf4e806ee035a9bbeb3280b6ef734366e2355acdf3f380eb18dcec3",
+    "valid_predictions.csv": "aa0615f073f7d3f41e1d49350a2361b04eb13e5fd9910fe84bfc18d2cea1f17d",
+    "verification.json": "9f25d1e5e6b3f980112dde03c2a0ad9a463b2b7b905e4cf02f805bbcad69d5b3",
+    "full_reload.json": "595d58160e7cc2bb170886a1a17ca1c89178bd1d4db8714d1550ea20c19b2ff2"
+  },
+  "member_ids": [
+    "wsl42",
+    "wsl43",
+    "wsl44",
+    "ubuntu42",
+    "pretrain22k42",
+    "traincrop42",
+    "traincrop43",
+    "traincrop44"
+  ],
+  "promotion_delta_auroc": 0.0003
+}

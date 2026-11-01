@@ -5,14 +5,14 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def main():
-    study=sys.argv[1];assert study in ('small','drop_path','mixup','attention','focal','pretrain22k','ranking','train_crop')
+    study=sys.argv[1];assert study in ('small','drop_path','mixup','attention','focal','pretrain22k','pretrain12k','ranking','train_crop')
     plan=json.loads((ROOT/f'docs/evidence/convnext_{study}_v1/plan.json').read_text())
     pid=plan['wait_pid'];proc=Path(f'/proc/{pid}/cmdline')
     if proc.exists():
         assert plan['wait_command'].encode() in proc.read_bytes()
         subprocess.run(['/usr/bin/python3','-c','import os,select,sys\ntry: fd=os.pidfd_open(int(sys.argv[1]))\nexcept ProcessLookupError: sys.exit(0)\np=select.poll();p.register(fd,select.POLLIN);p.poll();os.close(fd)',str(pid)],check=True)
     if study=='small':assert Path(plan['terminal_proof']).read_text().strip()=='0'
-    elif study in ('attention','focal','pretrain22k','ranking','train_crop'):
+    elif study in ('attention','focal','pretrain22k','pretrain12k','ranking','train_crop'):
         proof=json.loads(Path(plan['terminal_proof']).read_text());assert proof['status']=='PASS'
     elif study=='mixup':
         proof=json.loads(Path(plan['terminal_proof']).read_text());assert proof['status']=='PASS'

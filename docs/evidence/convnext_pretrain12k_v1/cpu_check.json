@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "feature_tensors": 180,
+  "features_max_difference": 0.0,
+  "parameters": 27820897,
+  "all_trainable": true,
+  "buffers": 0,
+  "pretrained_sha256": "1abc6ff66688819cab2f7f8b1d9e14f7830c947ad663bd3c1f6681c0d31fcce6"
+}

@@ -1,0 +1,33 @@
+{
+  "source_sha256": {
+    "train.py": "8c9bb3b73c1334664b7cb0e10d09c2c848887cb8115af4ca1902f22f964e5632",
+    "validate.py": "55c968deef8f44ae2f8488b98aa6c99869348cd205dfbfabec2dc86e55c7ab98",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "scripts/run_next_convnext_study.py": "36eed8adca8bc4d072e448e7432ee1c5c17c7d18b5e63b9b5d27f9e85589c1d8"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "output_dir": "outputs/convnext_pretrain12k_v1",
+  "model": "convnext_tiny",
+  "pretrained_path": "pretrain_model/convnext_tiny_in12k_ft_in1k.bin",
+  "pretrained_sha256": "1abc6ff66688819cab2f7f8b1d9e14f7830c947ad663bd3c1f6681c0d31fcce6",
+  "cpu_proof": "docs/evidence/convnext_pretrain12k_v1/cpu_check.json",
+  "control_template": "/home/kreouu/Model_train/glaucoma_codex_20261031/outputs/convnext_4060_pair_v1/constant_seed{seed}/ema",
+  "selection": "Each case screen42 >=+.0003 vs same-host Tiny fixed control permits43/44; no test fitting; ultimate native full validation target>=.995",
+  "wait_pid": 119729,
+  "wait_command": "confirm_crop_complement.py",
+  "terminal_proof": "/home/kreouu/Model_train/glaucoma_crop_confirm_20261101/outputs/convnext_crop_confirmation_v1/summary.json",
+  "cases": [
+    {
+      "id": "pretrain12k",
+      "drop_path": 0
+    }
+  ],
+  "smoke_default_control": "/home/kreouu/Model_train/glaucoma_codex_20261031/outputs/convnext_4060_pair_v1/smoke",
+  "hypothesis": "Same Tiny builder and fixed LR1e-4 recipe, replace ImageNet1k initialization with generic12k-to1k; prove full feature output equality against official tag. No extra augmentation/test fitting."
+}

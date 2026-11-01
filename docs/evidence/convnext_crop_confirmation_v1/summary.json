@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "94f1290d897521232c4529f9441c9bdd1079678225e95173bead7d5c98f908c3",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9891207186599524,
+        "val_auprc": 0.8520844248691578
+      }
+    },
+    {
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "3964e04b1b3f51afab2fffbcd11489d388e77500350ba3b902f7793cda6e1da8",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9889532312122575,
+        "val_auprc": 0.8456142122751756
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Complement confirmation; unchanged source and full preset seed set"
+}

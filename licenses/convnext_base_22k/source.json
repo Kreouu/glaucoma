@@ -1,0 +1,20 @@
+{
+  "status": "DOWNLOAD_VERIFIED",
+  "revision": "67758fcbcf9f007ec7630bf8636b74a8f24e52a0",
+  "url": "https://huggingface.co/timm/convnext_base.fb_in22k_ft_in1k/resolve/67758fcbcf9f007ec7630bf8636b74a8f24e52a0/pytorch_model.bin",
+  "sha256": "b4b331a41bbb5e94677e1012ce5a136d413abc3a9cb840945abc81d319253bf1",
+  "bytes": 354488977,
+  "hub_file_metadata": {
+    "type": "file",
+    "oid": "50049b7e9a93e25f93d55b2225a67d8f193df6ae",
+    "size": 354488977,
+    "lfs": {
+      "oid": "b4b331a41bbb5e94677e1012ce5a136d413abc3a9cb840945abc81d319253bf1",
+      "size": 354488977,
+      "pointerSize": 134
+    },
+    "xetHash": "8c8ca5a7ece49a46a4fc4abbb0ea9d2b14c232888b1460053f61a8b5bd78fca8",
+    "path": "pytorch_model.bin"
+  },
+  "scope": "Natural-image ImageNet22k to1k pretraining; architecture integration and GPU training not yet performed"
+}

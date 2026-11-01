@@ -1,0 +1,8 @@
+{
+  "revision": "aa096f03029c7f0ec052013f64c819b34f8ad790",
+  "url": "https://huggingface.co/timm/convnext_tiny.in12k_ft_in1k/resolve/aa096f03029c7f0ec052013f64c819b34f8ad790/pytorch_model.bin",
+  "sha256": "1abc6ff66688819cab2f7f8b1d9e14f7830c947ad663bd3c1f6681c0d31fcce6",
+  "bytes": 114420885,
+  "license": "apache-2.0",
+  "scope": "Generic ImageNet12k subset pretraining followed by1k; preserve source/card/license for redistribution"
+}

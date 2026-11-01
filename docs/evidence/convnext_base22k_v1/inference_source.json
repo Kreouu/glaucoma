@@ -1,0 +1,11 @@
+{
+  "status": "PREPARED_NOT_GPU_VERIFIED",
+  "source_sha256": {
+    "inference.py": "65c607fdd0ade781999c5f314a25a0ecf0d0f9af7eba80db5ac6386d16eec331",
+    "model_convnext_base.py": "842e7eea0080d04bc08ae6dffee0d287df6cb6529aef7d6bb399a5b1f408b619",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+  },
+  "scope": "Base-specific source verification and builder branch; no changes to frozen candidate directories"
+}

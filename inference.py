@@ -67,6 +67,11 @@ class Predictor:
             if timm.__version__ != self.config['timm_version']:
                 raise ValueError('timm version differs from training')
             sources.append('model_convnext.py')
+        if self.config['model'] == 'convnext_base':
+            import timm
+            if timm.__version__ != self.config['timm_version']:
+                raise ValueError('timm version differs from training')
+            sources.append('model_convnext_base.py')
         if self.config['model'] == 'fastervit_1':
             import timm
             if timm.__version__ != self.config['timm_version']:
@@ -104,6 +109,9 @@ class Predictor:
             self.model = inception_builder()
         elif self.config['model'] == 'convnext_tiny':
             from model_convnext import build_model as convnext_builder
+            self.model = convnext_builder()
+        elif self.config['model'] == 'convnext_base':
+            from model_convnext_base import build_model as convnext_builder
             self.model = convnext_builder()
         else:
             self.model = selected_builder()

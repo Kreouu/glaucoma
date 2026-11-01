@@ -1,0 +1,58 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "baseline": {
+    "auroc": 0.991386888601415,
+    "ap": 0.8666346909478416
+  },
+  "candidate": {
+    "auroc": 0.9912564149543157,
+    "ap": 0.868293428525511
+  },
+  "delta_auroc": -0.00013047364709928289,
+  "promising": false,
+  "checks": [
+    {
+      "status": "PASS",
+      "images": 5849,
+      "positives": 191,
+      "checkpoint_epoch": 4,
+      "checkpoint_sha256": "94f1290d897521232c4529f9441c9bdd1079678225e95173bead7d5c98f908c3",
+      "max_probability_difference": 0.0,
+      "val_auroc": 0.9891207186599524,
+      "val_auprc": 0.8520844248691578
+    },
+    {
+      "status": "PASS",
+      "images": 5849,
+      "positives": 191,
+      "checkpoint_epoch": 3,
+      "checkpoint_sha256": "3964e04b1b3f51afab2fffbcd11489d388e77500350ba3b902f7793cda6e1da8",
+      "max_probability_difference": 0.0,
+      "val_auroc": 0.9889532312122575,
+      "val_auprc": 0.8456142122751756
+    }
+  ],
+  "plan": {
+    "wait_pid": 119729,
+    "script_sha256": "c279ed1ff5be9ed567ab2a0ed5ce975ed3ca18c5071846acd30e50c45436fcc4",
+    "baseline_sha256": {
+      "manifest.json": "7c57fb95ddf4e806ee035a9bbeb3280b6ef734366e2355acdf3f380eb18dcec3",
+      "valid_predictions.csv": "aa0615f073f7d3f41e1d49350a2361b04eb13e5fd9910fe84bfc18d2cea1f17d",
+      "verification.json": "9f25d1e5e6b3f980112dde03c2a0ad9a463b2b7b905e4cf02f805bbcad69d5b3",
+      "full_reload.json": "595d58160e7cc2bb170886a1a17ca1c89178bd1d4db8714d1550ea20c19b2ff2"
+    },
+    "member_ids": [
+      "wsl42",
+      "wsl43",
+      "wsl44",
+      "ubuntu42",
+      "pretrain22k42",
+      "traincrop42",
+      "traincrop43",
+      "traincrop44"
+    ],
+    "promotion_delta_auroc": 0.0003
+  },
+  "scope": "Old five plus all crop42/43/44, equal eight logits. Saved probability inverse-logit screen with mixed batch1/16; native full validation/reload/runtime required before promotion. No seed subset/weight search, no test rows read."
+}
