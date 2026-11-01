@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "tests": 1,
+  "scope": "Disjoint complete parameter partition, no frozen parameters, first AdamW update ratio and schedule multiplier preservation"
+}

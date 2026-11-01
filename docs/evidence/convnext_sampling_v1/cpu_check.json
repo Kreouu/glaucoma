@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "scope": "Expected full loss and logit gradient match w3 to1e-12; fixed seed, N draws, replacement and positive mass checked on official train class counts; no test data"
+}

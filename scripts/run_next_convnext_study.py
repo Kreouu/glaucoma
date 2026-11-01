@@ -5,14 +5,14 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def main():
-    study=sys.argv[1];assert study in ('small','drop_path','mixup','attention','focal','pretrain22k','pretrain12k','ranking','train_crop')
+    study=sys.argv[1];assert study in ('small','drop_path','mixup','attention','focal','pretrain22k','pretrain12k','sampling','head_lr','ranking','train_crop')
     plan=json.loads((ROOT/f'docs/evidence/convnext_{study}_v1/plan.json').read_text())
     pid=plan['wait_pid'];proc=Path(f'/proc/{pid}/cmdline')
     if proc.exists():
         assert plan['wait_command'].encode() in proc.read_bytes()
         subprocess.run(['/usr/bin/python3','-c','import os,select,sys\ntry: fd=os.pidfd_open(int(sys.argv[1]))\nexcept ProcessLookupError: sys.exit(0)\np=select.poll();p.register(fd,select.POLLIN);p.poll();os.close(fd)',str(pid)],check=True)
     if study=='small':assert Path(plan['terminal_proof']).read_text().strip()=='0'
-    elif study in ('attention','focal','pretrain22k','pretrain12k','ranking','train_crop'):
+    elif study in ('attention','focal','pretrain22k','pretrain12k','sampling','head_lr','ranking','train_crop'):
         proof=json.loads(Path(plan['terminal_proof']).read_text());assert proof['status']=='PASS'
     elif study=='mixup':
         proof=json.loads(Path(plan['terminal_proof']).read_text());assert proof['status']=='PASS'
@@ -32,6 +32,8 @@ def main():
     def train(case,seed,path,smoke=False,force_zero=False):
         rate=0 if force_zero else case.get('drop_path',0)
         command=[sys.executable,'-u','train.py','--model',plan['model'],'--precision','fp16','--data-root','datasets/glaucoma_first','--pretrained-path',plan['pretrained_path'],'--batch-size','16','--size','512','--jpeg-draft','--workers','4','--lr','0.0001','--lr-schedule','constant','--pos-weight','3','--ema-decay','.999','--epochs','1' if smoke else '5','--seed',str(seed),'--output-dir',str(path),'--drop-path',str(rate)]
+        if study=='head_lr':command+=['--head-lr-mult',str(1 if force_zero else case['head_lr_mult'])]
+        if study=='sampling' and not force_zero:command+=['--pos-weight','1','--resample-positive']
         if study=='train_crop':command+=['--train-crop-min-area',str(1 if force_zero else case['train_crop_min_area'])]
         if study=='ranking':command+=['--rank-weight',str(0 if force_zero else case['rank_weight'])]
         if study=='focal':command+=['--focal-gamma',str(0 if force_zero else case['focal_gamma'])]
@@ -46,20 +48,24 @@ def main():
         last=json.loads((path/'ema/metrics.jsonl').read_text().splitlines()[-1]);assert last['ema_updates']>0
         return report
     cases=plan['cases'];smoke=out/'smoke';train(cases[0],42,smoke,True)
-    if study in ('drop_path','mixup','focal','ranking','train_crop'):
+    if study in ('drop_path','mixup','focal','ranking','train_crop','sampling','head_lr'):
         default=out/'smoke_default';train(cases[0],42,default,True,True)
         control=Path(plan['smoke_default_control'])
         for kind in ('','ema'):
             old=json.loads((control/kind/'metrics.jsonl').read_text().splitlines()[0]);new=json.loads((default/kind/'metrics.jsonl').read_text().splitlines()[0])
             assert all(old[k]==new[k] for k in ('train_loss','valid_loss','val_auroc','val_auprc','amp_skipped_updates'))
-    (out/'smoke_check.json').write_text(json.dumps(dict(status='PASS',full_batch16=True,default_control_exact=study in ('drop_path','mixup','focal','ranking','train_crop')))+'\n')
+    (out/'smoke_check.json').write_text(json.dumps(dict(status='PASS',full_batch16=True,default_control_exact=study in ('drop_path','mixup','focal','ranking','train_crop','sampling','head_lr')))+'\n')
     jobs=[(case,42) for case in cases];results=[]
     for case,seed in jobs:
         path=out/f"{case['id']}_seed{seed}";report=train(case,seed,path)
         control=Path(plan['control_template'].format(seed=seed));base=json.loads((control/'reload_check.json').read_text())
         assert base['status']=='PASS' and sha(control/'best.pt')==base['checkpoint_sha256']
         config=json.loads((path/'ema/config.json').read_text());base_config=json.loads((control/'config.json').read_text())
-        for k in ('size','batch_size','epochs','lr','lr_schedule','pos_weight','ema_decay','precision','preprocessing','csv_sha256'):assert config[k]==base_config[k],k
+        for k in ('size','batch_size','epochs','lr','lr_schedule','pos_weight','ema_decay','precision','preprocessing','csv_sha256'):
+            if study=='sampling' and k=='pos_weight':assert config[k]==1
+            else:assert config[k]==base_config[k],k
+        if study=='sampling':assert config['resample_positive'] and config['training_loss_scale']>1
+        if study=='head_lr':assert config['head_lr_mult']==case['head_lr_mult'] and not config['resample_positive']
         expected_augmentation=base_config['augmentation']
         if study=='mixup':
             assert config['mixup_alpha']==case['mixup_alpha']

@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": {
+        "id": "fixed3e5",
+        "lr": 3e-05,
+        "schedule": "constant"
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "8b5a06a7200c6f0e88663e8c7cf47258b5d02f15bf01be74a198a3a2919c9d36",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9874042036573336,
+        "val_auprc": 0.8308241919405828
+      },
+      "delta_vs_same_host_original42": -0.0023175265897890096
+    },
+    {
+      "case": {
+        "id": "warmup_cosine1e4",
+        "lr": 0.0001,
+        "schedule": "warmup_cosine"
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "422f29e71c3038cee427a414a757e6964910f0446c62262987cda7ebefd68162",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9906563287121603,
+        "val_auprc": 0.83998016152033
+      },
+      "delta_vs_same_host_original42": 0.0009345984650376282
+    },
+    {
+      "case": {
+        "id": "warmup_cosine1e4",
+        "lr": 0.0001,
+        "schedule": "warmup_cosine"
+      },
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "c49760d7ce633b5c4d3a5d0ea3f7a0d8250682186596e71e0065641a9e24c20d",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9889573952648245,
+        "val_auprc": 0.842592709798677
+      },
+      "delta_vs_same_host_original42": -0.0007643349822981094
+    },
+    {
+      "case": {
+        "id": "warmup_cosine1e4",
+        "lr": 0.0001,
+        "schedule": "warmup_cosine"
+      },
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "e64527208e1f0d34c8d28f1660845b8ace50c40a2cee09f863abac959da54e03",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9901108378258834,
+        "val_auprc": 0.8397646079419347
+      },
+      "delta_vs_same_host_original42": 0.0003891075787607612
+    }
+  ],
+  "test_used": false,
+  "scope": "Unchanged source and same host; learning rate or schedule changed, no subset fitting"
+}

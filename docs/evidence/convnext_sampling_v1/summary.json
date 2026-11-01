@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": {
+        "id": "resample3",
+        "drop_path": 0
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "d705e94ce8ee6505cfa147b81394c5bea372779a776316367cc2e610137a1173",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9870891236797641,
+        "val_auprc": 0.8294799318245659
+      },
+      "control": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905249297200461,
+        "val_auprc": 0.8526860413268649
+      },
+      "delta_auroc": -0.003435806040282041
+    }
+  ],
+  "test_used": false
+}

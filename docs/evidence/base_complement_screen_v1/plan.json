@@ -1,0 +1,12 @@
+{
+  "aggregation": "Old four mean weighted4 plus crop42 plus best fixedLR Base42, divided6. Replace old22k42 with Base; no combination/weight search.",
+  "promotion_delta_auroc": 0.0003,
+  "inputs": {
+    "old_four": "d55de75700cca1d51a2160067ddb1706580a30e74992f4623d3d178f265c4f63",
+    "base42": "700be7fb0bfe3d86aac5155d5fee379e45d73a2e06111c8f13d27ec65df66a76",
+    "crop42": "83ee6e040e7b3e9daab1e3981c287ae2c09d8b3280beac43d542b7693fb4dcc9",
+    "baseline_six": "aa0615f073f7d3f41e1d49350a2361b04eb13e5fd9910fe84bfc18d2cea1f17d"
+  },
+  "script_sha256": "458f67c116fbc1b847b3f1bda2ae01d07523e3852056c3f1feb27960cc3def58",
+  "scope": "Saved probability inverse logits; mixed batch/GPU paths; no test rows read"
+}

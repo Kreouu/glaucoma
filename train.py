@@ -55,12 +55,14 @@ def main():
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--jpeg-draft', action='store_true', help='Reduced JPEG decode; use the same mode for inference')
     parser.add_argument('--lr', type=float, default=1e-4)
+    parser.add_argument('--head-lr-mult', type=float, default=1.0, help='ConvNeXt classifier LR multiplier; backbone remains fully trainable')
     parser.add_argument('--precision', choices=['fp16', 'bf16'], default='fp16')
     parser.add_argument('--lr-schedule', choices=['constant', 'warmup_cosine', 'late_cosine'], default='constant')
     parser.add_argument('--warmup-epochs', type=float, default=1.0)
     parser.add_argument('--decay-start-epoch', type=int, default=5, help='Completed constant-LR epochs before late cosine decay')
     parser.add_argument('--min-lr', type=float, default=3e-7)
     parser.add_argument('--pos-weight', type=float, default=1.0, help='Positive training loss weight; validation BCE remains unweighted')
+    parser.add_argument('--resample-positive', action='store_true', help='Train-only positive draw weight3, BCE weight1 with expectation-preserving loss scale')
     parser.add_argument('--drop-path', type=float, default=0.0, help='Training-only linear ConvNeXt stochastic depth maximum')
     parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
@@ -75,10 +77,16 @@ def main():
     args = parser.parse_args()
     if min(args.epochs, args.batch_size, args.size, args.lr) <= 0 or args.workers < 0:
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
+    if not np.isfinite(args.head_lr_mult) or args.head_lr_mult <= 0:
+        parser.error('head-lr-mult must be finite and positive')
+    if args.head_lr_mult != 1 and args.model not in ('convnext_tiny', 'convnext_base'):
+        parser.error('This classifier LR comparison supports ConvNeXt Tiny/Base')
     if args.model == 'dinov2_small' and args.size % 14:
         parser.error('DINOv2 input size must be divisible by patch size 14')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
         parser.error('pos-weight must be finite and positive')
+    if args.resample_positive and (args.pos_weight != 1 or args.focal_gamma or args.rank_weight or args.mixup_alpha):
+        parser.error('Positive resampling comparison requires plain BCE weight1 without focal/ranking/Mixup')
     if not np.isfinite(args.drop_path) or not 0 <= args.drop_path < 1:
         parser.error('drop-path must be in [0, 1)')
     if args.drop_path and args.model not in ('convnext_tiny', 'convnext_small'):
@@ -153,9 +161,19 @@ def main():
                   gpu=torch.cuda.get_device_name(0), cuda=torch.version.cuda,
                   pretrained_sha256=sha256(args.pretrained_path) if args.pretrained_path else None,
                   csv_sha256={split: sha256(args.data_root / f'{split}.csv') for split in ('train', 'valid')})
+    sampling_scale = 1.0
+    if args.resample_positive:
+        from training_sampling import positive_resampling
+        sampler, sampling_scale = positive_resampling([s[2] for s in train_data.samples], torch.Generator().manual_seed(args.seed))
+        config.update(training_sampling='replacement draws N; per-image weight3 for positive,1 for negative', training_loss_scale=sampling_scale, loss='BCE weight1 times training_loss_scale; expected objective equals original w3')
     project = Path(__file__).resolve().parent
     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
     config['source_sha256']['amp_precision.py'] = sha256(project / 'amp_precision.py')
+    if args.head_lr_mult != 1:
+        config['source_sha256']['training_head_lr.py'] = sha256(project / 'training_head_lr.py')
+        config['optimizer_groups'] = 'all backbone parameters baseLR; classifier only baseLR*head_lr_mult; same weight decay'
+    if args.resample_positive:
+        config['source_sha256']['training_sampling.py'] = sha256(project / 'training_sampling.py')
     if args.trim_black:
         config['preprocessing'] = 'Conservative near-black border trim, RGB, aspect-preserving letterbox, ImageNet normalization'
         config['source_sha256']['fundus_crop.py'] = sha256(project / 'fundus_crop.py')
@@ -260,7 +278,10 @@ def main():
     generator = torch.Generator().manual_seed(args.seed)
     options = dict(batch_size=args.batch_size, num_workers=args.workers, pin_memory=True,
                    worker_init_fn=seed_worker)
-    train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
+    if args.resample_positive:
+        train_loader = DataLoader(train_data, sampler=sampler, generator=generator, **options)
+    else:
+        train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
     if args.model == 'convnext_attention':
         from model_convnext_attention import build_model as selected_builder
@@ -293,7 +314,11 @@ def main():
     if args.drop_path:
         from training_regularization import configure_drop_path
         configure_drop_path(model, args.drop_path)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
+    if args.head_lr_mult != 1:
+        from training_head_lr import classifier_lr_groups
+        optimizer = torch.optim.AdamW(classifier_lr_groups(model,args.lr,args.head_lr_mult), lr=args.lr, weight_decay=0.01)
+    else:
+        optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
     positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
     criterion = (BinaryFocalLoss(args.focal_gamma, args.pos_weight) if args.focal_gamma
                  else torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight))
@@ -336,7 +361,7 @@ def main():
                 else:
                     current_lr = args.lr
                 for group in optimizer.param_groups:
-                    group['lr'] = current_lr
+                    group['lr'] = current_lr * group.get('lr_scale', 1.)
                 scale_before = scaler.get_scale()
             images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
             if args.mixup_alpha:
@@ -345,6 +370,8 @@ def main():
             with torch.autocast('cuda', dtype=autocast_dtype):
                 logits = model(images).flatten()
                 loss = criterion(logits, labels)
+                if args.resample_positive:
+                    loss = loss * sampling_scale
                 if args.rank_weight:
                     loss = loss + args.rank_weight * pairwise_logistic_loss(logits, labels)
             if not torch.isfinite(loss).item():

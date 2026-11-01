@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "feature_tensors": 342,
+  "all_trainable": true,
+  "buffers": 0,
+  "parameters": 87567489,
+  "shape": [
+    2,
+    1
+  ],
+  "pretrained_sha256": "b4b331a41bbb5e94677e1012ce5a136d413abc3a9cb840945abc81d319253bf1",
+  "scope": "CPU strict full initialization plus every retained feature tensor equality; GPU training/runtime not tested"
+}

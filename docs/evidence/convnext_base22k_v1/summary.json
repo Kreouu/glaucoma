@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "0be3a895ef1a958c8ff85cf9b59ca28699efccea42fe0a2a309c2a5d9113c34b",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9876609868989652,
+        "val_auprc": 0.8351831528565714
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "a0713648f47a509a1aa109d620994f890983dd20500bd793b9cc21c399fce4f6",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9868582500985493,
+        "val_auprc": 0.8281954656718293
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Architecture/pretraining capacity screen with batch8; not an isolated size effect versus Tiny batch16. Native ensemble/runtime evaluation remains separate."
+}

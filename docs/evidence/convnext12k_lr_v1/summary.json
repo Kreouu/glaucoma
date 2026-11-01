@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "309031583e81b736a3a846de5a1d1608ce346d9a7df86f93a79bfd7c88adad1e",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9888833676636334,
+        "val_auprc": 0.8403689749962758
+      }
+    },
+    {
+      "lr": 1e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "de4abc9fa5b2a9333585bcc4748d398f8d58608c27c6289adebdfb2630df72a0",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9854040704076515,
+        "val_auprc": 0.8287737384675941
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Same 12K initialization and Tiny512 batch16; only fixed learning rate reduced versus the 1e-4 control. No test fitting; native validation and timing remain separate."
+}
