@@ -1,0 +1,19 @@
+{
+  "wait_pid": 118950,
+  "source_sha256": {
+    "train.py": "19e48f515043159b067e62db550429a4818839cd490d1123c29cabd3bdbfebef",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "training_crop.py": "2f79728cb6214970f3c6d734af0eb99fff7d20de5ae3ed4a7935c1209034c121",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4"
+  },
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "seeds": [
+    43,
+    44
+  ],
+  "reason": "Native six crop complement passed +.0003 gate; confirm all fixed seeds despite single model gate failure",
+  "native_reference": "six_crop_native_v1",
+  "next_fixed_ensemble": "old five plus crop42/43/44 equal raw logits, no seed selection"
+}
