@@ -1,0 +1,26 @@
+{
+  "training_source_revision": "b85669a",
+  "source_sha256": {
+    "train.py": "8c9bb3b73c1334664b7cb0e10d09c2c848887cb8115af4ca1902f22f964e5632",
+    "validate.py": "55c968deef8f44ae2f8488b98aa6c99869348cd205dfbfabec2dc86e55c7ab98",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "scripts/confirm_22k_complement.py": "98d85acaadb01fc245e1b72ca1046f55ff4828196de73a27cdd6a33bee378dec"
+  },
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in22k_ft_in1k.bin",
+  "wait_pid": 10323,
+  "gate": "Native five delta>=.0003 vs frozen/same-pass four; full5849 reload, model<500MB, local<100ms; skip if goal .995 already proved",
+  "reason": "Single-model gain was below gate; this is a separate conditional replication of native complementarity, not retroactive standalone promotion",
+  "seeds": [
+    43,
+    44
+  ],
+  "final_fixed_sets": [
+    "22K42/43/44 equal logits",
+    "frozen old four plus all 22K42/43/44 equal logits (primary seven); no subset/weight search"
+  ],
+  "storage_requirement": "Seven FP16-storage members expected below500MB; full per-member equivalence and deployment verification required",
+  "test_used": false
+}
