@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "name": "lr1e5_seed42",
+      "lr": 1e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 8,
+        "checkpoint_sha256": "0c935a81488920700a10c65cd198fd60564baf1e879cedba400d6d6d1c49dc94",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9787059605173789,
+        "val_auprc": 0.7383527501697393
+      }
+    },
+    {
+      "name": "lr5e5_seed42",
+      "lr": 5e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 8,
+        "checkpoint_sha256": "68352d7e74232eea353ded0acca498cb1a1d5db4ff3e89941c2b3d83a1f2e837",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.8851512661495838,
+        "val_auprc": 0.33798921076919025
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Generic official DINOv2; full encoder fine-tuning; native deployment verification still required"
+}

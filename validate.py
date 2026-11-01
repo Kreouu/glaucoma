@@ -36,6 +36,10 @@ def main():
     autocast_dtype = amp_dtype(config)
     if autocast_dtype == torch.bfloat16 and not torch.cuda.is_bf16_supported():
         raise ValueError('This checkpoint requires BF16 support')
+    if config['model'] == 'convnext_attention':
+        import timm
+        if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
+        sources.extend(['model_convnext.py', 'model_convnext_attention.py'])
     if config['model'] == 'dinov2_small':
         import timm
         if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
@@ -88,7 +92,9 @@ def main():
         raise ValueError('Validation sample manifest changed')
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-    if config['model'] == 'dinov2_small':
+    if config['model'] == 'convnext_attention':
+        from model_convnext_attention import build_model as selected_builder
+    elif config['model'] == 'dinov2_small':
         from model_dinov2 import build_model as selected_builder
     elif config['model'] == 'efficientnet_v2_s':
         from model_efficientnetv2 import build_model as selected_builder

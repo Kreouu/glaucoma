@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small', 'dinov2_small'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small', 'dinov2_small', 'convnext_attention'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -86,7 +86,7 @@ def main():
         parser.error('mixup-alpha must be finite and nonnegative')
     if not np.isfinite(args.ema_decay) or not 0 <= args.ema_decay < 1:
         parser.error('ema-decay must be in [0, 1)')
-    if args.ema_decay and args.model not in ('convnext_tiny', 'convnext_small'):
+    if args.ema_decay and args.model not in ('convnext_tiny', 'convnext_small', 'convnext_attention'):
         parser.error('This EMA comparison supports buffer-free ConvNeXt variants')
     if args.lr_schedule == 'warmup_cosine':
         if not np.isfinite([args.lr, args.min_lr, args.warmup_epochs]).all():
@@ -169,6 +169,11 @@ def main():
         config.update(lr_total_steps=total_steps, lr_constant_steps=constant_steps,
                       lr_step_basis='planned training batches; AMP-skipped batches still advance schedule')
         config['source_sha256']['lr_schedule.py'] = sha256(project / 'lr_schedule.py')
+    if args.model == 'convnext_attention':
+        import timm
+        config['timm_version'] = timm.__version__
+        for name in ('model_convnext.py', 'model_convnext_attention.py'):
+            config['source_sha256'][name] = sha256(project / name)
     if args.model == 'dinov2_small':
         import timm
         config['timm_version'] = timm.__version__
@@ -226,7 +231,9 @@ def main():
                    worker_init_fn=seed_worker)
     train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
-    if args.model == 'dinov2_small':
+    if args.model == 'convnext_attention':
+        from model_convnext_attention import build_model as selected_builder
+    elif args.model == 'dinov2_small':
         from model_dinov2 import build_model as selected_builder
     elif args.model == 'efficientnet_v2_s':
         from model_efficientnetv2 import build_model as selected_builder

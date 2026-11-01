@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "scope": "CPU initialization, preserved backbone/head, spatial gradient; GPU pending",
+  "unchanged_tensors": 182,
+  "added_parameters": 768,
+  "initial_logit_max_difference": 0.0,
+  "pool_matches_average_at_initialization": true,
+  "attention_gradient_nonzero_finite": true,
+  "all_parameters_trainable": true,
+  "buffer_free": true,
+  "builder_sha256": "9e04b92ebc630409a6d998b5f4ff2cf5f4e95363f58083274d6a4289f5331e37"
+}
