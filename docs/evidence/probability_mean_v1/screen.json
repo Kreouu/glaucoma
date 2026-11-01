@@ -1,0 +1,28 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "positives": 191,
+  "results": {
+    "four": {
+      "auroc": 0.990113613860928,
+      "ap": 0.8581282205374503,
+      "delta_vs_native_best": -0.0006801285859432404,
+      "promising": false
+    },
+    "six": {
+      "auroc": 0.9906058974088489,
+      "ap": 0.8594544772007462,
+      "delta_vs_native_best": -0.00018784503802238284,
+      "promising": false
+    }
+  },
+  "source_sha256": {
+    "wsl42": "2f72e3716e17f60400463bd25b8f1fa8c608cfd212b08c0f1a3b42b96e0a42f8",
+    "wsl43": "27d73cebef2b9203204250ebf452258ea50f6b00d63c0e9b513a9cd61bfc3398",
+    "wsl44": "1b35d509c99043c5c253886433953ad74b27da97cbd9eafac42d44e56b42040a",
+    "ubuntu42": "4ffc79f6e88f2a48d7a82d67b2b1d00252ce406fb89595baec4da7718e5e1c88",
+    "ubuntu43": "f6b904ae5fcda1d9148ddd91787cf2106681661113af94688d1b8163a929929c",
+    "ubuntu44": "f75b667203284cd0b9e6a2892c7641beeb4a0e2ca039a1ab5a778f1f72758eb7"
+  },
+  "scope": "saved batch16 probabilities; not native batch1 validation or official score"
+}

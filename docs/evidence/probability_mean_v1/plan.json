@@ -1,0 +1,23 @@
+{
+  "status": "predeclared_screen",
+  "members": {
+    "four": [
+      "wsl42",
+      "wsl43",
+      "wsl44",
+      "ubuntu42"
+    ],
+    "six": [
+      "wsl42",
+      "wsl43",
+      "wsl44",
+      "ubuntu42",
+      "ubuntu43",
+      "ubuntu44"
+    ]
+  },
+  "aggregation": "equal arithmetic mean of saved sigmoid probabilities; no TTA, no fitted weights",
+  "native_gate": "screen AUROC >= .9907937424468712 + .0003; then native full validation, reload, runtime required",
+  "target": 0.995,
+  "scope": "official validation only; no test data used"
+}
