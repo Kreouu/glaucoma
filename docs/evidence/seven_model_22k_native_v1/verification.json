@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "positives": 191,
+  "batch_size": 1,
+  "auroc": 0.9908978437610463,
+  "ap": 0.8623445251581597,
+  "baseline_same_pass_auroc": 0.9910496003434881,
+  "baseline_same_pass_ap": 0.8633748047347599,
+  "delta_auroc": -0.0001517565824418199,
+  "delta_ap": -0.0010302795766001793,
+  "mean_ms": 54.6872729936149,
+  "model_bytes": 390229137,
+  "same_image_difference": 0.0,
+  "frozen_baseline_probability_difference": 0.0,
+  "frozen_five_auroc": 0.9910496003434881,
+  "packing_max_logit_difference": 0.0,
+  "official_T4_verified": false,
+  "prior_native_best_auroc": 0.9910496003434881,
+  "delta_vs_prior_best": -0.0001517565824418199,
+  "goal995_met": false,
+  "new_three_diagnostic": {
+    "auroc": 0.9900275567745433,
+    "ap": 0.8524426141381336,
+    "scope": "Fixed secondary set; no standalone runtime or independent reload yet"
+  },
+  "full_reload_verified": true
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "batch_size": 1,
+  "auroc": 0.991386888601415,
+  "ap": 0.8666346909478416,
+  "max_probability_difference": 0.0,
+  "label_changes": 0
+}

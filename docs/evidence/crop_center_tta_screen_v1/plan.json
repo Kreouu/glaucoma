@@ -1,0 +1,16 @@
+{
+  "center_area": 0.9,
+  "reason": "Fixed mean training crop area (uniform .8 to 1); one view only, no scale search",
+  "aggregation": "replace crop member logit by mean(full,center); other five unchanged",
+  "promotion_delta_auroc": 0.0003,
+  "source_sha256": {
+    "crop_tta.py": "c915d5b22c79eac0794e665c06decedfc3a9e75d95d6ce3f415c8465339c07ac",
+    "scripts/screen_crop_tta.py": "57f7e234f05dd1eddb247564d6765cf877a099a92d698bb249d5adcb49d4b083"
+  },
+  "input_sha256": {
+    "manifest.json": "7c57fb95ddf4e806ee035a9bbeb3280b6ef734366e2355acdf3f380eb18dcec3",
+    "valid_predictions.csv": "aa0615f073f7d3f41e1d49350a2361b04eb13e5fd9910fe84bfc18d2cea1f17d",
+    "traincrop42.pt": "e137c3591bf2e8ba5e0e655eec664596cc44b6081a56b15d649a0ffb7b497a91"
+  },
+  "valid_csv_sha256": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+}
