@@ -1,0 +1,12 @@
+{
+  "baseline": "frozen native five .9910496003434881",
+  "age_fit": "Weighted logistic regression on official train Age standardized using train mean/std, plus missing flag; class cost3; ridge[0,.001,.001];20Newton steps",
+  "fixed_presets": {
+    "full_prior_residual": "image_logit + age_logit - weighted_train_prior_logit",
+    "one_expert_relative_to_five": "image_logit + .2*(age_logit-weighted_train_prior_logit)"
+  },
+  "gate": "delta>=.0003 for further investigation; no formal age deployment until metadata interface is demonstrated",
+  "test_access": "None",
+  "official_source": "https://www.ncccu.org.cn/index/Paper/case2.html",
+  "official_statement_paraphrase": "Patient age is supplied to support fuller training and analysis; timing metadata interface is not specified"
+}
