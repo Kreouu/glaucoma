@@ -1,0 +1,37 @@
+{
+  "training_source_revision": "b85669a",
+  "source_sha256": {
+    "train.py": "8c9bb3b73c1334664b7cb0e10d09c2c848887cb8115af4ca1902f22f964e5632",
+    "validate.py": "55c968deef8f44ae2f8488b98aa6c99869348cd205dfbfabec2dc86e55c7ab98",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "lr_schedule.py": "f58e87e09746ae75b63f36998ae0c93c679910ee5c48e803a4c699c11444ddc3",
+    "scripts/run_22k_lr_study.py": "5b6d449fcb0ca5cf616d0d37c5e1357710c572b2832ad829f685def9c1778cd3"
+  },
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in22k_ft_in1k.bin",
+  "cases": [
+    {
+      "id": "fixed3e5",
+      "lr": 3e-05,
+      "schedule": "constant"
+    },
+    {
+      "id": "warmup_cosine1e4",
+      "lr": 0.0001,
+      "schedule": "warmup_cosine"
+    }
+  ],
+  "model": "convnext_tiny",
+  "size": 512,
+  "batch_size": 16,
+  "epochs": 5,
+  "pos_weight": 3,
+  "ema_decay": 0.999,
+  "seed_screen": 42,
+  "confirmation": "After both cases, best delta>=+.0003 vs same-host original22k42 .9897217302471226 permits43/44 for that whole recipe only",
+  "rationale": "22K seed44 was weak under original1e-4; test lower constant LR and one-epoch warmup cosine separately, do not delete weak seeds",
+  "test_used": false,
+  "wait_for": "Complete seven-member native verification; skip if goal already met"
+}
