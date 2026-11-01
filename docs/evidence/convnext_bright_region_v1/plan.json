@@ -1,0 +1,37 @@
+{
+  "source_sha256": {
+    "train.py": "c5c07a31f5bcb68e7520d2bb42a211727e0093addeb965dfcc7c3fa591ea456b",
+    "validate.py": "0b467f9a80c985c691cd117c236bd1cb30d253200729447e335f53658d4412e7",
+    "inference.py": "7cde4ec2d65ec6fa080f3fc928c5d3a02b0ac4fa8c5f35a0f0c087e41f8d7ee3",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "fundus_bright_crop.py": "654655f68fe2b45c4d3de4fa9e4043039e11c0cc6e4b78a620ea0e39410764b8",
+    "scripts/run_next_convnext_study.py": "7f8cd88551a91d3c3fb4139ae4d7b0ab2d59f7f65a6df169da7ea834f59a0c1c",
+    "tests/test_bright_region.py": "93544401cf2c642486c558419d8bb08a125b5daf5703a0d44c4d1d62f3d884ae"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "output_dir": "outputs/convnext_bright_region_v1",
+  "model": "convnext_tiny",
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "cpu_proof": "docs/evidence/convnext_bright_region_v1/cpu_check.json",
+  "control_template": "/home/ng/workspace/glaucoma/outputs/convnext_512_lr1e4_v1/seed{seed}/ema",
+  "selection": "Each case screen42 >=+.0003 vs same-host Tiny fixed control permits43/44; no test fitting; ultimate native full validation target>=.995",
+  "wait_pid": 0,
+  "wait_command": "train.py",
+  "terminal_proof": "/home/ng/workspace/glaucoma_base_schedule_20261101/outputs/convnext_base_schedule_v1/summary.json",
+  "cases": [
+    {
+      "id": "bright45",
+      "drop_path": 0
+    }
+  ],
+  "smoke_default_control": "/home/ng/workspace/glaucoma_bright_control_20261102/outputs/smoke",
+  "status": "GPU smoke and zero-default reproduction required before full study",
+  "hypothesis": "Image-only local view from bright region,45% retinal short-side with achromatic fallback; decode target2xsize; Tiny1k512/LR1e-4/w3/EMA.999/5epochs; no medical annotation or test fitting."
+}

@@ -31,6 +31,7 @@ def main():
         raise ValueError('Checkpoint config differs from config.json')
     project = Path(__file__).resolve().parent
     sources = ['dataset.py', 'model.py']
+    if config.get('bright_region_crop',False):sources.append('fundus_bright_crop.py')
     if 'amp_precision.py' in config['source_sha256']:
         sources.append('amp_precision.py')
     autocast_dtype = amp_dtype(config)
@@ -88,7 +89,11 @@ def main():
     for split in ('train', 'valid'):
         if sha256(root / f'{split}.csv') != config['csv_sha256'][split]:
             raise ValueError(f'CSV changed: {split}')
-    data = FundusDataset(root, 'valid', config['size'], config['valid_limit'], config['seed'], config['jpeg_draft'])
+    selected_dataset = FundusDataset
+    if config.get('bright_region_crop',False):
+        from fundus_bright_crop import BrightRegionDataset
+        selected_dataset = BrightRegionDataset
+    data = selected_dataset(root, 'valid', config['size'], config['valid_limit'], config['seed'], config['jpeg_draft'])
     if config.get('trim_black', False):
         from fundus_crop import TrimBlackBorder
         data.transform.transforms.insert(0, TrimBlackBorder())

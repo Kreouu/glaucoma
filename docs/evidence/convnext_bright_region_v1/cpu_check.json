@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "scope": "Synthetic localization bounds/determinism and achromatic fallback; JPEG validation dataset versus inference tensor exact",
+  "visual_review": "12 fixed training-only samples before fallback:11 proposed regions cover disc vicinity,1 glare error; not a localization accuracy estimate",
+  "fallback_review": "After achromatic guard, original glare sample11 falls back to full image; other11 use their proposed crops, same12 fixed training images"
+}

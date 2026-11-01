@@ -58,6 +58,7 @@ class Predictor:
             raise ValueError('This checkpoint requires BF16 support')
         project = Path(__file__).resolve().parent
         sources = ['dataset.py', 'model.py']
+        if self.config.get('bright_region_crop',False):sources.append('fundus_bright_crop.py')
         if 'amp_precision.py' in self.config['source_sha256']:
             sources.append('amp_precision.py')
         if self.config['model'] == 'efficientnet_b3':
@@ -131,6 +132,9 @@ class Predictor:
         ])
 
     def preprocess(self, path):
+        if self.config.get('bright_region_crop',False):
+            from fundus_bright_crop import read_bright_image
+            return self.transform(read_bright_image(path,self.config['size'],self.config['jpeg_draft']))
         with Image.open(path) as image:
             if self.config['jpeg_draft'] and image.format == 'JPEG':
                 image.draft('RGB', (self.config['size'], self.config['size']))

@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "tests": 2,
+  "scope": "Explicit pair objective and gradient directions/finite values; deterministic exactN draws, both classes and bounded batch size including remainder1; no repeated negatives per epoch"
+}

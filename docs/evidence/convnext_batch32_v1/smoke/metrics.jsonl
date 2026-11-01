@@ -1,0 +1,1 @@
+{"epoch": 1, "train_loss": 0.6390272676944733, "valid_loss": 0.39835697412490845, "val_auroc": 0.45967741935483875, "val_auprc": 0.041666666666666664, "epoch_seconds": 9.82768923099502, "peak_vram_mib": 10524.01806640625, "lr_last": 0.0001, "amp_skipped_updates": 0}

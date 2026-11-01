@@ -1,0 +1,38 @@
+{
+  "source_sha256": {
+    "train.py": "2566cd2df7a42a07b0fadeb78bbb2bc0590e84eb77c664708b0d9f228c0beea7",
+    "validate.py": "0b467f9a80c985c691cd117c236bd1cb30d253200729447e335f53658d4412e7",
+    "inference.py": "7cde4ec2d65ec6fa080f3fc928c5d3a02b0ac4fa8c5f35a0f0c087e41f8d7ee3",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "training_auc_pair.py": "d3c38593937a49d56b3750a3a3d7806988be0106af181256b688414a7751d54a",
+    "tests/test_training_auc_pair.py": "3bc69a72821a0496b5fca2e1320bed58f67c99a481c9823c0f68c3c0cee9d96a",
+    "scripts/run_next_convnext_study.py": "5f47d0415c047394b0acba73869c91a32f1f3adf7a127d9777b8ba4561ffcdb6"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "output_dir": "outputs/convnext_auc_pair_v1",
+  "model": "convnext_tiny",
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "cpu_proof": "docs/evidence/convnext_auc_pair_v1/cpu_check.json",
+  "control_template": "/home/ng/workspace/glaucoma/outputs/convnext_512_lr1e4_v1/seed{seed}/ema",
+  "selection": "Each case screen42 >=+.0003 vs same-host Tiny fixed control permits43/44; no test fitting; ultimate native full validation target>=.995",
+  "wait_pid": 0,
+  "wait_command": "run_next_convnext_study.py",
+  "terminal_proof": "/home/ng/workspace/glaucoma_bright_region_20261102/outputs/convnext_bright_region_v1/summary.json",
+  "cases": [
+    {
+      "id": "hinge_auc",
+      "drop_path": 0
+    }
+  ],
+  "smoke_default_control": "/home/ng/workspace/glaucoma_bright_control_20261102/outputs/smoke",
+  "status": "GPU smoke and zero-default reproduction required before full study",
+  "hypothesis": "Cyclic2-positive full batches, pair squaredhinge margin1 +.1 class-prior-corrected BCE3; same Tiny1k512/LR1e-4/EMA.999/5epochs. Ranking recipe rather than isolated loss effect; no test use.",
+  "reference": "https://docs.libauc.org/api/libauc.losses.html#libauc.losses.auc.PairwiseAUCLoss"
+}

@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "45035fdb9d0dce962301309e11e9befc8bfa152c62ff09fed0e3bdf8777a51f0",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9860990045138329,
+        "val_auprc": 0.8371399627637967
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "ade48053b0ce2e77b06ab306e91f265742c92749532dfe97a4573b34fb96185f",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9868813837239214,
+        "val_auprc": 0.8141280171186335
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Base22K batch8 with one epoch warmup then cosine to peak/10; two predeclared peaks. No test use; native inference evaluation separate."
+}

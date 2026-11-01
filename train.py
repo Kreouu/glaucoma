@@ -65,9 +65,11 @@ def main():
     parser.add_argument('--resample-positive', action='store_true', help='Train-only positive draw weight3, BCE weight1 with expectation-preserving loss scale')
     parser.add_argument('--drop-path', type=float, default=0.0, help='Training-only linear ConvNeXt stochastic depth maximum')
     parser.add_argument('--trim-black', action='store_true', help='Conservative near-black border trim on train and validation')
+    parser.add_argument('--bright-region-crop', action='store_true', help='Deterministic per-image bright patch,45% short side; grayscale-glare fallback to full image')
     parser.add_argument('--color-jitter', type=float, default=0.0, help='Training-only brightness/contrast amplitude; zero disables')
     parser.add_argument('--train-crop-min-area', type=float, default=1.0, help='Training-only relative crop area; one disables')
     parser.add_argument('--rank-weight', type=float, default=0.0, help='Training-only pairwise logistic ranking weight; zero disables')
+    parser.add_argument('--auc-pairwise', action='store_true', help='Class-present cyclic batches; squared-hinge pair loss plus0.1 expected BCE3')
     parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
@@ -81,6 +83,8 @@ def main():
         parser.error('head-lr-mult must be finite and positive')
     if args.head_lr_mult != 1 and args.model not in ('convnext_tiny', 'convnext_base'):
         parser.error('This classifier LR comparison supports ConvNeXt Tiny/Base')
+    if args.auc_pairwise and (args.batch_size<2 or args.pos_weight!=3 or args.resample_positive or args.rank_weight or args.focal_gamma or args.mixup_alpha):
+        parser.error('AUC pair comparison requires batch>=2, BCE reference weight3, no other loss or resampling flags')
     if args.model == 'dinov2_small' and args.size % 14:
         parser.error('DINOv2 input size must be divisible by patch size 14')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
@@ -132,13 +136,17 @@ def main():
     torch.cuda.manual_seed_all(args.seed)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-    train_data = FundusDataset(args.data_root, 'train', args.size, args.train_limit, args.seed, args.jpeg_draft)
+    selected_dataset = FundusDataset
+    if args.bright_region_crop:
+        from fundus_bright_crop import BrightRegionDataset
+        selected_dataset = BrightRegionDataset
+    train_data = selected_dataset(args.data_root, 'train', args.size, args.train_limit, args.seed, args.jpeg_draft)
     if args.color_jitter:
         train_data.transform.transforms.insert(0, torchvision.transforms.ColorJitter(brightness=args.color_jitter, contrast=args.color_jitter))
     if args.train_crop_min_area < 1:
         from training_crop import RandomRelativeCrop
         train_data.transform.transforms.insert(0, RandomRelativeCrop(args.train_crop_min_area))
-    valid_data = FundusDataset(args.data_root, 'valid', args.size, args.valid_limit, args.seed, args.jpeg_draft)
+    valid_data = selected_dataset(args.data_root, 'valid', args.size, args.valid_limit, args.seed, args.jpeg_draft)
     if args.trim_black:
         from fundus_crop import TrimBlackBorder
         for data in (train_data, valid_data):data.transform.transforms.insert(0, TrimBlackBorder())
@@ -169,6 +177,14 @@ def main():
     project = Path(__file__).resolve().parent
     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
     config['source_sha256']['amp_precision.py'] = sha256(project / 'amp_precision.py')
+    if args.auc_pairwise:
+        from training_auc_pair import ClassPresentBatches,auc_pair_loss
+        training_prior=sum(s[2] for s in train_data.samples)/len(train_data)
+        config.update(loss='pair squared hinge margin1 +0.1 expected weightedBCE3', training_prior=training_prior, training_sampling='cyclic class pools;2positive per full batch; exactNdraws; small tail adjusted for both classes')
+        config['source_sha256']['training_auc_pair.py'] = sha256(project / 'training_auc_pair.py')
+    if args.bright_region_crop:
+        config['source_sha256']['fundus_bright_crop.py'] = sha256(project / 'fundus_bright_crop.py')
+        config['preprocessing'] = 'RGB,JPEG draft target2xsize,deterministic bright-region45% short-side crop with achromatic fallback,letterbox,ImageNet normalization'
     if args.head_lr_mult != 1:
         config['source_sha256']['training_head_lr.py'] = sha256(project / 'training_head_lr.py')
         config['optimizer_groups'] = 'all backbone parameters baseLR; classifier only baseLR*head_lr_mult; same weight decay'
@@ -282,7 +298,10 @@ def main():
     generator = torch.Generator().manual_seed(args.seed)
     options = dict(batch_size=args.batch_size, num_workers=args.workers, pin_memory=True,
                    worker_init_fn=seed_worker)
-    if args.resample_positive:
+    if args.auc_pairwise:
+        sampler = ClassPresentBatches([s[2] for s in train_data.samples],args.batch_size,torch.Generator().manual_seed(args.seed))
+        train_loader = DataLoader(train_data,batch_sampler=sampler,generator=generator,num_workers=args.workers,pin_memory=True,worker_init_fn=seed_worker)
+    elif args.resample_positive:
         train_loader = DataLoader(train_data, sampler=sampler, generator=generator, **options)
     else:
         train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
@@ -375,7 +394,7 @@ def main():
             optimizer.zero_grad(set_to_none=True)
             with torch.autocast('cuda', dtype=autocast_dtype):
                 logits = model(images).flatten()
-                loss = criterion(logits, labels)
+                loss = auc_pair_loss(logits,labels,training_prior) if args.auc_pairwise else criterion(logits, labels)
                 if args.resample_positive:
                     loss = loss * sampling_scale
                 if args.rank_weight:

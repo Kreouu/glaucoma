@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": {
+        "id": "hinge_auc",
+        "drop_path": 0
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "d937fda34433264cd462ba221522aa06921a6832615eec324c6070755e553dd7",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9870118573710208,
+        "val_auprc": 0.821424376450915
+      },
+      "control": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "3efb5cb40f7a165c70ae35d32c9ed8d34cdc3af5312ad3fbfcabe9faa2e083b0",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9896504786809763,
+        "val_auprc": 0.8363519261586202
+      },
+      "delta_auroc": -0.0026386213099555134
+    }
+  ],
+  "test_used": false
+}

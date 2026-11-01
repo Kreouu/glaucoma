@@ -1,0 +1,4 @@
+{
+  "status": "PASS",
+  "scope": "Reuse unchanged validated Tiny builder and training source; only existing CLI values changed. GPU batch32 memory/update/reload smoke required before full run."
+}

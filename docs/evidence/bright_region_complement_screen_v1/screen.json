@@ -1,0 +1,30 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "candidate": {
+    "auroc": 0.9911092850969484,
+    "ap": 0.8681180464350061
+  },
+  "baseline": {
+    "auroc": 0.991386888601415,
+    "ap": 0.8666346909478418
+  },
+  "delta_auroc": -0.00027760350446659476,
+  "promising": false,
+  "bright_diagnostic": {
+    "auroc": 0.973133995510226,
+    "ap": 0.7423730355696158
+  },
+  "plan": {
+    "aggregation": "Frozen six plus bright42, equal seven logits. No combination/weight search.",
+    "promotion_delta_auroc": 0.0003,
+    "inputs": {
+      "bright42": "9b5d620689a173156dbe56988476cba523ca5c8fdb2a6a5c1d750a50097e6368",
+      "baseline_six": "aa0615f073f7d3f41e1d49350a2361b04eb13e5fd9910fe84bfc18d2cea1f17d"
+    },
+    "script_sha256": "59c9fdfc5cf35fae0ed9171b4278fb3cebff7174939419d130bc6ba2b6f2b4a8",
+    "scope": "Saved probability inverse logits; mixed batch/GPU paths; no test rows read"
+  },
+  "native_verified": false,
+  "test_used": false
+}

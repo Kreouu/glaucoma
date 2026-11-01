@@ -1,0 +1,10 @@
+{
+  "aggregation": "Frozen six plus auc42, equal seven logits. No combination/weight search.",
+  "promotion_delta_auroc": 0.0003,
+  "inputs": {
+    "auc42": "2f15304a0be6e9ce598e1e0ea9a38000e2a9666d9a4a794a66455ce0cad26d7d",
+    "baseline_six": "aa0615f073f7d3f41e1d49350a2361b04eb13e5fd9910fe84bfc18d2cea1f17d"
+  },
+  "script_sha256": "24c5e2d72a685b901b9f365adc7cc5476d32a5f5ce86979cac7d2a2b84e66734",
+  "scope": "Saved probability inverse logits; mixed batch/GPU paths; no test rows read"
+}
