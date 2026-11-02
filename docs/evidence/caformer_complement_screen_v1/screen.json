@@ -1,0 +1,30 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "candidate": {
+    "auroc": 0.9915682562243333,
+    "ap": 0.8671693787809358
+  },
+  "baseline": {
+    "auroc": 0.991386888601415,
+    "ap": 0.8666346909478418
+  },
+  "delta_auroc": 0.00018136762291831587,
+  "promising": false,
+  "caformer_diagnostic": {
+    "auroc": 0.9873065797582629,
+    "ap": 0.8123019905107849
+  },
+  "plan": {
+    "aggregation": "Frozen six plus caformer42, equal seven logits. No combination/weight search.",
+    "promotion_delta_auroc": 0.0003,
+    "inputs": {
+      "caformer42": "7eb44223fcb7ee01c0290de6c2d37b35a7fd2a2342dda878e0c878916f3c0381",
+      "baseline_six": "aa0615f073f7d3f41e1d49350a2361b04eb13e5fd9910fe84bfc18d2cea1f17d"
+    },
+    "script_sha256": "4e6b95fdbd4b4050547d7f97952fa198403ca61ede1e0903f7bab3837f88a562",
+    "scope": "Saved probability inverse logits; mixed batch/GPU paths; no test rows read"
+  },
+  "native_verified": false,
+  "test_used": false
+}

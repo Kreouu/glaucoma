@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "d696b014f21cfe88e79f11a826c4d3bdae1dbbdb553cf925b2fb7ce5fb441bd2",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9885715263936158,
+        "val_auprc": 0.8364054413307446
+      }
+    },
+    {
+      "lr": 0.0002,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "32dcbaebd1c5b32fb9272331f4224a1d04ade00de0ad20b3348edb6c3a65ff9e",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.986377996035822,
+        "val_auprc": 0.8344121428142384
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Batch32+EMA0.998001 and10epochs keeps approximately same optimizer update count and per-image EMA horizon as old batch16/5epochs; recipe comparison, not isolated batch effect. Native validation/runtime separate."
+}

@@ -1,0 +1,37 @@
+{
+  "wait_pid": 0,
+  "terminal_proof": "/home/ng/workspace/glaucoma_batch32_20261102/outputs/convnext_batch32_v1/summary.json",
+  "source_sha256": {
+    "train.py": "8e8aebc92ac0a72f4709981ea9e0d2e7bdfd01ef08c60ab2f5123583cbcb42f2",
+    "validate.py": "4ff4b41c294f9daaef3682167eb4d323fd7e686fa182472b79e62c8a1a475a5a",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "inference.py": "0e4f17ba1edd72f5ec66fea4fd1906f45cb77e115780d014f62ffdef3f76afd4",
+    "predict.py": "71c68434fc71f3d93eeb60ed6156696816ab60343368277f6524aaa2467a028b",
+    "cost.py": "21d9ccbd0682cd449f5e9dcdde10f101d436291dbad2db6cfacee2ceab88f4d5",
+    "scripts/run_full_decode_study.py": "4cab6c301097bb57ac71dd8726a0aaae96252e99fd4ceee78d6c80fa642bae3d"
+  },
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in1k.bin",
+  "pretrained_sha256": "4bee155ff60a2ee5415f777a381068ebb2a658fc6c7cbb6a33aca13426fb4105",
+  "learning_rates": [
+    0.0001
+  ],
+  "confirmation_auroc": 0.9899504786809763,
+  "model": "convnext_tiny",
+  "size": 512,
+  "batch_size": 16,
+  "epochs": 5,
+  "ema_decay": 0.999,
+  "pos_weight": 3,
+  "selection": "Screen both rates seed42 then confirm best full preset43/44 if >= same-host Tiny1k42+.0003; no test fitting",
+  "scope": "Single factor JPEG draft disabled, all other training recipe retained;100/5/3 smoke inference gate below100ms before full train.",
+  "jpeg_draft": false,
+  "training_source_revision": "d03f661",
+  "runtime_sample_sha256": "9e87b20eec17b1889fb56e5320609e3c46c89252ae47e90904e3c11c8204ae99"
+}

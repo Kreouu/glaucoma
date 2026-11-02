@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "case": {
+        "id": "head3",
+        "head_lr_mult": 3,
+        "drop_path": 0
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "87e075a1f80af5f252dc01059462bb8ce8444c4f3f11272a160568ff127eb0e9",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9881028391435748,
+        "val_auprc": 0.8280632729200816
+      },
+      "control": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905249297200461,
+        "val_auprc": 0.8526860413268649
+      },
+      "delta_auroc": -0.0024220905764713585
+    },
+    {
+      "case": {
+        "id": "head10",
+        "head_lr_mult": 10,
+        "drop_path": 0
+      },
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "9f7cefad4de6e3c96554458a8814adaef4901120299c32d4c675e0611c40179f",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9874773059135098,
+        "val_auprc": 0.8303563655154342
+      },
+      "control": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "bf62d51936fbe6203e23f36af0c637371b54ef0e13410cc73e6eed5fced73915",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905249297200461,
+        "val_auprc": 0.8526860413268649
+      },
+      "delta_auroc": -0.003047623806536337
+    }
+  ],
+  "test_used": false
+}

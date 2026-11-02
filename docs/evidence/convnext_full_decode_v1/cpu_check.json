@@ -1,0 +1,19 @@
+{
+  "status": "CPU_PREPROCESS_ONLY",
+  "images": 100,
+  "warmup": 5,
+  "torch_threads": 4,
+  "results": {
+    "True": {
+      "mean_ms": 13.513193228864111,
+      "median_ms": 12.647827519685961,
+      "max_ms": 21.934743999736384
+    },
+    "False": {
+      "mean_ms": 47.205430499161594,
+      "median_ms": 34.88928599108476,
+      "max_ms": 156.2580540194176
+    }
+  },
+  "scope": "Decode/letterbox/tensor/normalization plus finite check; no GPU forward or CSV write; diagnostic, not official runtime"
+}

@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "c49db896380e86b5f5f3e40b4e13b046f6d39ec19442e0378d4f7998f2e77741",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9873065797582629,
+        "val_auprc": 0.8123019905107848
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 1,
+        "checkpoint_sha256": "05cc6345d614d089d976c2bbb991e630d5728e31af60d75db4876dccbc26480b",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9708928098841654,
+        "val_auprc": 0.6664796091071686
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "CAFormer22K batch8 with one epoch warmup then cosine to peak/10; two predeclared peaks. No test use; native inference evaluation separate."
+}
