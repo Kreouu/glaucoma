@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "97cd3044e87ef6f4291425decdf772afc1a6667916c3ea4b22744c80cb95f2d4",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9890924956369984,
+        "val_auprc": 0.8715214185915479
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "640 resolution vs512 same22K cosine crop recipe;42gate then43/44; no test use"
+}

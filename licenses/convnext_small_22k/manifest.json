@@ -1,0 +1,19 @@
+{
+  "model": "timm/convnext_small.fb_in22k_ft_in1k",
+  "revision": "fe6b358aa409414cdb522ae3d43a2c9922f7cc1b",
+  "url": "https://huggingface.co/timm/convnext_small.fb_in22k_ft_in1k/resolve/fe6b358aa409414cdb522ae3d43a2c9922f7cc1b/pytorch_model.bin",
+  "sha256": "c912f45cd738512978a900cc8aefade65bc44e507321f0144378a2d98aa5e914",
+  "bytes": 201017809,
+  "license": "modelcard/timm Apache-2.0; upstream ConvNeXt MIT retained",
+  "upstream_revision": "048efcea897d999aed302f2639b6270aedf8d4c8",
+  "upstream_license_source": "https://raw.githubusercontent.com/facebookresearch/ConvNeXt/048efcea897d999aed302f2639b6270aedf8d4c8/LICENSE",
+  "pretraining": "Generic ImageNet22k then1k, no medical-specific initialization",
+  "source_file_sha256": {
+    "upstream-README.md": "224fe1444bc31eda1c157a769bf36cb52d5ea0118d27460822f93a4b4385b404",
+    "model_card.md": "bbf1cf6fd52455ce2e0905a25ad93b2641c1e025df934ebbc7a0317056fdca07",
+    "config.json": "8b57c9e74da28e3a9d48afc9372a78d34bc3cc048f2f8fa33b9b94e45da99906",
+    "upstream-LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "timm-LICENSE.txt": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49",
+    "model_api.json": "7b3947d5f8ba3769b8279dd763a1b904489c9aaa4d2bced333200d30d94a1b1b"
+  }
+}

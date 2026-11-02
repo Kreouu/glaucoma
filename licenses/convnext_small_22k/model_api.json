@@ -1,0 +1,91 @@
+{
+  "_id": "6398262c09f12714ed19f7e5",
+  "id": "timm/convnext_small.fb_in22k_ft_in1k",
+  "private": false,
+  "pipeline_tag": "image-classification",
+  "library_name": "timm",
+  "tags": [
+    "timm",
+    "pytorch",
+    "safetensors",
+    "image-classification",
+    "transformers",
+    "dataset:imagenet-1k",
+    "dataset:imagenet-22k",
+    "arxiv:2201.03545",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 170842,
+  "likes": 3,
+  "modelId": "timm/convnext_small.fb_in22k_ft_in1k",
+  "author": "timm",
+  "sha": "fe6b358aa409414cdb522ae3d43a2c9922f7cc1b",
+  "lastModified": "2025-01-21T21:14:44.000Z",
+  "gated": false,
+  "disabled": false,
+  "model-index": null,
+  "config": {},
+  "cardData": {
+    "license": "apache-2.0",
+    "library_name": "timm",
+    "tags": [
+      "image-classification",
+      "timm",
+      "transformers"
+    ],
+    "datasets": [
+      "imagenet-1k",
+      "imagenet-22k"
+    ]
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModel"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "c7d9f3332a950355d5a77d85000f05e6f45435ea",
+      "size": 1477
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "5e5dba6e2fc1f0fad71837bd0c0ec6c56bd88134",
+      "size": 15754
+    },
+    {
+      "rfilename": "config.json",
+      "blobId": "f49ad7b4816b70d2fac76af9b8200c2131043eb9",
+      "size": 667
+    },
+    {
+      "rfilename": "model.safetensors",
+      "blobId": "e4643b7ba6a5a565491376f293a8f146b6b6a03a",
+      "size": 200928946,
+      "lfs": {
+        "sha256": "2457488bec2ffcb2061b9e3fdd63360114549615e3e35ef6dc5c5efe549cbbc9",
+        "size": 200928946,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "pytorch_model.bin",
+      "blobId": "200cf1313cada8d22ef34743c14dd2073a356f11",
+      "size": 201017809,
+      "lfs": {
+        "sha256": "c912f45cd738512978a900cc8aefade65bc44e507321f0144378a2d98aa5e914",
+        "size": 201017809,
+        "pointerSize": 134
+      }
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2022-12-13T07:13:48.000Z",
+  "safetensors": {
+    "parameters": {
+      "F32": 50223688
+    },
+    "total": 50223688
+  },
+  "usedStorage": 401946755
+}

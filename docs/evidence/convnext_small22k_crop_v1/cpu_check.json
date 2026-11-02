@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "feature_tensors": 342,
+  "all_trainable": true,
+  "buffers": 0,
+  "parameters": 49455457,
+  "shape": [
+    2,
+    1
+  ],
+  "official_feature_max_difference": 0.0,
+  "pretrained_sha256": "c912f45cd738512978a900cc8aefade65bc44e507321f0144378a2d98aa5e914",
+  "scope": "Strict initialization, every retained feature tensor equality and official architecture forward_features equality; no GPU runtime claim"
+}
