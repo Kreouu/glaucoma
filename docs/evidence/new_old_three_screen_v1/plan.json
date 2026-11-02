@@ -1,0 +1,10 @@
+{
+  "aggregation": "Complete new three plus complete old platform three, equal six logits. No subset or weight search.",
+  "promotion_delta_auroc": 0.0003,
+  "inputs": {
+    "new_three": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb",
+    "old_three": "dd9534ad845f6f95d5e752bf4312a743279bd3d3d45577b5839af65b8192df5b"
+  },
+  "script_sha256": "f36a1c1747d1ef5c6291be9b5b38a73387cc6b7a117934e34c75b65dcc8c1197",
+  "scope": "Saved probability inverse logits; mixed batch/GPU paths; no test rows read"
+}

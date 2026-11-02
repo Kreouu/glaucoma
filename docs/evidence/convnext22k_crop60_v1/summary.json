@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "77c0282aba087ddcb8eda4762b07ce6d5d1182414cf0f5b3d36a55516aa650be",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9901455382639417,
+        "val_auprc": 0.8629749628762042
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Only training crop area.8->.6; same Ubuntu22K cosine512/b16;42gate then43/44; valid/inference unchanged; no test use"
+}
