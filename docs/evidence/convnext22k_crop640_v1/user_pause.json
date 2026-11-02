@@ -1,0 +1,14 @@
+{
+  "status": "USER_PAUSED_GPU_RELEASED",
+  "reason": "User requested WSL GPU for other use",
+  "terminated_pids": [
+    9121,
+    9305,
+    9569,
+    9570,
+    9571,
+    9572
+  ],
+  "preserved_outputs": "/home/ng/workspace/glaucoma_22k_crop640_20261102/outputs/convnext22k_crop640_v1",
+  "scope": "Queue and its training/loader descendants terminated; partial epoch not claimed resumable; completed epoch checkpoints preserved. Do not restart WSL experiments until user resumes."
+}

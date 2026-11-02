@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "area": 0.8,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "7d639c0751bda3b59a77ace6b8ca8946502cbc0faf6be5df492deba6eea40a79",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9906711342323986,
+        "val_auprc": 0.8713581904646873
+      }
+    },
+    {
+      "area": 0.9,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "4cdf7a150663bccdefc784ede43674aaad734b41f26c98b0afd1e52979de8ca9",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9903171897642036,
+        "val_auprc": 0.8603731641359559
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Same Ubuntu seed42 area.8 reference and area.9; if area.9 improves>=.0003 add43/44. No test use; validation unchanged"
+}

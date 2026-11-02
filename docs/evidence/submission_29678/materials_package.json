@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "directory": "outputs/核验材料草稿_提交29678_ConvNeXt512_22K余弦轻裁剪_V1",
+  "archive": "outputs/提交29678_ConvNeXt512_22K余弦轻裁剪_核验材料草稿_V1.zip",
+  "archive_bytes": 261494095,
+  "archive_sha256": "ca518dff428c052a5ef8b31278eaf72e6f0bbc20f31a7d4a8c2696e1dcd29b54",
+  "raw_total_bytes": 282640764,
+  "inventory_files": 86,
+  "zip_crc_and_all_inventory_hashes_pass": true,
+  "official_T4_verified": false,
+  "identity_fields_pending": true,
+  "materials_uploaded": false
+}
