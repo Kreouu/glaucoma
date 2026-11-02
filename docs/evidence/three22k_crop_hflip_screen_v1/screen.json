@@ -1,0 +1,12 @@
+{
+  "status": "NATIVE_SCREEN_ONLY",
+  "auroc": 0.9918190247233681,
+  "ap": 0.8819451811305582,
+  "baseline_auroc": 0.9920392568369116,
+  "delta_auroc": -0.0002202321135434948,
+  "promising": false,
+  "base_probability_difference": 0.0,
+  "independent_reload_verified": false,
+  "runtime_verified": false,
+  "test_used": false
+}

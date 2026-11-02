@@ -1,0 +1,7 @@
+{
+  "base_manifest_sha256": "e47d41eef48383b625ad6e598aaead2c591465ea6e318c97f22206601cdea9c9",
+  "script_sha256": "9fc2ae1398d10bd0af09c4e28c4241c8ea7be89c46ab44bc4c6ec4ce6b7ff423",
+  "method": "All3 seeds, equal original and horizontal-flipped logits; no subset or weight search",
+  "promotion_delta": 0.0003,
+  "test_used": false
+}

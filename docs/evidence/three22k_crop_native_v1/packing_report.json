@@ -1,0 +1,32 @@
+[
+  {
+    "original_bytes": 111345183,
+    "packed_bytes": 55745751,
+    "original_sha256": "a94235ffa72ce9c5e0d86116ba0b6a844657bff87febcafd695c29959deb4016",
+    "packed_sha256": "a2f1ac437eed16b5fc1ec9fdf5c4cee12d469918847680b156f94a4b9f4278ba",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED"
+  },
+  {
+    "original_bytes": 111345183,
+    "packed_bytes": 55745751,
+    "original_sha256": "26a085bb1d00df668b98a64d3ead9dc1f0321f81909767620299091b9701cfed",
+    "packed_sha256": "c151242093a3e3c41b9ae881f718852804241584564127b0a4ed5ebb4526d695",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED"
+  },
+  {
+    "original_bytes": 111345183,
+    "packed_bytes": 55745751,
+    "original_sha256": "daafd47fdaed36fa7ccbb4198307301fa3e97773b832f99b8d161c3038f2992c",
+    "packed_sha256": "2f5b213a10eccc7e4a636dcfc67270778636a811d12b00d5b9394cee0711de00",
+    "converted_tensors": 118,
+    "preserved_tensors": 64,
+    "cpu_tensor_policy_exact": true,
+    "gpu_equivalence": "NOT_YET_VERIFIED"
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "grayscale_prob": 0.2,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "69ed7b3f23a153987bc70d210cc32da34b7e019008eee102df82ca362ab952c9",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9885345125930203,
+        "val_auprc": 0.8381647634182873
+      }
+    },
+    {
+      "grayscale_prob": 0.5,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "d48503395dc4c584ef2ae7b1e3d3bbafc3335b37f17b0a51686a8fb9f85f130d",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9851875396741675,
+        "val_auprc": 0.8224429504699579
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny1K512/batch16/fixedLR1e-4/BCE3/EMA.999/5epochs; random grayscale probability0.2/0.5 vs original0. No test use; native inference separate."
+}

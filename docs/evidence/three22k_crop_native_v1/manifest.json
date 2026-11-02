@@ -1,0 +1,36 @@
+{
+  "aggregation": "equal_raw_fp32_logit_mean",
+  "horizontal_flip": false,
+  "source_sha256": {
+    "three_22k_crop_inference.py": "d6f657683fec9736d15bd52a9702264132efac2748225259faedffd384847b27",
+    "four_model_inference.py": "aeedecfe8f3051246da33ada2be8fe5ee50029b88e5da55094d2dc88c4f49f44",
+    "inference.py": "7cde4ec2d65ec6fa080f3fc928c5d3a02b0ac4fa8c5f35a0f0c087e41f8d7ee3",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+  },
+  "members": [
+    {
+      "seed": 42,
+      "file": "seed42.pt",
+      "sha256": "a2f1ac437eed16b5fc1ec9fdf5c4cee12d469918847680b156f94a4b9f4278ba",
+      "bytes": 55745751,
+      "original_sha256": "a94235ffa72ce9c5e0d86116ba0b6a844657bff87febcafd695c29959deb4016"
+    },
+    {
+      "seed": 43,
+      "file": "seed43.pt",
+      "sha256": "c151242093a3e3c41b9ae881f718852804241584564127b0a4ed5ebb4526d695",
+      "bytes": 55745751,
+      "original_sha256": "26a085bb1d00df668b98a64d3ead9dc1f0321f81909767620299091b9701cfed"
+    },
+    {
+      "seed": 44,
+      "file": "seed44.pt",
+      "sha256": "2f5b213a10eccc7e4a636dcfc67270778636a811d12b00d5b9394cee0711de00",
+      "bytes": 55745751,
+      "original_sha256": "daafd47fdaed36fa7ccbb4198307301fa3e97773b832f99b8d161c3038f2992c"
+    }
+  ]
+}

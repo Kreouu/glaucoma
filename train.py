@@ -72,6 +72,7 @@ def main():
     parser.add_argument('--auc-pairwise', action='store_true', help='Class-present cyclic batches; squared-hinge pair loss plus0.1 expected BCE3')
     parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
+    parser.add_argument('--grayscale-prob', type=float, default=0.0, help='Training-only random grayscale probability')
     parser.add_argument('--weight-decay', type=float, default=0.01)
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
     parser.add_argument('--seed', type=int, default=42)
@@ -80,6 +81,8 @@ def main():
     args = parser.parse_args()
     if min(args.epochs, args.batch_size, args.size, args.lr) <= 0 or args.workers < 0:
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
+    if not np.isfinite(args.grayscale_prob) or not 0 <= args.grayscale_prob <= 1:
+        parser.error('grayscale-prob must be in [0, 1]')
     if not np.isfinite(args.weight_decay) or args.weight_decay < 0:
         parser.error('weight-decay must be finite and nonnegative')
     if not np.isfinite(args.head_lr_mult) or args.head_lr_mult <= 0:
@@ -144,6 +147,8 @@ def main():
         from fundus_bright_crop import BrightRegionDataset
         selected_dataset = BrightRegionDataset
     train_data = selected_dataset(args.data_root, 'train', args.size, args.train_limit, args.seed, args.jpeg_draft)
+    if args.grayscale_prob:
+        train_data.transform.transforms.insert(0, torchvision.transforms.RandomGrayscale(p=args.grayscale_prob))
     if args.color_jitter:
         train_data.transform.transforms.insert(0, torchvision.transforms.ColorJitter(brightness=args.color_jitter, contrast=args.color_jitter))
     if args.train_crop_min_area < 1:
@@ -178,6 +183,8 @@ def main():
         sampler, sampling_scale = positive_resampling([s[2] for s in train_data.samples], torch.Generator().manual_seed(args.seed))
         config.update(training_sampling='replacement draws N; per-image weight3 for positive,1 for negative', training_loss_scale=sampling_scale, loss='BCE weight1 times training_loss_scale; expected objective equals original w3')
     project = Path(__file__).resolve().parent
+    if args.grayscale_prob:
+        config['augmentation'] += f'; training RandomGrayscale p={args.grayscale_prob} before letterbox'
     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
     config['source_sha256']['amp_precision.py'] = sha256(project / 'amp_precision.py')
     if args.auc_pairwise:

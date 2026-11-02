@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "max_probability_difference": 0.0,
+  "label_changes": 0,
+  "auroc": 0.9920392568369116,
+  "ap": 0.8798710124292646
+}

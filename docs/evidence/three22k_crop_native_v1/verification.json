@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "auroc": 0.9920392568369116,
+  "ap": 0.8798710124292646,
+  "baseline_same_pass_auroc": 0.9900900175630484,
+  "delta_vs_platform_recipe": 0.001949239273863257,
+  "delta_vs_local_best_six": 0.0006523682354966365,
+  "packing_max_logit_difference": 0.0,
+  "same_image_difference": 0.0,
+  "mean_ms": 36.457555333375545,
+  "model_bytes": 167237253,
+  "official_T4_verified": false,
+  "full_reload_verified": true,
+  "member_metrics": [
+    {
+      "seed": 42,
+      "auroc": 0.9922289525649639,
+      "ap": 0.8724086514956239
+    },
+    {
+      "seed": 43,
+      "auroc": 0.9896810150664676,
+      "ap": 0.8671268621584403
+    },
+    {
+      "seed": 44,
+      "auroc": 0.990421753750886,
+      "ap": 0.8691603729275829
+    }
+  ],
+  "scope": "Fixed complete22K cosine+crop three-seed recipe; no TTA or subset/weight search; GPU idle during audit"
+}
