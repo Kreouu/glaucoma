@@ -72,6 +72,7 @@ def main():
     parser.add_argument('--auc-pairwise', action='store_true', help='Class-present cyclic batches; squared-hinge pair loss plus0.1 expected BCE3')
     parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
+    parser.add_argument('--weight-decay', type=float, default=0.01)
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--train-limit', type=int)
@@ -79,6 +80,8 @@ def main():
     args = parser.parse_args()
     if min(args.epochs, args.batch_size, args.size, args.lr) <= 0 or args.workers < 0:
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
+    if not np.isfinite(args.weight_decay) or args.weight_decay < 0:
+        parser.error('weight-decay must be finite and nonnegative')
     if not np.isfinite(args.head_lr_mult) or args.head_lr_mult <= 0:
         parser.error('head-lr-mult must be finite and positive')
     if args.head_lr_mult != 1 and args.model not in ('convnext_tiny', 'convnext_base'):
@@ -159,7 +162,7 @@ def main():
             writer.writerows((name, path.name, label) for name, path, label in data.samples)
     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
     config.update(loss='BCEWithLogitsLoss', optimizer='AdamW',
-                  weight_decay=0.01, amp=True, age_used=False, threshold=0.5,
+                  weight_decay=args.weight_decay, amp=True, age_used=False, threshold=0.5,
                   validation_loss='unweighted BCEWithLogitsLoss',
                   preprocessing='RGB, aspect-preserving letterbox, ImageNet normalization',
                   augmentation=(f'training brightness/contrast ColorJitter amplitude={args.color_jitter}, before letterbox; horizontal flip p=0.5' if args.color_jitter else 'training horizontal flip p=0.5 only'),
@@ -341,9 +344,9 @@ def main():
         configure_drop_path(model, args.drop_path)
     if args.head_lr_mult != 1:
         from training_head_lr import classifier_lr_groups
-        optimizer = torch.optim.AdamW(classifier_lr_groups(model,args.lr,args.head_lr_mult), lr=args.lr, weight_decay=0.01)
+        optimizer = torch.optim.AdamW(classifier_lr_groups(model,args.lr,args.head_lr_mult), lr=args.lr, weight_decay=args.weight_decay)
     else:
-        optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
+        optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
     criterion = (BinaryFocalLoss(args.focal_gamma, args.pos_weight) if args.focal_gamma
                  else torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight))

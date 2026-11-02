@@ -1,0 +1,27 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "test_used": false,
+  "method": "All fixed five, then platform three plus all five; equal logits; no subset/weight search",
+  "limitations": "Inverse logits from saved probabilities; native batch1 equivalence and runtime not verified",
+  "platform_three": {
+    "auroc": 0.9900900175630484,
+    "ap": 0.8560947042823371
+  },
+  "standalone_five": {
+    "auroc": 0.9899738867636798,
+    "ap": 0.8505405295836342
+  },
+  "eight": {
+    "auroc": 0.9904087989206776,
+    "ap": 0.854533331644533
+  },
+  "sources": {
+    "outputs/bagging_screen_v1/inputs/fold0.csv": "81708dc84bff0a07e612ac9443d721b0f4bce4fcb81de1c52b0a0a5550f20509",
+    "outputs/bagging_screen_v1/inputs/fold1.csv": "118e4ebef115b5972064e793365661618aac5de8f1c48746f55fa3e7850409c0",
+    "outputs/bagging_screen_v1/inputs/fold2.csv": "12cc7a1cdf42b367f85c0da29a0850ddc9dbb45cab177e83ec688fa982d9eeb0",
+    "outputs/bagging_screen_v1/inputs/fold3.csv": "bac0a5f5ded9f2758af21d52cda664cc91cde3badcdeb26f5aeba55fffeec32d",
+    "outputs/bagging_screen_v1/inputs/fold4.csv": "2ce458632537ebbdacca3678e4b70ffdaff9738a3ed606e1e3d5fd7ff6fe7631",
+    "outputs/convnext_512_lr1e4_inference_v1/logit_valid_predictions.csv": "dd9534ad845f6f95d5e752bf4312a743279bd3d3d45577b5839af65b8192df5b"
+  }
+}

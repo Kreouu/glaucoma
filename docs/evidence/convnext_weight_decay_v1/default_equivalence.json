@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "scope": "Default0.01 vs frozen d03f661 train;64/64 GPU single epoch; ordinary and EMA all tensors exact",
+  "checks": [
+    {
+      "kind": "ordinary",
+      "metrics": {
+        "train_loss": 0.5129559859633446,
+        "valid_loss": 0.23633509874343872,
+        "val_auroc": 0.45564516129032256,
+        "val_auprc": 0.04943181818181818
+      },
+      "all_model_tensors_exact": true
+    },
+    {
+      "kind": "ema",
+      "metrics": {
+        "train_loss": 0.5129559859633446,
+        "valid_loss": 0.5178315937519073,
+        "val_auroc": 0.6129032258064516,
+        "val_auprc": 0.05714285714285714
+      },
+      "all_model_tensors_exact": true
+    }
+  ]
+}

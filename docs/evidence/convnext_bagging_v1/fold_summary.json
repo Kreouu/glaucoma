@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "split_seed": 20261102,
+  "folds": [
+    {
+      "fold": 0,
+      "train": 41116,
+      "positive": 1325,
+      "excluded": 10280,
+      "train_csv_sha256": "b1f26ef232310d90485eff5b7cb2042612b9b05eea72300d52d3dce4df7fdce9"
+    },
+    {
+      "fold": 1,
+      "train": 41116,
+      "positive": 1325,
+      "excluded": 10280,
+      "train_csv_sha256": "1478195c1ae7d7373163104355f257ce60ad217066b6d20c7742987092c07b33"
+    },
+    {
+      "fold": 2,
+      "train": 41117,
+      "positive": 1326,
+      "excluded": 10279,
+      "train_csv_sha256": "6017ade0d0d29c66e9fee80a69003d9ec7d80cd391f1bb191998f80eacbae2fa"
+    },
+    {
+      "fold": 3,
+      "train": 41117,
+      "positive": 1326,
+      "excluded": 10279,
+      "train_csv_sha256": "4b064c2a882dd40c28a26e9937124636dc9d0b71eef1f0ff4de26adb9c6d347f"
+    },
+    {
+      "fold": 4,
+      "train": 41118,
+      "positive": 1326,
+      "excluded": 10278,
+      "train_csv_sha256": "e3d5f321456cca5aed06afa05df34a51894fb5e4f2b9732b6a872200d8932d84"
+    }
+  ],
+  "scope": "Every official train row excluded once, used four times; official validation untouched; no patient-ID independence claim"
+}

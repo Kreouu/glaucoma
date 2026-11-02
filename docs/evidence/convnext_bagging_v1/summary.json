@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "fold": 0,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 2,
+        "checkpoint_sha256": "ed5c0e10d4661e4e6afcff01c35dd8e55a4a76603a292470d290c498b4cf8a4e",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9865001415777874,
+        "val_auprc": 0.8311481069584359
+      }
+    },
+    {
+      "fold": 1,
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "7896f56ebd1d75237a0babe9b95c25130c5b07e0c114022faba9fa67505c86ed",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9865010669228022,
+        "val_auprc": 0.815491738602979
+      }
+    },
+    {
+      "fold": 2,
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "9f11972b859ea176df730e8edaec5af870a22d1f9959792192f8feb310f26522",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9852500004626725,
+        "val_auprc": 0.8259695246202169
+      }
+    },
+    {
+      "fold": 3,
+      "seed": 45,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 6,
+        "checkpoint_sha256": "0e1e1f91d497e384981fdc9ff52ad504e90e4ef81786ee5650466acf5f3014e1",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9890887942569387,
+        "val_auprc": 0.8257319864463469
+      }
+    },
+    {
+      "fold": 4,
+      "seed": 46,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "21462855efed77cd78fa648f8f6bfa910734d8f95ce893c7f6921c9c399abbc4",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.98585332541238,
+        "val_auprc": 0.8283430501673166
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "All five fixed folds retained; no pruning/picking folds by validation score; evaluate standalone five and platform-three plus all five, equal raw logits"
+}
