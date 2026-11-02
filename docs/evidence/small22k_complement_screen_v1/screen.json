@@ -1,0 +1,30 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "candidate": {
+    "auroc": 0.9921456715136239,
+    "ap": 0.8785255518308382
+  },
+  "baseline": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "delta_auroc": 0.00010641467671224092,
+  "promising": false,
+  "small_diagnostic": {
+    "auroc": 0.9895778390973073,
+    "ap": 0.846589693904736
+  },
+  "plan": {
+    "aggregation": "New fixed three plus selected best-rate Small42, equal four logits; no subset or weight search.",
+    "promotion_delta_auroc": 0.0003,
+    "inputs": {
+      "small42": "d0b267dd176f7bd84b169b6ac750e657db66260b503f62cd7b6959faf8391407",
+      "baseline_three": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb"
+    },
+    "script_sha256": "c70c748855430d7c9e8d7033d86040ee936ac52e71c245b74b8d45e10db6f0ec",
+    "scope": "Saved probability inverse logits; mixed batch/GPU paths; no test rows read"
+  },
+  "native_verified": false,
+  "test_used": false
+}

@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "a55b95414a630f0c05de5795243f608482fc8f817775bc138101f6fbde19c8c8",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9895778390973075,
+        "val_auprc": 0.8465896939047359
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "55956f81c265893952affd995577431420497ba16d0881c95ad3dc49b9a323ea",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9878654881472557,
+        "val_auprc": 0.845712926331624
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Small22K512/b8/crop.8; one epoch warmup cosine peak3e-5/1e-4 to peak/10; comparison is whole recipe including reduced batch. No test use; native inference separate."
+}
