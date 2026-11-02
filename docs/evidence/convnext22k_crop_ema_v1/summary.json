@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "ema_decay": 0.9995,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "2075d7d8d59d94ee372b0315081f3f9c4f757cdb3181ce428ca221fe59f13c2b",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9922469967927542,
+        "val_auprc": 0.8742808144564812
+      }
+    },
+    {
+      "ema_decay": 0.9998,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "beb4110260fca3377164493a8247b58817a563873b62e42200d221d730bdad7d",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9916501492581509,
+        "val_auprc": 0.8705009727039914
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/cosine1e-4->1e-5; EMA.9995/.9998 vs original.999; no test use; native inference separate."
+}

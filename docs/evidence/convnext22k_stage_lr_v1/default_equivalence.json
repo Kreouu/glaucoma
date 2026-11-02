@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "scope": "Disabled stageLR default1 vs frozen d03f661; same22K crop warmup-cosine64/64 GPU twoepochs; ordinary and EMA tensors exact",
+  "checks": [
+    {
+      "kind": "ordinary",
+      "all_model_tensors_exact": true,
+      "epochs": 2,
+      "selected_metrics_exact": true
+    },
+    {
+      "kind": "ema",
+      "all_model_tensors_exact": true,
+      "epochs": 2,
+      "selected_metrics_exact": true
+    }
+  ]
+}

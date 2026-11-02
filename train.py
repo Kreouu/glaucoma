@@ -72,6 +72,7 @@ def main():
     parser.add_argument('--auc-pairwise', action='store_true', help='Class-present cyclic batches; squared-hinge pair loss plus0.1 expected BCE3')
     parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
+    parser.add_argument('--stage-lr-decay', type=float, default=1.0, help='Tiny stem/stages/head LR scales d^5/d^4/d^3/d^2/d/1; one keeps old optimizer')
     parser.add_argument('--grayscale-prob', type=float, default=0.0, help='Training-only random grayscale probability')
     parser.add_argument('--weight-decay', type=float, default=0.01)
     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
@@ -81,6 +82,10 @@ def main():
     args = parser.parse_args()
     if min(args.epochs, args.batch_size, args.size, args.lr) <= 0 or args.workers < 0:
         parser.error('epochs, batch-size, size and lr must be positive; workers must be nonnegative')
+    if not np.isfinite(args.stage_lr_decay) or not 0 < args.stage_lr_decay <= 1:
+        parser.error('stage-lr-decay must be in (0, 1]')
+    if args.stage_lr_decay != 1 and (args.model != 'convnext_tiny' or args.head_lr_mult != 1):
+        parser.error('Stage LR comparison supports Tiny without head-lr-mult')
     if not np.isfinite(args.grayscale_prob) or not 0 <= args.grayscale_prob <= 1:
         parser.error('grayscale-prob must be in [0, 1]')
     if not np.isfinite(args.weight_decay) or args.weight_decay < 0:
@@ -195,6 +200,10 @@ def main():
     if args.bright_region_crop:
         config['source_sha256']['fundus_bright_crop.py'] = sha256(project / 'fundus_bright_crop.py')
         config['preprocessing'] = 'RGB,JPEG draft target2xsize,deterministic bright-region45% short-side crop with achromatic fallback,letterbox,ImageNet normalization'
+    if args.stage_lr_decay != 1:
+        config['source_sha256']['training_stage_lr.py'] = sha256(project / 'training_stage_lr.py')
+        config['optimizer_groups'] = 'stem/stages0/1/2/3/head scales d^5/d^4/d^3/d^2/d/1; all trainable; unchanged weight decay'
+        config['stage_lr_scales'] = [args.stage_lr_decay ** n for n in (5,4,3,2,1,0)]
     if args.head_lr_mult != 1:
         config['source_sha256']['training_head_lr.py'] = sha256(project / 'training_head_lr.py')
         config['optimizer_groups'] = 'all backbone parameters baseLR; classifier only baseLR*head_lr_mult; same weight decay'
@@ -349,7 +358,10 @@ def main():
     if args.drop_path:
         from training_regularization import configure_drop_path
         configure_drop_path(model, args.drop_path)
-    if args.head_lr_mult != 1:
+    if args.stage_lr_decay != 1:
+        from training_stage_lr import stage_lr_groups
+        optimizer = torch.optim.AdamW(stage_lr_groups(model,args.lr,args.stage_lr_decay), lr=args.lr, weight_decay=args.weight_decay)
+    elif args.head_lr_mult != 1:
         from training_head_lr import classifier_lr_groups
         optimizer = torch.optim.AdamW(classifier_lr_groups(model,args.lr,args.head_lr_mult), lr=args.lr, weight_decay=args.weight_decay)
     else:

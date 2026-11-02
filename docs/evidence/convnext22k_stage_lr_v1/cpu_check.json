@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "all_parameters_exactly_once": true,
+  "all_trainable": true,
+  "stage_scales": [
+    0.32768,
+    0.4096,
+    0.512,
+    0.64,
+    0.8,
+    1.0
+  ],
+  "adamw_step_and_scheduled_lr_verified": true,
+  "scope": "Actual Tiny parameters; known numeric scales and real optimizer steps; training GPU separate"
+}
