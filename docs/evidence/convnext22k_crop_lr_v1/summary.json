@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 5e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "fa465e95620f8a7319ecd1463f29e19e55feadd7edff3ccaa2fe97718a121327",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9879547839411924,
+        "val_auprc": 0.8488038621685423
+      }
+    },
+    {
+      "lr": 0.0002,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "5c310199c665152764183d6e7a3121c495e22976c35e4f2f66d48160cca151f3",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9912369827090031,
+        "val_auprc": 0.859384876529935
+      }
+    },
+    {
+      "lr": 0.0002,
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "16b1e1eb1f1421f2256d85084ccd192d77cf767b8b55aa1fa95800754eef1abb",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9909533644619396,
+        "val_auprc": 0.8663106892928553
+      }
+    },
+    {
+      "lr": 0.0002,
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "43e3ef9bf17b4a388e0165a739c877a57deaaf42f14e97142cb573281b70c071",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.989323369218213,
+        "val_auprc": 0.849006397953006
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8; one epoch warmup cosine peak5e-5 or2e-4 to peak/10 vs samehost1e-4. No test use; native inference separate."
+}

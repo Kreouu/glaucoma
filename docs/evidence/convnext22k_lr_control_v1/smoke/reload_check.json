@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "images": 64,
+  "positives": 2,
+  "checkpoint_epoch": 2,
+  "checkpoint_sha256": "d321f66ed4105e4f47fe480b839c17ada97d24c839c450b092602f534cf1da14",
+  "max_probability_difference": 0.0,
+  "val_auroc": 0.5443548387096775,
+  "val_auprc": 0.048642533936651584
+}

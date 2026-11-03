@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "stage_lr_decay": 0.8,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "a31d89e7cf4668666b3e525bd5c098f496babee2cc7e1b294ba58839e714cb61",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.988175016054736,
+        "val_auprc": 0.8509382197539725
+      }
+    },
+    {
+      "stage_lr_decay": 0.6,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "6b69aa4ed23d3dbdecf0f75dba4bcea14fe7617afb7f3ceb6fcae8492100d8f5",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9840498279783618,
+        "val_auprc": 0.8296065027737642
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K original crop cosine EMA.999 recipe; stageLR decay.8/.6, all layers trainable, same weight decay. No test use; native separate."
+}
