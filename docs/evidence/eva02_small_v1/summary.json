@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "a64f5fef6a3467ec38db1a168c7fda77705f91861fe7dd1b541638b557e675f9",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9790774865408567,
+        "val_auprc": 0.7619938925950203
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "536cf8c24076a69d1124a21686621eea67147c9f0f74d9a64bd0311aee6b6986",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9701793688776861,
+        "val_auprc": 0.6626793501070118
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "EVA02Small336 model-card CLIP normalization/bicubic letterbox;BF16/b16/BCE3/crop.8/noEMA/5epochs, warmupcosine peaks3e-5/1e-4; alllearnedparameters trainable; no test use."
+}

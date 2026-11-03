@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "pos_weight": 1,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "be2434f56ec8d00eb620dfd7a7f2ad38ea37651ff340dce610a0f3a42a510782",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9884433661090539,
+        "val_auprc": 0.8672241546970316
+      }
+    },
+    {
+      "pos_weight": 5,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "4bd927eb6161aa155715eadfe7d912966fc0bc8550e1f15e77aa7bcccd596c18",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.99172093815179,
+        "val_auprc": 0.8715127735950028
+      }
+    },
+    {
+      "pos_weight": 5,
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "3249cf42e90929ff191bc95cdc9a3310e987911412fa577d8ba617d2b473193d",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9885252591428715,
+        "val_auprc": 0.8629804596367489
+      }
+    },
+    {
+      "pos_weight": 5,
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "2ef38511b86bcdeef887ec7b4f83a8e917bba5daa998476a6173cbb85f371030",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9894533801928049,
+        "val_auprc": 0.8539640809887417
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; only BCE positive weight1/5 vs reference3. Validation unweighted; no test use."
+}

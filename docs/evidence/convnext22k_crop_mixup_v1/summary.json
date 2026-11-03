@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "mixup_alpha": 0.05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "dfb9c3cf9b1fd93eec9f3edc9010097e117bbb8cc707be27be25c0107bd3971b",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.990896455743524,
+        "val_auprc": 0.8691292731613991
+      }
+    },
+    {
+      "mixup_alpha": 0.1,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "8f229280d945c92758479fad3527939c558528cdf1171cc4680cf2dff11bbc67",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9909390216142089,
+        "val_auprc": 0.8715560362208707
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; only Mixup alpha0.05/0.1; BCE3 fixed. Validation unweighted; no test use."
+}

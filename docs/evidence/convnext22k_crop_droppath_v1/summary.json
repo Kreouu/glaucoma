@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "drop_path": 0.05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "36f385a70bb9d50e3d2bde7e79785ee95f176224d94df3f7cda768f555b57a90",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.989955379863382,
+        "val_auprc": 0.8583894656372616
+      }
+    },
+    {
+      "drop_path": 0.1,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "7458a5ceca289c4e4bce4a933261be69fb4186b98112b6ede63890542d46995d",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9895986593601425,
+        "val_auprc": 0.8762289712781746
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; only DropPath0.05/0.1; BCE3 fixed. Validation unweighted; no test use."
+}

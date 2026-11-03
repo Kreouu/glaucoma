@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "e4afd1834d5a864a2d8ff8caee9bd088cdf4e6e93f87c4ddbce0fa83eec29733",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9824378769624255,
+        "val_auprc": 0.825653216562992
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "78c1196986e705c03fae1df2c8df8f0b1c574b72aac135f8738612c834b89c76",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9845111124682838,
+        "val_auprc": 0.8527578172151621
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; learned spatial pooling, peaks3e-5/1e-4, BCE3 fixed. Validation unweighted; no test use."
+}

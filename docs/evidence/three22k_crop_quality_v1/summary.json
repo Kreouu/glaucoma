@@ -1,0 +1,204 @@
+{
+  "scope": "Descriptive fixed validation audit; no test use, no label changes or parameter fitting.",
+  "caveat": "Quartile AUCs are descriptive, have different case mixes and few positives; no causal claims.",
+  "source_sha256": {
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb",
+    "outputs/three22k_crop_native_v1/seed42_valid_predictions.csv": "c57d436033a34fd6737cace9ad70414e5dd0445f217dbd5b4fdf73a1009fd958",
+    "outputs/three22k_crop_native_v1/seed43_valid_predictions.csv": "99fba05fdde1f2edfb39310e9731f2d793d1f8e6235ee7daf538b277ba7adb43",
+    "outputs/three22k_crop_native_v1/seed44_valid_predictions.csv": "3ce0b4e15f70ec9dcc334059057ea820dd4aace7f0d6142b14e4d3fda40ce7f5"
+  },
+  "overall": {
+    "images": 5849,
+    "positives": 191,
+    "auroc": 0.9920392568369116,
+    "false_negatives_at_05": 35,
+    "false_positives_at_05": 59
+  },
+  "groups": {
+    "dark_fraction": {
+      "cuts": [
+        0.24173990885416663,
+        0.29250919117647056,
+        0.51171875
+      ],
+      "quartiles": [
+        {
+          "images": 1462,
+          "positives": 44,
+          "auroc": 0.9920342351583536,
+          "false_negatives_at_05": 11,
+          "false_positives_at_05": 12
+        },
+        {
+          "images": 1462,
+          "positives": 49,
+          "auroc": 0.9930528474659502,
+          "false_negatives_at_05": 8,
+          "false_positives_at_05": 17
+        },
+        {
+          "images": 1458,
+          "positives": 51,
+          "auroc": 0.9882450492634864,
+          "false_negatives_at_05": 11,
+          "false_positives_at_05": 15
+        },
+        {
+          "images": 1467,
+          "positives": 47,
+          "auroc": 0.9960143841774048,
+          "false_negatives_at_05": 5,
+          "false_positives_at_05": 15
+        }
+      ]
+    },
+    "brightness": {
+      "cuts": [
+        0.22742760181427002,
+        0.32020166516304016,
+        0.4099244773387909
+      ],
+      "quartiles": [
+        {
+          "images": 1462,
+          "positives": 40,
+          "auroc": 0.992387482419128,
+          "false_negatives_at_05": 8,
+          "false_positives_at_05": 16
+        },
+        {
+          "images": 1462,
+          "positives": 44,
+          "auroc": 0.9915694319784588,
+          "false_negatives_at_05": 6,
+          "false_positives_at_05": 22
+        },
+        {
+          "images": 1462,
+          "positives": 47,
+          "auroc": 0.9928727163371175,
+          "false_negatives_at_05": 8,
+          "false_positives_at_05": 12
+        },
+        {
+          "images": 1463,
+          "positives": 60,
+          "auroc": 0.9917676407697791,
+          "false_negatives_at_05": 13,
+          "false_positives_at_05": 9
+        }
+      ]
+    },
+    "contrast": {
+      "cuts": [
+        0.06709200888872147,
+        0.082638680934906,
+        0.10233412683010101
+      ],
+      "quartiles": [
+        {
+          "images": 1462,
+          "positives": 51,
+          "auroc": 0.9900015286057726,
+          "false_negatives_at_05": 7,
+          "false_positives_at_05": 15
+        },
+        {
+          "images": 1462,
+          "positives": 32,
+          "auroc": 0.9933566433566433,
+          "false_negatives_at_05": 9,
+          "false_positives_at_05": 16
+        },
+        {
+          "images": 1462,
+          "positives": 54,
+          "auroc": 0.9921480429292929,
+          "false_negatives_at_05": 11,
+          "false_positives_at_05": 11
+        },
+        {
+          "images": 1463,
+          "positives": 54,
+          "auroc": 0.9940593538890203,
+          "false_negatives_at_05": 8,
+          "false_positives_at_05": 17
+        }
+      ]
+    },
+    "gradient": {
+      "cuts": [
+        0.007153953891247511,
+        0.009044032543897629,
+        0.011030282825231552
+      ],
+      "quartiles": [
+        {
+          "images": 1462,
+          "positives": 56,
+          "auroc": 0.9939925828083723,
+          "false_negatives_at_05": 6,
+          "false_positives_at_05": 23
+        },
+        {
+          "images": 1462,
+          "positives": 48,
+          "auroc": 0.9913955681282414,
+          "false_negatives_at_05": 12,
+          "false_positives_at_05": 13
+        },
+        {
+          "images": 1462,
+          "positives": 50,
+          "auroc": 0.9887535410764873,
+          "false_negatives_at_05": 9,
+          "false_positives_at_05": 14
+        },
+        {
+          "images": 1463,
+          "positives": 37,
+          "auroc": 0.9942951366513779,
+          "false_negatives_at_05": 8,
+          "false_positives_at_05": 9
+        }
+      ]
+    },
+    "seed_probability_std": {
+      "cuts": [
+        2.752137508885139e-05,
+        7.806255708530281e-05,
+        0.0005711627027048509
+      ],
+      "quartiles": [
+        {
+          "images": 1462,
+          "positives": 0,
+          "auroc": null,
+          "false_negatives_at_05": 0,
+          "false_positives_at_05": 0
+        },
+        {
+          "images": 1462,
+          "positives": 0,
+          "auroc": null,
+          "false_negatives_at_05": 0,
+          "false_positives_at_05": 0
+        },
+        {
+          "images": 1462,
+          "positives": 5,
+          "auroc": 0.9998627316403569,
+          "false_negatives_at_05": 1,
+          "false_positives_at_05": 0
+        },
+        {
+          "images": 1463,
+          "positives": 186,
+          "auroc": 0.966640984835089,
+          "false_negatives_at_05": 34,
+          "false_positives_at_05": 59
+        }
+      ]
+    }
+  }
+}

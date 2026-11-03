@@ -1,0 +1,36 @@
+{
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "terminal_proof": "/home/ng/workspace/glaucoma_22k_crop_bce_wsl_20261103/outputs/convnext22k_crop_bce_wsl_v1/summary.json",
+  "training_source_revision": "d03f661",
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in22k_ft_in1k.bin",
+  "pretrained_sha256": "8cb65dc650a7fb25eaadbff3eb69559d02f83cdc5afdfb3785d1889cdc3e3518",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "train_crop_min_area": 0.8,
+  "scope": "Weak training Mixup0.05/0.1 under best22K cosine crop recipe; BCE3; no test use",
+  "source_sha256": {
+    "train.py": "8e8aebc92ac0a72f4709981ea9e0d2e7bdfd01ef08c60ab2f5123583cbcb42f2",
+    "validate.py": "4ff4b41c294f9daaef3682167eb4d323fd7e686fa182472b79e62c8a1a475a5a",
+    "dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "lr_schedule.py": "f58e87e09746ae75b63f36998ae0c93c679910ee5c48e803a4c699c11444ddc3",
+    "training_crop.py": "2f79728cb6214970f3c6d734af0eb99fff7d20de5ae3ed4a7935c1209034c121",
+    "scripts/run_22k_crop_mixup.py": "7fdc66c17e71bc52c1bbb01caf7d01a769a8e1d7c99a1cbbd6c650e9ca84cee7",
+    "training_mixup.py": "1414d1132324daaa9b05ef437baecbdce0edd9238f42e502ce765a588c0907bf"
+  },
+  "confirmation_auroc": 0.9925261765299191,
+  "size": 512,
+  "batch_size": 16,
+  "mixup_alphas": [
+    0.05,
+    0.1
+  ]
+}
