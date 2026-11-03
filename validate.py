@@ -37,6 +37,10 @@ def main():
     autocast_dtype = amp_dtype(config)
     if autocast_dtype == torch.bfloat16 and not torch.cuda.is_bf16_supported():
         raise ValueError('This checkpoint requires BF16 support')
+    if config['model'] == 'eva02_small':
+        import timm
+        if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
+        sources.append('model_eva02.py')
     if config['model'] == 'convnext_attention':
         import timm
         if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
@@ -97,6 +101,10 @@ def main():
     if config.get('trim_black', False):
         from fundus_crop import TrimBlackBorder
         data.transform.transforms.insert(0, TrimBlackBorder())
+    if config['model'] == 'eva02_small':
+        from model_eva02 import configure_preprocessing, MEAN, STD
+        assert config['normalization_mean']==MEAN and config['normalization_std']==STD
+        configure_preprocessing(data.transform)
     with (run / 'valid_manifest.csv').open(newline='') as stream:
         manifest = list(csv.DictReader(stream))
     observed = [(name, path.name, str(label)) for name, path, label in data.samples]
@@ -105,7 +113,9 @@ def main():
         raise ValueError('Validation sample manifest changed')
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-    if config['model'] == 'convnext_attention':
+    if config['model'] == 'eva02_small':
+        from model_eva02 import build_model as selected_builder
+    elif config['model'] == 'convnext_attention':
         from model_convnext_attention import build_model as selected_builder
     elif config['model'] == 'dinov2_small':
         from model_dinov2 import build_model as selected_builder

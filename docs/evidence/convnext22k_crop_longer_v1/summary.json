@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "6389d8371a4fb5a321ff5ff850c2ea21dfd6da8e3375fea82821cf88d658b301",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9918315168810692,
+        "val_auprc": 0.8743639261030954
+      }
+    },
+    {
+      "lr": 0.0002,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 6,
+        "checkpoint_sha256": "7b4061cc804a13b746d45acbaa3e64fb4534a65750f01660c787d1e7cf263865",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9903324579569492,
+        "val_auprc": 0.8526637311547904
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999;8epochs warmup1 then cosine peaks1e-4/2e-4 to peak/10; whole-horizon adaptation, no test use."
+}

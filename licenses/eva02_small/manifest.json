@@ -1,0 +1,18 @@
+{
+  "model": "timm/eva02_small_patch14_336.mim_in22k_ft_in1k",
+  "revision": "1ce1c2322901df07ebee4e1c28e81dee546e919b",
+  "url": "https://huggingface.co/timm/eva02_small_patch14_336.mim_in22k_ft_in1k/resolve/1ce1c2322901df07ebee4e1c28e81dee546e919b/pytorch_model.bin",
+  "sha256": "c81fd4bc58267becf4ab3229c7e697f4d59547c44c91da4f7287f131d5195ee9",
+  "bytes": 88574557,
+  "license": "Modelcard/upstream MIT, timm Apache2 retained",
+  "upstream_revision": "215356af37bde48c1aaf889fbd675f4f9b149696",
+  "upstream_license_source": "https://raw.githubusercontent.com/baaivision/EVA/215356af37bde48c1aaf889fbd675f4f9b149696/LICENSE",
+  "pretraining": "Generic MIM ImageNet22k followed by ImageNet1k; not medical-specific",
+  "source_file_sha256": {
+    "upstream-LICENSE.txt": "80c5e100f36b0dc7dd87341705dc8a310fc7c2dcae2bff6831055bf205ee4d2e",
+    "timm-LICENSE.txt": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49",
+    "model_card.md": "3b000915250c8517192a73555c1b3c6d573dccbbc73f0639c6884d6590820daf",
+    "config.json": "7e389763d4aca14c544401d6a64607425c0fb5c5eaf5093035a287faead36038",
+    "model_api.json": "1d9fc4de6fd57e9266a8713535337dee5158fbe7b4cc4d048f3f5ca2f315e3a8"
+  }
+}

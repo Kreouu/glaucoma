@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "scope": "EVA-specific branches inactive for Tiny; source change leaves old22K crop GPU64/64 twoepochs ordinary/EMA all tensors exact",
+  "checks": [
+    {
+      "kind": "ordinary",
+      "all_model_tensors_exact": true,
+      "epochs": 2,
+      "selected_metrics_exact": true
+    },
+    {
+      "kind": "ema",
+      "all_model_tensors_exact": true,
+      "epochs": 2,
+      "selected_metrics_exact": true
+    }
+  ]
+}

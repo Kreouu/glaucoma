@@ -1,0 +1,19 @@
+{
+  "status": "PASS_MATCHED_SAME_HOST",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "lr1e4_mean": 0.990512129114007,
+  "lr1e4_sample_std": 0.00024138575551535538,
+  "lr2e4_mean": 0.9905045721297185,
+  "lr2e4_sample_std": 0.0010327342669480821,
+  "paired_deltas": [
+    0.000565848476604458,
+    0.0007189930765684194,
+    -0.001307512506038111
+  ],
+  "mean_delta": -7.556984288411191e-06,
+  "scope": "Same Ubuntu GPU/software,data,recipe and matched seeds; three runs do not prove population superiority; validation reused for selection"
+}

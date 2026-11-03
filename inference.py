@@ -61,6 +61,10 @@ class Predictor:
         if self.config.get('bright_region_crop',False):sources.append('fundus_bright_crop.py')
         if 'amp_precision.py' in self.config['source_sha256']:
             sources.append('amp_precision.py')
+        if self.config['model'] == 'eva02_small':
+            import timm
+            if timm.__version__ != self.config['timm_version']:raise ValueError('timm version differs from training')
+            sources.append('model_eva02.py')
         if self.config['model'] == 'efficientnet_b3':
             sources.append('model_b3.py')
         if self.config['model'] == 'convnext_tiny':
@@ -100,7 +104,9 @@ class Predictor:
         if not self.config['amp']:
             raise ValueError('This inference implementation requires the AMP baseline')
         self.threshold = self.config['threshold']
-        if self.config['model'] == 'efficientnet_b3':
+        if self.config['model'] == 'eva02_small':
+            from model_eva02 import build_model as selected_builder
+        elif self.config['model'] == 'efficientnet_b3':
             from model_b3 import build_model as selected_builder
         else:
             selected_builder = build_model
@@ -130,6 +136,11 @@ class Predictor:
             Letterbox(self.config['size']), transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
         ])
+
+        if self.config['model'] == 'eva02_small':
+            from model_eva02 import configure_preprocessing, MEAN, STD
+            assert self.config['normalization_mean']==MEAN and self.config['normalization_std']==STD
+            configure_preprocessing(self.transform)
 
     def preprocess(self, path):
         if self.config.get('bright_region_crop',False):

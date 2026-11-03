@@ -1,0 +1,25 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "test_used": false,
+  "method": "Complete Ubuntu1e-4 three and WSL1e-4three; equal six logits; no subset/weight search; no crosshost causal LR claim",
+  "limitations": "Inverse logits from saved probabilities; native batch1 equivalence and runtime not verified",
+  "wsl_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "ubuntu_three": {
+    "auroc": 0.9918578892139934,
+    "ap": 0.8817428747882557
+  },
+  "six": {
+    "auroc": 0.9920559130471797,
+    "ap": 0.882557574569008
+  },
+  "sources": {
+    "outputs/ubuntu22k_control_screen_v1/inputs/seed42.csv": "0d77f329ee7935ab43d71181eea30ed0163106233c2a524be32b2f10a1815744",
+    "outputs/ubuntu22k_control_screen_v1/inputs/seed43.csv": "bf43b7153d6d445503ad321d30a296f7f29fd6a7fd7f1f314572610da520feb5",
+    "outputs/ubuntu22k_control_screen_v1/inputs/seed44.csv": "d6360c4fd68237a6df2ac3801a759710452dee02909fbab1753d38121bc4a429",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb"
+  }
+}

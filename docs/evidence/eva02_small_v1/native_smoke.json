@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "saved_checkpoint_single_image_predictor_executed": true,
+  "validation_inference_preprocessing_exact": true,
+  "backbone_patch_weight_max_update": 6.621051579713821e-05,
+  "probabilities": [
+    0.006692850962281227,
+    0.007815888151526451,
+    0.0035936026833951473
+  ],
+  "scope": "Three smoke images; BF16 native batch1 executes, not full deployment or T4 certification"
+}

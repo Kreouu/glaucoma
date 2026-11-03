@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "seed": 42,
+      "reference": "/home/kreouu/Model_train/glaucoma_22k_crop_strength_20261102/outputs/convnext22k_crop_strength_v1/area0.8_seed42",
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "7d639c0751bda3b59a77ace6b8ca8946502cbc0faf6be5df492deba6eea40a79",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9906711342323986,
+        "val_auprc": 0.8713581904646873
+      }
+    },
+    {
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "49325f8255784e7cfa0b1acf5b282ee5920eb93bf9d8c604fc6230cd1edabecb",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9902343713853712,
+        "val_auprc": 0.8664873594117295
+      }
+    },
+    {
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "9df441a16ca0b9fbed51471abb5e374e595286cffef8a229ae123c5d6016eebb",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9906308817242511,
+        "val_auprc": 0.8666399710088493
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Complete Ubuntu1e-4 crop.8 controls42reference+43/44; matched seed LR comparison to2e-4, no crossGPU causal claim; no test use"
+}

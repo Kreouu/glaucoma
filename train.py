@@ -48,7 +48,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--pretrained-path', type=Path)
-    parser.add_argument('--model', choices=['efficientnet_b0', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small', 'convnext_base', 'caformer_s18', 'dinov2_small', 'convnext_attention'], default='efficientnet_b0')
+    parser.add_argument('--model', choices=['efficientnet_b0', 'eva02_small', 'efficientnet_b3', 'swinv2_tiny', 'convnext_tiny', 'inception_next_tiny', 'fastervit_1', 'efficientnet_v2_s', 'convnext_small', 'convnext_base', 'caformer_s18', 'dinov2_small', 'convnext_attention'], default='efficientnet_b0')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch-size', type=int, default=16)
     parser.add_argument('--size', type=int, default=256)
@@ -96,6 +96,8 @@ def main():
         parser.error('This classifier LR comparison supports ConvNeXt Tiny/Base')
     if args.auc_pairwise and (args.batch_size<2 or args.pos_weight!=3 or args.resample_positive or args.rank_weight or args.focal_gamma or args.mixup_alpha):
         parser.error('AUC pair comparison requires batch>=2, BCE reference weight3, no other loss or resampling flags')
+    if args.model == 'eva02_small' and args.size != 336:
+        parser.error('This EVA02 checkpoint requires size336')
     if args.model == 'dinov2_small' and args.size % 14:
         parser.error('DINOv2 input size must be divisible by patch size 14')
     if not np.isfinite(args.pos_weight) or args.pos_weight <= 0:
@@ -163,6 +165,9 @@ def main():
     if args.trim_black:
         from fundus_crop import TrimBlackBorder
         for data in (train_data, valid_data):data.transform.transforms.insert(0, TrimBlackBorder())
+    if args.model == 'eva02_small':
+        from model_eva02 import configure_preprocessing
+        for data in (train_data, valid_data):configure_preprocessing(data.transform)
     for split, data in [('train', train_data), ('valid', valid_data)]:
         if {s[2] for s in data.samples} != {0, 1}:
             parser.error(f'{split} must contain both labels')
@@ -254,6 +259,12 @@ def main():
         config['timm_version'] = timm.__version__
         for name in ('model_convnext.py', 'model_convnext_attention.py'):
             config['source_sha256'][name] = sha256(project / name)
+    if args.model == 'eva02_small':
+        import timm
+        from model_eva02 import MEAN, STD
+        config['timm_version'] = timm.__version__
+        config['source_sha256']['model_eva02.py'] = sha256(project / 'model_eva02.py')
+        config.update(normalization_mean=MEAN, normalization_std=STD, preprocessing='RGB,JPEG draft,bicubic aspect-preserving letterbox336,EVA02 model-card normalization')
     if args.model == 'dinov2_small':
         import timm
         config['timm_version'] = timm.__version__
@@ -325,7 +336,9 @@ def main():
     else:
         train_loader = DataLoader(train_data, shuffle=True, generator=generator, **options)
     valid_loader = DataLoader(valid_data, shuffle=False, **options)
-    if args.model == 'convnext_attention':
+    if args.model == 'eva02_small':
+        from model_eva02 import build_model as selected_builder
+    elif args.model == 'convnext_attention':
         from model_convnext_attention import build_model as selected_builder
     elif args.model == 'dinov2_small':
         from model_dinov2 import build_model as selected_builder
