@@ -1,0 +1,15 @@
+{
+  "submission_id": 32068,
+  "submitted_at": "2026-11-04 22:58:50 Asia/Shanghai",
+  "status": "已正确评分",
+  "platform_score": 98.54,
+  "submission_csv": "outputs/extra_seeds_native_v1/submission.csv",
+  "submission_sha256": "99623c06f05dfdb573062f6c5ab1ed3cc2cfb302dc94597331330479439acd46",
+  "association": "User supplied receipt after recommendation of sixseed CSV; screenshot itself does not contain file hash",
+  "recipe": "ConvNeXtTiny22K512 seeds42-47 equalrawlogits,noTTA",
+  "native_auroc": 0.9923122336163038,
+  "native_ap": 0.8800152374054606,
+  "local_mean_ms": 49.96322472608881,
+  "model_bytes": 334474506,
+  "T4_verified": false
+}

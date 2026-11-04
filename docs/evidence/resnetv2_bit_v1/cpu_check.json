@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "retained_tensors": 151,
+  "backbone_output_difference": 0.0,
+  "trainable_parameters": 23502401,
+  "buffers": 0,
+  "scope": "Strict officialstate load; reset only classifier; CPU64x64 backbone output vs official reference exact; allparameters trainable; not GPU training proof"
+}

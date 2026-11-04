@@ -1,0 +1,25 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "test_used": false,
+  "method": "Complete completeCAMlocal three and WSL1e-4three; equal six logits; no subset/weight search; fixed complete global3 plus local3, samehost, no subset selection",
+  "limitations": "Inverse logits from saved probabilities; native batch1 equivalence and runtime not verified",
+  "wsl_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "ubuntu_three": {
+    "auroc": 0.9903653077049778,
+    "ap": 0.8459060264179203
+  },
+  "six": {
+    "auroc": 0.9920512863221052,
+    "ap": 0.8721548253696659
+  },
+  "sources": {
+    "outputs/cam_local_complete_screen_v1/inputs/seed42.csv": "29547d52db4653d91585400a468fe42e33e1d4ce99df827126475fd781d48d65",
+    "outputs/cam_local_complete_screen_v1/inputs/seed43.csv": "b70e05f96bbe352e9e2e894b3596e81f087743385a794822bc12cf51b98ba040",
+    "outputs/cam_local_complete_screen_v1/inputs/seed44.csv": "fdbe6ec66c3e6fda1b14f9873c49e61e7090d5450ad6bb9e77800bb15973749a",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb"
+  }
+}

@@ -41,6 +41,10 @@ def main():
         import timm
         if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
         sources.append('model_eva02.py')
+    elif config['model'] == 'resnetv2_bit':
+        import timm
+        if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
+        sources.append('model_bit.py')
     if config['model'] == 'convnext_attention':
         import timm
         if timm.__version__ != config['timm_version']:raise ValueError('timm version differs from training')
@@ -105,6 +109,10 @@ def main():
         from model_eva02 import configure_preprocessing, MEAN, STD
         assert config['normalization_mean']==MEAN and config['normalization_std']==STD
         configure_preprocessing(data.transform)
+    elif config['model'] == 'resnetv2_bit':
+        from model_bit import configure_preprocessing, MEAN, STD
+        assert config['normalization_mean']==MEAN and config['normalization_std']==STD
+        configure_preprocessing(data.transform)
     with (run / 'valid_manifest.csv').open(newline='') as stream:
         manifest = list(csv.DictReader(stream))
     observed = [(name, path.name, str(label)) for name, path, label in data.samples]
@@ -115,6 +123,8 @@ def main():
     torch.backends.cudnn.deterministic = True
     if config['model'] == 'eva02_small':
         from model_eva02 import build_model as selected_builder
+    elif config['model'] == 'resnetv2_bit':
+        from model_bit import build_model as selected_builder
     elif config['model'] == 'convnext_attention':
         from model_convnext_attention import build_model as selected_builder
     elif config['model'] == 'dinov2_small':

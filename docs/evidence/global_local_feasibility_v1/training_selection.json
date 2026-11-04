@@ -1,0 +1,488 @@
+{
+  "seed": 20261104,
+  "split": "train",
+  "checkpoint_sha256": "a2f1ac437eed16b5fc1ec9fdf5c4cee12d469918847680b156f94a4b9f4278ba",
+  "method": "Positive-logit GradCAM at last spatial feature map; diagnostic only",
+  "rows": [
+    {
+      "image_name": "train_47039.jpg",
+      "label": 1,
+      "probability": 0.9407896995544434,
+      "peak_xy": [
+        151,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_40049.jpg",
+      "label": 1,
+      "probability": 0.7914988994598389,
+      "peak_xy": [
+        87,
+        119
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_12729.jpg",
+      "label": 1,
+      "probability": 0.9927391409873962,
+      "peak_xy": [
+        152,
+        135
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_20602.jpg",
+      "label": 1,
+      "probability": 0.0629042387008667,
+      "peak_xy": [
+        87,
+        135
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_23517.jpg",
+      "label": 1,
+      "probability": 0.77390056848526,
+      "peak_xy": [
+        152,
+        119
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_31257.jpg",
+      "label": 1,
+      "probability": 0.9567959308624268,
+      "peak_xy": [
+        152,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_37381.jpg",
+      "label": 1,
+      "probability": 0.8895288705825806,
+      "peak_xy": [
+        183,
+        119
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_01595.jpg",
+      "label": 1,
+      "probability": 0.9923933744430542,
+      "peak_xy": [
+        168,
+        136
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_14331.jpg",
+      "label": 1,
+      "probability": 0.9889705181121826,
+      "peak_xy": [
+        199,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_24446.jpg",
+      "label": 1,
+      "probability": 0.9908034801483154,
+      "peak_xy": [
+        152,
+        119
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_00596.jpg",
+      "label": 1,
+      "probability": 0.7826625108718872,
+      "peak_xy": [
+        72,
+        119
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_41116.jpg",
+      "label": 1,
+      "probability": 0.9983256459236145,
+      "peak_xy": [
+        72,
+        135
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_33991.jpg",
+      "label": 1,
+      "probability": 0.998245358467102,
+      "peak_xy": [
+        40,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_36795.jpg",
+      "label": 1,
+      "probability": 0.9971550703048706,
+      "peak_xy": [
+        167,
+        136
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_39291.jpg",
+      "label": 1,
+      "probability": 0.9966233968734741,
+      "peak_xy": [
+        87,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_43985.jpg",
+      "label": 1,
+      "probability": 0.17752550542354584,
+      "peak_xy": [
+        135,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_04942.jpg",
+      "label": 1,
+      "probability": 0.0616496242582798,
+      "peak_xy": [
+        56,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_29054.jpg",
+      "label": 1,
+      "probability": 0.8002240657806396,
+      "peak_xy": [
+        167,
+        135
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_23790.jpg",
+      "label": 1,
+      "probability": 0.9582261443138123,
+      "peak_xy": [
+        72,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_01999.jpg",
+      "label": 1,
+      "probability": 0.8402590155601501,
+      "peak_xy": [
+        200,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_28599.jpg",
+      "label": 1,
+      "probability": 0.9967396855354309,
+      "peak_xy": [
+        87,
+        135
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_43273.jpg",
+      "label": 1,
+      "probability": 0.8392075896263123,
+      "peak_xy": [
+        56,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_09777.jpg",
+      "label": 1,
+      "probability": 0.9428234100341797,
+      "peak_xy": [
+        104,
+        136
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_34258.jpg",
+      "label": 1,
+      "probability": 0.9800912737846375,
+      "peak_xy": [
+        56,
+        104
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_31938.jpg",
+      "label": 0,
+      "probability": 0.005797401536256075,
+      "peak_xy": [
+        184,
+        104
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_47811.jpg",
+      "label": 0,
+      "probability": 0.00014539113908540457,
+      "peak_xy": [
+        71,
+        71
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_16206.jpg",
+      "label": 0,
+      "probability": 0.0001823546044761315,
+      "peak_xy": [
+        199,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_07832.jpg",
+      "label": 0,
+      "probability": 0.16803622245788574,
+      "peak_xy": [
+        87,
+        120
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_19346.jpg",
+      "label": 0,
+      "probability": 0.0001511819864390418,
+      "peak_xy": [
+        199,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_46674.jpg",
+      "label": 0,
+      "probability": 8.682210318511352e-05,
+      "peak_xy": [
+        56,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_19716.jpg",
+      "label": 0,
+      "probability": 0.45837900042533875,
+      "peak_xy": [
+        88,
+        135
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_14415.jpg",
+      "label": 0,
+      "probability": 0.00010804955672938377,
+      "peak_xy": [
+        56,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_07541.jpg",
+      "label": 0,
+      "probability": 5.649793456541374e-05,
+      "peak_xy": [
+        71,
+        184
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_46244.jpg",
+      "label": 0,
+      "probability": 0.00042388474685139954,
+      "peak_xy": [
+        56,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_21656.jpg",
+      "label": 0,
+      "probability": 0.00020988310279790312,
+      "peak_xy": [
+        199,
+        55
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_37302.jpg",
+      "label": 0,
+      "probability": 0.0013302015140652657,
+      "peak_xy": [
+        184,
+        103
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_34145.jpg",
+      "label": 0,
+      "probability": 0.00015356240328401327,
+      "peak_xy": [
+        199,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_33746.jpg",
+      "label": 0,
+      "probability": 0.0012351677287369967,
+      "peak_xy": [
+        56,
+        168
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_35653.jpg",
+      "label": 0,
+      "probability": 0.00029365462251007557,
+      "peak_xy": [
+        199,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_33437.jpg",
+      "label": 0,
+      "probability": 0.00013238185783848166,
+      "peak_xy": [
+        199,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_26131.jpg",
+      "label": 0,
+      "probability": 0.0001559802913106978,
+      "peak_xy": [
+        71,
+        184
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_36050.jpg",
+      "label": 0,
+      "probability": 5.34913269802928e-05,
+      "peak_xy": [
+        71,
+        183
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_30614.jpg",
+      "label": 0,
+      "probability": 9.915272676153108e-05,
+      "peak_xy": [
+        56,
+        199
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_21206.jpg",
+      "label": 0,
+      "probability": 0.0001559802913106978,
+      "peak_xy": [
+        56,
+        199
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_12309.jpg",
+      "label": 0,
+      "probability": 0.00012731103925034404,
+      "peak_xy": [
+        56,
+        56
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_50084.jpg",
+      "label": 0,
+      "probability": 0.00011501735571073368,
+      "peak_xy": [
+        231,
+        168
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_28201.jpg",
+      "label": 0,
+      "probability": 7.782753527862951e-05,
+      "peak_xy": [
+        56,
+        71
+      ],
+      "cam_nonzero": true
+    },
+    {
+      "image_name": "train_50678.jpg",
+      "label": 0,
+      "probability": 0.000191104321856983,
+      "peak_xy": [
+        56,
+        56
+      ],
+      "cam_nonzero": true
+    }
+  ]
+}

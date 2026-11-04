@@ -65,6 +65,10 @@ class Predictor:
             import timm
             if timm.__version__ != self.config['timm_version']:raise ValueError('timm version differs from training')
             sources.append('model_eva02.py')
+        elif self.config['model'] == 'resnetv2_bit':
+            import timm
+            if timm.__version__ != self.config['timm_version']:raise ValueError('timm version differs from training')
+            sources.append('model_bit.py')
         if self.config['model'] == 'efficientnet_b3':
             sources.append('model_b3.py')
         if self.config['model'] == 'convnext_tiny':
@@ -106,6 +110,8 @@ class Predictor:
         self.threshold = self.config['threshold']
         if self.config['model'] == 'eva02_small':
             from model_eva02 import build_model as selected_builder
+        elif self.config['model'] == 'resnetv2_bit':
+            from model_bit import build_model as selected_builder
         elif self.config['model'] == 'efficientnet_b3':
             from model_b3 import build_model as selected_builder
         else:
@@ -139,6 +145,11 @@ class Predictor:
 
         if self.config['model'] == 'eva02_small':
             from model_eva02 import configure_preprocessing, MEAN, STD
+            assert self.config['normalization_mean']==MEAN and self.config['normalization_std']==STD
+            configure_preprocessing(self.transform)
+
+        elif self.config['model'] == 'resnetv2_bit':
+            from model_bit import configure_preprocessing, MEAN, STD
             assert self.config['normalization_mean']==MEAN and self.config['normalization_std']==STD
             configure_preprocessing(self.transform)
 

@@ -1,0 +1,19 @@
+--- d03f661/train.py
++++ rotation/train.py
+@@ -71,6 +71,7 @@
+     parser.add_argument('--focal-gamma', type=float, default=0.0, help='Training-only focal exponent; zero keeps weighted BCE')
+     parser.add_argument('--mixup-alpha', type=float, default=0.0, help='Training-only batch Mixup; zero disables')
+     parser.add_argument('--ema-decay', type=float, default=0.0, help='ConvNeXt shadow EMA; zero disables it')
++    parser.add_argument('--rotation-degrees', type=int, choices=[0,5,10], default=0)
+     parser.add_argument('--seed', type=int, default=42)
+     parser.add_argument('--train-limit', type=int)
+     parser.add_argument('--valid-limit', type=int)
+@@ -149,6 +150,8 @@
+             writer = csv.writer(stream)
+             writer.writerow(['Image_name', 'actual_filename', 'True_Label'])
+             writer.writerows((name, path.name, label) for name, path, label in data.samples)
++    if args.rotation_degrees:
++        train_data.transform.transforms.insert(0, torchvision.transforms.RandomRotation(args.rotation_degrees))
+     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
+     config.update(loss='BCEWithLogitsLoss', optimizer='AdamW',
+                   weight_decay=0.01, amp=True, age_used=False, threshold=0.5,

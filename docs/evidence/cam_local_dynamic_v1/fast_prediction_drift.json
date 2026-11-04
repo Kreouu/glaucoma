@@ -1,0 +1,37 @@
+{
+  "images": 5849,
+  "predictions_changed_over_1e6": 5,
+  "label_changes": 0,
+  "largest_changes": [
+    {
+      "image_name": "valid_04135.jpg",
+      "difference": 0.008828900754451752,
+      "fast": 0.12304913252592087,
+      "reference": 0.11422023177146912
+    },
+    {
+      "image_name": "valid_04989.jpg",
+      "difference": 0.0018246173858642578,
+      "fast": 0.9290068745613098,
+      "reference": 0.9271822571754456
+    },
+    {
+      "image_name": "valid_02234.jpg",
+      "difference": 0.0017653731629252434,
+      "fast": 0.010678271763026714,
+      "reference": 0.012443644925951958
+    },
+    {
+      "image_name": "valid_03721.jpg",
+      "difference": 0.00022180471569299698,
+      "fast": 0.014985889196395874,
+      "reference": 0.014764084480702877
+    },
+    {
+      "image_name": "valid_05570.jpg",
+      "difference": 5.235699063632637e-06,
+      "fast": 0.00010910978016909212,
+      "reference": 0.00011434547923272476
+    }
+  ]
+}

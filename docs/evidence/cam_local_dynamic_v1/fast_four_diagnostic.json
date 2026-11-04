@@ -1,0 +1,11 @@
+{
+  "max_probability_difference_vs_full_backprop": 0.008828900754451752,
+  "status": "DYNAMIC_NATIVE_VALIDATION",
+  "images": 5849,
+  "max_box_difference": 0.005899705014749346,
+  "auroc": 0.9924302151057023,
+  "ap": 0.8784032542745659,
+  "checkpoint_sha256": "ad0daddde1f1b5f34d07d8dabdfaa110451153910415bd5b2dc92c6b837393a4",
+  "test_used": false,
+  "runtime_verified": false
+}

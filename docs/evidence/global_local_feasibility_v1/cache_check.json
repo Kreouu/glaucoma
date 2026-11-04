@@ -1,0 +1,14 @@
+{
+  "train": {
+    "images": 51396,
+    "fallbacks": 3325,
+    "sha256": "c633940be4f4fbdfcd21b79f4094512c87ac08a0e616f0609353965d572e9f72",
+    "checkpoint_sha256": "a2f1ac437eed16b5fc1ec9fdf5c4cee12d469918847680b156f94a4b9f4278ba"
+  },
+  "valid": {
+    "images": 5849,
+    "fallbacks": 390,
+    "sha256": "b3de88ac158f44c36da38427422a61088020316e01549f10dc9f31fb0c836096",
+    "checkpoint_sha256": "a2f1ac437eed16b5fc1ec9fdf5c4cee12d469918847680b156f94a4b9f4278ba"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "DYNAMIC_NATIVE_VALIDATION",
+  "images": 5849,
+  "max_box_difference": 0.0,
+  "auroc": 0.9924311404507171,
+  "ap": 0.8784101230858695,
+  "checkpoint_sha256": "ad0daddde1f1b5f34d07d8dabdfaa110451153910415bd5b2dc92c6b837393a4",
+  "test_used": false,
+  "runtime_verified": false
+}

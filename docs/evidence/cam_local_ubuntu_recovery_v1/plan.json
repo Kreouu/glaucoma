@@ -1,0 +1,34 @@
+{
+  "csv_sha256": {
+    "train": "ec81a23ba7758eccdd09dba027ce1a50998d81c18ed30ab6d2d608b3397f67d7",
+    "valid": "edda257a801a1036ea2b1a9ffe983a1f9fea73c3f89fd6ac0f6ab6a4da355f2a"
+  },
+  "terminal_proof": "/home/kreouu/Model_train/glaucoma_22k_crop_full_decode_20261104/outputs/convnext22k_crop_full_decode_v1/summary.json",
+  "training_source_revision": "d03f661 with recorded localcache dataset/trainmetadata patch",
+  "pretrained_path": "pretrain_model/convnext_tiny_fb_in22k_ft_in1k.bin",
+  "pretrained_sha256": "8cb65dc650a7fb25eaadbff3eb69559d02f83cdc5afdfb3785d1889cdc3e3518",
+  "seeds": [
+    42
+  ],
+  "train_crop_min_area": 0.8,
+  "scope": "Ubuntu complete42/43/44 localview confirmation; same frozen train-derivedCAM cache; fullimage ownhostcomparison; no test use; fresh full restart after diskfull, failed originals preserved; not exactresume; only42 now, reuse previous same-source GPU smoke PASS; defer43/44 until storage solved; minfree650MB",
+  "source_sha256": {
+    "train.py": "fa0277c494d50d9ebc3ec17f76f867df1437e274ed465cdfa08cf3738efd35fe",
+    "validate.py": "4ff4b41c294f9daaef3682167eb4d323fd7e686fa182472b79e62c8a1a475a5a",
+    "dataset.py": "33bf73d54f05f6e9859dba2202d1503bc7814f597cf69a2e441f5ee939423542",
+    "model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "lr_schedule.py": "f58e87e09746ae75b63f36998ae0c93c679910ee5c48e803a4c699c11444ddc3",
+    "training_crop.py": "2f79728cb6214970f3c6d734af0eb99fff7d20de5ae3ed4a7935c1209034c121",
+    "inputs/cam_regions/train.json": "c633940be4f4fbdfcd21b79f4094512c87ac08a0e616f0609353965d572e9f72",
+    "inputs/cam_regions/valid.json": "b3de88ac158f44c36da38427422a61088020316e01549f10dc9f31fb0c836096",
+    "scripts/run_cam_local_ubuntu_recovery.py": "5ed20e13c89d58024810936f4193d20fa9fe2cb249dbcc3dadc49e08d2c743a2"
+  },
+  "confirmation_auroc": 1.0,
+  "size": 512,
+  "batch_size": 16,
+  "learning_rates": [
+    0.0001
+  ]
+}

@@ -1,0 +1,31 @@
+--- d03f661/dataset.py
++++ camlocal/dataset.py
+@@ -1,6 +1,7 @@
+ """Official train/valid image loading without modifying the source data."""
+ 
+ import csv
++import json
+ from collections import defaultdict
+ from pathlib import Path
+ 
+@@ -61,6 +62,9 @@
+                     raise ValueError(f'Missing or ambiguous image: {name}')
+                 path = matches[0]
+             self.samples.append((name, path, int(row['True_Label'])))
++        cache = Path(__file__).resolve().parent / 'inputs/cam_regions' / f'{split}.json'
++        self.cam_regions = json.loads(cache.read_text())['regions']
++        assert all(name in self.cam_regions for name, _, _ in self.samples)
+         steps = [Letterbox(size)]
+         if split == 'train':
+             steps.append(transforms.RandomHorizontalFlip())
+@@ -77,5 +81,9 @@
+         with Image.open(path) as image:
+             if self.jpeg_draft and image.format == 'JPEG':
+                 image.draft('RGB', (self.size, self.size))
+-            tensor = self.transform(image.convert('RGB'))
++            image = image.convert('RGB')
++            x, y, right, bottom = self.cam_regions[name]['box_fraction_xyxy']
++            w, h = image.size
++            box = (int(x*w), int(y*h), max(int(x*w)+1, round(right*w)), max(int(y*h)+1, round(bottom*h)))
++            tensor = self.transform(image.crop(box))
+         return tensor, torch.tensor(float(label)), name

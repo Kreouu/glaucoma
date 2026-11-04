@@ -1,0 +1,10 @@
+valid 1000
+valid 2000
+Traceback (most recent call last):
+  File "/home/ng/workspace/glaucoma_extra_seeds_native_20261104/scripts/verify_cam_local_fast_four.py", line 73, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/ng/workspace/glaucoma_extra_seeds_native_20261104/scripts/verify_cam_local_fast_four.py", line 53, in main
+    assert box_difference==0
+           ^^^^^^^^^^^^^^^^^
+AssertionError

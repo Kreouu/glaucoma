@@ -1,0 +1,92 @@
+{
+  "_id": "641b6bd2fc01c26fcaf205db",
+  "id": "timm/resnetv2_50x1_bit.goog_in21k_ft_in1k",
+  "private": false,
+  "pipeline_tag": "image-classification",
+  "library_name": "timm",
+  "tags": [
+    "timm",
+    "pytorch",
+    "safetensors",
+    "image-classification",
+    "transformers",
+    "dataset:imagenet-1k",
+    "dataset:imagenet-21k",
+    "arxiv:1912.11370",
+    "arxiv:1603.05027",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 2162,
+  "likes": 0,
+  "modelId": "timm/resnetv2_50x1_bit.goog_in21k_ft_in1k",
+  "author": "timm",
+  "sha": "567d3c97765b738389474d8dc8eaf0af38ebc83a",
+  "lastModified": "2025-01-21T21:33:06.000Z",
+  "gated": false,
+  "disabled": false,
+  "model-index": null,
+  "config": {},
+  "cardData": {
+    "license": "apache-2.0",
+    "library_name": "timm",
+    "tags": [
+      "image-classification",
+      "timm",
+      "transformers"
+    ],
+    "datasets": [
+      "imagenet-1k",
+      "imagenet-21k"
+    ]
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModel"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "c7d9f3332a950355d5a77d85000f05e6f45435ea",
+      "size": 1477
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "b349ce87c98d211705e0bc5c5190d3300a247743",
+      "size": 4658
+    },
+    {
+      "rfilename": "config.json",
+      "blobId": "1c85c0ad2bbe800d4797859c295970c5748403ea",
+      "size": 576
+    },
+    {
+      "rfilename": "model.safetensors",
+      "blobId": "7c6114374e471ad8e6ffea7ed23c3b4d3ada051c",
+      "size": 102212646,
+      "lfs": {
+        "sha256": "04687d0e44324a1f162e5346a021fb0c5e927b3e515b8ae300096b818ac711fe",
+        "size": 102212646,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "pytorch_model.bin",
+      "blobId": "09b348df7174a99c9213ee019ccc1cec1faf4c47",
+      "size": 102257521,
+      "lfs": {
+        "sha256": "2c6dc5ac031070a28e7bdddbe9068df8392fd103bbe81daba66604091c7c360e",
+        "size": 102257521,
+        "pointerSize": 134
+      }
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2023-03-22T20:57:54.000Z",
+  "safetensors": {
+    "parameters": {
+      "F32": 25549352
+    },
+    "total": 25549352
+  },
+  "usedStorage": 204470167
+}

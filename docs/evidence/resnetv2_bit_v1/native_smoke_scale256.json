@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "preprocessing_exact_samples": 3,
+  "backbone_stem_update_max": 0.00033121928572654724,
+  "amp_skipped_updates": 0
+}

@@ -1,0 +1,409 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "images": 48,
+  "split": "train",
+  "anatomical_localization_accuracy_unknown": true,
+  "method": "Positive-logit GradCAM, inverse horizontal flip, fixedRGBforeground>.08; no fitting",
+  "groups": {
+    "0": {
+      "images": 24,
+      "valid": 24,
+      "median_foreground_mass": 0.6767696440219879,
+      "median_masked_peak_distance": 0.10572536133206299,
+      "median_top10_iou": 0.7176725889189051
+    },
+    "1": {
+      "images": 24,
+      "valid": 24,
+      "median_foreground_mass": 0.9972237348556519,
+      "median_masked_peak_distance": 0.0,
+      "median_top10_iou": 0.887539371845592
+    }
+  },
+  "rows": [
+    {
+      "image_name": "train_47039.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 1.0,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9064706563259637
+    },
+    {
+      "image_name": "train_40049.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9999998807907104,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8409113324785482
+    },
+    {
+      "image_name": "train_12729.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9987196922302246,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8996836873023045
+    },
+    {
+      "image_name": "train_20602.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9605541825294495,
+      "masked_peak_distance_fraction": 0.001953125,
+      "top10_iou": 0.6095890410958904
+    },
+    {
+      "image_name": "train_23517.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9892850518226624,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9270243662318484
+    },
+    {
+      "image_name": "train_31257.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9999998807907104,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8825679689284899
+    },
+    {
+      "image_name": "train_37381.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9969892501831055,
+      "masked_peak_distance_fraction": 0.060546875,
+      "top10_iou": 0.7757117283594156
+    },
+    {
+      "image_name": "train_01595.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9999153017997742,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.890125313283208
+    },
+    {
+      "image_name": "train_14331.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9475142359733582,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9298169136878814
+    },
+    {
+      "image_name": "train_24446.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9974582195281982,
+      "masked_peak_distance_fraction": 0.001953125,
+      "top10_iou": 0.860863972558688
+    },
+    {
+      "image_name": "train_00596.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9940799474716187,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9268430290872618
+    },
+    {
+      "image_name": "train_41116.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.999893307685852,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9091110946636074
+    },
+    {
+      "image_name": "train_33991.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9976223707199097,
+      "masked_peak_distance_fraction": 0.06253051013118016,
+      "top10_iou": 0.9312943540790052
+    },
+    {
+      "image_name": "train_36795.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 1.0000001192092896,
+      "masked_peak_distance_fraction": 0.0027621358640099515,
+      "top10_iou": 0.9509700462699895
+    },
+    {
+      "image_name": "train_39291.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9773537516593933,
+      "masked_peak_distance_fraction": 0.001953125,
+      "top10_iou": 0.8414338334381457
+    },
+    {
+      "image_name": "train_43985.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9795046448707581,
+      "masked_peak_distance_fraction": 0.08562621178430849,
+      "top10_iou": 0.8127290903032323
+    },
+    {
+      "image_name": "train_04942.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.7744119167327881,
+      "masked_peak_distance_fraction": 0.001953125,
+      "top10_iou": 0.5173910560283282
+    },
+    {
+      "image_name": "train_29054.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9982798099517822,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9083451202263083
+    },
+    {
+      "image_name": "train_23790.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9080452919006348,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8651242923947822
+    },
+    {
+      "image_name": "train_01999.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9894109964370728,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8849534304079759
+    },
+    {
+      "image_name": "train_28599.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9987918734550476,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.910958904109589
+    },
+    {
+      "image_name": "train_43273.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9772441387176514,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8141997244180144
+    },
+    {
+      "image_name": "train_09777.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9999999403953552,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8217165580470562
+    },
+    {
+      "image_name": "train_34258.jpg",
+      "label": 1,
+      "valid": true,
+      "foreground_activation_fraction": 0.9782252311706543,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9111769059955589
+    },
+    {
+      "image_name": "train_31938.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.8935059309005737,
+      "masked_peak_distance_fraction": 0.12306237501580754,
+      "top10_iou": 0.5418040155828588
+    },
+    {
+      "image_name": "train_47811.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.7833669185638428,
+      "masked_peak_distance_fraction": 0.5,
+      "top10_iou": 0.633419632278731
+    },
+    {
+      "image_name": "train_16206.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.40260303020477295,
+      "masked_peak_distance_fraction": 0.3067401311479159,
+      "top10_iou": 0.3752002023097024
+    },
+    {
+      "image_name": "train_07832.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.99253910779953,
+      "masked_peak_distance_fraction": 0.060546875,
+      "top10_iou": 0.7965672990063234
+    },
+    {
+      "image_name": "train_19346.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.36911270022392273,
+      "masked_peak_distance_fraction": 0.12501525785785358,
+      "top10_iou": 0.7214321734745336
+    },
+    {
+      "image_name": "train_46674.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.469779908657074,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.7911281872162068
+    },
+    {
+      "image_name": "train_19716.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.9940783381462097,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.9208277103013945
+    },
+    {
+      "image_name": "train_14415.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.3639809787273407,
+      "masked_peak_distance_fraction": 0.06057836882527665,
+      "top10_iou": 0.7317494161843842
+    },
+    {
+      "image_name": "train_07541.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.6077329516410828,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.8146289627486865
+    },
+    {
+      "image_name": "train_46244.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.5005989670753479,
+      "masked_peak_distance_fraction": 0.08838834764831845,
+      "top10_iou": 0.5161350148367952
+    },
+    {
+      "image_name": "train_21656.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.42369985580444336,
+      "masked_peak_distance_fraction": 0.125,
+      "top10_iou": 0.6693096112937537
+    },
+    {
+      "image_name": "train_37302.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.9472257494926453,
+      "masked_peak_distance_fraction": 0.001953125,
+      "top10_iou": 0.7300944669365722
+    },
+    {
+      "image_name": "train_34145.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.3605656027793884,
+      "masked_peak_distance_fraction": 0.31250610345602153,
+      "top10_iou": 0.7551930286756511
+    },
+    {
+      "image_name": "train_33746.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.9662542939186096,
+      "masked_peak_distance_fraction": 0.2595893433815526,
+      "top10_iou": 0.5081277043620629
+    },
+    {
+      "image_name": "train_35653.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.820564329624176,
+      "masked_peak_distance_fraction": 0.560546875,
+      "top10_iou": 0.627022609643149
+    },
+    {
+      "image_name": "train_33437.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.7000120282173157,
+      "masked_peak_distance_fraction": 0.39343229525201107,
+      "top10_iou": 0.6798513986013986
+    },
+    {
+      "image_name": "train_26131.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.7379893064498901,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.6621945109391527
+    },
+    {
+      "image_name": "train_36050.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.6883043050765991,
+      "masked_peak_distance_fraction": 0.1875,
+      "top10_iou": 0.5216150081566069
+    },
+    {
+      "image_name": "train_30614.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.6162270307540894,
+      "masked_peak_distance_fraction": 0.792732992970856,
+      "top10_iou": 0.8079164643030597
+    },
+    {
+      "image_name": "train_21206.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.7677205801010132,
+      "masked_peak_distance_fraction": 0.5638073457702828,
+      "top10_iou": 0.7139130043632765
+    },
+    {
+      "image_name": "train_12309.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.27921897172927856,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.721869962385814
+    },
+    {
+      "image_name": "train_50084.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.794280469417572,
+      "masked_peak_distance_fraction": 0.001953125,
+      "top10_iou": 0.7373931330864536
+    },
+    {
+      "image_name": "train_28201.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.6652349829673767,
+      "masked_peak_distance_fraction": 0.0,
+      "top10_iou": 0.7549339282649734
+    },
+    {
+      "image_name": "train_50678.jpg",
+      "label": 0,
+      "valid": true,
+      "foreground_activation_fraction": 0.41738390922546387,
+      "masked_peak_distance_fraction": 0.011048543456039806,
+      "top10_iou": 0.5103276353276354
+    }
+  ]
+}

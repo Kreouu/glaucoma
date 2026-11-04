@@ -1,0 +1,52 @@
+{
+  "status": "SCREEN_ONLY",
+  "test_used": false,
+  "method": "Each of two localrecipes plus complete global3/6 equal member logits; no subset or weight fitting",
+  "limitations": "Saved probability inverse logits; dynamic region native inference not verified",
+  "global_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "global_six": {
+    "auroc": 0.9923122336163038,
+    "ap": 0.880015237405461
+  },
+  "candidates": [
+    {
+      "recipe": "lr3e-5",
+      "local": {
+        "auroc": 0.9868291017305802,
+        "ap": 0.8212663767432421
+      },
+      "four": {
+        "auroc": 0.9918449343837851,
+        "ap": 0.8750884759549757
+      },
+      "seven": {
+        "auroc": 0.9922483848102766,
+        "ap": 0.877904645566743
+      }
+    },
+    {
+      "recipe": "lr1e-4",
+      "local": {
+        "auroc": 0.9900530037624529,
+        "ap": 0.832381187307155
+      },
+      "four": {
+        "auroc": 0.9924288270881799,
+        "ap": 0.8784008447046487
+      },
+      "seven": {
+        "auroc": 0.992586135740711,
+        "ap": 0.879606379898387
+      }
+    }
+  ],
+  "sources": {
+    "outputs/cam_local_screen_v1/inputs/lr3e-5.csv": "f6d430b7966e71da81be5e457a0701bed675a543c3e2278af743143e07da6cc6",
+    "outputs/cam_local_screen_v1/inputs/lr1e-4.csv": "29547d52db4653d91585400a468fe42e33e1d4ce99df827126475fd781d48d65",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb",
+    "outputs/extra_seeds_native_v1/six_valid_predictions.csv": "a6fa34e5eb4b61902f0856c20e2d63f8bf2eced2b0b3584d55fa1ca6624d9fa6"
+  }
+}

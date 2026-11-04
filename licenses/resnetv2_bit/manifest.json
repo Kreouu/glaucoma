@@ -1,0 +1,11 @@
+{
+  "repo": "timm/resnetv2_50x1_bit.goog_in21k_ft_in1k",
+  "revision": "567d3c97765b738389474d8dc8eaf0af38ebc83a",
+  "sha256": "2c6dc5ac031070a28e7bdddbe9068df8392fd103bbe81daba66604091c7c360e",
+  "bytes": 102257521,
+  "weight_file": "resnetv2_50x1_bit_goog_in21k_ft_in1k.bin",
+  "model_card_license": "apache-2.0",
+  "upstream_license_fetch": "PASS",
+  "status": "WEIGHT_AND_LICENSE_ARCHIVED",
+  "upstream_revision": "140de6e704fd8d61f3e5ea20ffde130b7d5fd065"
+}

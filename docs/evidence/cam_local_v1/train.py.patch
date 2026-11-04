@@ -1,0 +1,11 @@
+--- d03f661/train.py
++++ camlocal/train.py
+@@ -161,6 +161,8 @@
+                   gpu=torch.cuda.get_device_name(0), cuda=torch.version.cuda,
+                   pretrained_sha256=sha256(args.pretrained_path) if args.pretrained_path else None,
+                   csv_sha256={split: sha256(args.data_root / f'{split}.csv') for split in ('train', 'valid')})
++    config['local_region_cache_sha256'] = {split: sha256(Path(__file__).resolve().parent / 'inputs/cam_regions' / f'{split}.json') for split in ('train','valid')}
++    config['preprocessing'] += '; fixed train-derived CAM local region before transforms, requires matching dynamic region inference'
+     sampling_scale = 1.0
+     if args.resample_positive:
+         from training_sampling import positive_resampling

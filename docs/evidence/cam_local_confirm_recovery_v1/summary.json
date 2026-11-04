@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 0.0001,
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "cec5db0ce000b8bc88c49800941fa87114a109f709e1c29e80930b66a9fbd7fe",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9878863084100907,
+        "val_auprc": 0.8354464244975948
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "ea83721b8e7d908e27f266e5ed95d19eaf09a99640f1a5200b5cc25ad5ac75e7",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9896819404114825,
+        "val_auprc": 0.8334434000650293
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; fixedCAM localview, independent backbone, peak1e-4 confirmation43/44, BCE3 fixed. Validation unweighted; no test use."
+}

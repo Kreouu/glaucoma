@@ -1,0 +1,5 @@
+{
+  "status": "NOT_PASSED",
+  "reason": "Best checkpoint epoch1: all4 optimizersteps skipped byFP16 GradScaler; all audited backbone tensors unchanged. Epoch2 had3 successfulsteps but worse validation, not saved asbest. Preprocessing3sample exact and nativeprediction finite checks passed before update assertion.",
+  "next_action": "Lower model-specific initial GradScaler scale or audit a sufficiently long smoke; do not call model frozen or launch full until updated saved backbone proven."
+}

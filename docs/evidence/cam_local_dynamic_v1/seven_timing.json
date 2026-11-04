@@ -1,0 +1,10 @@
+{
+  "status": "TIMING_ONLY",
+  "measured_images": 300,
+  "warmup": 5,
+  "repeats": 3,
+  "mean_ms": 100.33550912667124,
+  "max_box_difference": 0.0,
+  "official_T4_verified": false,
+  "test_used": false
+}
