@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 5e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "7a97dbf09a7d9fa79737db535e95dc94e3470d57e10e000239085e0e131d95af",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9892081637638592,
+        "val_auprc": 0.8512424953181996
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "b7ff5a2bfd32b0921f65795a9f8c91b98392df1bdbd3b466afa36c158455510c",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9900122885817978,
+        "val_auprc": 0.8581340370409205
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; batch8, peaks5e-5/1e-4, BCE3 fixed. Validation unweighted; no test use."
+}

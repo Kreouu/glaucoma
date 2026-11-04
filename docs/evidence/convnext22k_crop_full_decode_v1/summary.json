@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "3e9ef91371685c47ac87c62ed67386e1f04b4cb2794c1f544ebb6568420207e1",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9865010669228022,
+        "val_auprc": 0.8369869022839698
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "8f6b65327ba4387c3ad5c37699433fe5f55532f27b78499ed39811bf1643f53a",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.990350964857247,
+        "val_auprc": 0.8554691642557506
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; full JPEG decode without draft or trim, peaks3e-5/1e-4, BCE3 fixed. Validation unweighted; no test use."
+}

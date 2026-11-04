@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "pos_weight": 3,
+      "seed": 45,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "2df631c578132de5ceaa6116be0bc75ddc4f6248d2dfcf9bf7ccf6c61d2fb835",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9896745376513634,
+        "val_auprc": 0.8509268868427814
+      }
+    },
+    {
+      "pos_weight": 3,
+      "seed": 46,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "a6a7f33209b95f24afe14a1f973ff9a868b64f84f1c977405d61dba09f766acc",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905920172336256,
+        "val_auprc": 0.8624217224875325
+      }
+    },
+    {
+      "pos_weight": 3,
+      "seed": 47,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "41872d252beb5cf102cedbf19b1775dfe48a5af738f24945d7071e9cc9383311",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9916247022702415,
+        "val_auprc": 0.8678313091180881
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; only independent seeds45/46/47; BCE3 fixed; complete-three and fixed-six screens only. Validation unweighted; no test use."
+}

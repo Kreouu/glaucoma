@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 3e-05,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "9859c5c04b126ccc35dacfd5dfbe2d0f460ef5cb3f892d9959e7c5175521f8b0",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9855997808783006,
+        "val_auprc": 0.8325859796238927
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "0e085e08dc2cf604f7f6246599e1ed5c297ae7abb03cc93534e85f6b26c5b087",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9910824500915166,
+        "val_auprc": 0.8613781528823755
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "3dfdd7f724ceffbe95329fa6980f8776404fe9a5b10bcbf50bfe12d240522ea6",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905864651635363,
+        "val_auprc": 0.8622670715438724
+      }
+    },
+    {
+      "lr": 0.0001,
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "acb0e7c0f37bacff6493a0353b26413c4581ea94a1bb486835af243c9e42e691",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9910079598178182,
+        "val_auprc": 0.854368275069536
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; conservative black border trim, peaks3e-5/1e-4, BCE3 fixed. Validation unweighted; no test use."
+}

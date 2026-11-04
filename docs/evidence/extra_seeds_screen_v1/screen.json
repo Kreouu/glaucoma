@@ -1,0 +1,25 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "test_used": false,
+  "method": "Complete newseeds45-47 three and WSL1e-4three; equal six logits; no subset/weight search; samehost same recipe, only seeds change",
+  "limitations": "Inverse logits from saved probabilities; native batch1 equivalence and runtime not verified",
+  "wsl_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "new_three": {
+    "auroc": 0.9919652292357206,
+    "ap": 0.873799048638137
+  },
+  "six": {
+    "auroc": 0.9923122336163038,
+    "ap": 0.880015237405461
+  },
+  "sources": {
+    "outputs/extra_seeds_screen_v1/inputs/seed45.csv": "7e2bee1bb6a8e7f3131e9042147d389c3e59f0d4d6dc71a8a70e719155fdc3ba",
+    "outputs/extra_seeds_screen_v1/inputs/seed46.csv": "0454e142b1fbc872330e6ca2587ece568797ef759632381744999ec695cd5c46",
+    "outputs/extra_seeds_screen_v1/inputs/seed47.csv": "b64a95f669fc768f671f95c5072f27227ecd2531d66c66f055ba5257db5d514a",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb"
+  }
+}

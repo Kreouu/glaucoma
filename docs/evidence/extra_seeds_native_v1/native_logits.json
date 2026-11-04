@@ -1,0 +1,66 @@
+{
+  "status": "NATIVE_LOGITS_ONLY",
+  "images": 5849,
+  "members": [
+    {
+      "seed": 42,
+      "file": "seed42.pt",
+      "sha256": "a2f1ac437eed16b5fc1ec9fdf5c4cee12d469918847680b156f94a4b9f4278ba",
+      "bytes": 55745751,
+      "packing_max_logit_difference": 0.0
+    },
+    {
+      "seed": 43,
+      "file": "seed43.pt",
+      "sha256": "c151242093a3e3c41b9ae881f718852804241584564127b0a4ed5ebb4526d695",
+      "bytes": 55745751,
+      "packing_max_logit_difference": 0.0
+    },
+    {
+      "seed": 44,
+      "file": "seed44.pt",
+      "sha256": "2f5b213a10eccc7e4a636dcfc67270778636a811d12b00d5b9394cee0711de00",
+      "bytes": 55745751,
+      "packing_max_logit_difference": 0.0
+    },
+    {
+      "seed": 45,
+      "file": "seed45.pt",
+      "sha256": "82dbbddf2f7377beff5722f7dc620698a51bad88597743d4c3b6197f6ac404ee",
+      "bytes": 55745751,
+      "packing_max_logit_difference": 0.0
+    },
+    {
+      "seed": 46,
+      "file": "seed46.pt",
+      "sha256": "4cdfb185c0f1a45f600e8ed6d213b3cb4134b770758b8a92fe55233535e34924",
+      "bytes": 55745751,
+      "packing_max_logit_difference": 0.0
+    },
+    {
+      "seed": 47,
+      "file": "seed47.pt",
+      "sha256": "653f06ab23845debecac4e2db20ddd4a5f79110180cd654fb680e63202443d3d",
+      "bytes": 55745751,
+      "packing_max_logit_difference": 0.0
+    }
+  ],
+  "metrics": {
+    "old_three": {
+      "auroc": 0.9920392568369116,
+      "ap": 0.8798710124292647
+    },
+    "new_three": {
+      "auroc": 0.9919675425982578,
+      "ap": 0.8738381472198741
+    },
+    "six": {
+      "auroc": 0.9923122336163038,
+      "ap": 0.8800152374054606
+    }
+  },
+  "model_bytes": 334474506,
+  "runtime_verified": false,
+  "independent_reload_verified": false,
+  "test_used": false
+}
