@@ -1,0 +1,83 @@
+{
+  "scope": "Instrumented10example, extra synchronization overhead included; not official100/T4",
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "mean": {
+    "preprocess_ms": 11.51645930003724,
+    "host_to_device_ms": 0.4682463000790449,
+    "six_forward_ms": 45.203745999879175,
+    "write_ms": 0.03902769994965638,
+    "total_ms": 57.22747929994512
+  },
+  "images": [
+    {
+      "preprocess_ms": 11.349147000146331,
+      "host_to_device_ms": 0.42675999975472223,
+      "six_forward_ms": 28.99102799983666,
+      "write_ms": 0.038470000617962796,
+      "total_ms": 40.80540500035568
+    },
+    {
+      "preprocess_ms": 9.802831999877526,
+      "host_to_device_ms": 0.43788200036942726,
+      "six_forward_ms": 32.311388999914925,
+      "write_ms": 0.043770999582193326,
+      "total_ms": 42.59587399974407
+    },
+    {
+      "preprocess_ms": 11.952103000112402,
+      "host_to_device_ms": 0.46329799988598097,
+      "six_forward_ms": 31.031309999889345,
+      "write_ms": 0.0372200001947931,
+      "total_ms": 43.48393100008252
+    },
+    {
+      "preprocess_ms": 17.121277000114787,
+      "host_to_device_ms": 0.45152599977882346,
+      "six_forward_ms": 28.459997000027215,
+      "write_ms": 0.03857600040646503,
+      "total_ms": 46.07137600032729
+    },
+    {
+      "preprocess_ms": 10.15480300065974,
+      "host_to_device_ms": 0.4964559993823059,
+      "six_forward_ms": 103.65944200020749,
+      "write_ms": 0.03912499960279092,
+      "total_ms": 114.34982599985233
+    },
+    {
+      "preprocess_ms": 13.135953000528389,
+      "host_to_device_ms": 0.48697500005800975,
+      "six_forward_ms": 40.65162699953362,
+      "write_ms": 0.038485000004584435,
+      "total_ms": 54.3130400001246
+    },
+    {
+      "preprocess_ms": 10.626057999616023,
+      "host_to_device_ms": 0.4678820005210582,
+      "six_forward_ms": 32.82122200016602,
+      "write_ms": 0.0420259993916261,
+      "total_ms": 43.957187999694725
+    },
+    {
+      "preprocess_ms": 9.097674000258849,
+      "host_to_device_ms": 0.5236599999989267,
+      "six_forward_ms": 83.87860899983934,
+      "write_ms": 0.03433399979257956,
+      "total_ms": 93.5342769998897
+    },
+    {
+      "preprocess_ms": 8.928230999117659,
+      "host_to_device_ms": 0.47134300075413194,
+      "six_forward_ms": 39.64074199939205,
+      "write_ms": 0.03872500019497238,
+      "total_ms": 49.07904099945881
+    },
+    {
+      "preprocess_ms": 12.9965149999407,
+      "host_to_device_ms": 0.4566810002870625,
+      "six_forward_ms": 30.59209399998508,
+      "write_ms": 0.03954499970859615,
+      "total_ms": 44.08483499992144
+    }
+  ]
+}

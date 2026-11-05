@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "images": 5855,
+  "max_probability_difference": 0.0,
+  "label_changes": 0,
+  "rank_affected_images": 0,
+  "reproduced_sha256": "99623c06f05dfdb573062f6c5ab1ed3cc2cfb302dc94597331330479439acd46",
+  "original_sha256": "99623c06f05dfdb573062f6c5ab1ed3cc2cfb302dc94597331330479439acd46",
+  "byte_identical": true,
+  "official_T4_verified": false,
+  "peak_allocated_mib": 717.44921875
+}

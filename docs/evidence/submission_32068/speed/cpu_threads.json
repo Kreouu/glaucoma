@@ -1,0 +1,62 @@
+{
+  "default_threads": 4,
+  "mean_ms": {
+    "1": 36.3736341667997,
+    "2": 34.73518833337342,
+    "4": 33.22468296658675
+  },
+  "checks": {
+    "1": [
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      }
+    ],
+    "2": [
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      }
+    ],
+    "4": [
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      }
+    ]
+  },
+  "scope": "Exploratory10example thread study, extra warmup between configurations, not official100 or T4"
+}

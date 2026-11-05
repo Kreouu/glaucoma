@@ -1,0 +1,8 @@
+{
+  "status": "STOPPED_BY_USER",
+  "reason": "User ended optimization and requested final submission work",
+  "training_stopped": true,
+  "outputs_preserved": true,
+  "further_training_authorized": false,
+  "remaining_work": "Only inference performance and submission packaging per new user request"
+}

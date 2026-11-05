@@ -1,0 +1,17 @@
+{
+  "reason": "WSL reboot confirmed by uptime2min and missing original controller/train processes; originalcontrol completedepochs1/2 then interrupted epoch3 batch50. Not an observation-timeout restart.",
+  "original_outputs_preserved": true,
+  "recovery_output": "outputs/convnext22k_crop_sam_recovery_v1",
+  "initialization": "Restart all5epochs from same publicImageNet checkpoint, not resume",
+  "source_unchanged": [
+    "train.py",
+    "training_sam.py",
+    "dataset.py",
+    "model_convnext.py"
+  ],
+  "recovery_runner_sha256": "af205c5660ed55525535256431c2fc36f4fbd30a1d81cb9915072c5a78476947",
+  "wsllib_keepalive_pid": 694,
+  "wsl_boot_id": "daaeaab2-9aa4-4ccf-8f85-e31d1fd42278",
+  "configuration": "Same BF16control0 andSAMrho.025/.05,5epochs,seed42; threshold then43/44",
+  "test_used": false
+}

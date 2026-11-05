@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "scope": "Fixed100validationimages,5warmup,3round,batch1,read/preprocess/H2D/forward/sigmoid/CSVflush/sync included. Not officialtest100 or T4",
+  "images": 100,
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "mean_ms": {
+    "baseline": 51.41953232663582,
+    "cuda_graph": 33.51125416000286
+  },
+  "round_mean_ms": {
+    "baseline": [
+      53.52822924995053,
+      49.48645688991746,
+      51.24391084003946
+    ],
+    "cuda_graph": [
+      33.50616035999337,
+      33.56600602004619,
+      33.46159609996903
+    ]
+  },
+  "max_probability_difference": 0.0,
+  "label_changes": 0,
+  "official_T4_verified": false,
+  "official_100_image_gate_verified": false,
+  "torch_threads": 4,
+  "peak_allocated_mib": 717.44921875
+}

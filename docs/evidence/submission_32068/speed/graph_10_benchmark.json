@@ -1,0 +1,52 @@
+{
+  "status": "SAMPLE_ONLY",
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "images": 10,
+  "warmup_images": 5,
+  "rounds": 3,
+  "precision": "Existing FP16autocast, unchanged FP32 aggregation",
+  "mean_ms": {
+    "baseline": 61.4795992333408,
+    "cuda_graph": 40.90116719996028
+  },
+  "checks": {
+    "baseline": [
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      }
+    ],
+    "cuda_graph": [
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      },
+      {
+        "max_probability_difference": 0.0,
+        "label_changes": 0,
+        "pair_order_changes": 0
+      }
+    ]
+  },
+  "official_T4_verified": false,
+  "official_100_image_gate_verified": false,
+  "test_used_for_training": false,
+  "peak_allocated_mib": 717.44921875
+}
