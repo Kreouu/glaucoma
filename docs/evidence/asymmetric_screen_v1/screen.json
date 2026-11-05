@@ -1,0 +1,52 @@
+{
+  "status": "SCREEN_ONLY",
+  "test_used": false,
+  "method": "Each of two negative-modulation recipes plus complete global3/6 equal member logits; no subset or weight fitting",
+  "limitations": "Saved probability inverse logits; model-specific native inference and runtime not verified",
+  "global_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "global_six": {
+    "auroc": 0.9923122336163038,
+    "ap": 0.880015237405461
+  },
+  "candidates": [
+    {
+      "recipe": "gamma1",
+      "local": {
+        "auroc": 0.9901265686911366,
+        "ap": 0.8759242003692899
+      },
+      "four": {
+        "auroc": 0.992044808907001,
+        "ap": 0.8836104676290826
+      },
+      "seven": {
+        "auroc": 0.9922909506809614,
+        "ap": 0.8817033104239735
+      }
+    },
+    {
+      "recipe": "gamma2",
+      "local": {
+        "auroc": 0.9909126492812845,
+        "ap": 0.8759405072121584
+      },
+      "four": {
+        "auroc": 0.9921419701335643,
+        "ap": 0.883410304021412
+      },
+      "seven": {
+        "auroc": 0.9923547994869888,
+        "ap": 0.8820534060032315
+      }
+    }
+  ],
+  "sources": {
+    "outputs/asymmetric_screen_v1/inputs/gamma1.csv": "fd7b4a9e9c54f6e431abc6d54786d091188c1c9a6f2efdd597cde44c3a205895",
+    "outputs/asymmetric_screen_v1/inputs/gamma2.csv": "164e7bcaa7ec724824b0f2f2a334cbbd1a27095038c77d9b35ad79bef924a0df",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb",
+    "outputs/extra_seeds_native_v1/six_valid_predictions.csv": "a6fa34e5eb4b61902f0856c20e2d63f8bf2eced2b0b3584d55fa1ca6624d9fa6"
+  }
+}

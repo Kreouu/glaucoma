@@ -1,0 +1,9 @@
+{
+  "status": "DIRECTION_NOT_PROMOTED",
+  "strength05": "Complete5epochs AUROC0.9892951462; reload0",
+  "strength1": "Interruptedepoch5 batch2375/3213; savedbestepoch4 AUROC0.9889245455 AP0.8649600282, full5849reload0",
+  "strength1_training_completed": false,
+  "checkpoint_hash_provenance": "Capturedafterinterruption; isolated validation directory, original files retained",
+  "decision": "No newCSV or seeds; lower than original512recipe, no full5epoch claim",
+  "test_used": false
+}

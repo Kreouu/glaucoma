@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "images": 5849,
+  "auroc": 0.9924362298482989,
+  "ap": 0.8793195318121422,
+  "max_probability_difference": 1.3325958247989433e-07,
+  "label_changes": 0,
+  "mean_ms": 42.354029811685905,
+  "model_bytes": 334474506,
+  "official_T4_verified": false,
+  "test_used": false
+}

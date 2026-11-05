@@ -1,0 +1,144 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "test_used": false,
+  "images": 5849,
+  "positives": 191,
+  "method": "Paired stratified bootstrap 2000, fixed seed20261105; neither labels nor predictions modified; CI does not correct repeated model selection",
+  "global_auroc": 0.9923122336163039,
+  "erasing_auroc": 0.9924362298482989,
+  "difference": 0.00012399623199499388,
+  "paired_bootstrap_difference_ci95": [
+    -0.0003701611395810128,
+    0.0006166267842966514
+  ],
+  "bootstrap_fraction_positive": 0.6695,
+  "ranking_error_pairs": 8308.0,
+  "worst5_positive_share": 0.4192344727973038,
+  "worst20_positive_share": 0.7125662012518055,
+  "hardest_positive_images": [
+    {
+      "name": "valid_02001.jpg",
+      "global_probability": 0.0014693211,
+      "erasing_probability": 0.0009672324,
+      "ranking_error_pairs": 956.0
+    },
+    {
+      "name": "valid_00703.jpg",
+      "global_probability": 0.0018518558,
+      "erasing_probability": 0.0014798661,
+      "ranking_error_pairs": 879.0
+    },
+    {
+      "name": "valid_04319.jpg",
+      "global_probability": 0.0026385176,
+      "erasing_probability": 0.0020829707,
+      "ranking_error_pairs": 783.0
+    },
+    {
+      "name": "valid_02645.jpg",
+      "global_probability": 0.0060035964,
+      "erasing_probability": 0.005203248,
+      "ranking_error_pairs": 624.0
+    },
+    {
+      "name": "valid_03738.jpg",
+      "global_probability": 0.072166674,
+      "erasing_probability": 0.0261349,
+      "ranking_error_pairs": 241.0
+    },
+    {
+      "name": "valid_01516.jpg",
+      "global_probability": 0.081904456,
+      "erasing_probability": 0.044042625,
+      "ranking_error_pairs": 226.0
+    },
+    {
+      "name": "valid_05041.jpg",
+      "global_probability": 0.08335407,
+      "erasing_probability": 0.07584677,
+      "ranking_error_pairs": 225.0
+    },
+    {
+      "name": "valid_05338.jpg",
+      "global_probability": 0.087720014,
+      "erasing_probability": 0.041865185,
+      "ranking_error_pairs": 220.0
+    },
+    {
+      "name": "valid_00481.jpg",
+      "global_probability": 0.100775324,
+      "erasing_probability": 0.16015653,
+      "ranking_error_pairs": 204.0
+    },
+    {
+      "name": "valid_05117.jpg",
+      "global_probability": 0.10266401,
+      "erasing_probability": 0.03029099,
+      "ranking_error_pairs": 203.0
+    },
+    {
+      "name": "valid_03422.jpg",
+      "global_probability": 0.1417362,
+      "erasing_probability": 0.1602657,
+      "ranking_error_pairs": 180.0
+    },
+    {
+      "name": "valid_04750.jpg",
+      "global_probability": 0.16163428,
+      "erasing_probability": 0.31020874,
+      "ranking_error_pairs": 158.0
+    },
+    {
+      "name": "valid_00294.jpg",
+      "global_probability": 0.1987858,
+      "erasing_probability": 0.1668337,
+      "ranking_error_pairs": 142.0
+    },
+    {
+      "name": "valid_00038.jpg",
+      "global_probability": 0.2010409,
+      "erasing_probability": 0.08065869,
+      "ranking_error_pairs": 141.0
+    },
+    {
+      "name": "valid_02077.jpg",
+      "global_probability": 0.22418281,
+      "erasing_probability": 0.24248956,
+      "ranking_error_pairs": 134.0
+    },
+    {
+      "name": "valid_04881.jpg",
+      "global_probability": 0.2259855,
+      "erasing_probability": 0.1555055,
+      "ranking_error_pairs": 130.0
+    },
+    {
+      "name": "valid_04834.jpg",
+      "global_probability": 0.24456874,
+      "erasing_probability": 0.15493989,
+      "ranking_error_pairs": 126.0
+    },
+    {
+      "name": "valid_05357.jpg",
+      "global_probability": 0.24512269,
+      "erasing_probability": 0.121199526,
+      "ranking_error_pairs": 126.0
+    },
+    {
+      "name": "valid_03886.jpg",
+      "global_probability": 0.28550476,
+      "erasing_probability": 0.3091106,
+      "ranking_error_pairs": 113.0
+    },
+    {
+      "name": "valid_02230.jpg",
+      "global_probability": 0.28896606,
+      "erasing_probability": 0.22382915,
+      "ranking_error_pairs": 109.0
+    }
+  ],
+  "sources": {
+    "outputs/extra_seeds_native_v1/six_valid_predictions.csv": "a6fa34e5eb4b61902f0856c20e2d63f8bf2eced2b0b3584d55fa1ca6624d9fa6",
+    "outputs/erasing_native_recovery_v1/six_valid_predictions.csv": "aa9c1d35bdbdd093fe8e6fb0598231971e9309fcb9dcf31b2aee0853e481782f"
+  }
+}

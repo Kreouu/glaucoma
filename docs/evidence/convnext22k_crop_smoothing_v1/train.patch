@@ -1,0 +1,19 @@
+--- train.py
++++ train.py
+@@ -1,5 +1,6 @@
+ """Minimal image-only baseline with official validation and reproducible artifacts."""
+ 
++import os
+ import argparse
+ import csv
+ import hashlib
+@@ -375,7 +376,8 @@
+             optimizer.zero_grad(set_to_none=True)
+             with torch.autocast('cuda', dtype=autocast_dtype):
+                 logits = model(images).flatten()
+-                loss = criterion(logits, labels)
++                smoothing = float(os.environ.get('GLAUCOMA_LABEL_SMOOTHING', '0'))
++                loss = criterion(logits, labels * (1 - smoothing) + .5 * smoothing)
+                 if args.resample_positive:
+                     loss = loss * sampling_scale
+                 if args.rank_weight:

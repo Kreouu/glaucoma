@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "analytic_second_gradient": true,
+  "weights_restored_bitexact_before_optimizer": true,
+  "one_step_matches_expected": true,
+  "exception_restores_weights": true,
+  "nonfinite_first_gradient_rejected_without_mutation": true
+}

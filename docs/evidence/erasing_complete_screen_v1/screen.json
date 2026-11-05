@@ -1,0 +1,25 @@
+{
+  "status": "SCREEN_ONLY",
+  "images": 5849,
+  "test_used": false,
+  "method": "Complete erasing three and WSL1e-4three; equal six logits; no subset/weight search; fixed complete global3 plus erasing3, crosshost WSLglobal and Ubuntuerasing; no subset selection",
+  "limitations": "Inverse logits from saved probabilities; native batch1 equivalence and runtime not verified",
+  "wsl_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "local_three": {
+    "auroc": 0.9923585008670484,
+    "ap": 0.8743090634658355
+  },
+  "six": {
+    "auroc": 0.9924371551933138,
+    "ap": 0.8793358994775726
+  },
+  "sources": {
+    "outputs/erasing_complete_screen_v1/inputs/seed42.csv": "1265eb83b19c06f54e37eb19c69ee23a36fd968d01a7ea324c8d1cb57296daa6",
+    "outputs/erasing_complete_screen_v1/inputs/seed43.csv": "0407bc7930074fdf3a3d589858cfbc50cabb093d83744bccc0bc0b4c1931b26a",
+    "outputs/erasing_complete_screen_v1/inputs/seed44.csv": "0835aebaa75624dcdf5e2a53d58b030e26ea23d286d657e719d0030e3ebc67a2",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "status": "EXAMPLE_ONLY",
+  "measurement_images": 10,
+  "warmup_images": 5,
+  "rounds": 3,
+  "batch_size": 1,
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "torch_version": "2.10.0+cu128",
+  "cudnn": 91002,
+  "mean_ms": 50.96809943400634,
+  "round_mean_ms": [
+    50.508264801464975,
+    53.89374340593349,
+    48.50229009462055
+  ],
+  "max_probability_difference": 0.0,
+  "label_changes": 0,
+  "pair_order_changes": 0,
+  "consistency_pass": true,
+  "official_100_image_gate_verified": false,
+  "official_T4_verified": false,
+  "submission_sha256": "99623c06f05dfdb573062f6c5ab1ed3cc2cfb302dc94597331330479439acd46",
+  "sample_sha256": {
+    "pictures_100/test_00016.JPG": "c3847ce493c5f84794bacd51ac8dc2e6b55249e5269581bedcbd16f88365902c",
+    "pictures_100/test_01339.JPG": "43c2e87c0ccc26164a5f33e782583ca71233ccfc3204064b169c858ad9a001c4",
+    "pictures_100/test_01925.JPG": "3e0d19e105f85f4837ff61a3dc0b22667999a4d86fa8c7dbffae3eab184ed38e",
+    "pictures_100/test_03550.JPG": "4a33edc676f24d9836adf59077413ed40a3a874acff3c733518495465f7b2faf",
+    "pictures_100/test_03956.JPG": "66e57e36f0ed25811416c8d9997213eb38343afc7bd9ae1933f4d00ecc60a99d",
+    "pictures_100/test_04046.JPG": "d5a1f1825af36971f30cd0c5a476746f6ecc358c2dea08fdbb31943bf58b3a37",
+    "pictures_100/test_05472.JPG": "967512d8dcfa392e1f40e53c1845684d67f5ec95d1022715266fc549fa749e16",
+    "pictures_100/test_05625.JPG": "4101ec39c933e596e9a8ebd5187aa1b5980f42394f15f5066fdba764fff7a52b",
+    "pictures_100/test_05711.JPG": "f11fcb819f94b19f57ef81938319fb4f546109a08f53f28fb679da0fc2891d13",
+    "pictures_100/test_05776.JPG": "de63349b630c55024051a50ce90161523a314dd90d4d4bc8fbeae6c30464d28b",
+    "pictures_5/test_01622.JPG": "3efd9dc7d7259d75f91abb9e0ce81b9aeafb6c7fa89820aee02407569502e30a",
+    "pictures_5/test_02604.JPG": "ec6bb3ecabfce0b6405f7e0f5fbff21a660f2711888678e010bb15d43fac88a6",
+    "pictures_5/test_03053.JPG": "777fde4cb673cf27349e6cff5df625aba6350601d57c7c235c34d456796c41bc",
+    "pictures_5/test_05557.JPG": "8157f894fc719b00bbcae6fd49aa2638d871548a309fe1fcc08db6e98bf4354b",
+    "pictures_5/test_05724.JPG": "cc3842f025809e6869d24cd95c653e17a8bfe9d2de00c3810a51990b45d9751e"
+  }
+}

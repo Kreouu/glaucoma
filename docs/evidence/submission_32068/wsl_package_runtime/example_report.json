@@ -1,0 +1,21 @@
+{
+  "images": 10,
+  "warmup_images": 5,
+  "rounds": 3,
+  "batch_size": 1,
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "mean_ms": 49.53331610207291,
+  "round_mean_ms": [
+    47.65111000451725,
+    50.13892119459342,
+    50.80991710710805
+  ],
+  "inconsistent_images": 0,
+  "max_probability_difference": 0.0,
+  "local_gate_pass": false,
+  "example_only": true,
+  "official_100_image_gate_verified": false,
+  "official_T4_verified": false,
+  "recipe_sha256": "c8d78643052690209c3e676f4b3e0258b5df169ef2f93202264cdec03f4f098f",
+  "submission_sha256": "99623c06f05dfdb573062f6c5ab1ed3cc2cfb302dc94597331330479439acd46"
+}

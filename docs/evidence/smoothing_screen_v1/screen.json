@@ -1,0 +1,52 @@
+{
+  "status": "SCREEN_ONLY",
+  "test_used": false,
+  "method": "Each of two smoothing recipes plus complete global3/6 equal member logits; no subset or weight fitting",
+  "limitations": "Saved probability inverse logits; model-specific native inference and runtime not verified",
+  "global_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "global_six": {
+    "auroc": 0.9923122336163038,
+    "ap": 0.880015237405461
+  },
+  "candidates": [
+    {
+      "recipe": "e0.01",
+      "local": {
+        "auroc": 0.9861697934074721,
+        "ap": 0.8623451552375847
+      },
+      "four": {
+        "auroc": 0.9919596771656313,
+        "ap": 0.8804452889453963
+      },
+      "seven": {
+        "auroc": 0.992252086190336,
+        "ap": 0.8799088911755294
+      }
+    },
+    {
+      "recipe": "e0.05",
+      "local": {
+        "auroc": 0.9899558425358894,
+        "ap": 0.8714576275847299
+      },
+      "four": {
+        "auroc": 0.99217713324413,
+        "ap": 0.88320354680939
+      },
+      "seven": {
+        "auroc": 0.9923566501770186,
+        "ap": 0.8812997172991672
+      }
+    }
+  ],
+  "sources": {
+    "outputs/smoothing_screen_v1/inputs/e0.01.csv": "9e03a3ccee92ed6407ef0cc1f0a7cdd5c6a376fc5a7a1e95474281f9d20baad7",
+    "outputs/smoothing_screen_v1/inputs/e0.05.csv": "297bc7f22db1c1b00ee3ed79010401b2b76b4819024f712f53a38a2dc50be092",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb",
+    "outputs/extra_seeds_native_v1/six_valid_predictions.csv": "a6fa34e5eb4b61902f0856c20e2d63f8bf2eced2b0b3584d55fa1ca6624d9fa6"
+  }
+}

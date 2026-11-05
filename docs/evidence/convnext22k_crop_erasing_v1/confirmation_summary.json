@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 0.1,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "05164cc618260588ccaf54a1dee565396556f7e3791b342553cfe466781d4d84",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9914535134424871,
+        "val_auprc": 0.8665606442527519
+      }
+    },
+    {
+      "lr": 0.1,
+      "seed": 43,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "27b768bb0a8bb74380e30ccbd670106841ff0024710c9004320103bd1037db95",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9905624061931493,
+        "val_auprc": 0.8631211249050867
+      }
+    },
+    {
+      "lr": 0.1,
+      "seed": 44,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 5,
+        "checkpoint_sha256": "19eeb2947f092bdc4ed7cea04aa3fff82840786ddf9ce29151bd2855bdedc020",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9914331558521594,
+        "val_auprc": 0.8524425831343752
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Complete erasingp0.1 seeds42/43/44 confirmation triggered by fixed global6+seed42 equal7 screen gain; not original singlemodel threshold."
+}

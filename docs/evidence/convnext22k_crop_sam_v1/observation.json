@@ -1,0 +1,12 @@
+{
+  "status": "CONNECTION_UNAVAILABLE_NOT_TERMINAL",
+  "controller_pid": 26754,
+  "last_confirmed_live": "BF16control epoch1 batch475, no skipped updates",
+  "checks": [
+    "wsl2222 timeout twice",
+    "edgewin22 timeout",
+    "localTailscale Running, EdgeWin Online=false LastSeen2026-11-05T16:10:00.1Z"
+  ],
+  "training_terminal_confirmed": false,
+  "restarted": false
+}

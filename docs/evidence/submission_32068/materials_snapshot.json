@@ -1,0 +1,15 @@
+{
+  "status": "BACKUP_INTEGRITY_PASS_RUNTIME_REVIEW",
+  "directory": "outputs/\u6838\u9a8c\u6750\u6599\u8349\u7a3f_\u63d0\u4ea432068_ConvNeXt512_\u516dEMA_V1",
+  "archive": "outputs/\u63d0\u4ea432068_98.54_\u6838\u9a8c\u6750\u6599\u8349\u7a3f_\u5f85\u73af\u5883\u590d\u6838_V1.zip",
+  "archive_bytes": 416262443,
+  "archive_sha256": "c2653fc27eb9f6426384ace49b73569956f7c78a4815d142bec21e567aa05db4",
+  "raw_total_bytes": 449698005,
+  "inventory_files": 103,
+  "zip_crc_and_all_inventory_hashes_pass": true,
+  "inference_files_bytes": 334500822,
+  "official_T4_verified": false,
+  "full_csv_reproduction210_pending": true,
+  "identity_fields_user_will_fill": true,
+  "materials_uploaded": false
+}

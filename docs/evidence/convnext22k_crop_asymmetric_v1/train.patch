@@ -1,0 +1,38 @@
+--- train.py
++++ train.py
+@@ -1,5 +1,6 @@
+ """Minimal image-only baseline with official validation and reproducible artifacts."""
+ 
++import os
+ import argparse
+ import csv
+ import hashlib
+@@ -150,6 +151,7 @@
+             writer.writerow(['Image_name', 'actual_filename', 'True_Label'])
+             writer.writerows((name, path.name, label) for name, path, label in data.samples)
+     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
++    config['negative_gamma'] = float(os.environ['GLAUCOMA_NEGATIVE_GAMMA'])
+     config.update(loss='BCEWithLogitsLoss', optimizer='AdamW',
+                   weight_decay=0.01, amp=True, age_used=False, threshold=0.5,
+                   validation_loss='unweighted BCEWithLogitsLoss',
+@@ -166,9 +168,11 @@
+         from training_sampling import positive_resampling
+         sampler, sampling_scale = positive_resampling([s[2] for s in train_data.samples], torch.Generator().manual_seed(args.seed))
+         config.update(training_sampling='replacement draws N; per-image weight3 for positive,1 for negative', training_loss_scale=sampling_scale, loss='BCE weight1 times training_loss_scale; expected objective equals original w3')
++    config['loss'] = 'Positive weightedBCE unchanged; negative sigmoid(logit)^gamma times softplus(logit)'
+     project = Path(__file__).resolve().parent
+     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
+     config['source_sha256']['amp_precision.py'] = sha256(project / 'amp_precision.py')
++    config['source_sha256']['training_asymmetric.py'] = sha256(project / 'training_asymmetric.py')
+     if args.head_lr_mult != 1:
+         config['source_sha256']['training_head_lr.py'] = sha256(project / 'training_head_lr.py')
+         config['optimizer_groups'] = 'all backbone parameters baseLR; classifier only baseLR*head_lr_mult; same weight decay'
+@@ -328,6 +332,8 @@
+     positive_weight = torch.tensor(args.pos_weight, device='cuda') if args.pos_weight != 1 else None
+     criterion = (BinaryFocalLoss(args.focal_gamma, args.pos_weight) if args.focal_gamma
+                  else torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight))
++    from training_asymmetric import NegativeModulatedBCE
++    criterion = NegativeModulatedBCE(float(os.environ['GLAUCOMA_NEGATIVE_GAMMA']), args.pos_weight)
+     validation_criterion = torch.nn.BCEWithLogitsLoss()
+     scaler = torch.amp.GradScaler('cuda', enabled=args.precision == 'fp16')
+     ema_model = None

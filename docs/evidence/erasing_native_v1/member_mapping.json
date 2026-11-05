@@ -1,0 +1,37 @@
+{
+  "member_id_note": "File aliases45..47 are NOT training seeds45..47; these are erasing trainingseeds42..44",
+  "members": [
+    {
+      "file": "seed42.pt",
+      "training_seed": 42,
+      "training_erasing_probability": 0
+    },
+    {
+      "file": "seed43.pt",
+      "training_seed": 43,
+      "training_erasing_probability": 0
+    },
+    {
+      "file": "seed44.pt",
+      "training_seed": 44,
+      "training_erasing_probability": 0
+    },
+    {
+      "file": "seed45.pt",
+      "training_seed": 42,
+      "training_erasing_probability": 0.1
+    },
+    {
+      "file": "seed46.pt",
+      "training_seed": 43,
+      "training_erasing_probability": 0.1
+    },
+    {
+      "file": "seed47.pt",
+      "training_seed": 44,
+      "training_erasing_probability": 0.1
+    }
+  ],
+  "source_check": "Each Predictor loaded from its own frozen source root; initial source mismatch rejected and preserved under original failed output",
+  "official_T4_verified": false
+}

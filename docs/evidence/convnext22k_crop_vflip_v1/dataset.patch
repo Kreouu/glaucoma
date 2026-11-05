@@ -1,0 +1,10 @@
+--- d03f661/dataset.py
++++ vflip/dataset.py
+@@ -64,6 +64,7 @@
+         steps = [Letterbox(size)]
+         if split == 'train':
+             steps.append(transforms.RandomHorizontalFlip())
++            steps.append(transforms.RandomVerticalFlip(p=0.5))
+         steps += [transforms.ToTensor(), transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
+         self.transform = transforms.Compose(steps)
+         self.size = size

@@ -1,0 +1,43 @@
+--- train.py
++++ train.py
+@@ -1,5 +1,6 @@
+ """Minimal image-only baseline with official validation and reproducible artifacts."""
+ 
++import os
+ import argparse
+ import csv
+ import hashlib
+@@ -150,6 +151,8 @@
+             writer.writerow(['Image_name', 'actual_filename', 'True_Label'])
+             writer.writerows((name, path.name, label) for name, path, label in data.samples)
+     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
++    config['sam_rho'] = float(os.environ['GLAUCOMA_SAM_RHO'])
++    assert args.precision == 'bf16'
+     config.update(loss='BCEWithLogitsLoss', optimizer='AdamW',
+                   weight_decay=0.01, amp=True, age_used=False, threshold=0.5,
+                   validation_loss='unweighted BCEWithLogitsLoss',
+@@ -169,6 +172,7 @@
+     project = Path(__file__).resolve().parent
+     config['source_sha256'] = {name: sha256(project / name) for name in ('train.py', 'dataset.py', 'model.py')}
+     config['source_sha256']['amp_precision.py'] = sha256(project / 'amp_precision.py')
++    config['source_sha256']['training_sam.py'] = sha256(project / 'training_sam.py')
+     if args.head_lr_mult != 1:
+         config['source_sha256']['training_head_lr.py'] = sha256(project / 'training_head_lr.py')
+         config['optimizer_groups'] = 'all backbone parameters baseLR; classifier only baseLR*head_lr_mult; same weight decay'
+@@ -383,6 +387,16 @@
+             if not torch.isfinite(loss).item():
+                 raise RuntimeError('Non-finite training loss')
+             scaler.scale(loss).backward()
++            rho = float(os.environ['GLAUCOMA_SAM_RHO'])
++            if rho:
++                from training_sam import perturb_weights
++                with perturb_weights(model.parameters(), rho):
++                    optimizer.zero_grad(set_to_none=True)
++                    with torch.autocast('cuda', dtype=autocast_dtype):
++                        perturbed_loss = criterion(model(images).flatten(), labels)
++                    if not torch.isfinite(perturbed_loss).item():
++                        raise RuntimeError('Non-finite SAM second loss')
++                    scaler.scale(perturbed_loss).backward()
+             grad_norm = ''
+             if args.precision == 'bf16':
+                 # BF16 uses no loss scaling. Check gradients without clipping or modifying them.

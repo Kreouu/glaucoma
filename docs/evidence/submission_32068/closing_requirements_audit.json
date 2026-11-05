@@ -1,0 +1,53 @@
+{
+  "status": "FINAL_ACCEPTANCE_INCOMPLETE",
+  "rules_sources": {
+    "docs/参赛规则.pdf": "ff6aa3adbfd3d000194253055a93dbce8a140031c8432f892046a49de8136fb6",
+    "docs/补充规则.pdf": "836c4f5d3202f2dc65830fd919ca195797c12b7507d750121786a21672dc7a44"
+  },
+  "requirements": [
+    {
+      "requirement": "AppendixA package includes historical highest score CSV",
+      "source": "参赛规则.pdf p5",
+      "evidence": "materials_snapshot.json; originalCSV SHA99623c06...acd46; submission32068 receipt98.54",
+      "state": "PASS"
+    },
+    {
+      "requirement": "Source, pretrained original, licenses, source URL/data explanation and final model hashes",
+      "source": "参赛规则.pdf p4-5; 补充规则.pdf p2",
+      "evidence": "103file inventory, sixmember manifests, licenses/modelcard, rawpretrain and sixtrainingconfigs",
+      "state": "PASS_STATIC"
+    },
+    {
+      "requirement": "Final inference files <=500MB uncompressed",
+      "source": "参赛规则.pdf p3",
+      "evidence_bytes": 334500822,
+      "state": "PASS"
+    },
+    {
+      "requirement": "Official100+5, batch1,3round,endtoend <=100ms with declared precision",
+      "source": "参赛规则.pdf p2-3",
+      "evidence": "Only10+5 example40.36ms on4060 torch2.14; original local100valid49.96ms on5060",
+      "state": "INCOMPLETE_T4_AND_OFFICIAL100"
+    },
+    {
+      "requirement": "Zero sample inconsistencies, including binary label and ranking; probability absdiff <=1e-3",
+      "source": "补充规则.pdf p5",
+      "evidence": "WSLtorch2.10 full5855 byteidentical, zero label/probability/ranking differences; official10example49.53ms,0inconsistent. T4/official100 not checked.",
+      "state": "PASS_ORIGINAL_ENV_CROSSENV_REVIEW_RETAINED"
+    },
+    {
+      "requirement": "Identity and truthful final declaration, official material upload beforedeadline",
+      "source": "参赛规则.pdf p4-5",
+      "evidence": "User will fill yellow cells; no material upload performed",
+      "state": "USER_FIELDS_AND_UPLOAD_PENDING"
+    }
+  ],
+  "goal_auroc_target": 0.995,
+  "highest_confirmed_candidate_auroc": 0.9924362298482989,
+  "goal_achieved": false,
+  "resources": {
+    "wsl_gpu": "User reauthorized; verification completed, no new training",
+    "ubuntu_gpu": "After23:00 do not connect; check same installer next connection window"
+  },
+  "archive_policy": "Frozen pendingreview backup not overwritten during further audits"
+}

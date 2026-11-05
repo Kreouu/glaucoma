@@ -1,0 +1,46 @@
+--- dataset.py
++++ dataset.py
+@@ -1,11 +1,13 @@
+ """Official train/valid image loading without modifying the source data."""
+ 
++import os
++import numpy as np
+ import csv
+ from collections import defaultdict
+ from pathlib import Path
+ 
+ import torch
+-from PIL import Image, ImageOps
++from PIL import Image, ImageOps, ImageFilter
+ from torch.utils.data import Dataset
+ from torchvision import transforms
+ 
+@@ -19,6 +21,19 @@
+         canvas = Image.new('RGB', (self.size, self.size))
+         canvas.paste(resized, ((self.size - resized.width) // 2, (self.size - resized.height) // 2))
+         return canvas
++
++
++class LocalContrast:
++    def __init__(self, strength):
++        self.strength = strength
++    def __call__(self, image):
++        if self.strength == 0:
++            return image
++        original = np.asarray(image).astype(np.float32)
++        background = np.asarray(image.filter(ImageFilter.GaussianBlur(min(image.size) / 30))).astype(np.float32)
++        corrected = np.clip(original - self.strength * background + 128 * self.strength, 0, 255).astype(np.uint8)
++        corrected[original.max(axis=2) < 8] = 0
++        return Image.fromarray(corrected)
+ 
+ 
+ class FundusDataset(Dataset):
+@@ -61,7 +76,7 @@
+                     raise ValueError(f'Missing or ambiguous image: {name}')
+                 path = matches[0]
+             self.samples.append((name, path, int(row['True_Label'])))
+-        steps = [Letterbox(size)]
++        steps = [LocalContrast(float(os.environ['GLAUCOMA_LOCAL_CONTRAST'])), Letterbox(size)]
+         if split == 'train':
+             steps.append(transforms.RandomHorizontalFlip())
+         steps += [transforms.ToTensor(), transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]

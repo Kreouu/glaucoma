@@ -1,0 +1,16 @@
+[
+  {
+    "lr": 0.5,
+    "seed": 42,
+    "check": {
+      "status": "PASS",
+      "images": 5849,
+      "positives": 191,
+      "checkpoint_epoch": 3,
+      "checkpoint_sha256": "30c5134a1f867e37cac0cf0ed47efb8b16f077383f7209121aad5ab3a7997c43",
+      "max_probability_difference": 0.0,
+      "val_auroc": 0.9892951461952589,
+      "val_auprc": 0.861661991992057
+    }
+  }
+]

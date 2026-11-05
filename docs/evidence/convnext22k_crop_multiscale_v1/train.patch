@@ -1,0 +1,27 @@
+--- train.py
++++ train.py
+@@ -1,5 +1,6 @@
+ """Minimal image-only baseline with official validation and reproducible artifacts."""
+ 
++import os
+ import argparse
+ import csv
+ import hashlib
+@@ -150,6 +151,8 @@
+             writer.writerow(['Image_name', 'actual_filename', 'True_Label'])
+             writer.writerows((name, path.name, label) for name, path, label in data.samples)
+     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
++    config['training_multiscale_probability'] = float(os.environ['GLAUCOMA_MULTISCALE_P'])
++    config['training_multiscale_sizes'] = [384, 512]
+     config.update(loss='BCEWithLogitsLoss', optimizer='AdamW',
+                   weight_decay=0.01, amp=True, age_used=False, threshold=0.5,
+                   validation_loss='unweighted BCEWithLogitsLoss',
+@@ -370,6 +373,8 @@
+                     group['lr'] = current_lr * group.get('lr_scale', 1.)
+                 scale_before = scaler.get_scale()
+             images, labels = images.cuda(non_blocking=True), labels.cuda(non_blocking=True)
++            if torch.rand(()).item() < float(os.environ['GLAUCOMA_MULTISCALE_P']):
++                images = torch.nn.functional.interpolate(images, size=(384, 384), mode='bilinear', align_corners=False, antialias=True)
+             if args.mixup_alpha:
+                 images, labels = mix_batch(images, labels, args.mixup_alpha)
+             optimizer.zero_grad(set_to_none=True)

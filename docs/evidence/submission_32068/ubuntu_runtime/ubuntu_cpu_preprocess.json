@@ -1,0 +1,69 @@
+{
+  "cpu_only": true,
+  "pillow": "12.3.0",
+  "jpeg": "6.2",
+  "torch": "2.14.0+cu126",
+  "torchvision": "0.29.0+cu126",
+  "images": {
+    "test_00016.JPG": {
+      "decoded_sha256": "e55267190bee44c1c8ec99d9cee5ca325ec2c4bc3fc1615701295b45b56ee35f",
+      "tensor_sha256": "94f88a92f47b9dde3325bc57b6094a2580d03dc7461b263758c795dc83732102"
+    },
+    "test_01339.JPG": {
+      "decoded_sha256": "408b48cd35d80c90f6cf8a7a03f3e9b32453015721303b8416e941db8fe7d3ea",
+      "tensor_sha256": "43323e12da763125b380af01c389f17b21df01bb341d752a49dc8b874a5a4562"
+    },
+    "test_01925.JPG": {
+      "decoded_sha256": "c018a6e8e54aaceca15150bc284815e1cb93c5133174c30d5a7040733eef8d0a",
+      "tensor_sha256": "94fc520d8cf80b81de5ff70dcf8ca50070226a50799675201e2f5f0a2fa16b4c"
+    },
+    "test_03550.JPG": {
+      "decoded_sha256": "916e3699b1f65789648accea24dd08d962524a28daf30ae36b7602c8cc836e82",
+      "tensor_sha256": "bca3df72fe2dd58a2efb686dd665c48008236a04add7d03f3960a155a944f516"
+    },
+    "test_03956.JPG": {
+      "decoded_sha256": "a0a3c2ef345e301fdc60067336ebd4cb6df0a6000fafdc6170fe8d96a6b43c46",
+      "tensor_sha256": "e36d9f9198029d3a42547aca86367855bb19461e7c7b5d5683f1d557ead1e51f"
+    },
+    "test_04046.JPG": {
+      "decoded_sha256": "7e3235162bf1b860f434e23976f7719d152a9d5899f5111457bf0e4c9cdd9723",
+      "tensor_sha256": "7f2db2db8ec6afe69d2618c3428da0b6d5e98b94eb30aebc0dbdcb8f27b47f62"
+    },
+    "test_05472.JPG": {
+      "decoded_sha256": "05384348fcd7b2b3747c3b3b67c8399a24752351bd1ac0a62246fd259d436a37",
+      "tensor_sha256": "eb85a2fe56b964e70094c0f4f1af9f1437edec3a35c0409c0e2f9411c79d6d73"
+    },
+    "test_05625.JPG": {
+      "decoded_sha256": "d1002009ed8fb984b3b29aa11e23894f86ca01536670d58e442ce4ff865d5794",
+      "tensor_sha256": "c13cc42acd3603c88f00f06d7f5b29a20bba316624ed0493665cbbef6de54bd1"
+    },
+    "test_05711.JPG": {
+      "decoded_sha256": "bf85b6ae84485f1b9461a62db536ff73b930be54f2108a71d0eea5294098d119",
+      "tensor_sha256": "4b5fe27ca4664cb7e26660288afc72fb505e16c729f39bd05a1b8d33a0d333cf"
+    },
+    "test_05776.JPG": {
+      "decoded_sha256": "78be9905500d699e90e920e0d0780fad15e724033443abe1041fa8ca61cb1925",
+      "tensor_sha256": "161fa2259f79ab726b39d1ed5993c889f64b8627724bcd0ad17f6d593897e3f0"
+    },
+    "test_01622.JPG": {
+      "decoded_sha256": "c79428288092fb144f5c1abf76fce7e18234048b0e54149c01e5c7af1a5b7bbb",
+      "tensor_sha256": "84d0cd7ed01588dd5f8a86d25d1bfc984f478efc7fa4a145f7b2147bb442816e"
+    },
+    "test_02604.JPG": {
+      "decoded_sha256": "6148e93b9ba145c598d10879a81dc73a5d27eb3ac9a470690028b86e1ef4db9a",
+      "tensor_sha256": "075740847533d1db26ddaa49747a8b68564c1fdb4e6c67b195ed84a313d02df5"
+    },
+    "test_03053.JPG": {
+      "decoded_sha256": "3ef5e6a04021df4fc17f185e50eb92d2267265b6bcf533ae6422c267ddf59d40",
+      "tensor_sha256": "d2f8dec77837f92b9762743a2a206abffbf71d928e4e11b51be61cec2ddc0ae8"
+    },
+    "test_05557.JPG": {
+      "decoded_sha256": "6e21ba5e7aff7335eb2c65f38a280f022c2a5652921493f7a1710ab501950f7a",
+      "tensor_sha256": "699bd76047b11ee97ff816f3af44c32ad8e6de8a2ae7d4996309bc42f5946d07"
+    },
+    "test_05724.JPG": {
+      "decoded_sha256": "3d0b4f0caa33c1d04c632f715189f421000ae6aed0a141e088025f9510763e3d",
+      "tensor_sha256": "1322b598fb9673295213b0524091dc02c2035e871bdb6d5bd216cfb78c962ca6"
+    }
+  }
+}

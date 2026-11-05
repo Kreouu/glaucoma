@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "images": 15,
+  "changed": [],
+  "cpu_only": true,
+  "wsl": {
+    "pillow": "12.3.0",
+    "jpeg": "6.2",
+    "torch": "2.10.0+cu128",
+    "torchvision": "0.25.0+cu128"
+  },
+  "ubuntu": {
+    "pillow": "12.3.0",
+    "jpeg": "6.2",
+    "torch": "2.14.0+cu126",
+    "torchvision": "0.29.0+cu126"
+  }
+}

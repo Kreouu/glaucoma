@@ -1,0 +1,19 @@
+{
+  "status": "LOCAL_PACKAGE_REPRODUCTION_AND_INTEGRITY_PASS",
+  "directory": "outputs/\u6838\u9a8c\u6750\u6599\u8349\u7a3f_\u63d0\u4ea432068_ConvNeXt512_\u516dEMA_V2",
+  "archive": "outputs/\u63d0\u4ea432068_98.54_\u6838\u9a8c\u6750\u6599_\u5df2\u590d\u73b0_\u5f85\u586b\u8eab\u4efd_V2.zip",
+  "archive_bytes": 416268064,
+  "archive_sha256": "7a2fd201a3401794c6ccf311f79208c3e915b9c4e5d5edf71e1f1da34df93b5d",
+  "raw_total_bytes": 449707460,
+  "inventory_files": 111,
+  "zip_crc_and_all_inventory_hashes_pass": true,
+  "inference_files_bytes": 334500822,
+  "official_T4_verified": false,
+  "full_csv_reproduction210_pending": false,
+  "full_csv_byte_identical": true,
+  "example_mean_ms": 49.53331610207291,
+  "example_images": 10,
+  "official_100_image_gate_verified": false,
+  "identity_fields_user_will_fill": true,
+  "materials_uploaded": false
+}

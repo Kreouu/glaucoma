@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "files": {
+    "seed42.pt": {
+      "bytes": 55745751,
+      "sha256": "a2f1ac437eed16b5fc1ec9fdf5c4cee12d469918847680b156f94a4b9f4278ba"
+    },
+    "seed46.pt": {
+      "bytes": 55745751,
+      "sha256": "2480b5672c51d65f8e7c9cb83223b6f6286ed3500f66857e0a72517ff515b0eb"
+    },
+    "seed47.pt": {
+      "bytes": 55745751,
+      "sha256": "ca56c38e16f7ba17ece5c151beaf5c991bcd5acc9a8cfeedbe3532ab39f91d23"
+    },
+    "six_valid_predictions.csv": {
+      "bytes": 188920,
+      "sha256": "aa9c1d35bdbdd093fe8e6fb0598231971e9309fcb9dcf31b2aee0853e481782f"
+    },
+    "seed43.pt": {
+      "bytes": 55745751,
+      "sha256": "c151242093a3e3c41b9ae881f718852804241584564127b0a4ed5ebb4526d695"
+    },
+    "seed44.pt": {
+      "bytes": 55745751,
+      "sha256": "2f5b213a10eccc7e4a636dcfc67270778636a811d12b00d5b9394cee0711de00"
+    },
+    "seed45.pt": {
+      "bytes": 55745751,
+      "sha256": "00b6e5b18777d78e94e81f6ef2ba310546bbad19eddd7190b432dfcf0d8d48f0"
+    },
+    "source_global/amp_precision.py": {
+      "bytes": 481,
+      "sha256": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+    },
+    "source_global/model_convnext.py": {
+      "bytes": 504,
+      "sha256": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4"
+    },
+    "source_global/model.py": {
+      "bytes": 519,
+      "sha256": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69"
+    },
+    "source_global/dataset.py": {
+      "bytes": 3519,
+      "sha256": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7"
+    },
+    "source_global/inference.py": {
+      "bytes": 7583,
+      "sha256": "0e4f17ba1edd72f5ec66fea4fd1906f45cb77e115780d014f62ffdef3f76afd4"
+    },
+    "source_erasing/amp_precision.py": {
+      "bytes": 481,
+      "sha256": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39"
+    },
+    "source_erasing/model_convnext.py": {
+      "bytes": 504,
+      "sha256": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4"
+    },
+    "source_erasing/model.py": {
+      "bytes": 519,
+      "sha256": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69"
+    },
+    "source_erasing/dataset.py": {
+      "bytes": 3701,
+      "sha256": "34cab83319b2543dd80f2e465db7c70ad1f4573de527cdcf8341686922672b94"
+    },
+    "source_erasing/inference.py": {
+      "bytes": 7583,
+      "sha256": "0e4f17ba1edd72f5ec66fea4fd1906f45cb77e115780d014f62ffdef3f76afd4"
+    }
+  },
+  "all_six_weights_match_remote": true
+}

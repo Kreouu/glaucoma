@@ -1,0 +1,20 @@
+{
+  "environment": {
+    "torch": "2.10.0+cu128",
+    "torchvision": "0.25.0+cu128",
+    "timm": "1.0.22",
+    "gpu": "NVIDIA GeForce RTX 5060 Ti"
+  },
+  "sources": {
+    "predict.py": "0c5883db4a14e865f73075dcdfe26ed019a7937f2442779db688dded7a53e67d",
+    "cost.py": "336a61413f6cc806fc48d2e36cc69a1c6d75a75f1bd1d85129ea0826962e58bb",
+    "model/manifest.json": "c8d78643052690209c3e676f4b3e0258b5df169ef2f93202264cdec03f4f098f",
+    "submission.manifest.json": "7ac313ccc7a9252b8cd6d659546567043701f76a1f02ca44aaa132896c73695b",
+    "code/inference.py": "0e4f17ba1edd72f5ec66fea4fd1906f45cb77e115780d014f62ffdef3f76afd4",
+    "code/model_convnext.py": "234c6579b60054f52caaf4a43f57f7e1d361c534b3488264e13185478f7edfd4",
+    "code/six_22k_crop_inference.py": "4407c083cb08b5edd5cd9b9f5ddd85385a7690ab8bb7f203e8d50276a052fe72",
+    "code/model.py": "8c5d7ca762df8b9109d84c800a80b2177cf9c9489321d6ce55cb6e26c3c6cb69",
+    "code/amp_precision.py": "510f3fb2ba381d26d637f791c35db025743c024150195e4c4503c2a6ddca3f39",
+    "code/dataset.py": "ed3de4940f61b46a52c8f0a6954c0b69adc9585d0d39fc5000d4f9c0357bffe7"
+  }
+}

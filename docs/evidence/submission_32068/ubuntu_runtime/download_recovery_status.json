@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-11-05 22:59 CST",
+  "installer_pid": 203458,
+  "installer_live": true,
+  "partial_backup_bytes": 835715072,
+  "partial_backup_complete": false,
+  "partial_backup_sha_verified": false,
+  "remote_partial_path": "/home/kreouu/Model_train/glaucoma_submission32068_20261105/wheelhouse/torch-2.10.0+cu128-cp312-cp312-manylinux_2_28_x86_64.whl.partial",
+  "recovery_script": "scripts/recover_submission32068_verify_env.py",
+  "policy": "Inspect original installer terminal state first; never restart on timeout. Recovery resumes persistent partial and verifies official SHA before installation."
+}

@@ -1,0 +1,52 @@
+{
+  "status": "SCREEN_ONLY",
+  "test_used": false,
+  "method": "Each of two erasing recipes plus complete global3/6 equal member logits; no subset or weight fitting",
+  "limitations": "Saved probability inverse logits; model-specific native inference and runtime not verified",
+  "global_three": {
+    "auroc": 0.9920392568369116,
+    "ap": 0.8798710124292646
+  },
+  "global_six": {
+    "auroc": 0.9923122336163038,
+    "ap": 0.880015237405461
+  },
+  "candidates": [
+    {
+      "recipe": "p0.1",
+      "local": {
+        "auroc": 0.9914535134424871,
+        "ap": 0.8665606442527518
+      },
+      "four": {
+        "auroc": 0.9923159349963634,
+        "ap": 0.8807771833248914
+      },
+      "seven": {
+        "auroc": 0.9924260510531352,
+        "ap": 0.8809351395623631
+      }
+    },
+    {
+      "recipe": "p0.25",
+      "local": {
+        "auroc": 0.9896379865232752,
+        "ap": 0.8574192504398027
+      },
+      "four": {
+        "auroc": 0.9919226633650358,
+        "ap": 0.8790977486315698
+      },
+      "seven": {
+        "auroc": 0.9922058189395916,
+        "ap": 0.8788910517738163
+      }
+    }
+  ],
+  "sources": {
+    "outputs/erasing_screen_v1/inputs/p0.1.csv": "1265eb83b19c06f54e37eb19c69ee23a36fd968d01a7ea324c8d1cb57296daa6",
+    "outputs/erasing_screen_v1/inputs/p0.25.csv": "152e63a7857ea3941ebeb621e736817a1eeaaa3e7e4aa740a400941db663e096",
+    "outputs/three22k_crop_native_v1/valid_predictions.csv": "ecc136538340e1be5b33aaa7c73c0fcb93d4b0824ac7947ff539b4a92949c1eb",
+    "outputs/extra_seeds_native_v1/six_valid_predictions.csv": "a6fa34e5eb4b61902f0856c20e2d63f8bf2eced2b0b3584d55fa1ca6624d9fa6"
+  }
+}

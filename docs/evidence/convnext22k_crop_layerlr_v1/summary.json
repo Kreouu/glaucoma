@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "lr": 0.5,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 3,
+        "checkpoint_sha256": "99dd6e6785c30cdb6e3398afaf252a2d16c83cbbd69e8aec40507a9a03782294",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9849141002222679,
+        "val_auprc": 0.8334802172752366
+      }
+    },
+    {
+      "lr": 0.8,
+      "seed": 42,
+      "check": {
+        "status": "PASS",
+        "images": 5849,
+        "positives": 191,
+        "checkpoint_epoch": 4,
+        "checkpoint_sha256": "ec738e175f5071904ed1bc391c8965e3530ef44782a55ebbe8cf12910902f9a2",
+        "max_probability_difference": 0.0,
+        "val_auroc": 0.9884378140389645,
+        "val_auprc": 0.8543148415701548
+      }
+    }
+  ],
+  "test_used": false,
+  "scope": "Tiny22K512/b16/crop.8/EMA.999/cosine1e-4->1e-5; stage-wise LR decay .5/.8, stem gamma^4 stages0-3 gamma^3..1 head1, fixed peak1e-4, BCE3 fixed. Validation unweighted; no test use."
+}

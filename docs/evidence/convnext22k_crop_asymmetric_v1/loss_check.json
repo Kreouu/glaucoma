@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "gamma0_loss_equivalent_tolerance": 1e-06,
+  "positive_gradient_max_difference": 1.818170858314261e-08,
+  "positive_gradient_absolute_tolerance": 1e-07,
+  "initial_stricter_test_failed": true,
+  "extreme_logits_finite": true
+}

@@ -1,0 +1,11 @@
+{
+  "checkpoint_sha256": "d48fb49a12371ffb0c91a8dfba0c866819dc6a8788971773ecfc834065eca4cb",
+  "hash_captured_after_interruption": true,
+  "training_completed": false,
+  "last_completed_epoch": 4,
+  "interrupted_epoch": 5,
+  "interrupted_batch": 2375,
+  "total_batches": 3213,
+  "original_files_preserved": true,
+  "scope": "Verify saved epoch4 only; never claims full five epoch completion"
+}

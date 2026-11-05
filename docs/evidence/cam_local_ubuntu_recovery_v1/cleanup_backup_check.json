@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "remote_zip_bytes": 34084368616,
+  "remote_zip_sha256": "33dd1da085c744a41ead5357f323771ef1dab67270b5ad851f907da2a90d4fc0",
+  "common_entries": 63103,
+  "extra_entries": 13,
+  "extra_backup": "/Volumes/ExSSD/glaucoma-4060-extra-members_20261104.zip",
+  "extra_backup_sha256": "b11659d852d9999a76c534469e77a1ffc0f84bf99ac1883f9919fc375aa400a0",
+  "mac_archive_integrity": "PASS all63103 entries",
+  "remote_deletion": "Confirmed: exact original ZIP hashed then unlinked",
+  "authorization": "User explicitly allowed cleanup on4060",
+  "free_bytes_after": 34804731904
+}

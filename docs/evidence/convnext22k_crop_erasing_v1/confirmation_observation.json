@@ -1,0 +1,12 @@
+{
+  "status": "INCOMPLETE_OBSERVATION",
+  "seed43": {
+    "val_auroc": 0.9905624061931493,
+    "val_auprc": 0.8631211249050867,
+    "images": 5849,
+    "max_probability_difference": 0,
+    "checkpoint_sha256": "27b768bb0a8bb74380e30ccbd670106841ff0024710c9004320103bd1037db95"
+  },
+  "seed44_last_observation": "Epoch4 validation, process193533 alive",
+  "connection": "Two bounded SSH connection attempts timed out at 2026-11-05 12:15 CST; not terminal evidence; no restart"
+}

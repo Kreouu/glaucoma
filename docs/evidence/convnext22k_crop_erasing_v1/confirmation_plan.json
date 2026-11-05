@@ -1,0 +1,10 @@
+{
+  "reason": "Fixed equal-seven screening AUROC .9924260511 vs global6 .9923122336, AP improves. Exploratory confirmation, original single-model threshold not met.",
+  "seeds": [
+    43,
+    44
+  ],
+  "erasing_probability": 0.1,
+  "other_parameters": "Unchanged frozen original erasing plan",
+  "runner_sha256": "202ee70a70a8e3c7f02cfe399b8549c9ddf8463a14aa62d5d829700f8dabba88"
+}
